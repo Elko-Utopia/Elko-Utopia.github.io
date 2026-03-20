@@ -289,9 +289,9 @@ async function initializePreferences() {
   console.log('[Prefs Debug] document.body exists:', !!document.body);
   console.log('[Prefs Debug] Current location:', window.location.href);
   
-  // 默认使用浅色主题（除非显式设置，才遵循系统偏好）
+  // 默认使用暗色主题（除非显式设置，才遵循系统偏好或已存储偏好）
   const storedTheme = readStoredTheme();
-  const initialTheme = storedTheme !== null ? storedTheme : 'light';
+  const initialTheme = storedTheme !== null ? storedTheme : 'dark';
   applyTheme(initialTheme, { persist: storedTheme === null }); // 若首次访问则持久化
   syncThemeButtons(initialTheme);
 

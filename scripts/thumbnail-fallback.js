@@ -10,7 +10,7 @@
       const base = m[1];
       const tail = m[3] || '';
       // sizes order to prefer
-      const sizes = [640, 320, 1024];
+      const sizes = [320, 640, 1024];
       return sizes.map(s => `${base}-${s}.webp${tail}`);
     } catch (e) {
       return [];
@@ -48,18 +48,34 @@
     if (!orig) return;
     // don't touch remote images
     if (/^https?:\/\//i.test(orig) || orig.startsWith('data:')) return;
+    // don't touch images already in low/ folder
+    if (orig.includes('/low/')) return;
 
     const candidates = candidateUrls(orig);
     if (!candidates.length) return;
 
-    // Check preferred candidate (640) first
-    const preferred = candidates[0];
-    if (await exists(preferred)) {
-      const checks = await Promise.all(candidates.map(async (c) => ({ c, ok: await exists(c) })));
-      const widths = [640, 320, 1024];
-      const srcset = checks.filter(x => x.ok).map((x, idx) => `${x.c} ${widths[idx]}w`).join(', ');
-      swapImg(img, preferred, srcset || undefined);
-    }
+    // 检查哪些变体存在
+    const sizes = [320, 640, 1024];
+    const checks = await Promise.all(
+      candidates.map(async (url, idx) => ({ url, width: sizes[idx], ok: await exists(url) }))
+    );
+    const available = checks.filter(x => x.ok);
+    if (!available.length) return;
+
+    // 用 srcset 列出所有可用变体，让浏览器根据显示尺寸自动选
+    // sizes 属性：告诉浏览器图片实际显示宽度的估算
+    const srcset = available.map(x => `${x.url} ${x.width}w`).join(', ');
+    const sizesAttr = '(max-width: 480px) 320px, (max-width: 1024px) 640px, 1024px';
+
+    try {
+      if (!img.dataset.full) img.dataset.full = img.src || '';
+      img.setAttribute('srcset', srcset);
+      img.setAttribute('sizes', sizesAttr);
+      // src 设为最小可用变体作为 fallback
+      img.src = available[0].url;
+      try { if (!img.loading) img.loading = 'lazy'; } catch(e) {}
+      try { if (!img.decoding) img.decoding = 'async'; } catch(e) {}
+    } catch(e) {}
   }
 
   function scan() {

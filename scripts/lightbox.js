@@ -1,11 +1,10 @@
 /**
  * lightbox.js — PhotoSwipe v5 封装
  *
- * 排除容器：.inline-portfolio-card、.no-lightbox、.md-masonry-wrapper
- * 图片源：data-full > data-lightbox-src > currentSrc > src
- *
- * window.initLightbox({ selector })
- * window.initLightboxAuto()
+ * 修复：
+ * 1. 原图用 data-full 字段，不用被缩略图替换的 src
+ * 2. 滚轮缩放期间屏蔽 click，避免闪烁
+ * 3. collectGallery 扫描全部 img，不依赖 boundImages，解决懒加载问题
  */
 (function () {
   'use strict';
@@ -19,6 +18,10 @@
   let mutationObserver;
   let pswpLoaded = false;
   let PhotoSwipe;
+
+  // 滚轮操作后短暂屏蔽 click（防止滚轮缩放时误触关闭）
+  let wheelActive = false;
+  let wheelTimer = null;
 
   /* ─── 加载 PhotoSwipe（只加载一次） ─────── */
   function loadPhotoSwipe() {
@@ -38,8 +41,10 @@
   }
 
   /* ─── 工具 ───────────────────────────────── */
+
+  // Bug 1 修复：优先用 data-full（原图），不用可能被缩略图脚本替换的 src
   function resolveSource(img) {
-    return img.dataset.full || img.dataset.lightboxSrc || img.currentSrc || img.src || null;
+    return img.dataset.full || img.dataset.lightboxSrc || img.getAttribute('src') || null;
   }
 
   function isExcluded(node) {
@@ -47,6 +52,8 @@
   }
 
   /* ─── 收集同页图片组 ────────────────────── */
+  // Bug 3 修复：扫描全部匹配图片，不依赖 boundImages
+  // 这样懒加载还未绑定的图片也能正确出现在灯箱列表里
   function collectGallery(clickedImg) {
     const scope =
       clickedImg.closest('article') ||
@@ -57,9 +64,10 @@
     const items = [];
     let startIndex = 0;
 
-    scope.querySelectorAll('img').forEach(function (img) {
+    // 用 registeredSelectors 里的选择器扫描，而不是 boundImages
+    const selectors = Array.from(registeredSelectors).join(', ') || DEFAULT_SELECTOR;
+    scope.querySelectorAll(selectors).forEach(function (img) {
       if (isExcluded(img)) return;
-      if (!boundImages.has(img)) return;
       const src = resolveSource(img);
       if (!src) return;
       if (img === clickedImg) startIndex = items.length;
@@ -103,13 +111,41 @@
         },
       });
 
-      /* ── 滚轮缩放：帧级响应，以鼠标位置为中心 ── */
+      /* ── Bug 2 修复：滚轮缩放，屏蔽缩放期间的 click/tap ── */
       let wheelRaf = null;
+
+      // 拦截 PhotoSwipe 内部的 tap/click 重置缩放行为
+      // PhotoSwipe 用 pointerdown → pointerup 序列判断 tap，在滚轮期间拦截 pointerdown
+      pswp.on('bindEvents', function () {
+        try {
+          const el = pswp.element;
+          if (!el) return;
+          el.addEventListener('pointerdown', function (e) {
+            if (wheelActive) {
+              e.stopImmediatePropagation();
+            }
+          }, { capture: true });
+          el.addEventListener('click', function (e) {
+            if (wheelActive) {
+              e.stopImmediatePropagation();
+              e.preventDefault();
+            }
+          }, { capture: true });
+        } catch (err) {}
+      });
+
       pswp.on('wheel', function (e) {
         e.preventDefault();
         const oe = e.originalEvent;
 
-        if (wheelRaf) return; // 节流：每帧最多处理一次
+        // 标记滚轮激活，屏蔽接下来 400ms 的 tap/click
+        wheelActive = true;
+        if (wheelTimer) clearTimeout(wheelTimer);
+        wheelTimer = setTimeout(function () {
+          wheelActive = false;
+        }, 400);
+
+        if (wheelRaf) return;
         wheelRaf = requestAnimationFrame(function () { wheelRaf = null; });
 
         const delta = oe.deltaY !== undefined ? oe.deltaY : (oe.detail || 0);
@@ -118,13 +154,10 @@
         const minZoom = slide.zoomLevels.fit;
         const maxZoom = slide.zoomLevels.max * 2;
 
-        // 小步长：每档 4%
         const factor = delta < 0 ? 1.04 : 0.96;
         const next = Math.min(maxZoom, Math.max(minZoom, current * factor));
 
         if (next === current) return;
-
-        // duration=0：立即到位，不产生动画叠加跳位
         slide.zoomTo(next, { x: oe.clientX, y: oe.clientY }, 0);
       });
 
@@ -140,13 +173,30 @@
     if (isExcluded(node)) return;
     if (boundImages.has(node)) return;
 
+    // Bug 1 修复：在绑定时把原始 src 存入 data-full（如果还没设置）
+    // thumbnail-fallback.js 会替换 src，所以要在替换前记录原图
+    if (!node.dataset.full && node.src && !node.src.startsWith('data:')) {
+      node.dataset.full = node.src;
+    }
+
     if (!node.complete || node.naturalWidth === 0) {
       node.addEventListener('load', function () { bindImage(node); }, { once: true });
       return;
     }
 
+    // 加载完成后再次确认 data-full
+    if (!node.dataset.full && node.src && !node.src.startsWith('data:')) {
+      node.dataset.full = node.src;
+    }
+
     boundImages.add(node);
     node.addEventListener('click', function (e) {
+      // Bug 2 修复：滚轮操作后屏蔽 click
+      if (wheelActive) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
       e.preventDefault();
       openLightbox(node);
     });
@@ -156,7 +206,7 @@
     document.querySelectorAll(selector).forEach(bindImage);
   }
 
-  /* ─── MutationObserver ───────────────────── */
+  /* ─── MutationObserver：监听懒加载新增的图片 ── */
   function ensureObserver() {
     if (mutationObserver || typeof MutationObserver === 'undefined') return;
     mutationObserver = new MutationObserver(function (mutations) {
@@ -168,9 +218,23 @@
             node.querySelectorAll(sel).forEach(bindImage);
           });
         });
+        // Bug 3 修复：监听 src 属性变化（懒加载图片从 data:// 换成真实 src 时）
+        if (m.type === 'attributes' && m.attributeName === 'src') {
+          const node = m.target;
+          if (node instanceof HTMLImageElement) {
+            registeredSelectors.forEach(function (sel) {
+              if (node.matches && node.matches(sel)) bindImage(node);
+            });
+          }
+        }
       });
     });
-    mutationObserver.observe(document.documentElement, { childList: true, subtree: true });
+    mutationObserver.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['src'],
+    });
   }
 
   /* ─── 公开 API ───────────────────────────── */
