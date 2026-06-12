@@ -267,6 +267,10 @@ const i18n = {
 
 let searchOverlay = null;
 let searchInput = null;
+let prefsOverlay = null;
+let prefsKeydownHandler = null;
+let subscribeOverlay = null;
+let toastContainer = null;
 let searchIndex = null; // 缓存的 JSON 索引
 let prevActiveElement = null;
 let lightboxInitialized = false; // 防止重复初始化lightbox
@@ -516,8 +520,6 @@ function ensureSearchOverlay() {
 }
 
 /* 偏好设置覆盖层（主题 + 语言） - 与搜索分离 */
-let prefsOverlay = null;
-let prefsKeydownHandler = null;
 function ensurePrefsOverlay() {
   // 若页面已有偏好覆盖层，复用它以防止与搜索/订阅覆盖层混淆
   if (prefsOverlay) return;
@@ -1166,8 +1168,6 @@ function onGlobalKeydown(event) {
   }
 }
 
-let subscribeOverlay = null;
-let toastContainer = null;
 function ensureSubscribeOverlay() {
   // 若页面已有订阅覆盖层，复用它以避免重复创建多个 overlay
   if (subscribeOverlay) return;
