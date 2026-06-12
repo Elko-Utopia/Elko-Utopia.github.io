@@ -487,11 +487,20 @@
     if (tagCloudEl) renderTags(allTagsList, tagCloudEl);
   }
 
-  document.addEventListener('DOMContentLoaded', async () => {
+  // 判断当前页面是否是搜索页（避免在其他页面误触发）
+  function isSearchPage() {
+    return !!document.getElementById('site-search-form');
+  }
+
+  async function initSearchPage() {
+    if (!isSearchPage()) return;
+
+    // 重置页面级状态，避免 ClientRouter 切换后残留上一次的选中标签
+    selectedTag = null;
+
     await loadIndex();
-    // determine current page language early so tag cloud and counts reflect current language only
     const curLang = (document.documentElement.lang || (location.pathname.indexOf('/zh/') !== -1 ? 'zh' : 'en')).toLowerCase();
-    // read tag or q param from URL (e.g. /search?tag=foo or /search?q=term)
+
     try {
       const params = new URLSearchParams(location.search);
       const t = params.get('tag');
@@ -505,14 +514,12 @@
         const input = document.getElementById('site-search-input');
         if (input) {
           input.value = qParam;
-          // 若 URL 中带有 q 参数，立即执行搜索以展示结果（确保从 header 重定向后页面立刻显示）
           try {
             selectedTag = null;
             console.debug('[site-search] calling doSearch for q param');
             await doSearch();
             console.debug('[site-search] doSearch completed');
           } catch (e) {
-            // 若搜索失败，记录错误但不要阻止页面继续初始化
             console.error('initial doSearch failed for q param', e);
           }
         } else {
@@ -520,17 +527,14 @@
         }
       }
     } catch (e) {}
+
     const input = document.getElementById('site-search-input');
     const form = document.getElementById('site-search-form');
     const tagCloud = document.getElementById('site-search-tagcloud');
 
-    // hook up mode toggle (segmented buttons reused from preferences styles)
-      // Removed keyword/tag toggle: search is always keyword-based. No UI interaction required here.
-
     if (form) {
       form.addEventListener('submit', (e) => {
         e.preventDefault();
-        // keyword-only submit
         selectedTag = null;
         doSearch();
       });
@@ -539,17 +543,24 @@
     if (input) {
       input.addEventListener('input', async () => {
         selectedTag = null;
-        // always do keyword search on input
         doSearch();
       });
     }
 
-  // load tag colors and render global tag cloud from posts in current language
-  await loadTagColors();
-  allTagsList = (await loadIndex()).filter(it => (it.lang || 'en').toLowerCase() === curLang).flatMap(it => Array.isArray(it.tags) ? it.tags : []);
-  if (tagCloud) renderTags(allTagsList, tagCloud);
+    await loadTagColors();
+    allTagsList = (await loadIndex()).filter(it => (it.lang || 'en').toLowerCase() === curLang).flatMap(it => Array.isArray(it.tags) ? it.tags : []);
+    if (tagCloud) renderTags(allTagsList, tagCloud);
 
-    // initial render (all posts)
     doSearch();
-  });
+  }
+
+  // 首次加载（普通导航或刷新）
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSearchPage);
+  } else {
+    initSearchPage();
+  }
+
+  // ClientRouter 切换页面后重新初始化（外链脚本不会重新执行，必须手动监听）
+  document.addEventListener('astro:page-load', initSearchPage);
 })();
