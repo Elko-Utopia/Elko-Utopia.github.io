@@ -22,12 +22,9 @@
   // 滚轮操作后短暂屏蔽 click（防止滚轮缩放时误触关闭）
   let wheelActive = false;
   let wheelTimer = null;
-
-  /* ─── 加载 PhotoSwipe（只加载一次） ─────── */
-  function loadPhotoSwipe() {
-    if (pswpLoaded) return Promise.resolve();
-    pswpLoaded = true;
-
+  
+/* ─── 加载 PhotoSwipe（只加载一次） ─────── */
+  function ensurePswpCss() {
     if (!document.getElementById('pswp-base-css')) {
       const link = document.createElement('link');
       link.id = 'pswp-base-css';
@@ -35,11 +32,17 @@
       link.href = 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css';
       document.head.appendChild(link);
     }
+  }
+
+  function loadPhotoSwipe() {
+    ensurePswpCss();
+
+    if (pswpLoaded) return Promise.resolve();
+    pswpLoaded = true;
 
     return import('https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js')
       .then(function (mod) { PhotoSwipe = mod.default; });
   }
-
   /* ─── 工具 ───────────────────────────────── */
 
   // Bug 1 修复：优先用 data-full（原图），不用可能被缩略图脚本替换的 src
@@ -265,4 +268,5 @@
 
   window.initLightbox = initLightbox;
   window.initLightboxAuto = initLightboxAuto;
+  document.addEventListener('astro:page-load', autoInit);
 })();

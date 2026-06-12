@@ -49,4 +49,5 @@
   });
 
   observer.observe(document.body, { childList: true, subtree: true });
+  document.addEventListener('astro:page-load', init);
 })();

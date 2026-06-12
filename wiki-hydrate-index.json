@@ -87,7 +87,7 @@
     "heroImageWidth": null,
     "source": "portfolio/embarkation/chagall-character-design.md",
     "lang": "en",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2024-11-12T00:00:00.000Z"
   },
   {
     "title": "Seth The Untamed Scientist",
@@ -97,17 +97,17 @@
     "heroImageWidth": null,
     "source": "portfolio/embarkation/seth-the-untamed-scientist.md",
     "lang": "en",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2024-11-15T00:00:00.000Z"
   },
   {
     "title": "Classical Sketching",
     "url": "/portfolio/personal/classical-sketching/",
-    "heroImage": "/assets/portfolio/personal/ClassicalSketching/Agrippa.webp",
+    "heroImage": "/assets/portfolio/personal/ClassicalSketching/Seneca.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "portfolio/personal/classical-sketching.md",
     "lang": "en",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2023-11-21T00:00:00.000Z"
   },
   {
     "title": "Goat",
@@ -117,7 +117,7 @@
     "heroImageWidth": null,
     "source": "portfolio/personal/goat.md",
     "lang": "en",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2023-08-20T00:00:00.000Z"
   },
   {
     "title": "Illuminated Surfaces",
@@ -127,7 +127,7 @@
     "heroImageWidth": null,
     "source": "portfolio/personal/illuminated-surfaces.md",
     "lang": "en",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2023-11-16T00:00:00.000Z"
   },
   {
     "title": "Line Field 360°",
@@ -137,7 +137,7 @@
     "heroImageWidth": null,
     "source": "portfolio/personal/line-field-360.md",
     "lang": "en",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2023-08-15T00:00:00.000Z"
   },
   {
     "title": "Threshold Step",
@@ -147,7 +147,7 @@
     "heroImageWidth": null,
     "source": "portfolio/personal/threshold-step.md",
     "lang": "en",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2024-04-25T00:00:00.000Z"
   },
   {
     "title": "FOUN 110: Lyrical Impressions & In the Round",
@@ -157,77 +157,87 @@
     "heroImageWidth": null,
     "source": "portfolio/scad/foun110.md",
     "lang": "en",
-    "pubDate": "2024-05-01T00:00:00.000Z"
+    "pubDate": "2026-03-28T00:00:00.000Z"
   },
   {
-    "title": "夏加尔角色设计",
+    "title": "FOUN 220: Drawing: Light and Shadow",
+    "url": "/portfolio/scad/foun220/",
+    "heroImage": "/assets/portfolio/scad/foun220/Flavor.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "portfolio/scad/foun220.md",
+    "lang": "en",
+    "pubDate": "2026-05-28T00:00:00.000Z"
+  },
+  {
+    "title": "夏格尔角色设计",
     "url": "/zh/portfolio/embarkation/chagall-character-design/",
     "heroImage": "/assets/portfolio/embarkation/ChagallCharacterDesign/Chagall.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "zh/portfolio/embarkation/chagall-character-design.md",
     "lang": "zh",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2024-11-12T00:00:00.000Z"
   },
   {
-    "title": "塞斯——未驯化的科学家",
+    "title": "塞斯——不羁的科学家",
     "url": "/zh/portfolio/embarkation/seth-the-untamed-scientist/",
     "heroImage": "/assets/portfolio/embarkation/SethTheUntamedScientist/Seth.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "zh/portfolio/embarkation/seth-the-untamed-scientist.md",
     "lang": "zh",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2024-11-15T00:00:00.000Z"
   },
   {
-    "title": "古典素描",
+    "title": "古典素描练习",
     "url": "/zh/portfolio/personal/classical-sketching/",
     "heroImage": "/assets/portfolio/personal/ClassicalSketching/Agrippa.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "zh/portfolio/personal/classical-sketching.md",
     "lang": "zh",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2023-11-21T00:00:00.000Z"
   },
   {
-    "title": "山羊",
+    "title": "羊 写生",
     "url": "/zh/portfolio/personal/goat/",
     "heroImage": "/assets/portfolio/personal/Goat/Goat.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "zh/portfolio/personal/goat.md",
     "lang": "zh",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2023-08-20T00:00:00.000Z"
   },
   {
-    "title": "光照表面",
+    "title": "光影水粉",
     "url": "/zh/portfolio/personal/illuminated-surfaces/",
     "heroImage": "/assets/portfolio/personal/IlluminatedSurfaces/IlluminatedSurfaces.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "zh/portfolio/personal/illuminated-surfaces.md",
     "lang": "zh",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2023-11-16T00:00:00.000Z"
   },
   {
-    "title": "线场 360°",
+    "title": "全景写生",
     "url": "/zh/portfolio/personal/line-field-360/",
     "heroImage": "/assets/portfolio/personal/LineField360/LineField.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "zh/portfolio/personal/line-field-360.md",
     "lang": "zh",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2023-08-15T00:00:00.000Z"
   },
   {
-    "title": "门槛之步",
+    "title": "临界步",
     "url": "/zh/portfolio/personal/threshold-step/",
     "heroImage": "/assets/portfolio/personal/ThresholdStep/ThresholdStep.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "zh/portfolio/personal/threshold-step.md",
     "lang": "zh",
-    "pubDate": "2024-01-01T00:00:00.000Z"
+    "pubDate": "2024-04-25T00:00:00.000Z"
   },
   {
     "title": "FOUN 110：抒情印象与圆雕",
@@ -237,7 +247,17 @@
     "heroImageWidth": null,
     "source": "zh/portfolio/scad/foun110.md",
     "lang": "zh",
-    "pubDate": "2024-05-01T00:00:00.000Z"
+    "pubDate": "2026-03-28T00:00:00.000Z"
+  },
+  {
+    "title": "FOUN 220: Drawing: Light and Shadow",
+    "url": "/zh/portfolio/scad/foun220/",
+    "heroImage": "/assets/portfolio/scad/foun220/Flavor.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "zh/portfolio/scad/foun220.md",
+    "lang": "zh",
+    "pubDate": "2026-05-28T00:00:00.000Z"
   },
   {
     "title": "text",
@@ -262,7 +282,7 @@
   {
     "title": "Webpage Production Log",
     "url": "/website-log/",
-    "heroImage": "/assets/ui/placeholder/blog-placeholder-1.webp",
+    "heroImage": "/assets/ui/placeholder/blog-placeholder-about.webp",
     "heroImagePosition": "50% 50%",
     "heroImageWidth": "101%",
     "source": "website-log.md",
@@ -272,7 +292,7 @@
   {
     "title": "网页制作日志",
     "url": "/zh/website-log/",
-    "heroImage": "/assets/ui/placeholder/blog-placeholder-1.webp",
+    "heroImage": "/assets/ui/placeholder/blog-placeholder-about.webp",
     "heroImagePosition": "50% 50%",
     "heroImageWidth": "101%",
     "source": "zh/website-log.md",

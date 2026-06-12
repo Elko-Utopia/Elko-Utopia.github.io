@@ -274,6 +274,28 @@ let prefsDelegateAttached = false;
 let scrollbarCompensated = false; // 防止重复设置滚动条补偿
 let originalBodyPadding = ''; // 保存body原始padding
 
+// 更新显示在头部偏好图标上的小语言角标
+function syncLangBadge() {
+  try {
+    const badge = document.querySelector('.lang-badge');
+    if (!badge) return;
+    const htmlLang = document.documentElement.lang || '';
+    const path = (window.location.pathname || '/');
+    const normalized = path.endsWith('/') ? path : path + '/';
+    const isZh = htmlLang === 'zh' || /(^|\/)zh(\/|$)/.test(normalized) || /\/zh\/$/.test(normalized) || /^\/zh(\/|$)/.test(normalized);
+    const txt = isZh ? 'ZH' : 'EN';
+    badge.textContent = txt;
+  // 还为偏好切换添加语言类，以便应用相应的 CSS 变体
+    try {
+      document.querySelectorAll('[data-prefs-toggle]').forEach((btn) => {
+        if (!btn.classList) return;
+        btn.classList.remove('lang-en', 'lang-zh');
+        btn.classList.add(isZh ? 'lang-zh' : 'lang-en');
+      });
+    } catch (e) {}
+  } catch (e) {}
+}
+
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
   // 等待 DOM 就绪后再初始化
   if (document.readyState === 'loading') {
@@ -313,102 +335,8 @@ async function initializePreferences() {
     });
   });
 
-  // 语言切换已移除（仅保留图标）
-
-  document.querySelectorAll('[data-search-toggle]').forEach((button) => {
-    button.addEventListener('click', () => {
-      openSearchOverlay();
-    });
-  });
-
-  // 偏好切换（头部新图标）→ 打开偏好弹窗
-  const prefsToggles = document.querySelectorAll('[data-prefs-toggle]');
-  console.log('[Prefs Debug] Found prefs toggle buttons:', prefsToggles.length);
-  console.log('[Prefs Debug] All elements with class containing "prefs":', document.querySelectorAll('[class*="prefs"]').length);
-  console.log('[Prefs Debug] Header exists:', !!document.querySelector('header'));
-  
-  if (prefsToggles.length === 0) {
-    console.warn('[Prefs Debug] WARNING: No prefs toggle buttons found! Checking DOM...');
-    console.log('[Prefs Debug] Body HTML (first 500 chars):', document.body?.innerHTML?.substring(0, 500));
-  }
-  
-  prefsToggles.forEach((button, idx) => {
-    console.log(`[Prefs Debug] Attaching listener to button ${idx}:`, button);
-    button.addEventListener('click', (e) => {
-      console.log('[Prefs Debug] Direct click on prefs toggle button');
-      e.preventDefault();
-      e.stopPropagation();
-      openPrefsOverlay();
-    });
-  });
-
-  // 回退方案：添加委托点击处理器，以防直接监听器失效时点击仍能生效
-  try {
-    if (!prefsDelegateAttached) {
-      document.addEventListener('click', function (ev) {
-        try {
-          const btn = ev.target && ev.target.closest && ev.target.closest('[data-prefs-toggle]');
-          if (btn) {
-            console.log('[Prefs Debug] Delegated click on prefs toggle');
-            ev.preventDefault();
-            ev.stopPropagation();
-            openPrefsOverlay();
-          }
-        } catch (e) {
-          console.error('[Prefs Debug] Error in delegated handler:', e);
-        }
-      }, false);
-      prefsDelegateAttached = true;
-      console.log('[Prefs Debug] Delegated handler attached');
-    }
-  } catch (e) {
-    console.error('[Prefs Debug] Error attaching delegated handler:', e);
-  }
-
-  // 初始化头部语言角标（EN / ZH），如存在则显示
-  try {
-    syncLangBadge();
-  } catch (e) { /* 空操作 */ }
-
-  // 订阅切换：打开按需创建的小订阅对话框
-  document.querySelectorAll('[data-subscribe-toggle]').forEach((button) => {
-    button.addEventListener('click', () => {
-      openSubscribeOverlay();
-    });
-  });
-
-  // 延迟光箱初始化，确保图片已渲染且lightbox.js已加�?
-  setTimeout(() => {
-    if (!lightboxInitialized && typeof window.initLightboxAuto === 'function') {
-      const images = document.querySelectorAll('.md-content.pswp-featured img[data-full]');
-      if (images.length > 0) {
-        lightboxInitialized = true;
-        window.initLightboxAuto();
-      }
-    }
-  }, 200);
-}
-
-// 更新显示在头部偏好图标上的小语言角标
-function syncLangBadge() {
-  try {
-    const badge = document.querySelector('.lang-badge');
-    if (!badge) return;
-    const htmlLang = document.documentElement.lang || '';
-    const path = (window.location.pathname || '/');
-    const normalized = path.endsWith('/') ? path : path + '/';
-    const isZh = htmlLang === 'zh' || /(^|\/)zh(\/|$)/.test(normalized) || /\/zh\/$/.test(normalized) || /^\/zh(\/|$)/.test(normalized);
-    const txt = isZh ? 'ZH' : 'EN';
-    badge.textContent = txt;
-  // 还为偏好切换添加语言类，以便应用相应的 CSS 变体
-    try {
-      document.querySelectorAll('[data-prefs-toggle]').forEach((btn) => {
-        if (!btn.classList) return;
-        btn.classList.remove('lang-en', 'lang-zh');
-        btn.classList.add(isZh ? 'lang-zh' : 'lang-en');
-      });
-    } catch (e) {}
-  } catch (e) {}
+  // 首次加载时绑定 header 按钮（search / prefs / subscribe）
+  rebindHeaderToggles();
 }
 
 function readStoredTheme() {
@@ -1492,5 +1420,58 @@ try {
 } catch (e) {
   // 安静失败，调试绑定不是必需的
 }
+function rebindHeaderToggles() {
+  // 页面切换后旧的 overlay 节点已不在 DOM 中（Astro 替换了 body 内容），
+  // 重置所有引用，让 ensure* 函数在下次打开时重新创建节点。
+  // 同时清理可能残留的 body 锁定状态，防止上一页的关闭动画 setTimeout 污染新页面。
+  searchOverlay = null;
+  searchInput = null;
+  prefsOverlay = null;
+  subscribeOverlay = null;
+  toastContainer = null;
+  try { document.body.style.overflow = ''; } catch (e) {}
+  try { document.body.style.paddingRight = ''; } catch (e) {}
+  try { delete document.body.dataset.prefSearchLock; } catch (e) {}
+  try { delete document.body.dataset.prefSubscribeLock; } catch (e) {}
+  scrollbarCompensated = false;
+  originalBodyPadding = '';
 
+  document.querySelectorAll('[data-search-toggle]').forEach((button) => {
+    button.addEventListener('click', () => {
+      openSearchOverlay();
+    });
+  });
+
+  document.querySelectorAll('[data-prefs-toggle]').forEach((button) => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      openPrefsOverlay();
+    });
+  });
+
+  document.querySelectorAll('[data-subscribe-toggle]').forEach((button) => {
+    button.addEventListener('click', () => {
+      openSubscribeOverlay();
+    });
+  });
+
+  try { syncLangBadge(); } catch (e) {}
+
+  // 重新触发灯箱检测（保留原逻辑）
+  lightboxInitialized = false;
+  setTimeout(() => {
+    if (!lightboxInitialized && typeof window.initLightboxAuto === 'function') {
+      const images = document.querySelectorAll('.md-content.pswp-featured img[data-full]');
+      if (images.length > 0) {
+        lightboxInitialized = true;
+        window.initLightboxAuto();
+      }
+    }
+  }, 200);
+}
+
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+  document.addEventListener('astro:page-load', rebindHeaderToggles);
+}
 
