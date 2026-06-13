@@ -50,6 +50,8 @@
     if (/^https?:\/\//i.test(orig) || orig.startsWith('data:')) return;
     // don't touch images already in low/ folder
     if (orig.includes('/low/')) return;
+    // don't touch GIFs, preserve animation
+    if (/\.gif(\?.*)?$/i.test(orig)) return;
 
     const candidates = candidateUrls(orig);
     if (!candidates.length) return;

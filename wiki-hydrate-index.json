@@ -7,7 +7,7 @@
     "heroImageWidth": null,
     "source": "about.md",
     "lang": "en",
-    "pubDate": "2025-11-09T05:00:00.000Z"
+    "pubDate": "2026-06-13T04:00:00.000Z"
   },
   {
     "title": "关于我",
@@ -17,7 +17,7 @@
     "heroImageWidth": null,
     "source": "zh/about.md",
     "lang": "zh",
-    "pubDate": "2025-11-09T05:00:00.000Z"
+    "pubDate": "2026-06-13T04:00:00.000Z"
   },
   {
     "title": "Why you should try obsidian for note",
@@ -150,6 +150,16 @@
     "pubDate": "2024-04-25T00:00:00.000Z"
   },
   {
+    "title": "ANIM190: Survey of Animation: Pro Path",
+    "url": "/portfolio/scad/anim190/",
+    "heroImage": "/assets/portfolio/scad/anim190/cover.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "portfolio/scad/anim190.md",
+    "lang": "en",
+    "pubDate": "2026-05-29T00:00:00.000Z"
+  },
+  {
     "title": "FOUN 110: Lyrical Impressions & In the Round",
     "url": "/portfolio/scad/foun110/",
     "heroImage": "/assets/portfolio/scad/foun110/P1Step5Printing4.webp",
@@ -238,6 +248,16 @@
     "source": "zh/portfolio/personal/threshold-step.md",
     "lang": "zh",
     "pubDate": "2024-04-25T00:00:00.000Z"
+  },
+  {
+    "title": "ANIM190: Survey of Animation: Pro Path",
+    "url": "/zh/portfolio/scad/anim190/",
+    "heroImage": "/assets/portfolio/scad/anim190/cover.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "zh/portfolio/scad/anim190.md",
+    "lang": "zh",
+    "pubDate": "2026-05-29T00:00:00.000Z"
   },
   {
     "title": "FOUN 110：抒情印象与圆雕",

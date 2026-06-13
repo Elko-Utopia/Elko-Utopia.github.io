@@ -1,5 +1,39 @@
 [
   {
+    "title": "ANIM190: Survey of Animation: Pro Path",
+    "description": true,
+    "pubDate": "2026-05-29T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/scad/anim190/cover.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/portfolio/scad/anim190/",
+    "excerpt": "",
+    "paragraphs": [],
+    "tags": [
+      "SCAD"
+    ],
+    "lang": "en",
+    "source": "portfolio/scad/anim190.md"
+  },
+  {
+    "title": "ANIM190: Survey of Animation: Pro Path",
+    "description": true,
+    "pubDate": "2026-05-29T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/scad/anim190/cover.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/zh/portfolio/scad/anim190/",
+    "excerpt": "",
+    "paragraphs": [],
+    "tags": [
+      "SCAD"
+    ],
+    "lang": "zh",
+    "source": "zh/portfolio/scad/anim190.md"
+  },
+  {
     "title": "FOUN 220: Drawing: Light and Shadow",
     "description": "Two projects from FOUN 110: a lyrical relief print, and a spiky polyhedron sculpture exploring growth through form.",
     "pubDate": "2026-05-28T00:00:00.000Z",
@@ -50,20 +84,16 @@
     "heroImagePosition": null,
     "heroImageWidth": null,
     "url": "/portfolio/scad/foun110/",
-    "excerpt": "Lyrical Impressions — \"The Vortex of the Time\" Step 1 — Chosen Lyric & Mind Map Lyric: Waiting, waiting for the sun Music: \"Waiting for the Sun\" — Rimworld OST Vol 2 Step 2 — Thumbnail Sketches :::gallery{cols=3 width=120%} ::: :::gallery{c…",
+    "excerpt": "Step 1 — Best Engraving :::gallery{cols=2 width=110%} ::: Step 2 — Process Photographs :::gallery{cols=2 width=160%} ::: Step 3 — Vector Image Step 4 — Repeated Seamless Pattern Project 3: In the Round — \"Grow Spiky Polyhedron\" :::gallery{c…",
     "paragraphs": [
-      "Lyrical Impressions — \"The Vortex of the Time\"",
-      "Step 1 — Chosen Lyric & Mind Map",
-      "Lyric: Waiting, waiting for the sun Music: \"Waiting for the Sun\" — Rimworld OST Vol 2",
-      "Step 2 — Thumbnail Sketches",
-      ":::gallery{cols=3 width=120%}",
-      ":::gallery{cols=1 width=80%}",
-      "Step 4 — Best Engraving",
+      "Step 1 — Best Engraving",
       ":::gallery{cols=2 width=110%}",
-      "Step 5 — Process Photographs",
+      "Step 2 — Process Photographs",
       ":::gallery{cols=2 width=160%}",
-      "Step 6 — Adobe Color Palette",
-      "Step 7 — Vector Image"
+      "Step 3 — Vector Image",
+      "Step 4 — Repeated Seamless Pattern",
+      "Project 3: In the Round — \"Grow Spiky Polyhedron\"",
+      ":::gallery{cols=3 width=130%}"
     ],
     "tags": [
       "SCAD",
@@ -84,20 +114,13 @@
     "heroImagePosition": null,
     "heroImageWidth": null,
     "url": "/zh/portfolio/scad/foun110/",
-    "excerpt": "\"时间的漩涡\" 项目1 选定一段歌词，并创作做个版画作品，拓印后使用矢量图软件编辑成连续的图案 第一步 — 选定歌词与思维导图 歌词：等待，等待阳光 音乐：\"Waiting for the Sun\"—— RimWorld Ost Vol2 第二步 — 头脑风暴多种草稿 :::gallery{cols=3 width=120%} ::: :::gallery{cols=3 width=120%} ::: 最终我选择了时间的漩涡 第三步 — 版画 :::gallery{cols=…",
+    "excerpt": "\"时间的漩涡\" :::gallery{cols=2 width=110%} ::: 第五步 — 最终印刷 :::gallery{cols=2 width=160%} ::: 第七步 — 矢量图 我的矢量图并非简单的扫描上色，我同时学习了如何编辑矢量图，图中的矢量图案经过了优化，图像的每个边缘都可以无缝衔接。 第八步 — 无缝循环图案 这是最终无缝衔接的图案组合，可以点击图片放大显示。 项目三：圆雕——\"生长的刺状多面体\" :::gallery{cols=4 width=130…",
     "paragraphs": [
-      "\"时间的漩涡\" 项目1 选定一段歌词，并创作做个版画作品，拓印后使用矢量图软件编辑成连续的图案",
-      "歌词：等待，等待阳光 音乐：\"Waiting for the Sun\"—— RimWorld Ost Vol2",
-      ":::gallery{cols=3 width=120%}",
-      ":::gallery{cols=3 width=120%}",
       ":::gallery{cols=2 width=110%}",
       ":::gallery{cols=2 width=160%}",
-      "色板的颜色来源于自然，蓝色来自天空，绿色来自草地",
       "第七步 — 矢量图 我的矢量图并非简单的扫描上色，我同时学习了如何编辑矢量图，图中的矢量图案经过了优化，图像的每个边缘都可以无缝衔接。",
       "第八步 — 无缝循环图案 这是最终无缝衔接的图案组合，可以点击图片放大显示。",
-      ":::gallery{cols=1 width=110%}",
-      "::: :::gallery{cols=1 width=110%}",
-      ":::gallery{cols=3 width=120%}"
+      ":::gallery{cols=4 width=130%}"
     ],
     "tags": [
       "SCAD",
