@@ -14,7 +14,7 @@ const THEME_KEY = 'theme-preference';
 const root = document.documentElement;
 // 更稳健的 base path 检测：优先使用构建时的 BASE_URL（如果脚本已被打包），
 // 其次使用 HTML 中的 <base href>。不要仅从当前页面路径推断 base，因为这会在 /contact/ 下导致跳转到 /contact/search 之类的问题。
-const basePath = (() => {
+function computeBasePath() {
   try {
   // 优先使用 BaseHead 注入的运行时全局，这样从 /<base>/public/... 加载的脚本能发现 GH Pages 上的子路径
     if (typeof window !== 'undefined' && window.__ASTRO_BASE_URL__) {
@@ -42,6 +42,12 @@ const basePath = (() => {
       }
     }
 
+  // 没有 __ASTRO_BASE_URL__，但仍可能注入了仅路径的 __ASTRO_BASE_PATH__
+    if (typeof window !== 'undefined' && typeof window.__ASTRO_BASE_PATH__ === 'string' && window.__ASTRO_BASE_PATH__) {
+      const p = String(window.__ASTRO_BASE_PATH__);
+      return p.endsWith('/') ? p : `${p}/`;
+    }
+
     const envBase = (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.BASE_URL) || '';
     if (envBase) return envBase.endsWith('/') ? envBase : `${envBase}/`;
 
@@ -63,9 +69,8 @@ const basePath = (() => {
   } catch (_) {
     return '/';
   }
-})();
-
-// debug output removed
+}
+const basePath = computeBasePath();
 
 const runtimeConfig = (() => {
   try {
@@ -197,12 +202,10 @@ const subscribeUnsubscribeUrl = (() => {
         if (!email) return `${base}?unsubscribe=1`;
         return `${base}?email=${encodeURIComponent(email)}&unsubscribe=1`;
       },
-      list: user,
     };
   }
   return null;
 })();
-const subscribeUnsubLink = subscribeUnsubscribeUrl ? `<button type="button" class="pref-subscribe-unsub" data-subscribe-unsub>Manage / Unsubscribe</button>` : '';
 
 // 检测当前页面是否为中文
 // 在 GitHub Pages 等使用 base path 的部署下，直接检查 pathname 是否以 "/zh/" 开头会失败
@@ -274,19 +277,38 @@ let toastContainer = null;
 let searchIndex = null; // 缓存的 JSON 索引
 let prevActiveElement = null;
 let lightboxInitialized = false; // 防止重复初始化lightbox
-let prefsDelegateAttached = false;
 let scrollbarCompensated = false; // 防止重复设置滚动条补偿
 let originalBodyPadding = ''; // 保存body原始padding
+
+// 锁定 body 滚动并补偿滚动条宽度，避免内容跳动。
+// search / prefs / subscribe 三个 overlay 打开时逻辑完全一致，故提取为共享函数。
+// 只在第一次打开（任意 overlay）时计算补偿，避免重复设置。
+function lockBodyScroll() {
+  if (!scrollbarCompensated) {
+    originalBodyPadding = document.body.style.paddingRight || '';
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = scrollbarWidth + 'px';
+    }
+    scrollbarCompensated = true;
+  }
+  document.body.style.overflow = 'hidden';
+}
+
+// 还原 body 滚动与 padding 补偿（与 lockBodyScroll 对应）
+function unlockBodyScroll() {
+  document.body.style.overflow = '';
+  document.body.style.paddingRight = originalBodyPadding;
+  scrollbarCompensated = false; // 重置标志，允许下次打开时重新计算
+  originalBodyPadding = '';
+}
 
 // 更新显示在头部偏好图标上的小语言角标
 function syncLangBadge() {
   try {
     const badge = document.querySelector('.lang-badge');
     if (!badge) return;
-    const htmlLang = document.documentElement.lang || '';
-    const path = (window.location.pathname || '/');
-    const normalized = path.endsWith('/') ? path : path + '/';
-    const isZh = htmlLang === 'zh' || /(^|\/)zh(\/|$)/.test(normalized) || /\/zh\/$/.test(normalized) || /^\/zh(\/|$)/.test(normalized);
+    const isZh = isCurrentPathZh();
     const txt = isZh ? 'ZH' : 'EN';
     badge.textContent = txt;
   // 还为偏好切换添加语言类，以便应用相应的 CSS 变体
@@ -310,11 +332,23 @@ if (typeof window !== 'undefined' && typeof document !== 'undefined') {
   }
 }
 
+// search / prefs / subscribe 三个 overlay 的对话框进出动画完全相同，
+// 原先在三处 <style> 中各自重复定义了一份 @keyframes，这里统一注入一次。
+function ensureSharedOverlayStyles() {
+  if (typeof document === 'undefined') return;
+  if (document.getElementById('pref-overlay-shared-keyframes')) return;
+  const style = document.createElement('style');
+  style.id = 'pref-overlay-shared-keyframes';
+  style.textContent = `
+@keyframes dialogSlideUp { from { opacity: 0; transform: translateY(30px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes dialogSlideDown { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(20px) scale(0.98); } }
+`;
+  document.head.appendChild(style);
+}
+
 async function initializePreferences() {
-  console.log('[Prefs Debug] initializePreferences called, readyState:', document.readyState);
-  console.log('[Prefs Debug] document.body exists:', !!document.body);
-  console.log('[Prefs Debug] Current location:', window.location.href);
-  
+  ensureSharedOverlayStyles();
+
   // 默认使用暗色主题（除非显式设置，才遵循系统偏好或已存储偏好）
   const storedTheme = readStoredTheme();
   const initialTheme = storedTheme !== null ? storedTheme : 'dark';
@@ -351,10 +385,6 @@ function readStoredTheme() {
   // 忽略存储错误
   }
   return null;
-}
-
-function getSystemTheme() {
-  return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
 function applyTheme(theme, { persist = true } = {}) {
@@ -413,8 +443,6 @@ function ensureSearchOverlay() {
       .pref-search-overlay.is-closing .pref-search-dialog {
         animation: dialogSlideDown 0.25s ease forwards;
       }
-      @keyframes dialogSlideUp { from { opacity: 0; transform: translateY(30px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
-      @keyframes dialogSlideDown { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(20px) scale(0.98); } }
     </style>
     <div class="pref-search-dialog" role="dialog" aria-modal="true" aria-labelledby="pref-search-title">
     <div class="pref-search-header">
@@ -508,7 +536,6 @@ function ensureSearchOverlay() {
         } catch (err) {
           target = '/' + rel;
         }
-  // debug output removed
         window.location.assign(target);
       });
     }
@@ -517,6 +544,70 @@ function ensureSearchOverlay() {
   }
   // （搜索覆盖层仅处理搜索输入；主题/语言已移到单独的偏好弹窗）
   document.addEventListener('keydown', onGlobalKeydown);
+}
+
+// 统一判断当前路径是否为中文页面（合并原先散落在 syncLangBadge / setLangSwitchState 中的多套正则）
+function isCurrentPathZh() {
+  try {
+    if (document.documentElement.lang === 'zh') return true;
+    const path = window.location.pathname || '/';
+    const normalized = path.endsWith('/') ? path : path + '/';
+    return /(^|\/)zh(\/|$)/.test(normalized) || /^\/zh(\/|$)/.test(normalized);
+  } catch (e) {
+    return false;
+  }
+}
+
+// 更新分段指示器（segmented control）的位置与宽度
+// 提取为顶层函数，供 ensurePrefsOverlay（首次创建/交互）与 openPrefsOverlay（每次打开）共用，
+// 避免同一段测量逻辑被复制多份。
+function updateSegIndicator(segmentedContainer) {
+  try {
+    const activeBtn = segmentedContainer.querySelector('.seg-btn.is-active');
+    if (!activeBtn) return;
+    const containerRect = segmentedContainer.getBoundingClientRect();
+    const btnRect = activeBtn.getBoundingClientRect();
+    const offset = btnRect.left - containerRect.left - 4; // 4px 为容器内边距
+    const width = btnRect.width;
+    segmentedContainer.style.setProperty('--indicator-offset', `${offset}px`);
+    segmentedContainer.style.setProperty('--indicator-width', `${width}px`);
+  } catch (e) { /* 空操作 */ }
+}
+
+// 同步主题分段控件的激活状态与指示器位置
+function setThemeSwitchState() {
+  try {
+    if (!prefsOverlay) return;
+    const seg = prefsOverlay.querySelector('.pref-seg-theme');
+    if (!seg) return;
+    const cur = root.dataset.theme === 'dark' ? 'dark' : 'light';
+    seg.querySelectorAll('[data-theme-option]').forEach((btn) => {
+      const v = btn.getAttribute('data-theme-option');
+      const active = v === cur;
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      btn.classList.toggle('is-active', active);
+    });
+    // 状态变更后更新指示器位置
+    requestAnimationFrame(() => updateSegIndicator(seg));
+  } catch (e) { /* 空操作 */ }
+}
+
+// 同步语言分段控件的激活状态与指示器位置（不处理跳转，跳转逻辑绑定在点击事件中）
+function setLangSwitchState() {
+  try {
+    if (!prefsOverlay) return;
+    const seg = prefsOverlay.querySelector('.pref-seg-lang');
+    if (!seg) return;
+    const isZh = isCurrentPathZh();
+    seg.querySelectorAll('[data-lang]').forEach((btn) => {
+      const v = btn.getAttribute('data-lang');
+      const active = (v === 'zh') ? isZh : !isZh;
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+      btn.classList.toggle('is-active', active);
+    });
+    // 状态变更后更新指示器位置
+    requestAnimationFrame(() => updateSegIndicator(seg));
+  } catch (e) { /* 空操作 */ }
 }
 
 /* 偏好设置覆盖层（主题 + 语言） - 与搜索分离 */
@@ -539,8 +630,6 @@ function ensurePrefsOverlay() {
   .pref-prefs-overlay .pref-dialog { width: min(720px, calc(100% - 48px)); background: var(--pref-dialog-bg); color: rgb(var(--black)); border-radius: 12px; box-shadow: var(--pref-dialog-shadow); overflow: hidden; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; opacity: 0; transform: translateY(30px) scale(0.95); transition: opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); will-change: transform, opacity; }
   .pref-prefs-overlay.is-open .pref-dialog { animation: dialogSlideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
   .pref-prefs-overlay.is-closing .pref-dialog { animation: dialogSlideDown 0.25s ease forwards; }
-  @keyframes dialogSlideUp { from { opacity: 0; transform: translateY(30px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
-  @keyframes dialogSlideDown { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(20px) scale(0.98); } }
   html[data-theme="dark"] .pref-prefs-overlay .pref-dialog { background: var(--surface); color: rgb(var(--black)); }
       .pref-prefs-overlay .pref-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 20px; border-bottom: 1px solid rgba(0,0,0,0.06); }
   html[data-theme="dark"] .pref-prefs-overlay .pref-header { border-bottom-color: rgba(255,255,255,0.04); }
@@ -633,38 +722,8 @@ function ensurePrefsOverlay() {
     }
   };
   document.addEventListener('keydown', prefsKeydownHandler);
-  
 
-  // 辅助函数：更新分段指示器的位置
-  function updateSegIndicator(segmentedContainer) {
-    try {
-      const activeBtn = segmentedContainer.querySelector('.seg-btn.is-active');
-      if (!activeBtn) return;
-      const containerRect = segmentedContainer.getBoundingClientRect();
-      const btnRect = activeBtn.getBoundingClientRect();
-  const offset = btnRect.left - containerRect.left - 4; // 4px 为容器内边距
-      const width = btnRect.width;
-      segmentedContainer.style.setProperty('--indicator-offset', `${offset}px`);
-      segmentedContainer.style.setProperty('--indicator-width', `${width}px`);
-  } catch (e) { /* 空操作 */ }
-  }
-
-  // 分段控件：主题与语言（保留 openPrefsOverlay 中使用的函数名）
-  function setThemeSwitchState() {
-    try {
-      const seg = prefsOverlay.querySelector('.pref-seg-theme');
-      if (!seg) return;
-      const cur = root.dataset.theme === 'dark' ? 'dark' : 'light';
-      seg.querySelectorAll('[data-theme-option]').forEach((btn) => {
-        const v = btn.getAttribute('data-theme-option');
-        const active = v === cur;
-        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-        btn.classList.toggle('is-active', active);
-      });
-  // 状态变更后更新指示器位置
-      requestAnimationFrame(() => updateSegIndicator(seg));
-  } catch (e) { /* 空操作 */ }
-  }
+  // 分段控件：主题与语言
   const themeSegBtns = prefsOverlay.querySelectorAll('.pref-seg-theme [data-theme-option]');
   themeSegBtns.forEach((btn) => {
     btn.addEventListener('click', (ev) => {
@@ -676,26 +735,6 @@ function ensurePrefsOverlay() {
     });
   });
 
-  function setLangSwitchState() {
-    try {
-      const seg = prefsOverlay.querySelector('.pref-seg-lang');
-      if (!seg) return;
-      const path = (window.location.pathname || '/');
-      // 规范化当前路径与候选 base，确保尾部斜杠一致以便正确检测
-      const normalized = path.endsWith('/') ? path : path + '/';
-      // base 固定为 '/'，直接用 html[lang] 判断中文
-      const isZh = document.documentElement.lang === 'zh' || normalized.startsWith('/zh/');
-      
-      seg.querySelectorAll('[data-lang]').forEach((btn) => {
-        const v = btn.getAttribute('data-lang');
-        const active = (v === 'zh') ? isZh : !isZh;
-        btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-        btn.classList.toggle('is-active', active);
-      });
-  // 状态变更后更新指示器位置
-      requestAnimationFrame(() => updateSegIndicator(seg));
-  } catch (e) { /* 空操作 */ }
-  }
   const langSegBtns = prefsOverlay.querySelectorAll('.pref-seg-lang [data-lang]');
   langSegBtns.forEach((btn) => {
     btn.addEventListener('click', (ev) => {
@@ -724,7 +763,6 @@ function ensurePrefsOverlay() {
       }
       const normBaseForStrip = (basePathname.endsWith('/') ? basePathname : (basePathname + '/'));
       const normCur = (curPath.endsWith('/') ? curPath : (curPath + '/'));
-  // debug output removed
       // 去掉 base pathname 前缀，得到相对站点根的路径（例如 'blog/post/' 或 'zh/blog/post/'）
       let pathAfterBase = '';
       if (normBaseForStrip !== '/' && normCur.startsWith(normBaseForStrip)) {
@@ -805,28 +843,15 @@ function ensurePrefsOverlay() {
 }
 
 function openPrefsOverlay() {
-  console.log('[Prefs Debug] openPrefsOverlay called');
   ensurePrefsOverlay();
   if (prefsOverlay.classList.contains('is-open')) {
-    console.log('[Prefs Debug] Overlay already open, skipping');
     return;
   }
-  console.log('[Prefs Debug] Opening overlay');
   prevActiveElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-  
+
   // 计算滚动条宽度并补偿 body，避免内容跳动（只在第一次打开时设置）
-  if (!scrollbarCompensated) {
-  // 保存原始 padding 值
-    originalBodyPadding = document.body.style.paddingRight || '';
-    
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    if (scrollbarWidth > 0) {
-  // 仅设置 body 的 padding 补偿
-      document.body.style.paddingRight = scrollbarWidth + 'px';
-    }
-    scrollbarCompensated = true;
-  }
-  
+  lockBodyScroll();
+
   // 移除可能残留的关闭类
   prefsOverlay.classList.remove('is-closing');
   prefsOverlay.classList.add('is-open');
@@ -837,109 +862,31 @@ function openPrefsOverlay() {
       const onAnimEnd = () => {
         try {
           const themeSeg = prefsOverlay.querySelector('.pref-seg-theme');
-          if (themeSeg) {
-            try {
-              const activeBtn = themeSeg.querySelector('.seg-btn.is-active');
-              if (activeBtn) {
-                const containerRect = themeSeg.getBoundingClientRect();
-                const btnRect = activeBtn.getBoundingClientRect();
-                const offset = btnRect.left - containerRect.left - 4;
-                const width = btnRect.width;
-                themeSeg.style.setProperty('--indicator-offset', `${offset}px`);
-                themeSeg.style.setProperty('--indicator-width', `${width}px`);
-              }
-            } catch (e) { /* 无操作（容错） */ }
-          }
           const langSeg = prefsOverlay.querySelector('.pref-seg-lang');
-          if (langSeg) {
-            try {
-              const activeBtn = langSeg.querySelector('.seg-btn.is-active');
-              if (activeBtn) {
-                const containerRect = langSeg.getBoundingClientRect();
-                const btnRect = activeBtn.getBoundingClientRect();
-                const offset = btnRect.left - containerRect.left - 4;
-                const width = btnRect.width;
-                langSeg.style.setProperty('--indicator-offset', `${offset}px`);
-                langSeg.style.setProperty('--indicator-width', `${width}px`);
-              }
-            } catch (e) { /* 无操作（容错） */ }
-          }
-  } catch (e) { /* 无操作（容错） */ }
+          if (themeSeg) updateSegIndicator(themeSeg);
+          if (langSeg) updateSegIndicator(langSeg);
+        } catch (e) { /* 无操作（容错） */ }
         dialogEl.removeEventListener('animationend', onAnimEnd);
       };
       dialogEl.addEventListener('animationend', onAnimEnd, { once: true });
     }
   } catch (e) { /* 无操作（容错） */ }
-  
-  // 打开时确保覆盖层的主题按钮反映当前主题
-  // 使用 requestAnimationFrame 与 setTimeout 确保 DOM 完全渲染后再更新指示器位置
+
+  // 打开时确保覆盖层的主题/语言按钮反映当前状态，并更新指示器位置
+  // 使用 requestAnimationFrame 与 setTimeout 确保 DOM 完全渲染后再更新
   setTimeout(() => {
     requestAnimationFrame(() => {
       try {
-  // 直接调用 updateSegIndicator 更新所有分段控件
-        const themeSeg = prefsOverlay.querySelector('.pref-seg-theme');
-        const langSeg = prefsOverlay.querySelector('.pref-seg-lang');
-        
-  // 更新主题按钮状态
-        if (themeSeg) {
-          const cur = root.dataset.theme === 'dark' ? 'dark' : 'light';
-          themeSeg.querySelectorAll('[data-theme-option]').forEach((btn) => {
-            const v = btn.getAttribute('data-theme-option');
-            const active = v === cur;
-            btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-            btn.classList.toggle('is-active', active);
-          });
-          
-          // 更新指示器位置
-          const activeBtn = themeSeg.querySelector('.seg-btn.is-active');
-          if (activeBtn) {
-            const containerRect = themeSeg.getBoundingClientRect();
-            const btnRect = activeBtn.getBoundingClientRect();
-            const offset = btnRect.left - containerRect.left - 4;
-            const width = btnRect.width;
-            themeSeg.style.setProperty('--indicator-offset', `${offset}px`);
-            themeSeg.style.setProperty('--indicator-width', `${width}px`);
-          }
-        }
-        
-  // 更新语言按钮状态
-        if (langSeg) {
-          const path = (window.location.pathname || '/');
-          const normalized = path.endsWith('/') ? path : path + '/';
-          // base 固定为 '/'，直接用 html[lang] 判断中文
-          const isZh = document.documentElement.lang === 'zh' || normalized.startsWith('/zh/');
-          
-          langSeg.querySelectorAll('[data-lang]').forEach((btn) => {
-            const v = btn.getAttribute('data-lang');
-            const active = (v === 'zh') ? isZh : !isZh;
-            btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-            btn.classList.toggle('is-active', active);
-          });
-          
-          // 更新指示器位置
-          const activeBtn = langSeg.querySelector('.seg-btn.is-active');
-          if (activeBtn) {
-            const containerRect = langSeg.getBoundingClientRect();
-            const btnRect = activeBtn.getBoundingClientRect();
-            const offset = btnRect.left - containerRect.left - 4;
-            const width = btnRect.width;
-            langSeg.style.setProperty('--indicator-offset', `${offset}px`);
-            langSeg.style.setProperty('--indicator-width', `${width}px`);
-          }
-        }
-      } catch (e) { 
-        console.error('[Prefs Debug] Error updating indicators:', e);
-      }
+        setThemeSwitchState();
+        setLangSwitchState();
+      } catch (e) {}
     });
   }, 50); // 增加延迟以确保动画开始后 DOM 稳定
   
   document.body.dataset.prefSearchLock = 'true';
-  document.body.style.overflow = 'hidden';
-  console.log('[Prefs Debug] Overlay opened successfully');
 }
 
 function closePrefsOverlay() {
-  console.log('[Prefs Debug] closePrefsOverlay called');
   if (!prefsOverlay) return;
   
   // 添加关闭动画
@@ -958,18 +905,14 @@ function closePrefsOverlay() {
     try {
       prefsOverlay.classList.remove('is-open', 'is-closing');
     } catch (e) {}
-    try { document.body.style.overflow = ''; } catch (e) {}
-    try { document.body.style.paddingRight = originalBodyPadding; } catch (e) {}
+    try { unlockBodyScroll(); } catch (e) {}
     try { delete document.body.dataset.prefSearchLock; } catch (e) {}
-    scrollbarCompensated = false; // 重置标志，允许下次打开时重新计算
-    originalBodyPadding = '';
     try { if (prefsKeydownHandler) document.removeEventListener('keydown', prefsKeydownHandler); } catch(e) {}
     try { if (prefsOverlay.parentNode) prefsOverlay.parentNode.removeChild(prefsOverlay); } catch (e) {}
     prefsOverlay = null;
     if (prevActiveElement) prevActiveElement.focus();
   // 触发一次 resize，以便头部逻辑重新评估布局（安全措施）
     try { window.setTimeout(() => window.dispatchEvent(new Event('resize')), 80); } catch (e) {}
-    console.log('[Prefs Debug] Overlay closed');
   }, 300); // 与 CSS 动画时长匹配
 }
 
@@ -978,24 +921,14 @@ function openSearchOverlay() {
   if (searchOverlay.classList.contains('is-open')) return;
 
   prevActiveElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-  
+
   // 计算滚动条宽度并补偿body，避免内容跳动（只在第一次打开时设置）
-  if (!scrollbarCompensated) {
-    // 保存原始padding值
-    originalBodyPadding = document.body.style.paddingRight || '';
-    
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    if (scrollbarWidth > 0) {
-      document.body.style.paddingRight = scrollbarWidth + 'px';
-    }
-    scrollbarCompensated = true;
-  }
-  
+  lockBodyScroll();
+
   // 移除可能残留的关闭类
   searchOverlay.classList.remove('is-closing');
   searchOverlay.classList.add('is-open');
   document.body.dataset.prefSearchLock = 'true';
-  document.body.style.overflow = 'hidden';
 
   // 确保对话框在动画未运行或被浏览器跳过时仍可见。
   // 使用 requestAnimationFrame 让类变更稳定后，再设置最终的内联状态作为安全回退。
@@ -1026,11 +959,8 @@ function closeSearchOverlay() {
   // 等待动画完成后移除类和样式
   setTimeout(() => {
     searchOverlay.classList.remove('is-open', 'is-closing');
-    document.body.style.overflow = '';
-    document.body.style.paddingRight = originalBodyPadding;
+    unlockBodyScroll();
     delete document.body.dataset.prefSearchLock;
-    scrollbarCompensated = false; // 重置标志，允许下次打开时重新计算
-    originalBodyPadding = '';
 
     if (prevActiveElement) {
       prevActiveElement.focus();
@@ -1049,34 +979,8 @@ async function onSearchSubmit(event) {
 
   // 跳转到对应语言的 /search 页面并携带查询参数，让该页面负责展示结果
   try {
-    // 使用更保守的 runtime base 决策：如果注入的 __ASTRO_BASE_URL__ 带有与当前页面不同的 origin（例如指向 GitHub Pages），
-    // 则优先使用注入的 path-only base (__ASTRO_BASE_PATH__) 或注入 URL 的 pathname 部分；否则使用注入的绝对 base。
-    let runtimeBase = '/';
-    try {
-      if (typeof window !== 'undefined' && window.__ASTRO_BASE_URL__) {
-        const injected = String(window.__ASTRO_BASE_URL__);
-        try {
-          const u = new URL(injected);
-          if (typeof location !== 'undefined' && location.hostname && u.hostname && location.hostname !== u.hostname) {
-            // 在本地或不同主机上运行：优先使用 path-only base 以保持当前 origin
-            if (typeof window.__ASTRO_BASE_PATH__ === 'string' && window.__ASTRO_BASE_PATH__) {
-              runtimeBase = String(window.__ASTRO_BASE_PATH__);
-            } else {
-              runtimeBase = u.pathname || '/';
-            }
-          } else {
-            // 同一主机（或无可靠位置）：保留注入的绝对 base
-            runtimeBase = injected;
-          }
-        } catch (e) {
-          // 不是完整 URL，则将其作为 base 字符串处理
-          runtimeBase = injected;
-        }
-      } else if (typeof window !== 'undefined' && window.__ASTRO_BASE_PATH__) {
-        runtimeBase = (typeof location !== 'undefined' && location.origin) ? (location.origin.replace(/\/$/, '') + String(window.__ASTRO_BASE_PATH__)) : String(window.__ASTRO_BASE_PATH__);
-      } else if (typeof basePath !== 'undefined' && basePath) runtimeBase = basePath;
-    } catch (e) { runtimeBase = (typeof basePath !== 'undefined' && basePath) ? basePath : '/'; }
-    const base = runtimeBase.endsWith('/') ? runtimeBase : runtimeBase + '/';
+    // base path 的计算逻辑与文件顶部的 basePath 完全一致（已统一到 computeBasePath），直接复用即可。
+    const base = basePath.endsWith('/') ? basePath : basePath + '/';
     const curPath = (location.pathname || '/');
     const curLang = (document.documentElement.lang || (curPath.indexOf('/zh/') !== -1 ? 'zh' : 'en')).toLowerCase();
     const rel = curLang === 'zh' ? 'zh/search' : 'search';
@@ -1106,7 +1010,6 @@ async function onSearchSubmit(event) {
     target += `?q=${encodeURIComponent(query)}`;
     // 规范化重复斜杠
     try { target = target.replace(/([^:]\/)\/+/g, '$1/'); } catch (e) {}
-  // debug output removed
 
     // 如果当前已经在搜索页面（/search 或 /zh/search），直接更新查询参数并重新加载
     const normalizedPath = location.pathname.replace(/\/$/, '');
@@ -1203,8 +1106,6 @@ function ensureSubscribeOverlay() {
       .pref-subscribe-overlay.is-closing .pref-subscribe-dialog {
         animation: dialogSlideDown 0.25s ease forwards;
       }
-      @keyframes dialogSlideUp { from { opacity: 0; transform: translateY(30px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
-      @keyframes dialogSlideDown { from { opacity: 1; transform: translateY(0) scale(1); } to { opacity: 0; transform: translateY(20px) scale(0.98); } }
     </style>
     <div class="pref-subscribe-dialog" role="dialog" aria-modal="true" aria-labelledby="pref-subscribe-title">
       <div class="pref-subscribe-header">
@@ -1304,24 +1205,14 @@ function openSubscribeOverlay() {
   ensureSubscribeOverlay();
   if (subscribeOverlay.classList.contains('is-open')) return;
   prevActiveElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-  
+
   // 计算滚动条宽度并补偿body，避免内容跳动（只在第一次打开时设置）
-  if (!scrollbarCompensated) {
-    // 保存原始padding值
-    originalBodyPadding = document.body.style.paddingRight || '';
-    
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    if (scrollbarWidth > 0) {
-      document.body.style.paddingRight = scrollbarWidth + 'px';
-    }
-    scrollbarCompensated = true;
-  }
-  
+  lockBodyScroll();
+
   // 移除可能残留的关闭类，然后由 CSS 管理 overlay 的背景与模糊过渡（避免内联覆盖引起的突兀）
   subscribeOverlay.classList.remove('is-closing');
   subscribeOverlay.classList.add('is-open');
   document.body.dataset.prefSubscribeLock = 'true';
-  document.body.style.overflow = 'hidden';
 
   // 确保订阅对话框即使在动画未执行时也可见。
   requestAnimationFrame(() => {
@@ -1354,11 +1245,8 @@ function closeSubscribeOverlay() {
     try { subscribeOverlay.style.webkitBackdropFilter = ''; } catch(e) {}
     try { subscribeOverlay.style.backdropFilter = ''; } catch(e) {}
     try { subscribeOverlay.style.zIndex = ''; } catch(e) {}
-    document.body.style.overflow = '';
-    document.body.style.paddingRight = originalBodyPadding;
+    unlockBodyScroll();
     delete document.body.dataset.prefSubscribeLock;
-    scrollbarCompensated = false; // 重置标志，允许下次打开时重新计算
-    originalBodyPadding = '';
     if (prevActiveElement) prevActiveElement.focus();
   }, 350); // 与CSS动画时长匹配（微调以获得更平滑的过渡）
 }
@@ -1403,27 +1291,11 @@ document.addEventListener('click', (event) => {
   showSubscribeToast('Opened the Buttondown unsubscribe page in a new tab. If your browser blocks it, allow popups for this site.', 'info');
 });
 
-// 调试友好：将关键的 overlay 函数暴露到 window，方便在 DevTools 控制台直接调用进行交互式调试。
-// 仅在浏览器环境下执行，不影响生产逻辑；如需从代码中撤销此暴露，可删除下面的几行。
-try {
-  if (typeof window !== 'undefined') {
-    window.ensureSearchOverlay = ensureSearchOverlay;
-    window.openSearchOverlay = openSearchOverlay;
-    window.closeSearchOverlay = closeSearchOverlay;
-    window.ensureSubscribeOverlay = ensureSubscribeOverlay;
-    window.openSubscribeOverlay = openSubscribeOverlay;
-    window.closeSubscribeOverlay = closeSubscribeOverlay;
-    window.ensurePrefsOverlay = ensurePrefsOverlay;
-    window.openPrefsOverlay = openPrefsOverlay;
-    window.closePrefsOverlay = closePrefsOverlay;
-  }
-} catch (e) {
-  // 安静失败，调试绑定不是必需的
-}
 function rebindHeaderToggles() {
   // 页面切换后旧的 overlay 节点已不在 DOM 中（Astro 替换了 body 内容），
   // 重置所有引用，让 ensure* 函数在下次打开时重新创建节点。
   // 同时清理可能残留的 body 锁定状态，防止上一页的关闭动画 setTimeout 污染新页面。
+  ensureSharedOverlayStyles();
   searchOverlay = null;
   searchInput = null;
   prefsOverlay = null;
@@ -1472,6 +1344,15 @@ function rebindHeaderToggles() {
 }
 
 if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+// 将 overlay 函数暴露到 window，供 header 内联调用使用
+if (typeof window !== 'undefined') {
+  window.openSearchOverlay    = openSearchOverlay;
+  window.closeSearchOverlay   = closeSearchOverlay;
+  window.openPrefsOverlay     = openPrefsOverlay;
+  window.closePrefsOverlay    = closePrefsOverlay;
+  window.openSubscribeOverlay = openSubscribeOverlay;
+  window.closeSubscribeOverlay = closeSubscribeOverlay;
+}
   document.addEventListener('astro:page-load', rebindHeaderToggles);
 }
 

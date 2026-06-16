@@ -5,13 +5,16 @@
 
   function candidateUrls(origUrl) {
     try {
-      const m = origUrl.match(/^(.*?)(\.[^./?#]+)(\?|#|$)/);
+      // 分离目录、文件名、尾部（查询串/锚点）
+      const m = origUrl.match(/^(.*\/)([^/?#]+?)(\.[^./?#]+)(\?|#|$)/);
       if (!m) return [];
-      const base = m[1];
-      const tail = m[3] || '';
+      const dir  = m[1];       // e.g. /assets/portfolio/personal/ThresholdStep/
+      const name = m[2];       // e.g. Griffin
+      const tail = m[4] || ''; // e.g. '' or '?v=1'
       // sizes order to prefer
       const sizes = [320, 640, 1024];
-      return sizes.map(s => `${base}-${s}.webp${tail}`);
+      // 变体文件统一放在 low/ 子目录下
+      return sizes.map(s => `${dir}low/${name}-${s}.webp${tail}`);
     } catch (e) {
       return [];
     }
@@ -43,7 +46,13 @@
     }
   }
 
+  // 记录已处理过的 img 元素，防止 scan() 重复触发时对同一张图片再次发起 HEAD 请求
+  const _processed = new WeakSet();
+
   async function handleImage(img) {
+    if (_processed.has(img)) return;
+    _processed.add(img);
+
     const orig = img.getAttribute('src') || img.getAttribute('data-src') || '';
     if (!orig) return;
     // don't touch remote images
