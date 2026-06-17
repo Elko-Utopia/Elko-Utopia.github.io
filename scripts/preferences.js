@@ -72,6 +72,16 @@ function computeBasePath() {
 }
 const basePath = computeBasePath();
 
+// 通过 Astro ClientRouter 进行页面跳转，以触发过渡动画。
+// 若 ClientRouter 尚未就绪（例如首次加载前），则回退到普通跳转。
+function astroNavigate(target) {
+  if (typeof window.__astroNavigate === 'function') {
+    window.__astroNavigate(target);
+  } else {
+    window.location.assign(target);
+  }
+}
+
 const runtimeConfig = (() => {
   try {
     if (typeof window !== 'undefined' && window.__SITE_PREFS) {
@@ -536,7 +546,7 @@ function ensureSearchOverlay() {
         } catch (err) {
           target = '/' + rel;
         }
-        window.location.assign(target);
+        astroNavigate(target);
       });
     }
   } catch (e) {
@@ -790,14 +800,14 @@ function ensurePrefsOverlay() {
           const resolved = resolveWithBase(newRel.replace(/\/+/g, '/'));
           let target = resolved || (globalBase + 'zh/' + pathAfterBase);
           try { target = normalizeTarget(target, globalBase); } catch(e){}
-          window.location.assign(target);
+          astroNavigate(target);
         } else {
           // 已经是中文路径，直接跳转到同一路径以保证刷新
           const newRel = '/' + pathAfterBase.replace(/\/+/g, '/');
           const resolved = resolveWithBase(newRel) || null;
           let target = resolved || ('/' + pathAfterBase);
           try { target = normalizeTarget(target, globalBase); } catch(e){}
-          window.location.assign(target);
+          astroNavigate(target);
         }
       } else {
         // 切换到英文：若相对路径以 zh/ 开头，则去掉该前缀
@@ -807,14 +817,14 @@ function ensurePrefsOverlay() {
           const resolved = (withoutZh && withoutZh.length) ? resolveWithBase(newRel.replace(/\/+/g, '/')) : null;
           let target = (withoutZh && withoutZh.length) ? (resolved || (globalBase + withoutZh)) : (globalBase);
           try { target = normalizeTarget(target, globalBase); } catch(e){}
-          window.location.assign(target);
+          astroNavigate(target);
         } else {
           // 已经是英文路径，跳转到当前路径以保证刷新
           const newRel = '/' + pathAfterBase.replace(/\/+/g, '/');
           const resolved = resolveWithBase(newRel) || null;
           let target = resolved || ('/' + pathAfterBase);
           try { target = normalizeTarget(target, globalBase); } catch(e){}
-          window.location.assign(target);
+          astroNavigate(target);
         }
       }
     });
@@ -1021,7 +1031,7 @@ async function onSearchSubmit(event) {
     }
 
     // 否则正常跳转到目标页面
-    window.location.assign(target);
+    astroNavigate(target);
   } catch (e) {
     // 若跳转失败则回退到内联搜索（保留体验）
     console.error('Redirect to search page failed, falling back to inline search', e);
