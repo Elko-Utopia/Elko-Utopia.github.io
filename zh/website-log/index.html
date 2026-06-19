@@ -54,7 +54,7 @@
       }catch(e){ console.warn('[FolderTool] init error', e); }
     }
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+    document.addEventListener('astro:page-load', init);
   })();
 </script><!-- Diagnostic logging removed in cleanup: sanitizer kept below. --><!-- Ensure inline-portfolio-card foreground images hide the background once loaded
 			 to avoid visible double-layered images caused by background-image + <img>. --><script type="module">(function(){try{var t="theme-preference",e=localStorage.getItem(t);if(e==="dark"||e==="light"){document.documentElement.dataset.theme=e;return}}catch{}try{var a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.dataset.theme=a?"dark":"light"}catch{}})();</script><!-- Defensive runtime sanitizer: fix images that accidentally receive `position: static` as an inline style
@@ -239,7 +239,7 @@ document.documentElement.dataset.subscribeEndpoint = "https://buttondown.email/a
 document.documentElement.dataset.subscribeUser = "elkoutopia";</script> <script src="/scripts/subscribe-form.js" defer></script> <script type="module" src="/scripts/preferences.js"></script> <script type="module" src="/scripts/lightbox.js"></script> <script type="module" src="/scripts/zoom-images.js"></script> <script type="module" src="/scripts/thumbnail-fallback.js"></script> <script type="module" src="/_astro/Header.astro_astro_type_script_index_0_lang.DGL8qVCd.js"></script> <main data-astro-cid-cgqhbhrj> <article class="md-content log-only pswp-featured" data-astro-cid-cgqhbhrj> <h1 id="️-网站开发日志">🛠️ 网站开发日志</h1>
 <p>以下内容按主要版本分组。点击每个小版本可展开详细更新内容。</p>
 <h3 id="v202-全面重建">V2.0.2 全面重建</h3>
-<p class="p-followed-by-list">**2026 年 3 月 18 日 – 2026 年 6 月 12 日 **</p>
+<p class="p-followed-by-list"><strong>2026 年 3 月 18 日 – 2026 年 6 月 12 日</strong></p>
 <ol>
 <li>网站迁移至新域名：elko-utopia.github.io</li>
 <li>从零重建了整套作品集系统，结构更清晰</li>

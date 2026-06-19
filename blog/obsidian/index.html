@@ -63,7 +63,7 @@
       }catch(e){ console.warn('[FolderTool] init error', e); }
     }
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+    document.addEventListener('astro:page-load', init);
   })();
 </script><!-- Diagnostic logging removed in cleanup: sanitizer kept below. --><!-- Ensure inline-portfolio-card foreground images hide the background once loaded
 			 to avoid visible double-layered images caused by background-image + <img>. --><script type="module">(function(){try{var t="theme-preference",e=localStorage.getItem(t);if(e==="dark"||e==="light"){document.documentElement.dataset.theme=e;return}}catch{}try{var a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.dataset.theme=a?"dark":"light"}catch{}})();</script><!-- Defensive runtime sanitizer: fix images that accidentally receive `position: static` as an inline style

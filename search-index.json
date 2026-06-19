@@ -1,34 +1,47 @@
 [
   {
     "title": "ANIM190: Survey of Animation: Pro Path",
-    "description": true,
+    "description": "A 2026 SCAD (Savannah College of Art and Design) animation portfolio created in ANIM 190, featuring Maya 3D animation work.",
     "pubDate": "2026-05-29T00:00:00.000Z",
     "pinned": false,
     "heroImage": "/assets/portfolio/scad/anim190/cover.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "url": "/portfolio/scad/anim190/",
-    "excerpt": "",
-    "paragraphs": [],
+    "excerpt": "::: align center Instructor: ::: This course serves as an introduction to the animation major. Over a tenweek period, students learn the fundamentals of the Maya production pipeline and complete a final animation project. The assignment req…",
+    "paragraphs": [
+      "This course serves as an introduction to the animation major. Over a ten-week period, students learn the fundamentals of the Maya production pipeline and complete a final animation project. The assignment requires students to select a scene from an existing film and create their own reinterpretation of it through animation.",
+      "Modeling and Texturing Showcase",
+      "The challenges of this animation were the large amount of walking animation, falling animation, and bouncing bullets. I also used many characters, which resulted in a large workload."
+    ],
     "tags": [
-      "SCAD"
+      "SCAD",
+      "animation",
+      "MAYA",
+      "Character design"
     ],
     "lang": "en",
     "source": "portfolio/scad/anim190.md"
   },
   {
-    "title": "ANIM190: Survey of Animation: Pro Path",
-    "description": true,
+    "title": "ANIM190: 动画概览：专业之路",
+    "description": "2026SCAD萨凡纳艺术设计学院 animation 动画课程 anim190 课程上的MAYA 3D 动画作品集",
     "pubDate": "2026-05-29T00:00:00.000Z",
     "pinned": false,
     "heroImage": "/assets/portfolio/scad/anim190/cover.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "url": "/zh/portfolio/scad/anim190/",
-    "excerpt": "::: align center 指导教授： :::",
-    "paragraphs": [],
+    "excerpt": "::: align center 指导教授： ::: 这个课程是动画课程的基础课，学生需要使用10周学习MAYA的基础流程，并且制作一段最终动画，这段动画需要选择一个电影片段并且对其进行二次创作。 ::: align center 模型、材质展示 动作测试 最终动画 ::: 这段动画的难度在于大量的行走动画、摔倒、子弹跳动。并且我使用的角色很多，这也带来了很大的工作量。",
+    "paragraphs": [
+      "这个课程是动画课程的基础课，学生需要使用10周学习MAYA的基础流程，并且制作一段最终动画，这段动画需要选择一个电影片段并且对其进行二次创作。",
+      "这段动画的难度在于大量的行走动画、摔倒、子弹跳动。并且我使用的角色很多，这也带来了很大的工作量。"
+    ],
     "tags": [
-      "SCAD"
+      "SCAD",
+      "动画",
+      "MAYA",
+      "角色设计"
     ],
     "lang": "zh",
     "source": "zh/portfolio/scad/anim190.md"
@@ -46,16 +59,16 @@
     "paragraphs": [
       "Project 1: Master Drawing Remix",
       "The purpose of this project is for students to imitate a master's work to learn their techniques. Students need to incorporate a master's work into their drawing, add their own original elements, and keep the composition as harmonious as possible.",
-      "::: align center \"A Faith Beyond Understanding\" 55.88 × 76.2 cm Grey Rives BFK Paper, Black and White Charcoal :::",
+      "::: align center \"A Faith Beyond Understanding\" 22 × 33 inch Grey Rives BFK Paper, Black and White Charcoal :::",
       "This artwork participated in the SCAD Foundation Studies Honors Exhibition 2026 and was selected as a finalist in the awards. This drawing incorporates Albrecht Dürer's \"Praying Hands\" and features a goat head drawn in an imitation of his style. I drafted it on grey paper using black and white charcoal. Meanwhile, the clothing patterns of the figure are inspired by traditional Tibetan attire; I attempted to use its rich decorative details and intricate patterns to add an exotic atmosphere to the composition.",
       ":::gallery{cols=2 width=60%}",
       "During the conceptualization process, I strove to create an atmosphere where tranquility and unfamiliarity coexist, which is why I chose the elements in the composition: prayer, a goat, and ethnic minority clothing. The praying hands possess a sense of the sacred, while the goat is a symbol of the devil in Western culture, and the Tibetan clothing also carries an exotic vibe and a sense of the unfamiliar.",
       "Secondly, in terms of composition, the goat head, the hands, and the clothing serve as focal points, forming a stable triangular structure. The goat's leftward gaze also guides the flow of the image, preventing the top-left corner from feeling empty. Drawing on grey paper better mimics Dürer's original work and effectively enriches the image.",
       ":::gallery{cols=3 width=150%}",
       "At the same time, I also used color grading tools to create a color-graded version.",
-      "::: align center Project 3: Dramatic Mood Narrative ::: In this project, students are required to take a photograph with distinct light and shadow and a dramatic perspective angle, and then create a derivative work based on it, focusing on practicing perspective and the sense of lighting.",
-      "::: align center \"Melancholy\" 55.88 × 76.2 cm Blue Rives BFK Paper, Black and White Charcoal :::",
-      "This drawing primarily conveys an oppressive atmosphere. It uses a blue tone as the base and mainly relies on white for highlights. A major difficulty with this drawing is that the paper has high saturation and is inherently a mid-tone, while mixing white and black charcoal can make the image look muddy, leaving very little room for error when making corrections. My composition referenced a cinematic shot from \"Requiem for a Dream.\""
+      "::: align center Project 3: Dramatic Mood Narrative :::",
+      "In this project, students are required to take a photograph with distinct light and shadow and a dramatic perspective angle, and then create a derivative work based on it, focusing on practicing perspective and the sense of lighting.",
+      "::: align center \"Melancholy\" 22 × 33 inch Blue Rives BFK Paper, Black and White Charcoal :::"
     ],
     "tags": [
       "SCAD",
@@ -80,14 +93,14 @@
       "这个项目的目的是让学生模仿大师作品以学习其技法。学生需要在画面中使用一个大师作品，并原创自己的元素，并且让画面尽可能保持和谐。",
       "::: align center 《理解之外的信仰》 55.88×76.2cm灰色RivesBFK画纸 黑白双色炭条 :::",
       "这幅作品参加了SCAD的展览Foundation Studies Honors Exhibition 2026，并在评奖活动入围决赛。 这幅画结合了丢勒的《祈祷的手》，并模仿其风格绘制了羊头。我在灰色的纸张上起稿，使用了黑白炭笔。同时人物的服饰的纹样灵感来源于藏族传统服饰，我试图让其丰富的装饰细节和繁复的纹饰为画面增添异域感。",
-      ":::gallery{cols=2 width=110%}",
+      ":::gallery{cols=2 width=60%}",
       "在创作的构思过程中，我力求营造一种宁静与陌生并存的氛围，也是因此我选择了画面中的元素：祈祷，山羊，少数民族服装。祈祷的手有一种神圣感，而山羊在西方文化中是恶魔的象征，藏族的服饰也有异域氛围和陌生感。",
       "其次，在画面构图中，羊头，手，服饰分别作为画面焦点，构成了三角形的稳定构图。羊头向左的视线也引导画面走向，让画面左上角不显得空旷。而在灰色纸张上作画更好的模仿了丢勒的原作，也有效丰富了画面。",
       ":::gallery{cols=3 width=150%}",
-      "::: align center Project 3: 戏剧化场景 ::: 在这个项目，学生需要拍摄一个光影明显，透视角度大的照片，并对其进行二次创作，着重练习透视和光感。",
+      "::: align center Project 3: 戏剧化场景 :::",
+      "在这个项目，学生需要拍摄一个光影明显，透视角度大的照片，并对其进行二次创作，着重练习透视和光感。",
       "::: align center 《惆怅》 55.88×76.2cm蓝色RivesBFK画纸 黑白双色炭条 :::",
-      "这张画主要表达压抑氛围。使用了蓝色调为基底，主要使用白色提亮。 这幅画非常大的难点就是纸张饱和度高而且本身就是中间色，而白色和黑色炭笔混合会让画面变灰，所以修改的容错很少。我的画面构图参考了《梦之安魂曲》的电影镜头",
-      "RequiemforaDream.webp 这个电影镜头的上半部分被黑色渐变笼罩，呈现出一股压抑氛围。这种方法不但契合我的绘画主题，而且可以让画面楼房的“无限”感更强烈。"
+      "这张画主要表达压抑氛围。使用了蓝色调为基底，主要使用白色提亮。 这幅画非常大的难点就是纸张饱和度高而且本身就是中间色，而白色和黑色炭笔混合会让画面变灰，所以修改的容错很少。我的画面构图参考了《梦之安魂曲》的电影镜头"
     ],
     "tags": [
       "SCAD",

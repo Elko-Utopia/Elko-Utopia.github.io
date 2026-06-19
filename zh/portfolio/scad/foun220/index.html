@@ -54,7 +54,7 @@
       }catch(e){ console.warn('[FolderTool] init error', e); }
     }
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+    document.addEventListener('astro:page-load', init);
   })();
 </script><!-- Diagnostic logging removed in cleanup: sanitizer kept below. --><!-- Ensure inline-portfolio-card foreground images hide the background once loaded
 			 to avoid visible double-layered images caused by background-image + <img>. --><script type="module">(function(){try{var t="theme-preference",e=localStorage.getItem(t);if(e==="dark"||e==="light"){document.documentElement.dataset.theme=e;return}}catch{}try{var a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.dataset.theme=a?"dark":"light"}catch{}})();</script><!-- Defensive runtime sanitizer: fix images that accidentally receive `position: static` as an inline style
@@ -298,10 +298,10 @@ document.documentElement.dataset.subscribeUser = "elkoutopia";</script> <script 
 <hr>
 <div class="md-align md-align-center">
 <h2 id="project-3-戏剧化场景"><strong>Project 3: 戏剧化场景</strong></h2>
-<p>:::
-在这个项目，学生需要拍摄一个光影明显，透视角度大的照片，并对其进行二次创作，着重练习透视和光感。</p>
+</div>
+<p>在这个项目，学生需要拍摄一个光影明显，透视角度大的照片，并对其进行二次创作，着重练习透视和光感。</p>
 <p><picture><source type="image/webp" srcset="/assets/portfolio/scad/foun220/Melancholy.webp"><source type="image/webp" srcset="/assets/portfolio/scad/foun220/low/Melancholy-320.webp 320w, /assets/portfolio/scad/foun220/low/Melancholy-640.webp 640w, /assets/portfolio/scad/foun220/low/Melancholy-1024.webp 1024w"><img src="/assets/portfolio/scad/foun220/low/Melancholy-640.webp" alt="惆怅" width="2980" height="3570" style="aspect-ratio:2980/3570;" decoding="async" loading="lazy" data-full="/assets/portfolio/scad/foun220/Melancholy.webp" data-full-width="2980" data-full-height="3570" srcset="/assets/portfolio/scad/foun220/low/Melancholy-320.webp 320w, /assets/portfolio/scad/foun220/low/Melancholy-640.webp 640w, /assets/portfolio/scad/foun220/low/Melancholy-1024.webp 1024w" sizes="100vw"></picture></p>
-<p>::: align center</p>
+<div class="md-align md-align-center">
 <h4 id="惆怅"><strong>《惆怅》</strong></h4>
 <h4 id="5588762cm蓝色rivesbfk画纸-黑白双色炭条"><strong>55.88×76.2cm蓝色RivesBFK画纸 黑白双色炭条</strong></h4>
 </div>
