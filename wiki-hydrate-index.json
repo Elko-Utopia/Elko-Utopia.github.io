@@ -2,7 +2,7 @@
   {
     "title": "About Me",
     "url": "/about/",
-    "heroImage": "/assets/ui/placeholder/blog-placeholder-about.webp",
+    "heroImage": "/assets/ui/placeholder/BusinessCard-A.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "about.md",
@@ -12,7 +12,7 @@
   {
     "title": "关于我",
     "url": "/zh/about/",
-    "heroImage": "/assets/ui/placeholder/blog-placeholder-about.webp",
+    "heroImage": "/assets/ui/placeholder/BusinessCard-A.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "zh/about.md",
@@ -78,16 +78,6 @@
     "source": "zh/contact.md",
     "lang": "zh",
     "pubDate": "2026-06-13T04:00:00.000Z"
-  },
-  {
-    "title": "Chagall Character Design",
-    "url": "/portfolio/embarkation/chagall-character-design/",
-    "heroImage": "/assets/portfolio/embarkation/ChagallCharacterDesign/Chagall.webp",
-    "heroImagePosition": null,
-    "heroImageWidth": null,
-    "source": "portfolio/embarkation/chagall-character-design.md",
-    "lang": "en",
-    "pubDate": "2024-11-12T00:00:00.000Z"
   },
   {
     "title": "Seth The Untamed Scientist",
@@ -178,16 +168,6 @@
     "source": "portfolio/scad/foun220.md",
     "lang": "en",
     "pubDate": "2026-05-28T00:00:00.000Z"
-  },
-  {
-    "title": "夏格尔角色设计",
-    "url": "/zh/portfolio/embarkation/chagall-character-design/",
-    "heroImage": "/assets/portfolio/embarkation/ChagallCharacterDesign/Chagall.webp",
-    "heroImagePosition": null,
-    "heroImageWidth": null,
-    "source": "zh/portfolio/embarkation/chagall-character-design.md",
-    "lang": "zh",
-    "pubDate": "2024-11-12T00:00:00.000Z"
   },
   {
     "title": "塞斯——不羁的科学家",

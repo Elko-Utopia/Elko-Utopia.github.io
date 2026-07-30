@@ -280,15 +280,17 @@
   },
   {
     "title": "Seth The Untamed Scientist",
-    "description": "",
+    "description": "Embarkation Character Design: Seth, the Untamed Scientist & Early Chagall Concept.",
     "pubDate": "2024-11-15T00:00:00.000Z",
     "pinned": false,
     "heroImage": "/assets/portfolio/embarkation/SethTheUntamedScientist/Seth.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "url": "/portfolio/embarkation/seth-the-untamed-scientist/",
-    "excerpt": "",
-    "paragraphs": [],
+    "excerpt": "This is the character design for Chagall from that period; it will be reworked in the future.",
+    "paragraphs": [
+      "This is the character design for Chagall from that period; it will be reworked in the future."
+    ],
     "tags": [
       "Character Design",
       "Embarkation"
@@ -298,14 +300,14 @@
   },
   {
     "title": "塞斯——不羁的科学家",
-    "description": "",
+    "description": "《启航星》角色设计：不羁的科学家塞斯与早期的夏戈尔。",
     "pubDate": "2024-11-15T00:00:00.000Z",
     "pinned": false,
     "heroImage": "/assets/portfolio/embarkation/SethTheUntamedScientist/Seth.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "url": "/zh/portfolio/embarkation/seth-the-untamed-scientist/",
-    "excerpt": "",
+    "excerpt": "这是同期对夏戈尔的设计，未来会重做",
     "paragraphs": [],
     "tags": [
       "角色设计",
@@ -313,42 +315,6 @@
     ],
     "lang": "zh",
     "source": "zh/portfolio/embarkation/seth-the-untamed-scientist.md"
-  },
-  {
-    "title": "Chagall Character Design",
-    "description": "",
-    "pubDate": "2024-11-12T00:00:00.000Z",
-    "pinned": false,
-    "heroImage": "/assets/portfolio/embarkation/ChagallCharacterDesign/Chagall.webp",
-    "heroImagePosition": null,
-    "heroImageWidth": null,
-    "url": "/portfolio/embarkation/chagall-character-design/",
-    "excerpt": "",
-    "paragraphs": [],
-    "tags": [
-      "Character Design",
-      "Embarkation"
-    ],
-    "lang": "en",
-    "source": "portfolio/embarkation/chagall-character-design.md"
-  },
-  {
-    "title": "夏格尔角色设计",
-    "description": "",
-    "pubDate": "2024-11-12T00:00:00.000Z",
-    "pinned": false,
-    "heroImage": "/assets/portfolio/embarkation/ChagallCharacterDesign/Chagall.webp",
-    "heroImagePosition": null,
-    "heroImageWidth": null,
-    "url": "/zh/portfolio/embarkation/chagall-character-design/",
-    "excerpt": "",
-    "paragraphs": [],
-    "tags": [
-      "角色设计",
-      "启航星"
-    ],
-    "lang": "zh",
-    "source": "zh/portfolio/embarkation/chagall-character-design.md"
   },
   {
     "title": "Threshold Step",
