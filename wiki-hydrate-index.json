@@ -80,6 +80,16 @@
     "pubDate": "2026-06-13T04:00:00.000Z"
   },
   {
+    "title": "The Forerunners",
+    "url": "/portfolio/embarkation/forerunners/",
+    "heroImage": "/assets/portfolio/embarkation/Forerunners/Forerunners.webp",
+    "heroImagePosition": "center center",
+    "heroImageWidth": "120%",
+    "source": "portfolio/embarkation/forerunners.md",
+    "lang": "en",
+    "pubDate": "2026-09-14T00:00:00.000Z"
+  },
+  {
     "title": "Seth The Untamed Scientist",
     "url": "/portfolio/embarkation/seth-the-untamed-scientist/",
     "heroImage": "/assets/portfolio/embarkation/SethTheUntamedScientist/Seth.webp",
@@ -150,6 +160,16 @@
     "pubDate": "2026-05-29T00:00:00.000Z"
   },
   {
+    "title": "DIGI 130: Digital Communication",
+    "url": "/portfolio/scad/digi130/",
+    "heroImage": "/assets/portfolio/scad/digi130/business-card.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "portfolio/scad/digi130.md",
+    "lang": "en",
+    "pubDate": "2026-06-20T00:00:00.000Z"
+  },
+  {
     "title": "FOUN 110 & 111: Foundation Drawing and Design",
     "url": "/portfolio/scad/foun110/",
     "heroImage": "/assets/portfolio/scad/foun110/P1Step5Printing4.webp",
@@ -168,6 +188,26 @@
     "source": "portfolio/scad/foun220.md",
     "lang": "en",
     "pubDate": "2026-05-28T00:00:00.000Z"
+  },
+  {
+    "title": "FOUN 230: Figure Drawing: Gesture and Movement",
+    "url": "/portfolio/scad/foun230/",
+    "heroImage": "/assets/portfolio/scad/foun230/Project2.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "portfolio/scad/foun230.md",
+    "lang": "en",
+    "pubDate": "2026-06-20T00:00:00.000Z"
+  },
+  {
+    "title": "先行者",
+    "url": "/zh/portfolio/embarkation/forerunners/",
+    "heroImage": "/assets/portfolio/embarkation/Forerunners/Forerunners.webp",
+    "heroImagePosition": "center center",
+    "heroImageWidth": "120%",
+    "source": "zh/portfolio/embarkation/forerunners.md",
+    "lang": "zh",
+    "pubDate": "2026-09-14T00:00:00.000Z"
   },
   {
     "title": "塞斯——不羁的科学家",
@@ -240,6 +280,16 @@
     "pubDate": "2026-05-29T00:00:00.000Z"
   },
   {
+    "title": "DIGI 130：数字传播",
+    "url": "/zh/portfolio/scad/digi130/",
+    "heroImage": "/assets/portfolio/scad/digi130/business-card.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "zh/portfolio/scad/digi130.md",
+    "lang": "zh",
+    "pubDate": "2026-06-20T00:00:00.000Z"
+  },
+  {
     "title": "FOUN 110&111: 基础素描、设计课",
     "url": "/zh/portfolio/scad/foun110/",
     "heroImage": "/assets/portfolio/scad/foun110/P1Step5Printing4.webp",
@@ -258,6 +308,16 @@
     "source": "zh/portfolio/scad/foun220.md",
     "lang": "zh",
     "pubDate": "2026-05-28T00:00:00.000Z"
+  },
+  {
+    "title": "FOUN 230：人体绘画：姿态与运动",
+    "url": "/zh/portfolio/scad/foun230/",
+    "heroImage": "/assets/portfolio/scad/foun230/Project2.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "zh/portfolio/scad/foun230.md",
+    "lang": "zh",
+    "pubDate": "2026-06-20T00:00:00.000Z"
   },
   {
     "title": "text",
