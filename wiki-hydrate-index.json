@@ -80,14 +80,14 @@
     "pubDate": "2026-06-13T04:00:00.000Z"
   },
   {
-    "title": "The Forerunners",
+    "title": "forerunners",
     "url": "/portfolio/embarkation/forerunners/",
-    "heroImage": "/assets/portfolio/embarkation/Forerunners/Forerunners.webp",
-    "heroImagePosition": "center center",
-    "heroImageWidth": "120%",
+    "heroImage": null,
+    "heroImagePosition": null,
+    "heroImageWidth": null,
     "source": "portfolio/embarkation/forerunners.md",
     "lang": "en",
-    "pubDate": "2026-09-14T00:00:00.000Z"
+    "pubDate": null
   },
   {
     "title": "Seth The Untamed Scientist",

@@ -1,34 +1,5 @@
 [
   {
-    "title": "The Forerunners",
-    "description": "Character Design The Forerunners: Exploration, Creation, Courage. Exploring the unknown, creating possibility, and fighting for the future of human civilization in desperation.",
-    "pubDate": "2026-09-14T00:00:00.000Z",
-    "pinned": false,
-    "heroImage": "/assets/portfolio/embarkation/Forerunners/Forerunners.webp",
-    "heroImagePosition": "center center",
-    "heroImageWidth": "120%",
-    "url": "/portfolio/embarkation/forerunners/",
-    "excerpt": "The Forerunners: Exploration, Creation, Courage. Exploring the unknown, creating possibility, and fighting for the future of human civilization in desperation. Around 2070, war and ecological collapse pushed Earth civilization toward its en…",
-    "paragraphs": [
-      "The Forerunners: Exploration, Creation, Courage. Exploring the unknown, creating possibility, and fighting for the future of human civilization in desperation.",
-      "Around 2070, war and ecological collapse pushed Earth civilization toward its end. To ensure humanity's continued existence, a group of survivors secretly launched \"The Embarkation Plan,\" built The Embarkation Vessel, and attempted to leave the Solar System with immature wormhole technology. Although the chance of success was extremely slim, the plan ultimately succeeded: The Embarkation Vessel passed through the wormhole, traveled for several years, and reached an unfamiliar planet. The ship crashed during landing, but around ten thousand people survived and were rescued by the local intelligent life known as Sylphs. Humanity later named this planet \"The Star of Embarkation.\" These five leaders made an escape with almost no chance of success become reality, and because of that, they gaine…",
-      "Dyson was the chief engineer of The Embarkation Plan, responsible for the overall design, engineering coordination, and hardware architecture of The Embarkation Vessel. He integrated the core technologies proposed by Seth and the life support system designed by Linnea into the same ship, allowing achievements from different fields to finally become a complete engineered whole: The Embarkation Vessel. Dyson held almost exacting standards for design and construction quality. At the same time, he was warm in temperament and good at using humor to ease the tension of long-term construction. His rigorous engineering standards, together with his distinctive and cheerful personal presence, made him one of the most charismatic leaders in The Embarkation Plan.",
-      "Seth was the principal physicist of The Embarkation Plan, responsible for key technological research and the development of experimental wormhole technology. After the ship was completed, he continued to take on theoretical analysis, route calculation, and navigation work. Seth was calm in temperament and concise in speech, and he was used to forming judgments through calculation, evidence, and logic. He rarely changed conclusions that had already been confirmed. This stubbornness allowed him to persist for a long time in difficult scientific directions, while also making him appear especially firm in conflicts of opinion. The wormhole was the core technology on which The Embarkation Plan depended, and it gradually became the symbol of the entire plan, even being adopted as the plan's embl…",
-      "Before The Embarkation Vessel was completed, it had already become something worth waging war over on doomsday Earth. The engineering team faced more than technical problems: they also faced warlords, panic, resource conflicts, and a social order drawing ever closer to collapse. Lucian was responsible for handling all of this.",
-      "Lucian was the politician of The Embarkation Plan. During the construction of the ship, he led armed forces against warlords who attempted to seize The Embarkation Vessel, and under war, resource shortages, and long-term psychological pressure, he maintained the normal operation of the construction system. After the voyage began, he continued to manage the society aboard the ship. Lucian was confident, highly responsible, skilled at organizing people, clarifying goals, and making rapid decisions in crises. What he brought to the people was a sense of security that the apocalypse had never offered. This also led many people to place great trust in his judgment, and that trust later became an important foundation of his political power.",
-      "Linnea was the biologist of The Embarkation Plan, responsible for the medical system, life support system, and ecological cycle design. The Embarkation Vessel could not carry unlimited air, water, and food, so the duration of the ecological cycle directly determined how long the ship could travel. Linnea was also one of the few technical leaders in the plan whose work dealt directly with \"life itself.\" She had a highly specialized background, but she did not carry the manner of a technocrat; even during the most intense periods of the plan, she remained gentle and open.",
-      "The scale of resources required by The Embarkation Plan far exceeded that of an ordinary spacecraft, and by the time the plan was carried out, Earth's original economic, industrial, and supply systems were collapsing in war. Weapons, equipment, materials, and daily supplies still had to be provided continuously; otherwise, even the most mature design could only remain on paper. Hilda was responsible for maintaining this constantly shrinking material foundation.",
-      "Hilda was the economist of The Embarkation Plan, responsible for acquiring the weapons, materials, and supplies needed for construction, and for managing production and resource allocation during the voyage. She was pragmatic, independent, strongly inclined toward exploration, good at judging situations, and familiar with how far to advance or retreat within relationships of interest. Her tact allowed her to maneuver among different parties in a constantly changing environment, while her ability to read circumstances meant that she rarely treated any method, channel, or relationship as permanently reliable. Ordinary members often understood her less directly than they understood Lucian, and she did not have a clear symbol like Dyson's ship. Hilda's role was more often hidden in the simple…",
-      "The five Forerunners respectively represented engineering, science, order, life, and resources. The Embarkation Vessel could be built, leave Earth, complete its long voyage, and ultimately allow humanity to rebuild society in another world only because every one of these links existed. To the first generation of survivors, these names came from memories that were still vivid: they personally carried humanity from the end of the old civilization to the beginning of a new one. This is the true origin of the title \"Forerunner.\""
-    ],
-    "tags": [
-      "Character Design",
-      "The Star of Embarkation"
-    ],
-    "lang": "en",
-    "source": "portfolio/embarkation/forerunners.md"
-  },
-  {
     "title": "先行者",
     "description": "角色设计: 先行者 探索、创造、勇敢。探索未知，创造可能，在绝境中为人类文明争取未来。",
     "pubDate": "2026-09-14T00:00:00.000Z",
@@ -628,5 +599,33 @@
     ],
     "lang": "zh",
     "source": "zh/portfolio/personal/line-field-360.md"
+  },
+  {
+    "title": "forerunners",
+    "description": "",
+    "pubDate": null,
+    "pinned": false,
+    "heroImage": null,
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/portfolio/embarkation/forerunners/",
+    "excerpt": "title: The Forerunners description: \"Character design: The Forerunners. Exploration, Creation, Courage. Explore the unknown, create possibility, and fight for humanity's future in desperate times.\" pubDate: 20260914 displayLayout: single im…",
+    "paragraphs": [
+      "--- title: The Forerunners description: \"Character design: The Forerunners. Exploration, Creation, Courage. Explore the unknown, create possibility, and fight for humanity's future in desperate times.\" pubDate: 2026-09-14 displayLayout: single image: /assets/portfolio/embarkation/Forerunners/Forerunners.webp imagePosition: center center heroImage: /assets/portfolio/embarkation/Forerunners/Forerunners.webp heroImagePosition: center center heroImageWidth: 120% tags: - Character Design - The Star of Embarkation ---",
+      "The Forerunners: Exploration, Creation, Courage.",
+      "Explore the unknown, create possibility, and fight for humanity's future in desperate times.",
+      "Around 2070, war and ecological collapse pushed Earth toward the end of civilization. To keep humanity alive, a group of survivors secretly launched The Embarkation Plan. Its aim was desperate: build the Embarkation Vessel and leave the Solar System through still-immature wormhole technology. The odds were almost hopeless, but the plan succeeded. The vessel crossed the wormhole and, after years of flight, reached an unfamiliar planet. It crashed on landing; about ten thousand survived, rescued by the planet's Sylphs. Humanity named this world The Star of Embarkation. The five leaders turned a nearly impossible escape into reality, earning immense prestige among the first survivors. Together, they came to be called — The Forerunners.",
+      "Dyson was the plan's chief engineer, leading the vessel's design, coordination, and hardware architecture. He fused Seth's core technology with Linnea's life-support system, turning separate fields into one finished work of engineering — the Embarkation Vessel. He demanded uncompromising quality in design and construction, yet remained warm, lively, and able to ease the pressure of long construction with humor. His precision and bright presence made him one of the plan's most charismatic leaders.",
+      "Seth was the plan's core physicist, leading key research and experimental wormhole development. After the vessel was built, he remained in charge of theory, route calculation, and navigation. Calm and terse, he trusted calculation, evidence, and logic. Once convinced, he rarely changed course. That stubbornness carried him through years of difficult research, and made him unyielding in disagreement. The wormhole was the technology the plan depended on; in time, it became the plan's symbol and even its emblem. Most ordinary members could not truly understand Seth's work and kept their distance, but everyone knew humanity's departure from the Solar System was tied to this silent physicist.",
+      "Lucian the Politician",
+      "Before the Embarkation Vessel was finished, it had already become something worth going to war over on a dying Earth. The engineers faced more than technical problems: warlords, panic, resource conflict, and a social order nearing collapse. Lucian handled all of it.",
+      "Lucian was the plan's politician. During construction, he led military forces against warlords trying to seize the vessel, while keeping the construction system running through war, scarcity, and prolonged psychological strain. After departure, he continued to manage society aboard the ship. Confident and responsible, he organized people, set clear goals, and made quick decisions in crisis. He gave people a sense of security the apocalypse had never offered. The trust he earned later became an important foundation of his political power.",
+      "Linnea was the plan's biologist, leading medicine, life support, and ecological cycle design. The Embarkation Vessel could not carry unlimited air, water, or food; the endurance of its ecology determined how long it could fly. Linnea was one of the few technical leaders whose work touched life itself. She had deep specialist training, but no technocrat's manner. Even at the plan's most intense moments, she remained gentle and open.",
+      "The plan needed resources far beyond an ordinary spacecraft. By then, Earth's economic, industrial, and supply systems were collapsing in war. Weapons, equipment, materials, and daily supplies still had to arrive; without them, even the best design stayed on paper. Hilda held this shrinking material foundation together.",
+      "Hilda was the plan's economist, securing weapons, materials, and supplies for construction, then managing production and allocation during the voyage. Pragmatic and independent, she had a strong instinct for exploration. She read situations well and knew when to advance or retreat among competing interests. Her tact let her move among shifting parties; her judgment kept her from trusting any one method, channel, or relationship forever. Ordinary members understood her less directly than Lucian, and her work had no clear symbol like Dyson's ship. More often, Hilda's role was hidden in a simple fact: day after day, the plan still secured materials, kept production alive, and continued construction. Whether her supplies kept arriving directly determined whether the Embarkation Vessel could co…"
+    ],
+    "tags": [],
+    "lang": "en",
+    "source": "portfolio/embarkation/forerunners.md"
   }
 ]
