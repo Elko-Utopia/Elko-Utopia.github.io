@@ -80,14 +80,34 @@
     "pubDate": "2026-06-13T04:00:00.000Z"
   },
   {
-    "title": "forerunners",
-    "url": "/portfolio/embarkation/forerunners/",
-    "heroImage": null,
+    "title": "The Embarkation Plan: A Rift",
+    "url": "/portfolio/embarkation/embarkation-conflict/",
+    "heroImage": "/assets/portfolio/scad/anim275/p4-03-six-panel-storyboard.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
+    "source": "portfolio/embarkation/embarkation-conflict.md",
+    "lang": "en",
+    "pubDate": "2026-10-05T00:00:00.000Z"
+  },
+  {
+    "title": "The Forerunners",
+    "url": "/portfolio/embarkation/forerunners/",
+    "heroImage": "/assets/portfolio/embarkation/Forerunners/Forerunners.webp",
+    "heroImagePosition": "center center",
+    "heroImageWidth": "120%",
     "source": "portfolio/embarkation/forerunners.md",
     "lang": "en",
-    "pubDate": null
+    "pubDate": "2026-09-14T00:00:00.000Z"
+  },
+  {
+    "title": "The Mimetic Braincase",
+    "url": "/portfolio/embarkation/hive-queen-life-case/",
+    "heroImage": "/assets/portfolio/scad/anim275/p2-04-final-render.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "portfolio/embarkation/hive-queen-life-case.md",
+    "lang": "en",
+    "pubDate": "2026-10-08T00:00:00.000Z"
   },
   {
     "title": "Seth The Untamed Scientist",
@@ -98,6 +118,26 @@
     "source": "portfolio/embarkation/seth-the-untamed-scientist.md",
     "lang": "en",
     "pubDate": "2024-11-15T00:00:00.000Z"
+  },
+  {
+    "title": "The Star of Embarkation: Planet and Art",
+    "url": "/portfolio/embarkation/the-star-of-embarkation/",
+    "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "portfolio/embarkation/the-star-of-embarkation.mdx",
+    "lang": "en",
+    "pubDate": "2026-11-08T00:00:00.000Z"
+  },
+  {
+    "title": "Boss Rush",
+    "url": "/portfolio/personal/boss-rush/",
+    "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "portfolio/personal/boss-rush.md",
+    "lang": "en",
+    "pubDate": "2026-10-18T00:00:00.000Z"
   },
   {
     "title": "Classical Sketching",
@@ -160,6 +200,16 @@
     "pubDate": "2026-05-29T00:00:00.000Z"
   },
   {
+    "title": "ANIM 275: Core Principles of Animated Storytelling and Concept Development",
+    "url": "/portfolio/scad/anim275/",
+    "heroImage": "/assets/portfolio/scad/anim275/p1-03-final-keyframe.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "portfolio/scad/anim275.md",
+    "lang": "en",
+    "pubDate": "2026-11-09T00:00:00.000Z"
+  },
+  {
     "title": "DIGI 130: Digital Communication",
     "url": "/portfolio/scad/digi130/",
     "heroImage": "/assets/portfolio/scad/digi130/business-card.webp",
@@ -200,6 +250,36 @@
     "pubDate": "2026-06-20T00:00:00.000Z"
   },
   {
+    "title": "GAME 121: Introduction to Game Development",
+    "url": "/portfolio/scad/game121/",
+    "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "portfolio/scad/game121.md",
+    "lang": "en",
+    "pubDate": "2026-11-09T00:00:00.000Z"
+  },
+  {
+    "title": "GAME 130: Digital Design Aesthetics",
+    "url": "/portfolio/scad/game130/",
+    "heroImage": "/assets/portfolio/scad/game130/3dsmax-02-fire-extinguisher-view-b.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "portfolio/scad/game130.md",
+    "lang": "en",
+    "pubDate": "2026-11-09T00:00:00.000Z"
+  },
+  {
+    "title": "启航计划的决裂",
+    "url": "/zh/portfolio/embarkation/embarkation-conflict/",
+    "heroImage": "/assets/portfolio/scad/anim275/p4-03-six-panel-storyboard.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "zh/portfolio/embarkation/embarkation-conflict.md",
+    "lang": "zh",
+    "pubDate": "2026-10-05T00:00:00.000Z"
+  },
+  {
     "title": "先行者",
     "url": "/zh/portfolio/embarkation/forerunners/",
     "heroImage": "/assets/portfolio/embarkation/Forerunners/Forerunners.webp",
@@ -210,6 +290,16 @@
     "pubDate": "2026-09-14T00:00:00.000Z"
   },
   {
+    "title": "虫后生命之箱",
+    "url": "/zh/portfolio/embarkation/hive-queen-life-case/",
+    "heroImage": "/assets/portfolio/scad/anim275/p2-04-final-render.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "zh/portfolio/embarkation/hive-queen-life-case.md",
+    "lang": "zh",
+    "pubDate": "2026-10-08T00:00:00.000Z"
+  },
+  {
     "title": "塞斯——不羁的科学家",
     "url": "/zh/portfolio/embarkation/seth-the-untamed-scientist/",
     "heroImage": "/assets/portfolio/embarkation/SethTheUntamedScientist/Seth.webp",
@@ -218,6 +308,26 @@
     "source": "zh/portfolio/embarkation/seth-the-untamed-scientist.md",
     "lang": "zh",
     "pubDate": "2024-11-15T00:00:00.000Z"
+  },
+  {
+    "title": "启航星：行星与美术",
+    "url": "/zh/portfolio/embarkation/the-star-of-embarkation/",
+    "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "zh/portfolio/embarkation/the-star-of-embarkation.mdx",
+    "lang": "zh",
+    "pubDate": "2026-11-08T00:00:00.000Z"
+  },
+  {
+    "title": "Boss Rush",
+    "url": "/zh/portfolio/personal/boss-rush/",
+    "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "zh/portfolio/personal/boss-rush.md",
+    "lang": "zh",
+    "pubDate": "2026-10-18T00:00:00.000Z"
   },
   {
     "title": "古典素描练习",
@@ -280,6 +390,16 @@
     "pubDate": "2026-05-29T00:00:00.000Z"
   },
   {
+    "title": "ANIM 275：动画叙事与概念开发",
+    "url": "/zh/portfolio/scad/anim275/",
+    "heroImage": "/assets/portfolio/scad/anim275/p1-03-final-keyframe.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "zh/portfolio/scad/anim275.md",
+    "lang": "zh",
+    "pubDate": "2026-11-09T00:00:00.000Z"
+  },
+  {
     "title": "DIGI 130：数字传播",
     "url": "/zh/portfolio/scad/digi130/",
     "heroImage": "/assets/portfolio/scad/digi130/business-card.webp",
@@ -318,6 +438,26 @@
     "source": "zh/portfolio/scad/foun230.md",
     "lang": "zh",
     "pubDate": "2026-06-20T00:00:00.000Z"
+  },
+  {
+    "title": "GAME 121：游戏开发导论",
+    "url": "/zh/portfolio/scad/game121/",
+    "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "zh/portfolio/scad/game121.md",
+    "lang": "zh",
+    "pubDate": "2026-11-09T00:00:00.000Z"
+  },
+  {
+    "title": "GAME 130：数字设计美学",
+    "url": "/zh/portfolio/scad/game130/",
+    "heroImage": "/assets/portfolio/scad/game130/3dsmax-02-fire-extinguisher-view-b.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "zh/portfolio/scad/game130.md",
+    "lang": "zh",
+    "pubDate": "2026-11-09T00:00:00.000Z"
   },
   {
     "title": "text",

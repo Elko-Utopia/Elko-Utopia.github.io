@@ -54,70 +54,6 @@
     return EXCLUDED.some(function (sel) { return node.closest && node.closest(sel); });
   }
 
-  function toPositiveNumber(value) {
-    const number = Number.parseFloat(value);
-    return Number.isFinite(number) && number > 0 ? number : 0;
-  }
-
-  function readImageDimensions(img) {
-    const link = img.closest && img.closest('a');
-    const width =
-      toPositiveNumber(img.dataset.fullWidth) ||
-      toPositiveNumber(img.dataset.pswpWidth) ||
-      toPositiveNumber(img.getAttribute('width')) ||
-      toPositiveNumber(link && link.dataset.pswpWidth) ||
-      toPositiveNumber(img.naturalWidth);
-    const height =
-      toPositiveNumber(img.dataset.fullHeight) ||
-      toPositiveNumber(img.dataset.pswpHeight) ||
-      toPositiveNumber(img.getAttribute('height')) ||
-      toPositiveNumber(link && link.dataset.pswpHeight) ||
-      toPositiveNumber(img.naturalHeight);
-
-    return { width: width, height: height };
-  }
-
-  function loadImageDimensions(item) {
-    if (item.width && item.height) return Promise.resolve(item);
-    if (!item.src) return Promise.resolve(item);
-
-    return new Promise(function (resolve) {
-      const probe = new Image();
-      let settled = false;
-      const finish = function () {
-        if (settled) return;
-        settled = true;
-        if (probe.naturalWidth && probe.naturalHeight) {
-          item.width = probe.naturalWidth;
-          item.height = probe.naturalHeight;
-        }
-        resolve(item);
-      };
-
-      probe.onload = finish;
-      probe.onerror = finish;
-      probe.src = item.src;
-
-      if (probe.decode) {
-        probe.decode().then(finish).catch(finish);
-      }
-
-      setTimeout(finish, 2500);
-    });
-  }
-
-  function ensureItemDimensions(items) {
-    return Promise.all(items.map(loadImageDimensions)).then(function () {
-      items.forEach(function (item) {
-        if (!item.width || !item.height) {
-          item.width = 1600;
-          item.height = 900;
-        }
-      });
-      return items;
-    });
-  }
-
   /* ─── 收集同页图片组 ────────────────────── */
   // Bug 3 修复：扫描全部匹配图片，不依赖 boundImages
   // 这样懒加载还未绑定的图片也能正确出现在灯箱列表里
@@ -138,11 +74,10 @@
       const src = resolveSource(img);
       if (!src) return;
       if (img === clickedImg) startIndex = items.length;
-      const dimensions = readImageDimensions(img);
       items.push({
         src: src,
-        width: dimensions.width,
-        height: dimensions.height,
+        width: img.naturalWidth || 1600,
+        height: img.naturalHeight || 900,
         alt: img.alt || '',
         element: img,
         msrc: img.currentSrc || img.src,
@@ -160,78 +95,76 @@
       const { items, startIndex } = collectGallery(clickedImg);
       if (!items.length) return;
 
-      return ensureItemDimensions(items).then(function () {
-        const pswp = new PhotoSwipe({
-          dataSource: items,
-          index: startIndex,
+      const pswp = new PhotoSwipe({
+        dataSource: items,
+        index: startIndex,
 
-          bgOpacity: 0.9,
-          spacing: 0.1,
-          loop: false,
-          pinchToClose: true,
-          closeOnVerticalDrag: true,
-          showHideAnimationType: 'zoom',
+        bgOpacity: 0.9,
+        spacing: 0.1,
+        loop: false,
+        pinchToClose: true,
+        closeOnVerticalDrag: true,
+        showHideAnimationType: 'zoom',
 
-          getThumbBoundsFn: function (index) {
-            const item = items[index];
-            if (!item || !item.element) return null;
-            const rect = item.element.getBoundingClientRect();
-            return { x: rect.left, y: rect.top + (window.scrollY || 0), w: rect.width };
-          },
-        });
+        getThumbBoundsFn: function (index) {
+          const item = items[index];
+          if (!item || !item.element) return null;
+          const rect = item.element.getBoundingClientRect();
+          return { x: rect.left, y: rect.top + (window.scrollY || 0), w: rect.width };
+        },
+      });
 
       /* ── Bug 2 修复：滚轮缩放，屏蔽缩放期间的 click/tap ── */
-        let wheelRaf = null;
+      let wheelRaf = null;
 
       // 拦截 PhotoSwipe 内部的 tap/click 重置缩放行为
       // PhotoSwipe 用 pointerdown → pointerup 序列判断 tap，在滚轮期间拦截 pointerdown
-        pswp.on('bindEvents', function () {
-          try {
-            const el = pswp.element;
-            if (!el) return;
-            el.addEventListener('pointerdown', function (e) {
-              if (wheelActive) {
-                e.stopImmediatePropagation();
-              }
-            }, { capture: true });
-            el.addEventListener('click', function (e) {
-              if (wheelActive) {
-                e.stopImmediatePropagation();
-                e.preventDefault();
-              }
-            }, { capture: true });
-          } catch (err) {}
-        });
+      pswp.on('bindEvents', function () {
+        try {
+          const el = pswp.element;
+          if (!el) return;
+          el.addEventListener('pointerdown', function (e) {
+            if (wheelActive) {
+              e.stopImmediatePropagation();
+            }
+          }, { capture: true });
+          el.addEventListener('click', function (e) {
+            if (wheelActive) {
+              e.stopImmediatePropagation();
+              e.preventDefault();
+            }
+          }, { capture: true });
+        } catch (err) {}
+      });
 
-        pswp.on('wheel', function (e) {
-          e.preventDefault();
-          const oe = e.originalEvent;
+      pswp.on('wheel', function (e) {
+        e.preventDefault();
+        const oe = e.originalEvent;
 
         // 标记滚轮激活，屏蔽接下来 400ms 的 tap/click
-          wheelActive = true;
-          if (wheelTimer) clearTimeout(wheelTimer);
-          wheelTimer = setTimeout(function () {
-            wheelActive = false;
-          }, 400);
+        wheelActive = true;
+        if (wheelTimer) clearTimeout(wheelTimer);
+        wheelTimer = setTimeout(function () {
+          wheelActive = false;
+        }, 400);
 
-          if (wheelRaf) return;
-          wheelRaf = requestAnimationFrame(function () { wheelRaf = null; });
+        if (wheelRaf) return;
+        wheelRaf = requestAnimationFrame(function () { wheelRaf = null; });
 
-          const delta = oe.deltaY !== undefined ? oe.deltaY : (oe.detail || 0);
-          const slide = pswp.currSlide;
-          const current = slide.currZoomLevel;
-          const minZoom = slide.zoomLevels.fit;
-          const maxZoom = slide.zoomLevels.max * 2;
+        const delta = oe.deltaY !== undefined ? oe.deltaY : (oe.detail || 0);
+        const slide = pswp.currSlide;
+        const current = slide.currZoomLevel;
+        const minZoom = slide.zoomLevels.fit;
+        const maxZoom = slide.zoomLevels.max * 2;
 
-          const factor = delta < 0 ? 1.04 : 0.96;
-          const next = Math.min(maxZoom, Math.max(minZoom, current * factor));
+        const factor = delta < 0 ? 1.04 : 0.96;
+        const next = Math.min(maxZoom, Math.max(minZoom, current * factor));
 
-          if (next === current) return;
-          slide.zoomTo(next, { x: oe.clientX, y: oe.clientY }, 0);
-        });
-
-        pswp.init();
+        if (next === current) return;
+        slide.zoomTo(next, { x: oe.clientX, y: oe.clientY }, 0);
       });
+
+      pswp.init();
     }).catch(function (err) {
       console.error('[lightbox] PhotoSwipe 加载失败', err);
     });

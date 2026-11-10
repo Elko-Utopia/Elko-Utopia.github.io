@@ -1,5 +1,422 @@
 [
   {
+    "title": "ANIM 275: Core Principles of Animated Storytelling and Concept Development",
+    "description": "Cemetery lighting, a crystalline desert spaceship, The Mimetic Braincase, an Ori-style character, and a scene from The Star of Embarkation.",
+    "pubDate": "2026-11-09T00:00:00.000Z",
+    "pinned": true,
+    "heroImage": "/assets/portfolio/scad/anim275/p1-03-final-keyframe.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/portfolio/scad/anim275/",
+    "excerpt": "Instructor: Scott Wright PreQuarter Assignment: Cemetery Composition This painting tells the story of a boy who wants to bring flowers to a friend who has died. Cemetery security stops him from approaching his friend's grave. He is standing…",
+    "paragraphs": [
+      "Instructor: Scott Wright",
+      "Pre-Quarter Assignment: Cemetery Composition",
+      "This painting tells the story of a boy who wants to bring flowers to a friend who has died. Cemetery security stops him from approaching his friend's grave. He is standing in a tree, holding the flowers and trying to reach the grave.",
+      "My main focus was lighting. I used contrasts in both light and dark values and warm and cool colors to draw attention to the important parts of the scene.",
+      "This was also my first attempt to paint primarily with planes of color. I had previously relied more on lines to construct forms, so I started using larger color shapes and value relationships to organize the painting. I was still unfamiliar with the approach, which made the process challenging.",
+      "Project 1: The Lost Spaceship",
+      "I used a spaceship stranded in the desert to explore differences in scale and the contrast between the ship and its surroundings.",
+      "I tried different compositions to explore the difference in size between the ship and the character. In some thumbnails, the spaceship appears enormous and the figure very small. In others, stronger perspective emphasizes the ship's scale and the space around it.",
+      "I made nine sketches and selected the seventh, at the bottom left, for the final painting. The scene takes place in a desert canyon surrounded by rough rocks, with a spaceship made of transparent crystal in the middle.",
+      "I wanted the smooth crystal to contrast with the rough rock, while the ship's own light contrasts with the darkness of the canyon. These differences also help convey the sense that the ship and its surroundings belong to different eras.",
+      "In this project, I learned to apply the 7:2:1 principle in composition, using the proportions occupied by different visual elements to control the focal point.",
+      "Rendering rock and crystal pushed me to move beyond line-based construction and use broad shapes of light and shadow to describe volume and materials."
+    ],
+    "tags": [
+      "SCAD",
+      "Animation",
+      "Concept Art"
+    ],
+    "lang": "en",
+    "source": "portfolio/scad/anim275.md"
+  },
+  {
+    "title": "GAME 121: Introduction to Game Development",
+    "description": "Boss Rush, a JavaScript bullet-hell game made in Microsoft MakeCode Arcade. Playable version 1.0.17 and gameplay captures.",
+    "pubDate": "2026-11-09T00:00:00.000Z",
+    "pinned": true,
+    "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/portfolio/scad/game121/",
+    "excerpt": "Instructor: Cyril Guichard Boss Rush Boss Rush is my first bullethell game, developed with JavaScript and Microsoft MakeCode Arcade. I first learned about the platform through my professor. Before our group project began, I spent about a we…",
+    "paragraphs": [
+      "Instructor: Cyril Guichard",
+      "Boss Rush is my first bullet-hell game, developed with JavaScript and Microsoft MakeCode Arcade. I first learned about the platform through my professor. Before our group project began, I spent about a week independently making the initial version, designing and building its gameplay, art, and code myself.",
+      "My earlier experience with Scratch made the visual programming environment familiar. I continued expanding the combat systems and content afterward, turning Boss Rush into a personal project that I developed on my own.",
+      "Players face successive boss battles, dodge dense bullet patterns, and decide when to move, defend, or attack. Each boss has a signature mechanic, while its other attacks combine randomly selected main patterns with smaller sub-patterns, creating variation across repeated encounters.",
+      "Play Boss Rush - v1.0.17",
+      "Keyboard controls: Z = controller A; X = controller B. Boss Rush was designed around console-style buttons, while the browser simulator maps those buttons to keyboard keys.",
+      "Randomized Patterns and Signature Attacks",
+      "I developed a pool of main patterns and smaller sub-patterns that are randomly assigned when a boss spawns. Each boss has its own signature attack, allowing repeat encounters to vary while retaining a distinct combat identity.",
+      "LASER's regular attack sends shifting laser-projectile patterns across the arena. Players must read their trajectories and find openings while moving.",
+      "Boss Ultimates and Enraged Phases",
+      "Bosses enter the enraged phase below 30% HP, upgrading their attacks. DANMAKU specializes in dense rotating projectiles, while WALL changes the speed and reverses the direction of its ultimate attack during the enraged phase. Version 1.0.17 reduced DANMAKU's ultimate density and rotation speed while strengthening WALL's and RUSH's enraged attacks.",
+      "The summoning ultimate introduces additional enemies, turning a single-boss fight into a multi-target encounter where players must manage movement, projectiles, and summoned threats at once."
+    ],
+    "tags": [
+      "SCAD",
+      "Game Development",
+      "JavaScript",
+      "MakeCode Arcade"
+    ],
+    "lang": "en",
+    "source": "portfolio/scad/game121.md"
+  },
+  {
+    "title": "GAME 130: Digital Design Aesthetics",
+    "description": "3D studies created with 3ds Max and ZBrush, including a fire extinguisher model and a stylized fox character.",
+    "pubDate": "2026-11-09T00:00:00.000Z",
+    "pinned": true,
+    "heroImage": "/assets/portfolio/scad/game130/3dsmax-02-fire-extinguisher-view-b.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/portfolio/scad/game130/",
+    "excerpt": "Instructor: Gregory Johnson Project 1: Fire Extinguisher Modeling I built a fire extinguisher in Autodesk 3ds Max, modeling the cylinder, valve, handle, pressure gauge, hose, and connectors separately. I used chamfers and carefully placed j…",
+    "paragraphs": [
+      "Instructor: Gregory Johnson",
+      "Project 1: Fire Extinguisher Modeling",
+      "I built a fire extinguisher in Autodesk 3ds Max, modeling the cylinder, valve, handle, pressure gauge, hose, and connectors separately. I used chamfers and carefully placed joints to refine the hard-surface construction, then adjusted materials and lighting to distinguish the different surfaces.",
+      "Project 2: Fox Character Sculpting",
+      "I sculpted a stylized fox in ZBrush, building the head, body, legs, and tail from large forms before refining their connections. Oversized ears and simplified proportions establish the silhouette; I checked the model from multiple angles to balance its volumes."
+    ],
+    "tags": [
+      "SCAD",
+      "3ds Max",
+      "ZBrush",
+      "3D Modeling"
+    ],
+    "lang": "en",
+    "source": "portfolio/scad/game130.md"
+  },
+  {
+    "title": "ANIM 275：动画叙事与概念开发",
+    "description": "墓园光影构图、沙漠中的晶体飞船、启航星虫后生命之箱、奥日风格角色设计与启航星故事分镜。",
+    "pubDate": "2026-11-09T00:00:00.000Z",
+    "pinned": true,
+    "heroImage": "/assets/portfolio/scad/anim275/p1-03-final-keyframe.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/zh/portfolio/scad/anim275/",
+    "excerpt": "指导教授：Scott Wright 课前作业：墓园构图 这幅画讲的是一个男孩想给死去的朋友献花，却被墓园的安保人员拦了下来。他站在树上，手里拿着花，试图接近朋友的墓地。 我在这幅画中主要想练习光线的表现，利用明暗对比和冷暖色彩对比突出人物和场景中的重要部分。 这也是我第一次尝试以面为基础进行绘画。过去我更习惯依靠线条建立形体，这次开始使用大面积的色块和明暗关系组织画面。由于还不熟悉这种方法，绘画过程对我来说有一定难度。 创作过程录屏 <video controls prelo…",
+    "paragraphs": [
+      "这幅画讲的是一个男孩想给死去的朋友献花，却被墓园的安保人员拦了下来。他站在树上，手里拿着花，试图接近朋友的墓地。",
+      "我在这幅画中主要想练习光线的表现，利用明暗对比和冷暖色彩对比突出人物和场景中的重要部分。",
+      "这也是我第一次尝试以面为基础进行绘画。过去我更习惯依靠线条建立形体，这次开始使用大面积的色块和明暗关系组织画面。由于还不熟悉这种方法，绘画过程对我来说有一定难度。",
+      "我以沙漠中迷失的飞船为主题，通过构图突出飞船与人物的尺度差异和时代反差。",
+      "我尝试通过不同的构图方式比较飞船与人物的大小。有些构图让飞船显得非常巨大，人物则十分渺小；另一些构图则使用更强烈的透视关系，突出飞船的体积和空间感。",
+      "我一共绘制了九张草图，最终选择了左下角的第七张。这张画的场景位于一座沙漠峡谷中，峡谷由粗糙的岩石构成，中间则是一艘由透明晶体构成的飞船。",
+      "我希望通过晶体的光滑与岩石的粗糙形成材质对比，同时利用飞船自身发出的光线，与峡谷中的阴暗环境形成明暗对比。这些差异也能够进一步表现飞船与周围环境之间的时代感。",
+      "在这个项目中，我学习并理解了构图中的 7:2:1 原则，以及如何通过不同元素在画面中所占的比例控制视觉重点。",
+      "岩石和晶体的材质差异也促使我从线条造型转向以大面积明暗色块塑造体积。",
+      "我将《启航星》中的机械敌人“虫后生命之箱”用于课程道具设计：它以手提箱形状的机械容器保存大脑，通过神经接口控制克隆体。此次重点是机械结构、透视与材质表现。",
+      "设计包含机械臂、皮革箱体和底部双枪管。我分别处理金属与皮革的表面反射，并调整各部件的连接方式。",
+      "由于草图的透视与零件关系比较复杂，我在玛雅中制作了简化的三维模型，并以模型为参考完成最终二维画面。画中的投影也参考了三维模型，再在图像处理软件中进行绘制。这使我能够在复杂结构中维持透视关系，并集中研究不同材质的表现。"
+    ],
+    "tags": [
+      "SCAD",
+      "动画",
+      "概念设计"
+    ],
+    "lang": "zh",
+    "source": "zh/portfolio/scad/anim275.md"
+  },
+  {
+    "title": "GAME 121：游戏开发导论",
+    "description": "使用 JavaScript 和 Microsoft MakeCode Arcade 开发的弹幕游戏 Boss Rush，包含可玩版本与游戏截图。",
+    "pubDate": "2026-11-09T00:00:00.000Z",
+    "pinned": true,
+    "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/zh/portfolio/scad/game121/",
+    "excerpt": "指导教授：Cyril Guichard Boss Rush Boss Rush 是我使用 JavaScript 和 Microsoft MakeCode Arcade 开发的第一款弹幕游戏。我在课程中通过教授了解到 MakeCode Arcade。在小组合作正式开始之前，我用了大约一周时间独立完成游戏初版，从玩法、美术到程序都由我自己设计和制作。 我此前有使用 Scratch 的经验，因此对这类可视化编程平台比较熟悉。之后我又不断扩展游戏的内容和系统，使 Boss Rush…",
+    "paragraphs": [
+      "Boss Rush 是我使用 JavaScript 和 Microsoft MakeCode Arcade 开发的第一款弹幕游戏。我在课程中通过教授了解到 MakeCode Arcade。在小组合作正式开始之前，我用了大约一周时间独立完成游戏初版，从玩法、美术到程序都由我自己设计和制作。",
+      "我此前有使用 Scratch 的经验，因此对这类可视化编程平台比较熟悉。之后我又不断扩展游戏的内容和系统，使 Boss Rush 逐渐发展为我持续独立开发的个人项目。",
+      "玩家在连续的 Boss 战中躲避弹幕、寻找攻击机会，并通过移动、盾牌和武器应对不同攻击。每个 Boss 都有专属机制，普通攻击则通过主弹幕与附加子模式随机组合，使重复挑战也会遇到不同的弹幕配置。",
+      "在线游玩 Boss Rush — v1.0.17",
+      "键盘操作：Z = 游戏机 A 键；X = 游戏机 B 键。 游戏原本面向游戏机操作，因此网页模拟器使用的键盘按键与游戏内的按键名称不同。",
+      "我为 Boss 制作了多种主弹幕模式和附加子模式。每次生成 Boss 时，系统会随机选择攻击组合，使同一名 Boss 在不同战斗中出现不同的弹幕变化。每个 Boss 还有自己的专属攻击，战斗风格由专属机制和随机弹幕共同构成。",
+      "LASER 的普通激光攻击由连续变化的激光弹幕组成，玩家需要观察弹幕轨迹，在移动中寻找躲避空间。",
+      "当 Boss 的生命值低于 30%，就会进入愤怒阶段，攻击方式随之强化。 DANMAKU 擅长密集旋转弹幕；WALL 的终极攻击在愤怒阶段会改变速度并反向运动。v1.0.17 降低了 DANMAKU 终极攻击的密度与旋转速度，同时强化了 WALL 与 RUSH 的愤怒阶段攻击。",
+      "召唤怪的大招会召唤更多敌人，将原本的单体 Boss 战变成多目标战斗，迫使玩家同时处理移动、弹幕和召唤物。",
+      "RUSH 的大招会在冲出屏幕后重新锁定玩家，并改变下一次冲锋方向。",
+      "LASER 在愤怒阶段强化终极攻击，形成由大型激光球组成的密集弹幕。程序会自动填补相邻大球之间的视觉空隙，消除大球交界处的粗糙边缘，使整体光束更加连续、完整。",
+      "HYBRID DUCK 可以强化其他 Boss。它的保护球与 RUSH、WALL 等 Boss 的攻击叠加，使多 Boss 战斗形成更复杂的弹幕组合。"
+    ],
+    "tags": [
+      "SCAD",
+      "游戏开发",
+      "JavaScript",
+      "MakeCode Arcade"
+    ],
+    "lang": "zh",
+    "source": "zh/portfolio/scad/game121.md"
+  },
+  {
+    "title": "GAME 130：数字设计美学",
+    "description": "使用 3ds Max 与 ZBrush 制作的三维练习，包括灭火器模型与狐狸角色。",
+    "pubDate": "2026-11-09T00:00:00.000Z",
+    "pinned": true,
+    "heroImage": "/assets/portfolio/scad/game130/3dsmax-02-fire-extinguisher-view-b.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/zh/portfolio/scad/game130/",
+    "excerpt": "指导教授：Gregory Johnson 项目一：灭火器三维建模 我使用 Autodesk 3ds Max 进行灭火器硬表面建模。筒身、阀门、把手、压力表与软管分别建模，再通过倒角和连接部件处理结构过渡；最后调整材质与灯光，区分各部件的表面质感。 项目二：狐狸角色雕刻 我使用 ZBrush 雕刻风格化狐狸，从头部、躯干和四肢的大体块开始，逐步处理耳朵与尾巴。角色采用夸张的大耳朵和简化的身体比例，并通过多角度检查调整轮廓与体块连接。",
+    "paragraphs": [
+      "我使用 Autodesk 3ds Max 进行灭火器硬表面建模。筒身、阀门、把手、压力表与软管分别建模，再通过倒角和连接部件处理结构过渡；最后调整材质与灯光，区分各部件的表面质感。",
+      "我使用 ZBrush 雕刻风格化狐狸，从头部、躯干和四肢的大体块开始，逐步处理耳朵与尾巴。角色采用夸张的大耳朵和简化的身体比例，并通过多角度检查调整轮廓与体块连接。"
+    ],
+    "tags": [
+      "SCAD",
+      "3ds Max",
+      "ZBrush",
+      "三维建模"
+    ],
+    "lang": "zh",
+    "source": "zh/portfolio/scad/game130.md"
+  },
+  {
+    "title": "The Star of Embarkation: Planet and Art",
+    "description": "Spherical plates, terrain and climate simulations for The Star of Embarkation, with an interactive globe.",
+    "pubDate": "2026-11-08T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/portfolio/embarkation/the-star-of-embarkation/",
+    "excerpt": "<PlanetContent /",
+    "paragraphs": [],
+    "tags": [
+      "Worldbuilding",
+      "The Star of Embarkation"
+    ],
+    "lang": "en",
+    "source": "portfolio/embarkation/the-star-of-embarkation.mdx"
+  },
+  {
+    "title": "启航星：行星与美术",
+    "description": "启航星的球面板块、地形与气候模拟，以及交互式行星展示。",
+    "pubDate": "2026-11-08T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/zh/portfolio/embarkation/the-star-of-embarkation/",
+    "excerpt": "<PlanetContent /",
+    "paragraphs": [],
+    "tags": [
+      "世界构建",
+      "启航星"
+    ],
+    "lang": "zh",
+    "source": "zh/portfolio/embarkation/the-star-of-embarkation.mdx"
+  },
+  {
+    "title": "Boss Rush",
+    "description": "My independently developed pixel-art bullet-hell game with five bosses, randomized patterns, custom encounters, and procedural visual effects.",
+    "pubDate": "2026-10-18T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/portfolio/personal/boss-rush/",
+    "excerpt": "Boss Rush Boss Rush is the first bullethell game I developed independently. I used JavaScript and Microsoft MakeCode Arcade to build its mechanics, pixel art, animation effects, and supporting systems. The first version took about a week to…",
+    "paragraphs": [
+      "Boss Rush is the first bullet-hell game I developed independently. I used JavaScript and Microsoft MakeCode Arcade to build its mechanics, pixel art, animation effects, and supporting systems. The first version took about a week to complete, and I continued adding bosses, attack combinations, interface features, and performance improvements afterward.",
+      "Successive boss battles form the core of the game. Each boss has a signature attack, while other attacks combine randomized main patterns and sub-patterns. The shield can block bullets or be thrown to damage enemies. Custom Boss mode lets players combine bosses and adjust their encounter settings.",
+      "You can play v1.0.17 below and explore the combat design, animations, original pixel art, and rendering optimizations.",
+      "Play Boss Rush - v1.0.17",
+      "Keyboard controls: Z = controller A; X = controller B. Boss Rush was designed around console-style buttons, while the browser simulator maps those buttons to keyboard keys.",
+      "Randomized Patterns and Signature Attacks",
+      "I developed a pool of main patterns and smaller sub-patterns that are randomly assigned when a boss spawns. Each boss has its own signature attack, allowing repeat encounters to vary while retaining a distinct combat identity.",
+      "LASER's regular attack sends shifting laser-projectile patterns across the arena. Players must read their trajectories and find openings while moving.",
+      "Boss Ultimates and Enraged Phases",
+      "Bosses enter the enraged phase below 30% HP, upgrading their attacks. DANMAKU specializes in dense rotating projectiles, while WALL changes the speed and reverses the direction of its ultimate attack during the enraged phase. Version 1.0.17 reduced DANMAKU's ultimate density and rotation speed while strengthening WALL's and RUSH's enraged attacks.",
+      "The summoning ultimate introduces additional enemies, turning a single-boss fight into a multi-target encounter where players must manage movement, projectiles, and summoned threats at once.",
+      "RUSH's ultimate attack re-targets the player and changes its charge direction each time it exits the screen."
+    ],
+    "tags": [
+      "Personal Work",
+      "Game Development"
+    ],
+    "lang": "en",
+    "source": "portfolio/personal/boss-rush.md"
+  },
+  {
+    "title": "Boss Rush",
+    "description": "我独立开发的像素弹幕游戏，包含五种首领、随机弹幕系统、自定义战斗和程序生成的美术特效。",
+    "pubDate": "2026-10-18T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/zh/portfolio/personal/boss-rush/",
+    "excerpt": "Boss Rush Boss Rush 是我独立开发的第一款弹幕游戏。我使用 JavaScript 和 Microsoft MakeCode Arcade 制作了玩法、像素美术、动画特效和游戏系统。初版开发大约花了一周，之后我继续加入更多 Boss、攻击组合、界面功能和性能优化。 游戏以连续 Boss 战为核心。每个 Boss 有自己的特殊攻击，其他攻击则由主弹幕和附加子模式随机组合。盾牌可以抵挡弹幕，也能投掷出去攻击敌人。自定义 Boss 模式允许玩家组合多名 Boss，并…",
+    "paragraphs": [
+      "Boss Rush 是我独立开发的第一款弹幕游戏。我使用 JavaScript 和 Microsoft MakeCode Arcade 制作了玩法、像素美术、动画特效和游戏系统。初版开发大约花了一周，之后我继续加入更多 Boss、攻击组合、界面功能和性能优化。",
+      "游戏以连续 Boss 战为核心。每个 Boss 有自己的特殊攻击，其他攻击则由主弹幕和附加子模式随机组合。盾牌可以抵挡弹幕，也能投掷出去攻击敌人。自定义 Boss 模式允许玩家组合多名 Boss，并调整战斗条件。",
+      "在线游玩 Boss Rush — v1.0.17",
+      "键盘操作：Z = 游戏机 A 键；X = 游戏机 B 键。 游戏原本面向游戏机操作，因此网页模拟器使用的键盘按键与游戏内的按键名称不同。",
+      "我为 Boss 制作了多种主弹幕模式和附加子模式。每次生成 Boss 时，系统会随机选择攻击组合，使同一名 Boss 在不同战斗中出现不同的弹幕变化。每个 Boss 还有自己的专属攻击，战斗风格由专属机制和随机弹幕共同构成。",
+      "LASER 的普通激光攻击由连续变化的激光弹幕组成，玩家需要观察弹幕轨迹，在移动中寻找躲避空间。",
+      "当 Boss 的生命值低于 30%，就会进入愤怒阶段，攻击方式随之强化。 DANMAKU 擅长密集旋转弹幕；WALL 的终极攻击在愤怒阶段会改变速度并反向运动。v1.0.17 降低了 DANMAKU 终极攻击的密度与旋转速度，同时强化了 WALL 与 RUSH 的愤怒阶段攻击。",
+      "召唤怪的大招会召唤更多敌人，将原本的单体 Boss 战变成多目标战斗，迫使玩家同时处理移动、弹幕和召唤物。",
+      "RUSH 的大招会在冲出屏幕后重新锁定玩家，并改变下一次冲锋方向。",
+      "LASER 在愤怒阶段强化终极攻击，形成由大型激光球组成的密集弹幕。程序会自动填补相邻大球之间的视觉空隙，消除大球交界处的粗糙边缘，使整体光束更加连续、完整。",
+      "HYBRID DUCK 可以强化其他 Boss。它的保护球与 RUSH、WALL 等 Boss 的攻击叠加，使多 Boss 战斗形成更复杂的弹幕组合。",
+      "盾牌可以防御弹幕，也能投掷出去伤害敌人。这一机制的灵感来自《Danmaku Death》，使玩家能够在防御与进攻之间主动切换。"
+    ],
+    "tags": [
+      "个人创作",
+      "游戏开发"
+    ],
+    "lang": "zh",
+    "source": "zh/portfolio/personal/boss-rush.md"
+  },
+  {
+    "title": "The Mimetic Braincase",
+    "description": "A mechanical enemy from The Star of Embarkation, created by combining human augmentation with Legacy technology.",
+    "pubDate": "2026-10-08T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/scad/anim275/p2-04-final-render.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/portfolio/embarkation/hive-queen-life-case/",
+    "excerpt": "The Mimetic Braincase The Mimetic Braincase is an enemy I designed for my original series, The Star of Embarkation. Its brain resides inside a mechanical container disguised as a suitcase. The hidden controller can operate multiple clones a…",
+    "paragraphs": [
+      "The Mimetic Braincase",
+      "The Mimetic Braincase is an enemy I designed for my original series, The Star of Embarkation. Its brain resides inside a mechanical container disguised as a suitcase. The hidden controller can operate multiple clones at once, using their coordinated actions while keeping its actual body concealed and mobile outside the immediate fight.",
+      "The Star of Embarkation takes place after humanity escapes a collapsing Earth aboard the Embarkation Vessel and reaches an unfamiliar planet. The vessel crashes during landing, leaving behind advanced equipment and wreckage from Earth. These technological remnants are known as the Legacy. They cannot be manufactured or replicated on the new world, making them extremely valuable. The planet's native Fiber also suppresses conventional electrical and thermal technology; many Legacy devices remain unaffected, making them especially important.",
+      "The Mimetic Braincase combines Legacy technology with human augmentation. It uses this irreplaceable technology to house a transplanted human brain in a suitcase-shaped mechanical container and control cloned bodies through neural interfaces.",
+      "Prop Design and Rendering",
+      "For the course prop project, I chose this mechanically complex enemy from The Star of Embarkation to practice rendering different geometric forms and materials. Its design includes mechanical arms, a leather suitcase, and two gun barrels under the case. I focused on the metallic finish of the arms, the leather texture of the case, and the metal of the gun barrels, while trying to make the mechanical connections plausible.",
+      "The original sketch contained so many connected parts that keeping the perspective accurate became difficult. I built a simplified model in Maya to establish the component positions and perspective, then used it as reference for the final two-dimensional painting. The shadows also drew on the three-dimensional model and were rendered in Photoshop. This workflow helped me maintain the structure while concentrating on different material qualities.",
+      "The Brain and Its Clones",
+      "I took inspiration from the hive structure in Ender's Game: as long as the hidden controller survives, it can continue operating other bodies.",
+      "Neural interfaces can be implanted in different locations, including both the brain and spinal cord of the same clone. Even if a clone suffers an otherwise fatal head injury, the controller can continue directing its movements through the spinal interface. One controller can command several clones simultaneously, coordinating them in combat and effectively forming an army of one. If a clone dies, its controller still receives the information that clone acquired. This makes the system valuable for both combat and intelligence gathering.",
+      "Concealment and Connection Limits",
+      "The brain container is disguised as an ordinary suitcase that a clone can carry. Concealed mechanical legs allow it to move at high speed like a spider. Because of this mobility, the small container can conceal itself underground, in grass, or high in trees, far from the center of a fight. In a complex environment, a searcher would find it almost impossible to locate without a way to determine its position first."
+    ],
+    "tags": [
+      "The Star of Embarkation",
+      "Enemy Design"
+    ],
+    "lang": "en",
+    "source": "portfolio/embarkation/hive-queen-life-case.md"
+  },
+  {
+    "title": "虫后生命之箱",
+    "description": "启航星系列中的机械生命敌人，依靠隐藏的大脑本体控制多个克隆体。",
+    "pubDate": "2026-10-08T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/scad/anim275/p2-04-final-render.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/zh/portfolio/embarkation/hive-queen-life-case/",
+    "excerpt": "虫后生命之箱 《虫后生命之箱》是我为原创《启航星》系列设计的敌人。它将大脑转移到一个伪装成手提箱的机械容器中，由隐藏在战场外的本体同时操控多个克隆体。它的威胁来自克隆体之间的协作，真正的本体则依靠伪装和高速移动避开追捕。 世界观背景：遗产 《启航星》的故事发生在人类逃离濒临毁灭的地球，乘坐启航舰抵达一颗陌生行星之后。启航舰在降落时坠毁，留下了一批来自地球的高科技设备和残骸。这些技术遗物被称为“遗产”，由于无法在启航星重新生产或复制，因此十分珍贵。当地的“纤维”还会抑制人类惯用…",
+    "paragraphs": [
+      "《虫后生命之箱》是我为原创《启航星》系列设计的敌人。它将大脑转移到一个伪装成手提箱的机械容器中，由隐藏在战场外的本体同时操控多个克隆体。它的威胁来自克隆体之间的协作，真正的本体则依靠伪装和高速移动避开追捕。",
+      "《启航星》的故事发生在人类逃离濒临毁灭的地球，乘坐启航舰抵达一颗陌生行星之后。启航舰在降落时坠毁，留下了一批来自地球的高科技设备和残骸。这些技术遗物被称为“遗产”，由于无法在启航星重新生产或复制，因此十分珍贵。当地的“纤维”还会抑制人类惯用的电力与热能技术，许多不受纤维影响的遗产因此更加重要。",
+      "虫后生命之箱就是利用“遗产”技术与人体组合改造的产物。 它借助这些无法复制的地球技术，将人的大脑移植到手提箱形状的机械容器内，再通过神经接口远程控制多个克隆体。",
+      "在课程道具作业中，我选择把《启航星》系列里的这个敌人制作成机械设计图，主要练习不同几何体和材料的渲染。它包含机械臂、皮革箱体与箱体下方的两根枪管，我想突出机械臂的金属质感、箱包的皮革质感和枪管的金属表面，同时尽可能设计合理的机械连接结构。",
+      "由于草图的透视与零件关系比较复杂，我在玛雅中制作了简化的三维模型，并以模型为参考完成最终二维画面。画中的投影也参考了三维模型，再在图像处理软件中进行绘制。这使我能够在复杂结构中维持透视关系，并集中研究不同材质的表现。",
+      "控制方式的灵感来自《安德的游戏》中虫族首领与虫群的关系：只要隐藏的真正本体没有被击败，敌人就可以继续操控其他身体。",
+      "神经接口可以植入克隆体不同部位，例如同时植入大脑与脊髓。即使克隆体的头部遭受正常意义上的致命伤，也可以通过脊髓中的神经接口继续操控克隆体行动。一个本体可以同时操控多个克隆体，让它们在战斗中协同配合，甚至达到一人成军的效果。克隆体死亡后，本体也能获得相关信息，因此这种控制方式在战斗与情报收集方面都具有优势。",
+      "容器平时看起来是一只普通手提箱，可以由克隆体随身携带。它还隐藏着能够像蜘蛛一样高速移动的机械足。隐藏式机械足让它拥有很强的移动与逃亡能力，能够藏在地下、草丛、树顶等难以想到的位置。由于它体积小、隐蔽性强，在复杂环境中，如果无法先通过某种方法确定手提箱的具体位置，搜寻者几乎不可能直接找到本体。",
+      "这套系统有一项限制：克隆体与手提箱之间的连接范围有限，连接区域是以手提箱为圆心的一个圆。所有克隆体都必须保持连接才能维持行动。出于避免黑客攻击的设定，克隆体断线后也无法自行重新连接。本体虽然具有很强的逃亡能力，却仍然需要尽力使珍贵的克隆体维持在连接范围之内。",
+      "克隆体负责围攻和收集情报，本体则隐藏在战场外。搜寻者可以利用它们必须维持连接的限制，反推本体的位置。",
+      "搜寻者首先需要发现多个克隆体由同一个隐藏的本体控制。接着观察克隆体的行动，发现它们始终受到一个连接范围的限制。但即使知道存在连接边界，仍然无法直接确定圆形范围的半径和圆心。我设计了一种利用几何关系寻找本体的方法，并画了五张原理图展示这一过程。",
+      "[[portfolio/scad/anim275]]"
+    ],
+    "tags": [
+      "启航星",
+      "敌人设计"
+    ],
+    "lang": "zh",
+    "source": "zh/portfolio/embarkation/hive-queen-life-case.md"
+  },
+  {
+    "title": "The Embarkation Plan: A Rift",
+    "description": "The conflict between Dyson and Lucian over the Embarkation Plan in The Star of Embarkation.",
+    "pubDate": "2026-10-05T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/scad/anim275/p4-03-six-panel-storyboard.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/portfolio/embarkation/embarkation-conflict/",
+    "excerpt": "The Rift Within the Embarkation Plan Dyson and Lucian once shared the same ideals and worked together on the Embarkation Plan. Its emblem represents both those shared ambitions and the relationship they once had. Over time, their ideas abou…",
+    "paragraphs": [
+      "The Rift Within the Embarkation Plan",
+      "Dyson and Lucian once shared the same ideals and worked together on the Embarkation Plan. Its emblem represents both those shared ambitions and the relationship they once had. Over time, their ideas about the future came into conflict.",
+      "Lucian wants to destroy the elves through war. In the storyboard adaptation of this scene, he points a gun at a map to express that intention. Their opposing beliefs eventually drive them apart.",
+      "In the planned story of The Star of Embarkation, both believe that they alone truly represent the Embarkation Plan. Each holds to their own understanding of its original ideals. Even after they part ways, neither wants to surrender the emblem of the plan. Their conflicting claims to the same ideals are central to the dispute.",
+      "I adapted this story into a six-panel storyboard, reducing nine sketches to six and ending with Dyson leaving and discarding the emblem. That final gesture belongs only to the coursework adaptation; in the main story, neither Dyson nor Lucian gives up the emblem.",
+      "[[portfolio/scad/anim275]]"
+    ],
+    "tags": [
+      "The Star of Embarkation",
+      "Story Development"
+    ],
+    "lang": "en",
+    "source": "portfolio/embarkation/embarkation-conflict.md"
+  },
+  {
+    "title": "启航计划的决裂",
+    "description": "启航星系列中迪崇与炽洛因对启航计划的理解不同而发生的冲突。",
+    "pubDate": "2026-10-05T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/scad/anim275/p4-03-six-panel-storyboard.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/zh/portfolio/embarkation/embarkation-conflict/",
+    "excerpt": "启航计划的决裂 迪崇与炽洛曾经拥有共同的理想，也曾在启航计划中一起工作。启航计划的徽章象征他们曾经共同认同的目标和过去的关系。后来，两人对未来的看法发生了根本冲突。 炽洛希望通过战争摧毁精灵。这个想法在故事分镜中由他用枪指向地图的动作表现出来。双方的理念逐渐对立，最终走向决裂。 在《启航星》的正式故事中，双方都认为自己才是真正代表启航计划的一方。 他们各自坚持对原有理想的理解，因而即使发生决裂，也不愿意放弃启航计划的徽章。这种对同一理想的不同坚持，是两人冲突的一部分。 我把这…",
+    "paragraphs": [
+      "迪崇与炽洛曾经拥有共同的理想，也曾在启航计划中一起工作。启航计划的徽章象征他们曾经共同认同的目标和过去的关系。后来，两人对未来的看法发生了根本冲突。",
+      "炽洛希望通过战争摧毁精灵。这个想法在故事分镜中由他用枪指向地图的动作表现出来。双方的理念逐渐对立，最终走向决裂。",
+      "在《启航星》的正式故事中，双方都认为自己才是真正代表启航计划的一方。 他们各自坚持对原有理想的理解，因而即使发生决裂，也不愿意放弃启航计划的徽章。这种对同一理想的不同坚持，是两人冲突的一部分。",
+      "我把这段故事改编为六格分镜，将九张草图精简为六张，并在结尾安排迪崇离去、丢弃徽章。丢弃徽章只发生在课程分镜中；正式故事里，迪崇和炽洛都不会放弃徽章。",
+      "[[portfolio/scad/anim275]]"
+    ],
+    "tags": [
+      "启航星",
+      "故事创作"
+    ],
+    "lang": "zh",
+    "source": "zh/portfolio/embarkation/embarkation-conflict.md"
+  },
+  {
+    "title": "The Forerunners",
+    "description": "Character design: The Forerunners. Exploration, Creation, Courage. Explore the unknown, create possibility, and fight for humanity's future in desperate times.",
+    "pubDate": "2026-09-14T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/embarkation/Forerunners/Forerunners.webp",
+    "heroImagePosition": "center center",
+    "heroImageWidth": "120%",
+    "url": "/portfolio/embarkation/forerunners/",
+    "excerpt": "The Forerunners: Exploration, Creation, Courage. Around 2070, war and ecological collapse pushed Earth toward the end of civilization. To keep humanity alive, a group of survivors secretly launched The Embarkation Plan. Its aim was desperat…",
+    "paragraphs": [
+      "The Forerunners: Exploration, Creation, Courage.",
+      "Around 2070, war and ecological collapse pushed Earth toward the end of civilization. To keep humanity alive, a group of survivors secretly launched The Embarkation Plan. Its aim was desperate: build the Embarkation Vessel and leave the Solar System through still-immature wormhole technology. The odds were almost hopeless, but the plan succeeded. The vessel crossed the wormhole and, after years of flight, reached an unfamiliar planet. It crashed on landing; about ten thousand survived, rescued by the planet's Sylphs. Humanity named this world The Star of Embarkation. The five leaders turned a nearly impossible escape into reality, earning immense prestige among the first survivors. Together, they came to be called — The Forerunners.",
+      "Dyson was the plan's chief engineer, leading the vessel's design, coordination, and hardware architecture. He fused Seth's core technology with Linnea's life-support system, turning separate fields into one finished work of engineering — the Embarkation Vessel. He demanded uncompromising quality in design and construction, yet remained warm, lively, and able to ease the pressure of long construction with humor. His precision and bright presence made him one of the plan's most charismatic leaders.",
+      "Seth was the plan's core physicist, leading key research and experimental wormhole development. After the vessel was built, he remained in charge of theory, route calculation, and navigation. Calm and terse, he trusted calculation, evidence, and logic. Once convinced, he rarely changed course. That stubbornness carried him through years of difficult research, and made him unyielding in disagreement. The wormhole was the technology the plan depended on; in time, it became the plan's symbol and even its emblem. Most ordinary members could not truly understand Seth's work and kept their distance, but everyone knew humanity's departure from the Solar System was tied to this silent physicist.",
+      "Lucian the Politician",
+      "Before the Embarkation Vessel was finished, it had already become something worth going to war over on a dying Earth. The engineers faced more than technical problems: warlords, panic, resource conflict, and a social order nearing collapse. Lucian handled all of it.",
+      "Lucian was the plan's politician. During construction, he led military forces against warlords trying to seize the vessel, while keeping the construction system running through war, scarcity, and prolonged psychological strain. After departure, he continued to manage society aboard the ship. Confident and responsible, he organized people, set clear goals, and made quick decisions in crisis. He gave people a sense of security the apocalypse had never offered. The trust he earned later became an important foundation of his political power.",
+      "Linnea was the plan's biologist, leading medicine, life support, and ecological cycle design. The Embarkation Vessel could not carry unlimited air, water, or food; the endurance of its ecology determined how long it could fly. Linnea was one of the few technical leaders whose work touched life itself. She had deep specialist training, but no technocrat's manner. Even at the plan's most intense moments, she remained gentle and open.",
+      "The plan needed resources far beyond an ordinary spacecraft. By then, Earth's economic, industrial, and supply systems were collapsing in war. Weapons, equipment, materials, and daily supplies still had to arrive; without them, even the best design stayed on paper. Hilda was the plan's economist, securing weapons, materials, and supplies for construction, then managing production and allocation during the voyage. Pragmatic and independent, she had a strong instinct for exploration. She read situations well and knew when to advance or retreat among competing interests. Her tact let her move among shifting parties; her judgment kept her from trusting any one method, channel, or relationship forever. Ordinary members understood her less directly than Lucian, and her work had no clear symbol l…",
+      "The five Forerunners represented engineering, science, order, life, and resources. Only with every one of these links could the Embarkation Vessel be built, leave Earth, complete its long voyage, and let humanity rebuild society in another world. Without any one of them, none of it could have happened. To the first survivors, these names came from living memory: they had carried humanity from the end of an old civilization to the beginning of a new one."
+    ],
+    "tags": [
+      "Character Design",
+      "The Star of Embarkation"
+    ],
+    "lang": "en",
+    "source": "portfolio/embarkation/forerunners.md"
+  },
+  {
     "title": "先行者",
     "description": "角色设计: 先行者 探索、创造、勇敢。探索未知，创造可能，在绝境中为人类文明争取未来。",
     "pubDate": "2026-09-14T00:00:00.000Z",
@@ -17,9 +434,8 @@
       "启航舰尚未完成时，它就已经成了末日地球上值得发动战争争夺的东西。工程团队面对的不只是技术问题，还有军阀、恐慌、资源冲突，以及越来越接近崩溃的社会秩序。炽洛负责处理这一切。",
       "炽洛是启航计划的政治家。飞船建设期间，他负责带领军队抵御试图夺取启航舰的军阀，并在战争、资源短缺和长期心理压力下维持建设体系的正常运转；航行开始后，他继续负责飞船社会的管理。炽洛自信，责任感强，善于组织人员、明确目标并在危机中迅速作出决策。他给民众带来的是末日从来没有的安全感，这也使许多人对他的判断保持很高的信任，而这种信任后来成为他政治力量的重要基础。",
       "林内亚是启航计划的生物学家，负责医疗体系、维生系统与生态循环设计。启航舰无法无限携带空气、水和食物，因此生态循环能够维持多久，直接决定了飞船能够航行多久。林内亚也是计划中少数直接以“生命本身”为工作对象的技术负责人。她拥有高度专业化的背景，却没有技术官僚式的作风；即使在计划最紧张的时期，仍保持温和、开放的态度。",
-      "启航计划需要的资源规模远远超过一艘普通飞船，而计划实施时，地球原有的经济、工业和供应体系正在战争中瓦解。武器、设备、材料和生活物资仍然必须持续供应，否则再成熟的设计也只能停留在图纸上。海乐德负责维持这套不断收缩的物质基础。",
-      "海乐德是启航计划的经济学家，负责获取建设所需的武器、材料与物资，并在航行阶段管理生产和资源分配。她务实、独立，有很强的探索倾向，善于判断局势，也熟悉利益关系中的进退尺度。圆滑使她能够在不断变化的环境中与不同对象周旋，而审时度势则让她很少把某一种办法、渠道或关系视为永久可靠。普通成员对她的认识往往不像对炽洛那样直接，也不像迪崇的飞船那样具有明确的象征物；海乐德的作用更多隐藏在计划每天仍然能够获得材料、维持生产和继续建设这一事实之中。海乐德的工作材料、设备和补给能否持续到位，直接决定着启航舰的建造能不能继续。",
-      "五位先行者分别代表工程、科学、秩序、生命与资源。启航舰能够建成、离开地球、完成远航，并最终让人类在另一个世界重新建立社会，缺少其中任何一环都无法实现。对第一代幸存者而言，这些名字来自仍然鲜活的记忆：他们亲手把人类把人类从旧文明的终点带到新文明的起点。这就是“先行者”这个称呼真正的来源。"
+      "启航计划需要的资源规模远远超过一艘普通飞船，而计划实施时，地球原有的经济、工业和供应体系正在战争中瓦解。武器、设备、材料和生活物资仍然必须持续供应，否则再成熟的设计也只能停留在图纸上。海乐德是启航计划的经济学家，负责获取建设所需的武器、材料与物资，并在航行阶段管理生产和资源分配。她务实、独立，有很强的探索倾向，善于判断局势，也熟悉利益关系中的进退尺度。圆滑使她能够在不断变化的环境中与不同对象周旋，而审时度势则让她很少把某一种办法、渠道或关系视为永久可靠。普通成员对她的认识往往不像对炽洛那样直接，也不像迪崇的飞船那样具有明确的象征物；海乐德的作用更多隐藏在计划每天仍然能够获得材料、维持生产和继续建设这一事实之中。",
+      "五位先行者分别代表工程、科学、秩序、生命与资源。启航舰能够建成、离开地球、完成远航，并最终让人类在另一个世界重新建立社会，缺少其中任何一环都无法实现。对第一代幸存者而言，这些名字来自仍然鲜活的记忆：他们亲手将人类从旧文明的终点带到新文明的起点。"
     ],
     "tags": [
       "角色设计",
@@ -599,33 +1015,5 @@
     ],
     "lang": "zh",
     "source": "zh/portfolio/personal/line-field-360.md"
-  },
-  {
-    "title": "forerunners",
-    "description": "",
-    "pubDate": null,
-    "pinned": false,
-    "heroImage": null,
-    "heroImagePosition": null,
-    "heroImageWidth": null,
-    "url": "/portfolio/embarkation/forerunners/",
-    "excerpt": "title: The Forerunners description: \"Character design: The Forerunners. Exploration, Creation, Courage. Explore the unknown, create possibility, and fight for humanity's future in desperate times.\" pubDate: 20260914 displayLayout: single im…",
-    "paragraphs": [
-      "--- title: The Forerunners description: \"Character design: The Forerunners. Exploration, Creation, Courage. Explore the unknown, create possibility, and fight for humanity's future in desperate times.\" pubDate: 2026-09-14 displayLayout: single image: /assets/portfolio/embarkation/Forerunners/Forerunners.webp imagePosition: center center heroImage: /assets/portfolio/embarkation/Forerunners/Forerunners.webp heroImagePosition: center center heroImageWidth: 120% tags: - Character Design - The Star of Embarkation ---",
-      "The Forerunners: Exploration, Creation, Courage.",
-      "Explore the unknown, create possibility, and fight for humanity's future in desperate times.",
-      "Around 2070, war and ecological collapse pushed Earth toward the end of civilization. To keep humanity alive, a group of survivors secretly launched The Embarkation Plan. Its aim was desperate: build the Embarkation Vessel and leave the Solar System through still-immature wormhole technology. The odds were almost hopeless, but the plan succeeded. The vessel crossed the wormhole and, after years of flight, reached an unfamiliar planet. It crashed on landing; about ten thousand survived, rescued by the planet's Sylphs. Humanity named this world The Star of Embarkation. The five leaders turned a nearly impossible escape into reality, earning immense prestige among the first survivors. Together, they came to be called — The Forerunners.",
-      "Dyson was the plan's chief engineer, leading the vessel's design, coordination, and hardware architecture. He fused Seth's core technology with Linnea's life-support system, turning separate fields into one finished work of engineering — the Embarkation Vessel. He demanded uncompromising quality in design and construction, yet remained warm, lively, and able to ease the pressure of long construction with humor. His precision and bright presence made him one of the plan's most charismatic leaders.",
-      "Seth was the plan's core physicist, leading key research and experimental wormhole development. After the vessel was built, he remained in charge of theory, route calculation, and navigation. Calm and terse, he trusted calculation, evidence, and logic. Once convinced, he rarely changed course. That stubbornness carried him through years of difficult research, and made him unyielding in disagreement. The wormhole was the technology the plan depended on; in time, it became the plan's symbol and even its emblem. Most ordinary members could not truly understand Seth's work and kept their distance, but everyone knew humanity's departure from the Solar System was tied to this silent physicist.",
-      "Lucian the Politician",
-      "Before the Embarkation Vessel was finished, it had already become something worth going to war over on a dying Earth. The engineers faced more than technical problems: warlords, panic, resource conflict, and a social order nearing collapse. Lucian handled all of it.",
-      "Lucian was the plan's politician. During construction, he led military forces against warlords trying to seize the vessel, while keeping the construction system running through war, scarcity, and prolonged psychological strain. After departure, he continued to manage society aboard the ship. Confident and responsible, he organized people, set clear goals, and made quick decisions in crisis. He gave people a sense of security the apocalypse had never offered. The trust he earned later became an important foundation of his political power.",
-      "Linnea was the plan's biologist, leading medicine, life support, and ecological cycle design. The Embarkation Vessel could not carry unlimited air, water, or food; the endurance of its ecology determined how long it could fly. Linnea was one of the few technical leaders whose work touched life itself. She had deep specialist training, but no technocrat's manner. Even at the plan's most intense moments, she remained gentle and open.",
-      "The plan needed resources far beyond an ordinary spacecraft. By then, Earth's economic, industrial, and supply systems were collapsing in war. Weapons, equipment, materials, and daily supplies still had to arrive; without them, even the best design stayed on paper. Hilda held this shrinking material foundation together.",
-      "Hilda was the plan's economist, securing weapons, materials, and supplies for construction, then managing production and allocation during the voyage. Pragmatic and independent, she had a strong instinct for exploration. She read situations well and knew when to advance or retreat among competing interests. Her tact let her move among shifting parties; her judgment kept her from trusting any one method, channel, or relationship forever. Ordinary members understood her less directly than Lucian, and her work had no clear symbol like Dyson's ship. More often, Hilda's role was hidden in a simple fact: day after day, the plan still secured materials, kept production alive, and continued construction. Whether her supplies kept arriving directly determined whether the Embarkation Vessel could co…"
-    ],
-    "tags": [],
-    "lang": "en",
-    "source": "portfolio/embarkation/forerunners.md"
   }
 ]
