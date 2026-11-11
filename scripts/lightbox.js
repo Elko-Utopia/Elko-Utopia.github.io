@@ -74,10 +74,12 @@
       const src = resolveSource(img);
       if (!src) return;
       if (img === clickedImg) startIndex = items.length;
+      const fullWidth = Number(img.dataset.fullWidth);
+      const fullHeight = Number(img.dataset.fullHeight);
       items.push({
         src: src,
-        width: img.naturalWidth || 1600,
-        height: img.naturalHeight || 900,
+        width: Number.isFinite(fullWidth) && fullWidth > 0 ? fullWidth : img.naturalWidth || 1600,
+        height: Number.isFinite(fullHeight) && fullHeight > 0 ? fullHeight : img.naturalHeight || 900,
         alt: img.alt || '',
         element: img,
         msrc: img.currentSrc || img.src,
@@ -99,6 +101,20 @@
         dataSource: items,
         index: startIndex,
 
+        // PhotoSwipe's 'fit' never enlarges beyond native resolution.
+        // Enlarge small illustrations on open, while large photos keep standard fit.
+        initialZoomLevel: function (zoom) {
+          const size = zoom.elementSize;
+          const area = zoom.panAreaSize;
+          if (!size || !area || !size.x || !size.y) return zoom.fit;
+          if (size.x > 512 || size.y > 512) return zoom.fit;
+          const magnification = Math.min(
+            (area.x * 0.85) / size.x,
+            (area.y * 0.8) / size.y,
+            24
+          );
+          return Math.max(zoom.fit, Math.max(1, magnification));
+        },
         bgOpacity: 0.9,
         spacing: 0.1,
         loop: false,

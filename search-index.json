@@ -1,5 +1,41 @@
 [
   {
+    "title": "The Star of Embarkation: Planet and Art",
+    "description": "Spherical plates, terrain and climate simulations for The Star of Embarkation, with an interactive globe.",
+    "pubDate": "2026-11-10T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/portfolio/embarkation/the-star-of-embarkation/",
+    "excerpt": "<PlanetContent /",
+    "paragraphs": [],
+    "tags": [
+      "Worldbuilding",
+      "The Star of Embarkation"
+    ],
+    "lang": "en",
+    "source": "portfolio/embarkation/the-star-of-embarkation.mdx"
+  },
+  {
+    "title": "启航星：行星与美术",
+    "description": "启航星的球面板块、地形与气候模拟，以及交互式行星展示。",
+    "pubDate": "2026-11-10T00:00:00.000Z",
+    "pinned": false,
+    "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "url": "/zh/portfolio/embarkation/the-star-of-embarkation/",
+    "excerpt": "<PlanetContent /",
+    "paragraphs": [],
+    "tags": [
+      "世界构建",
+      "启航星"
+    ],
+    "lang": "zh",
+    "source": "zh/portfolio/embarkation/the-star-of-embarkation.mdx"
+  },
+  {
     "title": "ANIM 275: Core Principles of Animated Storytelling and Concept Development",
     "description": "Cemetery lighting, a crystalline desert spaceship, The Mimetic Braincase, an Ori-style character, and a scene from The Star of Embarkation.",
     "pubDate": "2026-11-09T00:00:00.000Z",
@@ -177,42 +213,6 @@
     ],
     "lang": "zh",
     "source": "zh/portfolio/scad/game130.md"
-  },
-  {
-    "title": "The Star of Embarkation: Planet and Art",
-    "description": "Spherical plates, terrain and climate simulations for The Star of Embarkation, with an interactive globe.",
-    "pubDate": "2026-11-08T00:00:00.000Z",
-    "pinned": false,
-    "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png",
-    "heroImagePosition": null,
-    "heroImageWidth": null,
-    "url": "/portfolio/embarkation/the-star-of-embarkation/",
-    "excerpt": "<PlanetContent /",
-    "paragraphs": [],
-    "tags": [
-      "Worldbuilding",
-      "The Star of Embarkation"
-    ],
-    "lang": "en",
-    "source": "portfolio/embarkation/the-star-of-embarkation.mdx"
-  },
-  {
-    "title": "启航星：行星与美术",
-    "description": "启航星的球面板块、地形与气候模拟，以及交互式行星展示。",
-    "pubDate": "2026-11-08T00:00:00.000Z",
-    "pinned": false,
-    "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png",
-    "heroImagePosition": null,
-    "heroImageWidth": null,
-    "url": "/zh/portfolio/embarkation/the-star-of-embarkation/",
-    "excerpt": "<PlanetContent /",
-    "paragraphs": [],
-    "tags": [
-      "世界构建",
-      "启航星"
-    ],
-    "lang": "zh",
-    "source": "zh/portfolio/embarkation/the-star-of-embarkation.mdx"
   },
   {
     "title": "Boss Rush",
@@ -590,14 +590,14 @@
     "paragraphs": [
       "Project 1: Master Drawing Remix",
       "The purpose of this project is for students to imitate a master's work to learn their techniques. Students need to incorporate a master's work into their drawing, add their own original elements, and keep the composition as harmonious as possible.",
-      "\"A Faith Beyond Understanding\" 22 × 33 inch Grey Rives BFK Paper, Black and White Charcoal",
-      "This artwork participated in the SCAD Foundation Studies Honors Exhibition 2026 and was selected as a finalist in the awards. This drawing incorporates Albrecht Dürer's \"Praying Hands\" and features a goat head drawn in an imitation of his style. I drafted it on grey paper using black and white charcoal. Meanwhile, the clothing patterns of the figure are inspired by traditional Tibetan attire; I attempted to use its rich decorative details and intricate patterns to add an exotic atmosphere to the composition.",
+      "\"A Faith Beyond Understanding\" 22 × 30 in Gray Rives BFK Paper, Black and White Charcoal",
+      "This artwork participated in the SCAD Foundation Studies Honors Exhibition 2026 and was selected as a finalist in the awards. This drawing incorporates Albrecht Dürer's \"Praying Hands\" and features a goat head drawn in an imitation of his style. I drafted it on gray paper using black and white charcoal. Meanwhile, the clothing patterns of the figure are inspired by traditional Tibetan attire; I attempted to use its rich decorative details and intricate patterns to add an exotic atmosphere to the composition.",
       "During the conceptualization process, I strove to create an atmosphere where tranquility and unfamiliarity coexist, which is why I chose the elements in the composition: prayer, a goat, and ethnic minority clothing. The praying hands possess a sense of the sacred, while the goat is a symbol of the devil in Western culture, and the Tibetan clothing also carries an exotic vibe and a sense of the unfamiliar.",
-      "Secondly, in terms of composition, the goat head, the hands, and the clothing serve as focal points, forming a stable triangular structure. The goat's leftward gaze also guides the flow of the image, preventing the top-left corner from feeling empty. Drawing on grey paper better mimics Dürer's original work and effectively enriches the image.",
+      "Secondly, in terms of composition, the goat head, the hands, and the clothing serve as focal points, forming a stable triangular structure. The goat's leftward gaze also guides the flow of the image, preventing the top-left corner from feeling empty. Drawing on gray paper better mimics Dürer's original work and effectively enriches the image.",
       "At the same time, I also used color grading tools to create a color-graded version.",
       "Project 3: Dramatic Mood Narrative",
       "In this project, students are required to take a photograph with distinct light and shadow and a dramatic perspective angle, and then create a derivative work based on it, focusing on practicing perspective and the sense of lighting.",
-      "\"Melancholy\" 22 × 33 inch Blue Rives BFK Paper, Black and White Charcoal",
+      "\"Melancholy\" 22 × 30 in Blue Rives BFK Paper, Black and White Charcoal",
       "This drawing primarily conveys an oppressive atmosphere. It uses a blue tone as the base and mainly relies on white for highlights. A major difficulty with this drawing is that the paper has high saturation and is inherently a mid-tone, while mixing white and black charcoal can make the image look muddy, leaving very little room for error when making corrections. My composition referenced a cinematic shot from \"Requiem for a Dream.\"",
       "RequiemforaDream.webp The upper half of this cinematic shot is enveloped in a black gradient, presenting an oppressive atmosphere. This method not only aligns with the theme of my drawing but also intensifies the \"infinite\" feel of the buildings in the frame."
     ],

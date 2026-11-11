@@ -87,14 +87,6 @@
       1024
     ]
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/climate/classification-t85-164.png": {
-    "bytes": 94758,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
-  },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/climate/landmask.png": {
     "bytes": 110333,
     "widths": [
@@ -119,16 +111,16 @@
       1024
     ]
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/geography-7200.webp": {
-    "bytes": 293184,
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/accumulation-detail.png": {
+    "bytes": 1187482,
     "widths": [
       320,
       640,
       1024
     ]
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/accumulation.png": {
-    "bytes": 2710229,
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/accumulation-overview.png": {
+    "bytes": 651051,
     "widths": [
       320,
       640,
@@ -136,7 +128,39 @@
     ]
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/drainage.png": {
-    "bytes": 1393729,
+    "bytes": 641005,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/erosion-after-rivers.png": {
+    "bytes": 1304455,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/erosion-before-rivers.png": {
+    "bytes": 1301580,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/r002-final.png": {
+    "bytes": 598592,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/r002-mainland-coast.png": {
+    "bytes": 360732,
     "widths": [
       320,
       640,
@@ -144,7 +168,7 @@
     ]
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/rivers.png": {
-    "bytes": 1526829,
+    "bytes": 1423076,
     "widths": [
       320,
       640,
@@ -191,40 +215,8 @@
       1024
     ]
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/07.webp": {
-    "bytes": 54746,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/08.webp": {
-    "bytes": 49462,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/09.webp": {
-    "bytes": 112942,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
-  },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/10.webp": {
     "bytes": 111074,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/11.webp": {
-    "bytes": 214178,
     "widths": [
       320,
       640,
@@ -247,120 +239,56 @@
       1024
     ]
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/14.webp": {
-    "bytes": 270882,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
-  },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/15.webp": {
     "bytes": 3222706,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/16.webp": {
     "bytes": 6254244,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/17.webp": {
-    "bytes": 3294538,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/18.webp": {
     "bytes": 1012208,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/19.webp": {
     "bytes": 410494,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/20.webp": {
     "bytes": 177514,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/21.webp": {
     "bytes": 402310,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/22.webp": {
     "bytes": 69320,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/23.webp": {
     "bytes": 142426,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/24.webp": {
     "bytes": 68462,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/25.webp": {
     "bytes": 138996,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/26.webp": {
-    "bytes": 39218,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
+    "bytes": 9582,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/27.webp": {
-    "bytes": 24398,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
+    "bytes": 6136,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/28.webp": {
-    "bytes": 189272,
+    "bytes": 52974,
     "widths": [
       320,
       640,
@@ -383,24 +311,264 @@
       1024
     ]
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/hydrology/accumulation.webp": {
-    "bytes": 542274,
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b03-06-globe.png": {
+    "bytes": 2038130,
     "widths": [
       320,
       640,
       1024
     ]
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/hydrology/drainage.webp": {
-    "bytes": 172458,
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-07-coast.png": {
+    "bytes": 1699816,
     "widths": [
       320,
       640,
       1024
     ]
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/hydrology/rivers.webp": {
-    "bytes": 314614,
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-18-colour.png": {
+    "bytes": 1015702,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-09.png": {
+    "bytes": 760193,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-10.png": {
+    "bytes": 768357,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-13.png": {
+    "bytes": 830143,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-15.png": {
+    "bytes": 796403,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-gis-first.png": {
+    "bytes": 1052800,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-initial.png": {
+    "bytes": 1123447,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-side-light.png": {
+    "bytes": 1162529,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-v03-05-coast.png": {
+    "bytes": 3637389,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-v03-07-coast.png": {
+    "bytes": 3449795,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-v04-22-coast-evolution.png": {
+    "bytes": 1471118,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/gospl-mesh-runoff.webp": {
+    "bytes": 21910,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/gospl-resolution-cpu.webp": {
+    "bytes": 24896,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/gospl-run-watcher.webp": {
+    "bytes": 12136,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/gospl-select-inputs.webp": {
+    "bytes": 14678,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/grass-comparison.png": {
+    "bytes": 249753,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/mountain-colour-test.png": {
+    "bytes": 2951683,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/mountain-ridge-valleys.png": {
+    "bytes": 1968915,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/mountain-western-range.png": {
+    "bytes": 801752,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/natural-neighbour-base.png": {
+    "bytes": 240428,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/planetary-t42-precipitation.webp": {
+    "bytes": 2208850,
+    "widths": []
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/planetary-t42-temperature.webp": {
+    "bytes": 1010692,
+    "widths": []
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/retrograde-t42-precipitation.webp": {
+    "bytes": 2178968,
+    "widths": []
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/retrograde-t42-temperature.webp": {
+    "bytes": 1069606,
+    "widths": []
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/retrograde-t85-precipitation.webp": {
+    "bytes": 2726888,
+    "widths": []
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/retrograde-t85-temperature.webp": {
+    "bytes": 1036110,
+    "widths": []
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/ridge-controls.png": {
+    "bytes": 99980,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/river-banks.png": {
+    "bytes": 1009182,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/river-foothills.png": {
+    "bytes": 792306,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tin-comparison.png": {
+    "bytes": 189986,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-autocollect-setup.png": {
+    "bytes": 79989,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-autocollect-watcher.png": {
+    "bytes": 35743,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-postprocessing-variables.png": {
+    "bytes": 22592,
+    "widths": [
+      320,
+      640,
+      1024
+    ]
+  },
+  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-postprocessing-watcher.png": {
+    "bytes": 15769,
     "widths": [
       320,
       640,
@@ -471,24 +639,8 @@
       1024
     ]
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/workflow/gplates-contours.webp": {
-    "bytes": 692256,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
-  },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/workflow/gplates-interface.webp": {
     "bytes": 54266,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/workflow/gplates-plates.webp": {
-    "bytes": 102260,
     "widths": [
       320,
       640,
@@ -951,14 +1103,6 @@
       1024
     ]
   },
-  "/assets/portfolio/scad/foun110/image.webp": {
-    "bytes": 57310,
-    "widths": [
-      320,
-      640,
-      1024
-    ]
-  },
   "/assets/portfolio/scad/foun110/P1Step4engraving1.webp": {
     "bytes": 47350,
     "widths": [
@@ -1293,10 +1437,6 @@
   },
   "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp": {
     "bytes": 2018,
-    "widths": []
-  },
-  "/assets/portfolio/scad/game121/boss-rush-06-title-screen.webp": {
-    "bytes": 2012,
     "widths": []
   },
   "/assets/portfolio/scad/game121/boss-rush-07-bullet-stress-test.webp": {

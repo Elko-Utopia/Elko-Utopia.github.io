@@ -12,6 +12,7 @@
   async function apply(img) {
     const original = img.getAttribute('data-full') || img.getAttribute('src');
     if (!original || /^(?:https?:|data:|blob:)/i.test(original)) return;
+    if (img.dataset.preserveAnimation === 'true' || img.dataset.imageFormat === 'png') return;
     const u = new URL(original, location.href);
     if (u.origin !== location.origin || !u.pathname.includes('/assets/') || u.pathname.includes('/low/') || /\.gif$/i.test(u.pathname)) return;
     if (processed.get(img) === original) return;

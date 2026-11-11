@@ -388,7 +388,7 @@
         try {
           const d = new Date(it.pubDate);
           if (!isNaN(d)) {
-            const locale = (document.documentElement && document.documentElement.lang) ? document.documentElement.lang : undefined;
+            const locale = document.documentElement?.lang?.startsWith('zh') ? 'zh-CN' : 'en-US';
             const opts = { year: 'numeric', month: 'short', day: 'numeric' };
             dateHTML = `<time class="post-date" datetime="${escapeHtml(String(it.pubDate))}">${escapeHtml(d.toLocaleDateString(locale, opts))}</time>`;
           }
