@@ -15,8 +15,6 @@
     if (img.dataset.preserveAnimation === 'true' || img.dataset.imageFormat === 'png') return;
     const u = new URL(original, location.href);
     if (u.origin !== location.origin || !u.pathname.includes('/assets/') || u.pathname.includes('/low/') || /\.gif$/i.test(u.pathname)) return;
-    // 已有服务端候选时保持其格式与路径，不在浏览器中再次覆盖。
-    if (img.getAttribute('srcset')) return;
     if (processed.get(img) === original) return;
     processed.set(img, original);
     const all = await manifest();

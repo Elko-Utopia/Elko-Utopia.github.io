@@ -122,7 +122,7 @@
   {
     "title": "The Star of Embarkation: Planet and Art",
     "url": "/portfolio/embarkation/the-star-of-embarkation/",
-    "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.webp",
+    "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "portfolio/embarkation/the-star-of-embarkation.mdx",
@@ -312,7 +312,7 @@
   {
     "title": "启航星：行星与美术",
     "url": "/zh/portfolio/embarkation/the-star-of-embarkation/",
-    "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.webp",
+    "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "zh/portfolio/embarkation/the-star-of-embarkation.mdx",
