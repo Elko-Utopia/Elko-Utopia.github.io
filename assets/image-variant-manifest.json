@@ -5,7 +5,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/blog/obsidian/obsidian2.webp": {
     "bytes": 88558,
@@ -13,7 +14,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/blog/obsidian/obsidian3.webp": {
     "bytes": 98056,
@@ -21,7 +23,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/Forerunners/Dyson_the_Engineer.webp": {
     "bytes": 454364,
@@ -29,7 +32,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/Forerunners/Forerunners.webp": {
     "bytes": 1974788,
@@ -37,7 +41,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/Forerunners/Hilda_the_Economist.webp": {
     "bytes": 420744,
@@ -45,7 +50,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/Forerunners/Linnea_the_Biologist.webp": {
     "bytes": 367350,
@@ -53,7 +59,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/Forerunners/Lucian_the_Politician.webp": {
     "bytes": 428976,
@@ -61,7 +68,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/Forerunners/Seth_the_Physicist.webp": {
     "bytes": 354548,
@@ -69,7 +77,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/SethTheUntamedScientist/Chagall.webp": {
     "bytes": 124638,
@@ -77,7 +86,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/SethTheUntamedScientist/Seth.webp": {
     "bytes": 89832,
@@ -85,7 +95,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/climate/landmask.png": {
     "bytes": 110333,
@@ -93,7 +104,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/clouds-normal-original-4096.webp": {
     "bytes": 1644508,
@@ -101,7 +113,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/clouds-original-4096.webp": {
     "bytes": 3018642,
@@ -109,7 +122,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/accumulation-detail.png": {
     "bytes": 1187482,
@@ -117,7 +131,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/accumulation-overview.png": {
     "bytes": 651051,
@@ -125,7 +140,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/drainage.png": {
     "bytes": 641005,
@@ -133,7 +149,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/erosion-after-rivers.png": {
     "bytes": 1304455,
@@ -141,7 +158,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/erosion-before-rivers.png": {
     "bytes": 1301580,
@@ -149,7 +167,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/r002-final.png": {
     "bytes": 598592,
@@ -157,7 +176,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/r002-mainland-coast.png": {
     "bytes": 360732,
@@ -165,7 +185,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/rivers.png": {
     "bytes": 1423076,
@@ -173,7 +194,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png": {
     "bytes": 7237537,
@@ -181,7 +203,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/02.webp": {
     "bytes": 91330,
@@ -189,7 +212,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/03.webp": {
     "bytes": 63490,
@@ -197,7 +221,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/05.webp": {
     "bytes": 19038,
@@ -205,7 +230,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/06.webp": {
     "bytes": 27420,
@@ -213,7 +239,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/10.webp": {
     "bytes": 111074,
@@ -221,7 +248,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/12.webp": {
     "bytes": 785332,
@@ -229,7 +257,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/13.webp": {
     "bytes": 643084,
@@ -237,46 +266,47 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/15.webp": {
-    "bytes": 3222706,
+    "bytes": 2334182,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/16.webp": {
-    "bytes": 6254244,
+    "bytes": 4495846,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/18.webp": {
-    "bytes": 1012208,
+    "bytes": 195142,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/19.webp": {
-    "bytes": 410494,
+    "bytes": 78748,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/20.webp": {
-    "bytes": 177514,
+    "bytes": 175236,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/21.webp": {
-    "bytes": 402310,
+    "bytes": 390910,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/22.webp": {
-    "bytes": 69320,
+    "bytes": 68640,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/23.webp": {
-    "bytes": 142426,
+    "bytes": 138494,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/24.webp": {
-    "bytes": 68462,
+    "bytes": 67994,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/25.webp": {
-    "bytes": 138996,
+    "bytes": 134806,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/26.webp": {
@@ -293,7 +323,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/29.webp": {
     "bytes": 22262,
@@ -301,7 +332,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/30.webp": {
     "bytes": 18624,
@@ -309,7 +341,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b03-06-globe.png": {
     "bytes": 2038130,
@@ -317,7 +350,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-07-coast.png": {
     "bytes": 1699816,
@@ -325,7 +359,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-18-colour.png": {
     "bytes": 1015702,
@@ -333,7 +368,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-09.png": {
     "bytes": 760193,
@@ -341,7 +377,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-10.png": {
     "bytes": 768357,
@@ -349,7 +386,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-13.png": {
     "bytes": 830143,
@@ -357,7 +395,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-15.png": {
     "bytes": 796403,
@@ -365,7 +404,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-gis-first.png": {
     "bytes": 1052800,
@@ -373,7 +413,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-initial.png": {
     "bytes": 1123447,
@@ -381,7 +422,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-side-light.png": {
     "bytes": 1162529,
@@ -389,7 +431,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-v03-05-coast.png": {
     "bytes": 3637389,
@@ -397,7 +440,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-v03-07-coast.png": {
     "bytes": 3449795,
@@ -405,7 +449,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-v04-22-coast-evolution.png": {
     "bytes": 1471118,
@@ -413,7 +458,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/gospl-mesh-runoff.webp": {
     "bytes": 21910,
@@ -421,7 +467,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/gospl-resolution-cpu.webp": {
     "bytes": 24896,
@@ -429,7 +476,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/gospl-run-watcher.webp": {
     "bytes": 12136,
@@ -437,7 +485,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/gospl-select-inputs.webp": {
     "bytes": 14678,
@@ -445,7 +494,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/grass-comparison.png": {
     "bytes": 249753,
@@ -453,7 +503,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/mountain-colour-test.png": {
     "bytes": 2951683,
@@ -461,7 +512,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/mountain-ridge-valleys.png": {
     "bytes": 1968915,
@@ -469,7 +521,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/mountain-western-range.png": {
     "bytes": 801752,
@@ -477,7 +530,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/natural-neighbour-base.png": {
     "bytes": 240428,
@@ -485,30 +539,31 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/planetary-t42-precipitation.webp": {
-    "bytes": 2208850,
+    "bytes": 899096,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/planetary-t42-temperature.webp": {
-    "bytes": 1010692,
+    "bytes": 557436,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/retrograde-t42-precipitation.webp": {
-    "bytes": 2178968,
+    "bytes": 914506,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/retrograde-t42-temperature.webp": {
-    "bytes": 1069606,
+    "bytes": 499222,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/retrograde-t85-precipitation.webp": {
-    "bytes": 2726888,
+    "bytes": 1080484,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/retrograde-t85-temperature.webp": {
-    "bytes": 1036110,
+    "bytes": 516550,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/ridge-controls.png": {
@@ -517,7 +572,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/river-banks.png": {
     "bytes": 1009182,
@@ -525,7 +581,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/river-foothills.png": {
     "bytes": 792306,
@@ -533,7 +590,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tin-comparison.png": {
     "bytes": 189986,
@@ -541,7 +599,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-autocollect-setup.png": {
     "bytes": 79989,
@@ -549,7 +608,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-autocollect-watcher.png": {
     "bytes": 35743,
@@ -557,7 +617,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-postprocessing-variables.png": {
     "bytes": 22592,
@@ -565,7 +626,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-postprocessing-watcher.png": {
     "bytes": 15769,
@@ -573,7 +635,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/renders/v31-andes.png": {
     "bytes": 2746479,
@@ -581,7 +644,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/renders/v31-backlit.png": {
     "bytes": 608576,
@@ -589,7 +653,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/renders/v31-continent.png": {
     "bytes": 2911426,
@@ -597,7 +662,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/roughness-original-4096.webp": {
     "bytes": 103036,
@@ -605,7 +671,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/scientific-landsea.png": {
     "bytes": 5497460,
@@ -613,7 +680,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/uv-global-2048.webp": {
     "bytes": 218208,
@@ -621,7 +689,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/uv-global-4096.webp": {
     "bytes": 892306,
@@ -629,7 +698,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/uv-global-8192.webp": {
     "bytes": 4356028,
@@ -637,7 +707,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/workflow/gplates-interface.webp": {
     "bytes": 54266,
@@ -645,7 +716,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/workflow/qgis-interface.webp": {
     "bytes": 85784,
@@ -653,7 +725,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ClassicalSketching/Agrippa.webp": {
     "bytes": 2348664,
@@ -661,7 +734,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ClassicalSketching/AnatomicalHead.webp": {
     "bytes": 1604298,
@@ -669,7 +743,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ClassicalSketching/Homer.webp": {
     "bytes": 2009068,
@@ -677,7 +752,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ClassicalSketching/Hypnos.webp": {
     "bytes": 1824946,
@@ -685,7 +761,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ClassicalSketching/IonicCapital.webp": {
     "bytes": 1771504,
@@ -693,7 +770,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ClassicalSketching/Marseillaise.webp": {
     "bytes": 1989928,
@@ -701,7 +779,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ClassicalSketching/Michelangelo.webp": {
     "bytes": 1564624,
@@ -709,7 +788,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ClassicalSketching/portrait1.webp": {
     "bytes": 1235818,
@@ -717,7 +797,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ClassicalSketching/portrait2.webp": {
     "bytes": 1008358,
@@ -725,7 +806,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ClassicalSketching/portrait3.webp": {
     "bytes": 1290234,
@@ -733,7 +815,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ClassicalSketching/portrait4.webp": {
     "bytes": 1697328,
@@ -741,7 +824,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ClassicalSketching/Seneca.webp": {
     "bytes": 1605782,
@@ -749,7 +833,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/Goat/Goat.webp": {
     "bytes": 1129770,
@@ -757,7 +842,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/IlluminatedSurfaces/duck.webp": {
     "bytes": 985442,
@@ -765,7 +851,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/IlluminatedSurfaces/duck_orginal.webp": {
     "bytes": 153720,
@@ -773,7 +860,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/IlluminatedSurfaces/IlluminatedSurfaces.webp": {
     "bytes": 841164,
@@ -781,7 +869,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/IlluminatedSurfaces/IlluminatedSurfaces_orginal.webp": {
     "bytes": 37882,
@@ -789,7 +878,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/IlluminatedSurfaces/PlasterCast1.webp": {
     "bytes": 1221254,
@@ -797,7 +887,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/IlluminatedSurfaces/PlasterCast2.webp": {
     "bytes": 907754,
@@ -805,7 +896,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/IlluminatedSurfaces/PlasterCast3.webp": {
     "bytes": 1181054,
@@ -813,7 +905,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/LineField360/LineField.webp": {
     "bytes": 1871486,
@@ -821,7 +914,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/LineField360/LineField360.webp": {
     "bytes": 3751762,
@@ -829,7 +923,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ThresholdStep/demo.webp": {
     "bytes": 29854,
@@ -837,7 +932,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ThresholdStep/Elf.webp": {
     "bytes": 75792,
@@ -845,7 +941,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ThresholdStep/Griffin.webp": {
     "bytes": 234716,
@@ -853,7 +950,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ThresholdStep/GriffinGriffin.webp": {
     "bytes": 214574,
@@ -861,7 +959,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/personal/ThresholdStep/ThresholdStep.webp": {
     "bytes": 743884,
@@ -869,7 +968,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim190/cover.webp": {
     "bytes": 122646,
@@ -877,7 +977,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p1-01-mood-board.webp": {
     "bytes": 1247690,
@@ -885,7 +986,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p1-02-value-thumbnails.webp": {
     "bytes": 115256,
@@ -893,7 +995,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p1-03-final-keyframe.webp": {
     "bytes": 286056,
@@ -901,7 +1004,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p2-01-material-research.webp": {
     "bytes": 913002,
@@ -909,7 +1013,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p2-02-construction-and-perspective.webp": {
     "bytes": 1061126,
@@ -917,7 +1022,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p2-03-3d-structure.webp": {
     "bytes": 560522,
@@ -925,7 +1031,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p2-04-final-render.webp": {
     "bytes": 1096534,
@@ -933,7 +1040,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p2-combat-location-01.png": {
     "bytes": 11256,
@@ -941,7 +1049,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p2-combat-location-02.png": {
     "bytes": 38706,
@@ -949,7 +1058,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p2-combat-location-03.png": {
     "bytes": 73582,
@@ -957,7 +1067,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p2-combat-location-04.png": {
     "bytes": 68509,
@@ -965,7 +1076,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p2-combat-location-05.png": {
     "bytes": 104037,
@@ -973,7 +1085,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p3-01-shape-language-study-01.webp": {
     "bytes": 670516,
@@ -981,7 +1094,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p3-02-shape-language-study-02.webp": {
     "bytes": 996690,
@@ -989,7 +1103,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p3-03-shape-language-study-03.webp": {
     "bytes": 572142,
@@ -997,7 +1112,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p3-04-color-and-style-research.webp": {
     "bytes": 998766,
@@ -1005,7 +1121,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p3-06-character-exploration.webp": {
     "bytes": 678932,
@@ -1013,7 +1130,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p3-07-character-design-home-crop.webp": {
     "bytes": 98186,
@@ -1021,7 +1139,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p3-07-character-design.webp": {
     "bytes": 413246,
@@ -1029,7 +1148,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p3-08-final-character-and-environment.webp": {
     "bytes": 778510,
@@ -1037,7 +1157,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p4-01-sequence-planning.webp": {
     "bytes": 256376,
@@ -1045,7 +1166,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p4-02-camera-thumbnails.webp": {
     "bytes": 285542,
@@ -1053,7 +1175,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/p4-03-six-panel-storyboard.webp": {
     "bytes": 548676,
@@ -1061,7 +1184,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/anim275/pre-quarter-cemetery-composition.jpg": {
     "bytes": 353023,
@@ -1069,7 +1193,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/digi130/business-card.webp": {
     "bytes": 14662,
@@ -1077,7 +1202,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/digi130/color-type-hierarchy.webp": {
     "bytes": 120040,
@@ -1085,7 +1211,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/digi130/logo-page.webp": {
     "bytes": 62704,
@@ -1093,7 +1220,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/digi130/mood-board.webp": {
     "bytes": 918562,
@@ -1101,7 +1229,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P1Step4engraving1.webp": {
     "bytes": 47350,
@@ -1109,7 +1238,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P1Step4engraving2.webp": {
     "bytes": 31804,
@@ -1117,7 +1247,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P1Step5Printing1.webp": {
     "bytes": 615642,
@@ -1125,7 +1256,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P1Step5Printing2.webp": {
     "bytes": 543242,
@@ -1133,7 +1265,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P1Step5Printing3.webp": {
     "bytes": 564240,
@@ -1141,7 +1274,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P1Step5Printing4.webp": {
     "bytes": 711264,
@@ -1149,7 +1283,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P1Step7VectorImage.webp": {
     "bytes": 213774,
@@ -1157,7 +1292,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P1Step8RepeatedSeamlessPattern.webp": {
     "bytes": 3406470,
@@ -1165,7 +1301,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P2Step6FinalModel1.webp": {
     "bytes": 63642,
@@ -1173,7 +1310,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P2Step6FinalModel2.webp": {
     "bytes": 146484,
@@ -1181,7 +1319,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P2Step6FinalModel3.webp": {
     "bytes": 72592,
@@ -1189,7 +1328,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P2Step6FinalModel4.webp": {
     "bytes": 71192,
@@ -1197,7 +1337,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P2Step6FinalModel5.webp": {
     "bytes": 72244,
@@ -1205,7 +1346,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P2Step6FinalModel6.webp": {
     "bytes": 70900,
@@ -1213,7 +1355,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P2Step6FinalModel7.webp": {
     "bytes": 94822,
@@ -1221,7 +1364,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P2Step6FinalModel8.webp": {
     "bytes": 121638,
@@ -1229,7 +1373,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/sketch-line.webp": {
     "bytes": 57310,
@@ -1237,7 +1382,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun110/sketch.webp": {
     "bytes": 503772,
@@ -1245,7 +1391,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/AFaithBeyondUnderstanding.webp": {
     "bytes": 1232994,
@@ -1253,7 +1400,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/church.webp": {
     "bytes": 579384,
@@ -1261,7 +1409,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/cloth.webp": {
     "bytes": 53044,
@@ -1269,7 +1418,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/Durer_Hands.webp": {
     "bytes": 147280,
@@ -1277,7 +1427,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/Flavor.webp": {
     "bytes": 765878,
@@ -1285,7 +1436,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/Melancholy.webp": {
     "bytes": 1517558,
@@ -1293,7 +1445,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/P1S1.webp": {
     "bytes": 1002556,
@@ -1301,7 +1454,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/P1S2.webp": {
     "bytes": 26894,
@@ -1309,7 +1463,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/P1S3.webp": {
     "bytes": 388164,
@@ -1317,7 +1472,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/P1S4.webp": {
     "bytes": 1014394,
@@ -1325,7 +1481,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/P1S5.webp": {
     "bytes": 1117322,
@@ -1333,7 +1490,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/P1S7.webp": {
     "bytes": 971708,
@@ -1341,7 +1499,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/p3picture.webp": {
     "bytes": 27404,
@@ -1349,7 +1508,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun220/RequiemforaDream.webp": {
     "bytes": 16810,
@@ -1357,7 +1517,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun230/3hour_model_after.webp": {
     "bytes": 2904074,
@@ -1365,7 +1526,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun230/Project1.webp": {
     "bytes": 693138,
@@ -1373,7 +1535,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun230/Project2.webp": {
     "bytes": 722602,
@@ -1381,7 +1544,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun230/sketch1.webp": {
     "bytes": 1016646,
@@ -1389,7 +1553,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun230/sketch2.webp": {
     "bytes": 670604,
@@ -1397,7 +1562,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun230/sketch3.webp": {
     "bytes": 851960,
@@ -1405,7 +1571,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/foun230/sketch4.webp": {
     "bytes": 669890,
@@ -1413,7 +1580,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/game121/boss-rush-02-stage-combat.webp": {
     "bytes": 98434,
@@ -1421,7 +1589,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/game121/boss-rush-03-projectile-field.webp": {
     "bytes": 3550,
@@ -1449,7 +1618,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/game121/boss-rush-small-sprites-2x.png": {
     "bytes": 30664,
@@ -1457,7 +1627,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/game130/3dsmax-01-fire-extinguisher-view-a.webp": {
     "bytes": 89266,
@@ -1465,7 +1636,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/game130/3dsmax-02-fire-extinguisher-view-b.webp": {
     "bytes": 89846,
@@ -1473,7 +1645,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/game130/zbrush-02-red-fox-side.webp": {
     "bytes": 108386,
@@ -1481,7 +1654,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/portfolio/scad/game130/zbrush-03-red-fox-front.webp": {
     "bytes": 93854,
@@ -1489,7 +1663,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/ui/covers/cover-scad.jpg": {
     "bytes": 195205,
@@ -1497,7 +1672,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/ui/placeholder/blog-placeholder-1.webp": {
     "bytes": 23594,
@@ -1505,7 +1681,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/ui/placeholder/blog-placeholder-2.webp": {
     "bytes": 30812,
@@ -1513,7 +1690,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/ui/placeholder/blog-placeholder-3.webp": {
     "bytes": 24712,
@@ -1521,7 +1699,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/ui/placeholder/blog-placeholder-4.webp": {
     "bytes": 38538,
@@ -1529,7 +1708,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/ui/placeholder/blog-placeholder-5.webp": {
     "bytes": 19660,
@@ -1537,7 +1717,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/ui/placeholder/blog-placeholder-about.webp": {
     "bytes": 15184,
@@ -1545,7 +1726,8 @@
       320,
       640,
       1024
-    ]
+    ],
+    "format": "webp"
   },
   "/assets/ui/placeholder/BusinessCard-A.webp": {
     "bytes": 9842,
