@@ -134,149 +134,37 @@
     ],
     "format": "webp"
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/accumulation-detail.png": {
-    "bytes": 1187482,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/accumulation-detail.webp": {
-    "bytes": 1076866,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/accumulation-overview.png": {
-    "bytes": 651051,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 874528,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/accumulation-overview.webp": {
-    "bytes": 127438,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/drainage.png": {
-    "bytes": 641005,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 542274,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/drainage.webp": {
-    "bytes": 716858,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/erosion-after-rivers.png": {
-    "bytes": 1304455,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 290256,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/erosion-after-rivers.webp": {
-    "bytes": 1219094,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/erosion-before-rivers.png": {
-    "bytes": 1301580,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 1136720,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/erosion-before-rivers.webp": {
-    "bytes": 1212424,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/r002-final.png": {
-    "bytes": 598592,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 1134010,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/r002-final.webp": {
-    "bytes": 399814,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/r002-mainland-coast.png": {
-    "bytes": 360732,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 202870,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/r002-mainland-coast.webp": {
-    "bytes": 230600,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/rivers.png": {
-    "bytes": 1423076,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 140264,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/rivers.webp": {
-    "bytes": 477502,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 491264,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png": {
     "bytes": 7237537,
@@ -297,22 +185,12 @@
     "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/02.webp": {
-    "bytes": 91330,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 89890,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/03.webp": {
-    "bytes": 63490,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 60676,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/05.webp": {
     "bytes": 19038,
@@ -334,21 +212,11 @@
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/10.webp": {
     "bytes": 111074,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/12.webp": {
     "bytes": 785332,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/13.webp": {
     "bytes": 643084,
@@ -360,43 +228,43 @@
     "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/15.webp": {
-    "bytes": 3222706,
+    "bytes": 2334182,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/16.webp": {
-    "bytes": 6254244,
+    "bytes": 4495846,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/18.webp": {
-    "bytes": 1012208,
+    "bytes": 195142,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/19.webp": {
-    "bytes": 410494,
+    "bytes": 78748,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/20.webp": {
-    "bytes": 177514,
+    "bytes": 175236,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/21.webp": {
-    "bytes": 402310,
+    "bytes": 390910,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/22.webp": {
-    "bytes": 69320,
+    "bytes": 68640,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/23.webp": {
-    "bytes": 142426,
+    "bytes": 138494,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/24.webp": {
-    "bytes": 68462,
+    "bytes": 67994,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/25.webp": {
-    "bytes": 138996,
+    "bytes": 134806,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/26.webp": {
@@ -409,300 +277,83 @@
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/28.webp": {
     "bytes": 52974,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/29.webp": {
-    "bytes": 22262,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 23328,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/30.webp": {
-    "bytes": 18624,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b03-06-globe.png": {
-    "bytes": 2038130,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 43568,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b03-06-globe.webp": {
-    "bytes": 142856,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-07-coast.png": {
-    "bytes": 1699816,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 196718,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-07-coast.webp": {
-    "bytes": 75918,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-18-colour.png": {
-    "bytes": 1015702,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 132064,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-18-colour.webp": {
-    "bytes": 77832,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-09.png": {
-    "bytes": 760193,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 125822,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-09.webp": {
-    "bytes": 37166,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-10.png": {
-    "bytes": 768357,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 86324,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-10.webp": {
-    "bytes": 42950,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-13.png": {
-    "bytes": 830143,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 101110,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-13.webp": {
-    "bytes": 38576,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-15.png": {
-    "bytes": 796403,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 76562,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/b04-32-view-15.webp": {
-    "bytes": 37850,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-gis-first.png": {
-    "bytes": 1052800,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 79620,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-gis-first.webp": {
-    "bytes": 58148,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-initial.png": {
-    "bytes": 1123447,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 88304,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-initial.webp": {
-    "bytes": 70632,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-side-light.png": {
-    "bytes": 1162529,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 121108,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-side-light.webp": {
-    "bytes": 57794,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-v03-05-coast.png": {
-    "bytes": 3637389,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 83462,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-v03-05-coast.webp": {
-    "bytes": 252900,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-v03-07-coast.png": {
-    "bytes": 3449795,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 354934,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-v03-07-coast.webp": {
-    "bytes": 182606,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-v04-22-coast-evolution.png": {
-    "bytes": 1471118,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 267192,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/blender-v04-22-coast-evolution.webp": {
-    "bytes": 104850,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 170860,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/gospl-mesh-runoff.webp": {
     "bytes": 21910,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/gospl-resolution-cpu.webp": {
     "bytes": 24896,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/gospl-run-watcher.webp": {
-    "bytes": 12136,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 11898,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/gospl-select-inputs.webp": {
-    "bytes": 14678,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 14520,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/grass-comparison.webp": {
     "bytes": 34160,
@@ -713,59 +364,17 @@
     ],
     "format": "webp"
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/mountain-colour-test.png": {
-    "bytes": 2951683,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/mountain-colour-test.webp": {
-    "bytes": 156876,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/mountain-ridge-valleys.png": {
-    "bytes": 1968915,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 287944,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/mountain-ridge-valleys.webp": {
-    "bytes": 165658,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/mountain-western-range.png": {
-    "bytes": 801752,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 285822,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/mountain-western-range.webp": {
-    "bytes": 49306,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 87642,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/natural-neighbour-base.webp": {
     "bytes": 86726,
@@ -777,27 +386,27 @@
     "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/planetary-t42-precipitation.webp": {
-    "bytes": 2208850,
+    "bytes": 899096,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/planetary-t42-temperature.webp": {
-    "bytes": 1010692,
+    "bytes": 557436,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/retrograde-t42-precipitation.webp": {
-    "bytes": 2178968,
+    "bytes": 914506,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/retrograde-t42-temperature.webp": {
-    "bytes": 1069606,
+    "bytes": 499222,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/retrograde-t85-precipitation.webp": {
-    "bytes": 2726888,
+    "bytes": 1080484,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/retrograde-t85-temperature.webp": {
-    "bytes": 1036110,
+    "bytes": 516550,
     "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/ridge-controls.png": {
@@ -818,41 +427,13 @@
     ],
     "format": "webp"
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/river-banks.png": {
-    "bytes": 1009182,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/river-banks.webp": {
-    "bytes": 37782,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/river-foothills.png": {
-    "bytes": 792306,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 70842,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/river-foothills.webp": {
-    "bytes": 44064,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 78640,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tin-comparison.webp": {
     "bytes": 37770,
@@ -863,77 +444,21 @@
     ],
     "format": "webp"
   },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-autocollect-setup.png": {
-    "bytes": 79989,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-autocollect-setup.webp": {
-    "bytes": 86188,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-autocollect-watcher.png": {
-    "bytes": 35743,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 18504,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-autocollect-watcher.webp": {
-    "bytes": 39442,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-postprocessing-variables.png": {
-    "bytes": 22592,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 9464,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-postprocessing-variables.webp": {
-    "bytes": 29010,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-postprocessing-watcher.png": {
-    "bytes": 15769,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 6016,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/process/tsfe-postprocessing-watcher.webp": {
-    "bytes": 14778,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "bytes": 4492,
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/renders/v31-andes.png": {
     "bytes": 2746479,
@@ -1008,7 +533,7 @@
     "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/scientific-landsea.webp": {
-    "bytes": 363982,
+    "bytes": 301156,
     "widths": [
       320,
       640,
@@ -1045,21 +570,11 @@
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/workflow/gplates-interface.webp": {
     "bytes": 54266,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/workflow/qgis-interface.webp": {
     "bytes": 85784,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/personal/ClassicalSketching/Agrippa.webp": {
     "bytes": 2348664,
@@ -2090,6 +1605,55 @@
   },
   "/assets/ui/covers/cover-scad.jpg": {
     "bytes": 195205,
+    "widths": [
+      320,
+      640,
+      1024
+    ],
+    "format": "webp"
+  },
+  "/assets/ui/covers/site-preview-embarkation.jpg": {
+    "bytes": 123928,
+    "widths": [
+      320,
+      640,
+      1024
+    ],
+    "format": "webp"
+  },
+  "/assets/ui/emoji/windows/1f490.webp": {
+    "bytes": 13524,
+    "widths": [
+      320,
+      640,
+      1024
+    ],
+    "format": "webp"
+  },
+  "/assets/ui/emoji/windows/1f5a5.webp": {
+    "bytes": 4944,
+    "widths": []
+  },
+  "/assets/ui/emoji/windows/1f6e0.webp": {
+    "bytes": 11474,
+    "widths": [
+      320,
+      640,
+      1024
+    ],
+    "format": "webp"
+  },
+  "/assets/ui/emoji/windows/1f6f0.webp": {
+    "bytes": 11434,
+    "widths": [
+      320,
+      640,
+      1024
+    ],
+    "format": "webp"
+  },
+  "/assets/ui/emoji/windows/1fa90.webp": {
+    "bytes": 11658,
     "widths": [
       320,
       640,
