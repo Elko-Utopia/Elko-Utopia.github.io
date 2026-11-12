@@ -10,20 +10,12 @@
   },
   "/assets/blog/obsidian/obsidian2.webp": {
     "bytes": 88558,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/blog/obsidian/obsidian3.webp": {
     "bytes": 98056,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/embarkation/Forerunners/Dyson_the_Engineer.webp": {
@@ -100,39 +92,19 @@
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/climate/landmask.png": {
     "bytes": 110333,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/climate/landmask.webp": {
     "bytes": 48684,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/clouds-normal-original-4096.webp": {
     "bytes": 1644508,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/clouds-original-4096.webp": {
     "bytes": 3018642,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/hydrology/accumulation-detail.webp": {
     "bytes": 874528,
@@ -168,12 +140,7 @@
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.png": {
     "bytes": 7237537,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.webp": {
     "bytes": 166916,
@@ -462,111 +429,50 @@
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/renders/v31-andes.png": {
     "bytes": 2746479,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/renders/v31-andes.webp": {
     "bytes": 177410,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/renders/v31-backlit.png": {
     "bytes": 608576,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/renders/v31-backlit.webp": {
     "bytes": 57354,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/renders/v31-continent.png": {
     "bytes": 2911426,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/renders/v31-continent.webp": {
     "bytes": 252878,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/roughness-original-4096.webp": {
     "bytes": 103036,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
-  },
-  "/assets/portfolio/embarkation/TheStarOfEmbarkation/scientific-landsea.png": {
-    "bytes": 5497460,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/scientific-landsea.webp": {
     "bytes": 301156,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/uv-global-2048.webp": {
     "bytes": 218208,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/uv-global-4096.webp": {
     "bytes": 892306,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/uv-global-8192.webp": {
     "bytes": 4356028,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/portfolio/embarkation/TheStarOfEmbarkation/workflow/gplates-interface.webp": {
     "bytes": 54266,
@@ -828,6 +734,22 @@
     ],
     "format": "webp"
   },
+  "/assets/portfolio/scad/anim190/lucy_model.webp": {
+    "bytes": 4342540,
+    "widths": []
+  },
+  "/assets/portfolio/scad/anim190/Lucy_texture.webp": {
+    "bytes": 4600212,
+    "widths": []
+  },
+  "/assets/portfolio/scad/anim190/RIO_model.webp": {
+    "bytes": 4298946,
+    "widths": []
+  },
+  "/assets/portfolio/scad/anim190/Rio_texture.webp": {
+    "bytes": 5062590,
+    "widths": []
+  },
   "/assets/portfolio/scad/anim275/p1-01-mood-board.webp": {
     "bytes": 1247690,
     "widths": [
@@ -1082,11 +1004,7 @@
   },
   "/assets/portfolio/scad/foun110/image.webp": {
     "bytes": 57310,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/scad/foun110/P1Step4engraving1.webp": {
@@ -1442,11 +1360,7 @@
   },
   "/assets/portfolio/scad/game121/boss-rush-01-laser-fan.webp": {
     "bytes": 228032,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/scad/game121/boss-rush-02-stage-combat.webp": {
@@ -1491,6 +1405,26 @@
     ],
     "format": "webp"
   },
+  "/assets/portfolio/scad/game121/boss-rush-boss-approaching.webp": {
+    "bytes": 1282440,
+    "widths": []
+  },
+  "/assets/portfolio/scad/game121/boss-rush-chaos-combat.webp": {
+    "bytes": 662876,
+    "widths": []
+  },
+  "/assets/portfolio/scad/game121/boss-rush-laser-attack.webp": {
+    "bytes": 339704,
+    "widths": []
+  },
+  "/assets/portfolio/scad/game121/boss-rush-laser-ultimate.webp": {
+    "bytes": 877464,
+    "widths": []
+  },
+  "/assets/portfolio/scad/game121/boss-rush-rush-boss.webp": {
+    "bytes": 1133886,
+    "widths": []
+  },
   "/assets/portfolio/scad/game121/boss-rush-small-sprites-2x.png": {
     "bytes": 30664,
     "widths": [
@@ -1500,31 +1434,27 @@
     ],
     "format": "webp"
   },
+  "/assets/portfolio/scad/game121/boss-rush-summer-ultimate.webp": {
+    "bytes": 231488,
+    "widths": []
+  },
+  "/assets/portfolio/scad/game121/boss-rush-title-menu.webp": {
+    "bytes": 293548,
+    "widths": []
+  },
   "/assets/portfolio/scad/game121/source/boss-rush-01-laser-fan.png": {
     "bytes": 265226,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/scad/game121/source/boss-rush-02-stage-combat.png": {
     "bytes": 124090,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/scad/game121/source/boss-rush-03-projectile-field.png": {
     "bytes": 13118,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/scad/game121/source/boss-rush-04-screen-filling-burst.png": {
@@ -1533,38 +1463,22 @@
   },
   "/assets/portfolio/scad/game121/source/boss-rush-05-circular-hazards.png": {
     "bytes": 11453,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/scad/game121/source/boss-rush-06-title-screen.png": {
     "bytes": 24083,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/scad/game121/source/boss-rush-07-bullet-stress-test.png": {
     "bytes": 28570,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/scad/game121/source/boss-rush-08-renderer-comparison.png": {
     "bytes": 654884,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/portfolio/scad/game130/3dsmax-01-fire-extinguisher-view-a.webp": {
@@ -1614,21 +1528,12 @@
   },
   "/assets/ui/covers/site-preview-embarkation.jpg": {
     "bytes": 123928,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/ui/emoji/windows/1f490.webp": {
     "bytes": 13524,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/ui/emoji/windows/1f5a5.webp": {
     "bytes": 4944,
@@ -1636,30 +1541,15 @@
   },
   "/assets/ui/emoji/windows/1f6e0.webp": {
     "bytes": 11474,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/ui/emoji/windows/1f6f0.webp": {
     "bytes": 11434,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/ui/emoji/windows/1fa90.webp": {
     "bytes": 11658,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
-    "format": "webp"
+    "widths": []
   },
   "/assets/ui/placeholder/blog-placeholder-1.webp": {
     "bytes": 23594,
@@ -1672,38 +1562,22 @@
   },
   "/assets/ui/placeholder/blog-placeholder-2.webp": {
     "bytes": 30812,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/ui/placeholder/blog-placeholder-3.webp": {
     "bytes": 24712,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/ui/placeholder/blog-placeholder-4.webp": {
     "bytes": 38538,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/ui/placeholder/blog-placeholder-5.webp": {
     "bytes": 19660,
-    "widths": [
-      320,
-      640,
-      1024
-    ],
+    "widths": [],
     "format": "webp"
   },
   "/assets/ui/placeholder/blog-placeholder-about.webp": {
