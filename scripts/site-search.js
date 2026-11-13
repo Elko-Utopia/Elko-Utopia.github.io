@@ -12,28 +12,13 @@
 
   // 运行时基准 URL 解析：统一使用一个函数，确保对 /zh/ 或自定义 base 的支持
   function getRuntimeBase() {
-    try {
-  // 优先使用注入的绝对 base（如果存在）
-      if (typeof window !== 'undefined' && window.__ASTRO_BASE_URL__) {
-        let b = String(window.__ASTRO_BASE_URL__);
-        if (/^\//.test(b)) {
-    // 若为 path-only（仅路径），使用当前 origin 合成绝对 URL
-          try { b = location.origin.replace(/\/$/, '') + b; } catch (e) {}
-        }
-        return b.endsWith('/') ? b : b + '/';
-      }
-  // 如果只注入了 path-only base，则以当前 origin 合成绝对 base
-      if (typeof window !== 'undefined' && window.__ASTRO_BASE_PATH__) {
-        let p = String(window.__ASTRO_BASE_PATH__);
-        try { p = p.startsWith('/') ? p : '/' + p; } catch (e) {}
-        try { return (location.origin.replace(/\/$/, '') + p).endsWith('/') ? (location.origin.replace(/\/$/, '') + p) : (location.origin.replace(/\/$/, '') + p + '/'); } catch (e) { return p.endsWith('/') ? p : p + '/'; }
-      }
-    } catch (e) {}
-    try {
-      const b = document.querySelector('base');
-      if (b && b.href) return b.href.endsWith('/') ? b.href : b.href + '/';
-    } catch (e) {}
-    try { return location.origin + '/'; } catch (e) { return '/'; }
+    const path = window.__ASTRO_BASE_PATH__;
+    if (typeof path === 'string' && path) return new URL(path.endsWith('/') ? path : path + '/', location.origin).href;
+    if (window.__ASTRO_BASE_URL__) {
+      const url = new URL(window.__ASTRO_BASE_URL__, location.origin);
+      return new URL(url.pathname.endsWith('/') ? url.pathname : url.pathname + '/', location.origin).href;
+    }
+    return location.origin + '/';
   }
 
   // 将索引中的资源路径解析为在本地 dev 与 GH Pages 子路径下均可使用的绝对 URL
@@ -447,7 +432,7 @@
   async function doSearch() {
     const all = await loadIndex();
     // determine current page language: html lang or /zh/ in pathname
-    const curLang = (document.documentElement.lang || (location.pathname.indexOf('/zh/') !== -1 ? 'zh' : 'en')).toLowerCase();
+    const curLang = (document.documentElement.lang.startsWith('zh') || location.pathname.includes('/zh/')) ? 'zh' : 'en';
     const input = document.getElementById('site-search-input');
     const q = input ? input.value.trim().toLowerCase() : '';
     // filter to current language only
@@ -499,7 +484,7 @@
     selectedTag = null;
 
     await loadIndex();
-    const curLang = (document.documentElement.lang || (location.pathname.indexOf('/zh/') !== -1 ? 'zh' : 'en')).toLowerCase();
+    const curLang = (document.documentElement.lang.startsWith('zh') || location.pathname.includes('/zh/')) ? 'zh' : 'en';
 
     try {
       const params = new URLSearchParams(location.search);

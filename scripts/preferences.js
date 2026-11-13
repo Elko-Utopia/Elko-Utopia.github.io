@@ -1,4 +1,4 @@
-﻿/*
+/*
   preferences.js — 脚本说明（中文）
 
   本文件负责头部相关的小型交互逻辑，包括偏好面板（Preferences）、搜索弹窗、订阅表单等
@@ -10,6 +10,7 @@
   绑定行为时修改本脚本。避免在此处添加和后端交互无关的大量逻辑。
 */
 
+function uiIcon(name) { return document.querySelector(`template[data-ui-icon="${name}"]`)?.innerHTML || ''; }
 const THEME_KEY = 'theme-preference';
 const root = document.documentElement;
 // 更稳健的 base path 检测：优先使用构建时的 BASE_URL（如果脚本已被打包），
@@ -169,7 +170,7 @@ function normalizeTarget(target, globalBase) {
 
     function buildPath(parts, prefixSeq) {
       const finalParts = prefixSeq && prefixSeq.length ? prefixSeq.concat(parts) : parts;
-      return '/' + finalParts.join('/');
+      return '/' + finalParts.join('/') + (finalParts.length ? '/' : '');
     }
 
     if (urlObj) {
@@ -223,7 +224,7 @@ const subscribeUnsubscribeUrl = (() => {
 //（如果 basePath 不为根），再判断剩余路径是否以 zh 开头；同时保留对 <html lang> 的检查。
 let isZhPage = false;
 try {
-  const htmlLangIsZh = (typeof document !== 'undefined' && document.documentElement && document.documentElement.lang === 'zh');
+  const htmlLangIsZh = (typeof document !== 'undefined' && document.documentElement && document.documentElement.lang.startsWith('zh'));
   let pathname = '/';
   if (typeof location !== 'undefined' && location.pathname) pathname = location.pathname;
   // basePath 在上方已被规范为以 '/' 结尾的字符串（例如 '/' 或 '/Creation_notes/'）
@@ -236,11 +237,11 @@ try {
   isZhPage = htmlLangIsZh || pathLooksZh;
 } catch (e) {
   // 容错：若出错，回退到仅基于 html lang 的判断
-  try { isZhPage = (typeof document !== 'undefined' && document.documentElement && document.documentElement.lang === 'zh'); } catch (e2) { isZhPage = false; }
+  try { isZhPage = (typeof document !== 'undefined' && document.documentElement && document.documentElement.lang.startsWith('zh')); } catch (e2) { isZhPage = false; }
 }
 
 // 双语支持的文本内容
-const i18n = {
+function createI18n(isZhPage) { return {
   search: {
     title: isZhPage ? '搜索' : 'Search',
     closeLabel: isZhPage ? '关闭搜索' : 'Close search',
@@ -254,7 +255,6 @@ const i18n = {
     closeLabel: isZhPage ? '关闭偏好设置' : 'Close preferences',
     theme: {
       title: isZhPage ? '主题' : 'Theme',
-      desc: isZhPage ? '在亮色和暗色主题之间切换。您的偏好将保存在本地。' : 'Switch between light and dark themes. Your preference is saved locally.',
       light: isZhPage ? '亮色' : 'Light',
       dark: isZhPage ? '暗色' : 'Dark',
       ariaLabel: isZhPage ? '主题选择器' : 'Theme selector',
@@ -262,7 +262,6 @@ const i18n = {
     },
     language: {
       title: isZhPage ? '语言' : 'Language',
-      desc: isZhPage ? '在英文和中文之间切换网站语言。' : 'Switch site language between English and 中文（Chinese）.',
       ariaLabel: isZhPage ? '语言选择器' : 'Language selector',
       ariaGroupLabel: isZhPage ? '语言' : 'Language'
     }
@@ -276,7 +275,8 @@ const i18n = {
     button: isZhPage ? '订阅' : 'Subscribe',
     manageUnsub: isZhPage ? '管理 / 取消订阅' : 'Manage / Unsubscribe'
   }
-};
+}; }
+let i18n = createI18n(isZhPage);
 
 let searchOverlay = null;
 let searchInput = null;
@@ -457,7 +457,7 @@ function ensureSearchOverlay() {
     <div class="pref-search-dialog" role="dialog" aria-modal="true" aria-labelledby="pref-search-title">
     <div class="pref-search-header">
       <h5 class="pref-search-title" id="pref-search-title">${i18n.search.title}</h5>
-          <button type="button" class="pref-search-close" aria-label="${i18n.search.closeLabel}">&times;</button>
+          <button type="button" class="pref-search-close" aria-label="${i18n.search.closeLabel}">${uiIcon('close')}</button>
         </div>
       <hr class="pref-divider" />
       <form class="pref-search-form">
@@ -467,7 +467,7 @@ function ensureSearchOverlay() {
       <div style="margin:0.6rem 0 0.8rem; text-align:center">
         <button type="button" class="pref-browse-tags" aria-label="${i18n.search.browseTags}">
           <span class="sr-only">${i18n.search.browseTags}</span>
-          <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 11l-8-8H3v10l8 8 10-10z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          ${uiIcon('tag')}
           <span style="font-weight:600">${i18n.search.browseTags}</span>
         </button>
       </div>
@@ -493,7 +493,7 @@ function ensureSearchOverlay() {
       clearBtn.className = 'pref-search-input-clear';
       clearBtn.setAttribute('aria-label', isZhPage ? '清除搜索' : 'Clear search');
       // 使用可继承颜色的 × 符号（简单且可缩放），也可以替换为内联 SVG
-      clearBtn.innerHTML = '&times;';
+      clearBtn.innerHTML = uiIcon('close');
       clearBtn.style.display = 'none';
 
       // 点击清空并聚焦输入框
@@ -559,7 +559,7 @@ function ensureSearchOverlay() {
 // 统一判断当前路径是否为中文页面（合并原先散落在 syncLangBadge / setLangSwitchState 中的多套正则）
 function isCurrentPathZh() {
   try {
-    if (document.documentElement.lang === 'zh') return true;
+    if (document.documentElement.lang.startsWith('zh')) return true;
     const path = window.location.pathname || '/';
     const normalized = path.endsWith('/') ? path : path + '/';
     return /(^|\/)zh(\/|$)/.test(normalized) || /^\/zh(\/|$)/.test(normalized);
@@ -611,7 +611,8 @@ function setLangSwitchState() {
     const isZh = isCurrentPathZh();
     seg.querySelectorAll('[data-lang]').forEach((btn) => {
       const v = btn.getAttribute('data-lang');
-      const active = (v === 'zh') ? isZh : !isZh;
+      const current = isZh ? 'zh' : 'en';
+      const active = v === current;
       btn.setAttribute('aria-pressed', active ? 'true' : 'false');
       btn.classList.toggle('is-active', active);
     });
@@ -678,7 +679,7 @@ function ensurePrefsOverlay() {
       <div class="pref-header">
         <h5 class="pref-title" id="pref-prefs-title">${i18n.preferences.title}</h5>
         <div>
-          <button type="button" class="pref-close" aria-label="${i18n.preferences.closeLabel}">&times;</button>
+          <button type="button" class="pref-close" aria-label="${i18n.preferences.closeLabel}">${uiIcon('close')}</button>
         </div>
       </div>
       <div class="pref-body">
@@ -687,12 +688,12 @@ function ensurePrefsOverlay() {
             <div class="card-top">
               <div style="flex:1">
                 <div class="card-title">${i18n.preferences.theme.title}</div>
-                <div class="card-desc">${i18n.preferences.theme.desc}</div>
+
               </div>
               <div class="pref-actions">
                 <div class="segmented pref-seg-theme" role="tablist" aria-label="${i18n.preferences.theme.ariaLabel}">
-                  <button type="button" class="seg-btn" data-theme-option="light" aria-pressed="false" title="${i18n.preferences.theme.light}">☀︎ <span style="margin-left:6px">${i18n.preferences.theme.light}</span></button>
-                  <button type="button" class="seg-btn" data-theme-option="dark" aria-pressed="false" title="${i18n.preferences.theme.dark}">☾ <span style="margin-left:6px">${i18n.preferences.theme.dark}</span></button>
+                  <button type="button" class="seg-btn" data-theme-option="light" aria-pressed="false" title="${i18n.preferences.theme.light}">${uiIcon('sun')} <span style="margin-left:6px">${i18n.preferences.theme.light}</span></button>
+                  <button type="button" class="seg-btn" data-theme-option="dark" aria-pressed="false" title="${i18n.preferences.theme.dark}">${uiIcon('moon')} <span style="margin-left:6px">${i18n.preferences.theme.dark}</span></button>
                 </div>
               </div>
             </div>
@@ -703,12 +704,13 @@ function ensurePrefsOverlay() {
             <div class="card-top">
               <div style="flex:1">
                 <div class="card-title">${i18n.preferences.language.title}</div>
-                <div class="card-desc">${i18n.preferences.language.desc}</div>
+
               </div>
               <div class="pref-actions">
                 <div class="segmented pref-seg-lang" role="tablist" aria-label="${i18n.preferences.language.ariaLabel}">
                   <button type="button" class="seg-btn" data-lang="en" aria-pressed="false" title="English">EN</button>
                   <button type="button" class="seg-btn" data-lang="zh" aria-pressed="false" title="中文">中文</button>
+
                 </div>
               </div>
             </div>
@@ -747,7 +749,7 @@ function ensurePrefsOverlay() {
 
   const langSegBtns = prefsOverlay.querySelectorAll('.pref-seg-lang [data-lang]');
   langSegBtns.forEach((btn) => {
-    btn.addEventListener('click', (ev) => {
+    btn.addEventListener('click', async (ev) => {
       const v = ev.currentTarget && ev.currentTarget.getAttribute('data-lang');
       if (!v) return;
   // 若存在则立即更新头部角标（非阻塞）
@@ -992,7 +994,7 @@ async function onSearchSubmit(event) {
     // base path 的计算逻辑与文件顶部的 basePath 完全一致（已统一到 computeBasePath），直接复用即可。
     const base = basePath.endsWith('/') ? basePath : basePath + '/';
     const curPath = (location.pathname || '/');
-    const curLang = (document.documentElement.lang || (curPath.indexOf('/zh/') !== -1 ? 'zh' : 'en')).toLowerCase();
+    const curLang = (document.documentElement.lang.startsWith('zh') || curPath.includes('/zh/')) ? 'zh' : 'en';
     const rel = curLang === 'zh' ? 'zh/search' : 'search';
   // 使用 runtime base 构建目标，以兼容 GH Pages 子路径和本地开发
     let target;
@@ -1120,7 +1122,7 @@ function ensureSubscribeOverlay() {
     <div class="pref-subscribe-dialog" role="dialog" aria-modal="true" aria-labelledby="pref-subscribe-title">
       <div class="pref-subscribe-header">
         <h5 class="pref-subscribe-title" id="pref-subscribe-title">${i18n.subscribe.title}</h5>
-        <button type="button" class="pref-subscribe-close" aria-label="${i18n.subscribe.closeLabel}">&times;</button>
+        <button type="button" class="pref-subscribe-close" aria-label="${i18n.subscribe.closeLabel}">${uiIcon('close')}</button>
       </div>
       <hr class="pref-divider" />
       <div class="pref-subscribe-body">
@@ -1302,6 +1304,8 @@ document.addEventListener('click', (event) => {
 });
 
 function rebindHeaderToggles() {
+  isZhPage = isCurrentPathZh();
+  i18n = createI18n(isZhPage);
   // 页面切换后旧的 overlay 节点已不在 DOM 中（Astro 替换了 body 内容），
   // 重置所有引用，让 ensure* 函数在下次打开时重新创建节点。
   // 同时清理可能残留的 body 锁定状态，防止上一页的关闭动画 setTimeout 污染新页面。
@@ -1365,4 +1369,6 @@ if (typeof window !== 'undefined') {
 }
   document.addEventListener('astro:page-load', rebindHeaderToggles);
 }
+
+
 

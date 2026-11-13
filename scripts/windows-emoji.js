@@ -20,7 +20,8 @@ export function replaceEmojiText(root,manifest){
       if(!file){text+=segment;continue;}
       if(text){fragment.append(text);text='';}
       const img=document.createElement('img');img.className='windows-emoji no-zoom';img.src=new URL(file,directory).href;
-      img.alt=segment;img.width=img.height=20;img.draggable=false;img.dataset.preserveResolution='true';fragment.append(img);
+      if(emojiKey(segment)==='🛰')img.classList.add('site-logo-image');
+      img.alt=emojiKey(segment)==='🛰'?'':segment;img.width=img.height=20;img.draggable=false;img.dataset.preserveResolution='true';fragment.append(img);
     }
     if(text)fragment.append(text);node.replaceWith(fragment);
   }

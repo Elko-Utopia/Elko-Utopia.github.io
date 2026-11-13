@@ -19,11 +19,11 @@
   function buildDock(course) {
     const dock = document.createElement('nav');
     dock.className = 'course-section-dock';
-    dock.setAttribute('aria-label', document.documentElement.lang === 'zh' ? '课程项目快速导航' : 'Course project quick navigation');
+    dock.setAttribute('aria-label', document.documentElement.lang.startsWith('zh') ? '课程项目快速导航' : 'Course project quick navigation');
     const index = document.createElement('a');
     index.className = 'course-section-dock__index';
     index.href = '#projects';
-    index.textContent = document.documentElement.lang === 'zh' ? '项目' : 'Projects';
+    index.textContent = document.documentElement.lang.startsWith('zh') ? '项目' : 'Projects';
     dock.appendChild(index);
 
     const shortcuts = document.createElement('div');
