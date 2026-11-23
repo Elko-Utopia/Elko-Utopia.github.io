@@ -7,7 +7,7 @@
     "heroImageWidth": null,
     "source": "about.md",
     "lang": "en",
-    "pubDate": "2026-06-13T04:00:00.000Z"
+    "pubDate": "2026-06-12T16:00:00.000Z"
   },
   {
     "title": "关于我",
@@ -17,7 +17,7 @@
     "heroImageWidth": null,
     "source": "zh/about.md",
     "lang": "zh",
-    "pubDate": "2026-06-13T04:00:00.000Z"
+    "pubDate": "2026-06-12T16:00:00.000Z"
   },
   {
     "title": "Why you should try obsidian for note",
@@ -135,7 +135,7 @@
     "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
-    "source": "portfolio/personal/boss-rush.md",
+    "source": "portfolio/personal/boss-rush.mdx",
     "lang": "en",
     "pubDate": "2026-10-18T00:00:00.000Z"
   },
@@ -255,7 +255,7 @@
     "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
-    "source": "portfolio/scad/game121.md",
+    "source": "portfolio/scad/game121.mdx",
     "lang": "en",
     "pubDate": "2026-11-09T00:00:00.000Z"
   },
@@ -325,7 +325,7 @@
     "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
-    "source": "zh/portfolio/personal/boss-rush.md",
+    "source": "zh/portfolio/personal/boss-rush.mdx",
     "lang": "zh",
     "pubDate": "2026-10-18T00:00:00.000Z"
   },
@@ -445,7 +445,7 @@
     "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
-    "source": "zh/portfolio/scad/game121.md",
+    "source": "zh/portfolio/scad/game121.mdx",
     "lang": "zh",
     "pubDate": "2026-11-09T00:00:00.000Z"
   },
@@ -487,7 +487,7 @@
     "heroImageWidth": "101%",
     "source": "website-log.md",
     "lang": "en",
-    "pubDate": "2025-11-09T05:00:00.000Z"
+    "pubDate": "2025-11-08T16:00:00.000Z"
   },
   {
     "title": "网页制作日志",
