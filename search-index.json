@@ -221,7 +221,7 @@
     "heroImagePosition": null,
     "heroImageWidth": null,
     "url": "/portfolio/personal/boss-rush/",
-    "excerpt": "Boss Rush Boss Rush is the first bullethell game I developed independently. I used JavaScript and Microsoft MakeCode Arcade to build its mechanics, pixel art, animation effects, and supporting systems. The first version took about a week to…",
+    "excerpt": "Boss Rush is the first bullethell game I developed independently. I used JavaScript and Microsoft MakeCode Arcade to build its mechanics, pixel art, animation effects, and supporting systems. The first version took about a week to complete,…",
     "paragraphs": [
       "Boss Rush is the first bullet-hell game I developed independently. I used JavaScript and Microsoft MakeCode Arcade to build its mechanics, pixel art, animation effects, and supporting systems. The first version took about a week to complete, and I continued adding bosses, attack combinations, interface features, and performance improvements afterward.",
       "Successive boss battles form the core of the game. Each boss has a signature attack, while other attacks combine randomized main patterns and sub-patterns. The shield can block bullets or be thrown to damage enemies. Custom Boss mode lets players combine bosses and adjust their encounter settings.",
@@ -251,7 +251,7 @@
     "heroImagePosition": null,
     "heroImageWidth": null,
     "url": "/zh/portfolio/personal/boss-rush/",
-    "excerpt": "Boss Rush Boss Rush 是我独立开发的第一款弹幕游戏。我使用 JavaScript 和 Microsoft MakeCode Arcade 制作了玩法、像素美术、动画特效和游戏系统。初版开发大约花了一周，之后我继续加入更多 Boss、攻击组合、界面功能和性能优化。 游戏以连续 Boss 战为核心。每个 Boss 有自己的特殊攻击，其他攻击则由主弹幕和附加子模式随机组合。盾牌可以抵挡弹幕，也能投掷出去攻击敌人。自定义 Boss 模式允许玩家组合多名 Boss，并…",
+    "excerpt": "Boss Rush 是我独立开发的第一款弹幕游戏。我使用 JavaScript 和 Microsoft MakeCode Arcade 制作了玩法、像素美术、动画特效和游戏系统。初版开发大约花了一周，之后我继续加入更多 Boss、攻击组合、界面功能和性能优化。 游戏以连续 Boss 战为核心。每个 Boss 有自己的特殊攻击，其他攻击则由主弹幕和附加子模式随机组合。盾牌可以抵挡弹幕，也能投掷出去攻击敌人。自定义 Boss 模式允许玩家组合多名 Boss，并调整战斗条件。 <A…",
     "paragraphs": [
       "Boss Rush 是我独立开发的第一款弹幕游戏。我使用 JavaScript 和 Microsoft MakeCode Arcade 制作了玩法、像素美术、动画特效和游戏系统。初版开发大约花了一周，之后我继续加入更多 Boss、攻击组合、界面功能和性能优化。",
       "游戏以连续 Boss 战为核心。每个 Boss 有自己的特殊攻击，其他攻击则由主弹幕和附加子模式随机组合。盾牌可以抵挡弹幕，也能投掷出去攻击敌人。自定义 Boss 模式允许玩家组合多名 Boss，并调整战斗条件。",
