@@ -218,27 +218,17 @@ const subscribeUnsubscribeUrl = (() => {
   return null;
 })();
 
-// 检测当前页面是否为中文
-// 在 GitHub Pages 等使用 base path 的部署下，直接检查 pathname 是否以 "/zh/" 开头会失败
-// （例如部署在 `/Creation_notes/zh/...` 时）。为了兼容，先从 location.pathname 中剥离 basePath
-//（如果 basePath 不为根），再判断剩余路径是否以 zh 开头；同时保留对 <html lang> 的检查。
-let isZhPage = false;
-try {
-  const htmlLangIsZh = (typeof document !== 'undefined' && document.documentElement && document.documentElement.lang.startsWith('zh'));
-  let pathname = '/';
-  if (typeof location !== 'undefined' && location.pathname) pathname = location.pathname;
-  // basePath 在上方已被规范为以 '/' 结尾的字符串（例如 '/' 或 '/Creation_notes/'）
-  let normalized = pathname;
-  if (basePath && basePath !== '/' && pathname.startsWith(basePath)) {
-    normalized = pathname.slice(basePath.length - 0); // 去掉 base 前缀，保留以 'zh/...' 或 '/' 开头的子路径
-  }
-  // 如果剥离 base 后以 /zh/ 或 zh/ 开头，则为中文页面（也兼容根路径为 /zh/ 的情况）
-  const pathLooksZh = /^\/?zh(\/|$)/.test(normalized);
-  isZhPage = htmlLangIsZh || pathLooksZh;
-} catch (e) {
-  // 容错：若出错，回退到仅基于 html lang 的判断
-  try { isZhPage = (typeof document !== 'undefined' && document.documentElement && document.documentElement.lang.startsWith('zh')); } catch (e2) { isZhPage = false; }
+// 检测当前页面是否为中文（单 URL 架构下统一以 html[data-lang] / html[lang] 为单一事实来源）
+function isCurrentPathZh() {
+  try {
+    if (document.documentElement?.dataset?.lang === 'zh') return true;
+    if (document.documentElement?.dataset?.lang === 'en') return false;
+    if (document.documentElement?.lang?.startsWith('zh')) return true;
+  } catch (e) {}
+  return false;
 }
+
+let isZhPage = isCurrentPathZh();
 
 // 双语支持的文本内容
 function createI18n(isZhPage) { return {
@@ -316,12 +306,11 @@ function unlockBodyScroll() {
 // 更新显示在头部偏好图标上的小语言角标
 function syncLangBadge() {
   try {
-    const badge = document.querySelector('.lang-badge');
-    if (!badge) return;
     const isZh = isCurrentPathZh();
-    const txt = isZh ? 'ZH' : 'EN';
-    badge.textContent = txt;
-  // 还为偏好切换添加语言类，以便应用相应的 CSS 变体
+    const txt = isZh ? '中' : 'EN';
+    document.querySelectorAll('.lang-badge').forEach((badge) => {
+      badge.textContent = txt;
+    });
     try {
       document.querySelectorAll('[data-prefs-toggle]').forEach((btn) => {
         if (!btn.classList) return;
@@ -359,10 +348,16 @@ function ensureSharedOverlayStyles() {
 async function initializePreferences() {
   ensureSharedOverlayStyles();
 
-  // 默认使用暗色主题（除非显式设置，才遵循系统偏好或已存储偏好）
+  // 优先尊重 BaseHead 从 URL ?theme= 解析出的主题，其次本地存储，默认暗色
+  const urlTheme = (() => {
+    try {
+      const t = new URLSearchParams(location.search).get('theme');
+      return (t === 'dark' || t === 'light') ? t : null;
+    } catch (_) { return null; }
+  })();
   const storedTheme = readStoredTheme();
-  const initialTheme = storedTheme !== null ? storedTheme : 'dark';
-  applyTheme(initialTheme, { persist: storedTheme === null }); // 若首次访问则持久化
+  const initialTheme = urlTheme ?? (storedTheme !== null ? storedTheme : (root.dataset.theme === 'light' ? 'light' : 'dark'));
+  applyTheme(initialTheme, { persist: urlTheme !== null || storedTheme === null, animate: false }); // 首次加载不播放切换动画
   syncThemeButtons(initialTheme);
 
   const prefersDarkMedia = window.matchMedia?.('(prefers-color-scheme: dark)');
@@ -375,10 +370,10 @@ async function initializePreferences() {
   });
 
   document.querySelectorAll('[data-theme-toggle]').forEach((button) => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (ev) => {
       const current = root.dataset.theme === 'dark' ? 'dark' : 'light';
       const next = current === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
+      applyTheme(next, { x: ev.clientX, y: ev.clientY });
       syncThemeButtons(next);
     });
   });
@@ -397,15 +392,33 @@ function readStoredTheme() {
   return null;
 }
 
-function applyTheme(theme, { persist = true } = {}) {
-  root.dataset.theme = theme;
-  if (persist) {
-    try {
-      localStorage.setItem(THEME_KEY, theme);
-    } catch (_) {
-  // 存储可能不可用
+let themeTransitionTimer = null;
+
+function applyTheme(theme, { persist = true, animate = true, x, y, onApplied } = {}) {
+  const prev = root.dataset.theme;
+  const doApply = () => {
+    root.dataset.theme = theme;
+    if (persist) {
+      try {
+        localStorage.setItem(THEME_KEY, theme);
+      } catch (_) {}
     }
+    try {
+      if (typeof window.__syncUrlState === 'function') window.__syncUrlState();
+    } catch (_) {}
+    try {
+      window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+    } catch (_) {}
+    if (typeof onApplied === 'function') {
+      try { onApplied(); } catch (_) {}
+    }
+  };
+
+  if (animate && prev && prev !== theme) {
+    window.__runCircularRipple(doApply, { x, y });
+    return;
   }
+  doApply();
 }
 
 function syncThemeButtons(theme) {
@@ -531,21 +544,20 @@ function ensureSearchOverlay() {
     }
   });
   form.addEventListener('submit', onSearchSubmit);
-  // 浏览标签按钮：打开完整的 /search 页面（尊重 zh 前缀）
+  // 浏览标签按钮：打开完整的 /search 页面
   try {
     const browseBtn = searchOverlay.querySelector('.pref-browse-tags');
     if (browseBtn) {
       browseBtn.addEventListener('click', (e) => {
         e.preventDefault();
-        // 使用统一的 resolveWithBase 构造目标路径，避免手动拼接导致的遗漏
-        const rel = isZhPage ? 'zh/search' : 'search';
+        const rel = 'search';
         let target;
         try {
-          // resolveWithBase 期望以 / 开头的路径
           target = resolveWithBase('/' + rel) || ('/' + rel);
         } catch (err) {
           target = '/' + rel;
         }
+        closeSearchOverlay();
         astroNavigate(target);
       });
     }
@@ -556,69 +568,32 @@ function ensureSearchOverlay() {
   document.addEventListener('keydown', onGlobalKeydown);
 }
 
-// 统一判断当前路径是否为中文页面（合并原先散落在 syncLangBadge / setLangSwitchState 中的多套正则）
-function isCurrentPathZh() {
-  try {
-    if (document.documentElement.lang.startsWith('zh')) return true;
-    const path = window.location.pathname || '/';
-    const normalized = path.endsWith('/') ? path : path + '/';
-    return /(^|\/)zh(\/|$)/.test(normalized) || /^\/zh(\/|$)/.test(normalized);
-  } catch (e) {
-    return false;
-  }
-}
-
-// 更新分段指示器（segmented control）的位置与宽度
-// 提取为顶层函数，供 ensurePrefsOverlay（首次创建/交互）与 openPrefsOverlay（每次打开）共用，
-// 避免同一段测量逻辑被复制多份。
-function updateSegIndicator(segmentedContainer) {
-  try {
-    const activeBtn = segmentedContainer.querySelector('.seg-btn.is-active');
-    if (!activeBtn) return;
-    const containerRect = segmentedContainer.getBoundingClientRect();
-    const btnRect = activeBtn.getBoundingClientRect();
-    const offset = btnRect.left - containerRect.left - 4; // 4px 为容器内边距
-    const width = btnRect.width;
-    segmentedContainer.style.setProperty('--indicator-offset', `${offset}px`);
-    segmentedContainer.style.setProperty('--indicator-width', `${width}px`);
-  } catch (e) { /* 空操作 */ }
-}
-
-// 同步主题分段控件的激活状态与指示器位置
+// 同步主题分段控件的激活状态（纯 CSS 等宽 2 列网格，无 JS 尺寸测量抖动）
 function setThemeSwitchState() {
-  try {
-    if (!prefsOverlay) return;
-    const seg = prefsOverlay.querySelector('.pref-seg-theme');
-    if (!seg) return;
-    const cur = root.dataset.theme === 'dark' ? 'dark' : 'light';
-    seg.querySelectorAll('[data-theme-option]').forEach((btn) => {
-      const v = btn.getAttribute('data-theme-option');
-      const active = v === cur;
-      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-      btn.classList.toggle('is-active', active);
-    });
-    // 状态变更后更新指示器位置
-    requestAnimationFrame(() => updateSegIndicator(seg));
-  } catch (e) { /* 空操作 */ }
+  if (!prefsOverlay) return;
+  const seg = prefsOverlay.querySelector('.pref-seg-theme');
+  if (!seg) return;
+  const cur = root.dataset.theme === 'dark' ? 'dark' : 'light';
+  seg.dataset.activeIndex = cur === 'dark' ? '1' : '0';
+  seg.querySelectorAll('[data-theme-option]').forEach((btn) => {
+    const active = btn.getAttribute('data-theme-option') === cur;
+    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    btn.classList.toggle('is-active', active);
+  });
 }
 
-// 同步语言分段控件的激活状态与指示器位置（不处理跳转，跳转逻辑绑定在点击事件中）
+// 同步语言分段控件的激活状态
 function setLangSwitchState() {
-  try {
-    if (!prefsOverlay) return;
-    const seg = prefsOverlay.querySelector('.pref-seg-lang');
-    if (!seg) return;
-    const isZh = isCurrentPathZh();
-    seg.querySelectorAll('[data-lang]').forEach((btn) => {
-      const v = btn.getAttribute('data-lang');
-      const current = isZh ? 'zh' : 'en';
-      const active = v === current;
-      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-      btn.classList.toggle('is-active', active);
-    });
-    // 状态变更后更新指示器位置
-    requestAnimationFrame(() => updateSegIndicator(seg));
-  } catch (e) { /* 空操作 */ }
+  if (!prefsOverlay) return;
+  const seg = prefsOverlay.querySelector('.pref-seg-lang');
+  if (!seg) return;
+  const current = isCurrentPathZh() ? 'zh' : 'en';
+  seg.dataset.activeIndex = current === 'zh' ? '1' : '0';
+  seg.querySelectorAll('[data-lang]').forEach((btn) => {
+    const active = btn.getAttribute('data-lang') === current;
+    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    btn.classList.toggle('is-active', active);
+  });
 }
 
 /* 偏好设置覆盖层（主题 + 语言） - 与搜索分离 */
@@ -631,46 +606,43 @@ function ensurePrefsOverlay() {
     return;
   }
   prefsOverlay = document.createElement('div');
-  prefsOverlay.className = 'pref-search-overlay pref-prefs-overlay';
+  prefsOverlay.className = 'pref-prefs-overlay';
   prefsOverlay.innerHTML = `
     <style>
   /* 使用全局 CSS 变量以与 header.css 中的 overlay 保持一致 */
-  .pref-prefs-overlay { position: fixed; inset: 0; display:none; align-items:center; justify-content:center; z-index:2147483647; background: var(--pref-overlay-bg-transparent); -webkit-backdrop-filter: blur(0px); backdrop-filter: blur(0px); transition: background-color 0.3s ease, -webkit-backdrop-filter 0.3s ease, backdrop-filter 0.3s ease; will-change: opacity, backdrop-filter; }
-  .pref-prefs-overlay.is-open { display:flex; background: var(--pref-overlay-bg); -webkit-backdrop-filter: blur(var(--pref-overlay-blur)); backdrop-filter: blur(var(--pref-overlay-blur)); }
-  .pref-prefs-overlay.is-closing { background: var(--pref-overlay-bg-transparent); -webkit-backdrop-filter: blur(0px); backdrop-filter: blur(0px); }
-  .pref-prefs-overlay .pref-dialog { width: min(720px, calc(100% - 48px)); background: var(--pref-dialog-bg); color: rgb(var(--black)); border-radius: 12px; box-shadow: var(--pref-dialog-shadow); overflow: hidden; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; opacity: 0; transform: translateY(30px) scale(0.95); transition: opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); will-change: transform, opacity; }
+  .pref-prefs-overlay { position: fixed; inset: 0; display:none; align-items:center; justify-content:center; z-index:2147483647; background: var(--pref-overlay-bg-transparent); transition: background-color 0.25s ease; will-change: opacity; }
+  .pref-prefs-overlay.is-open { display:flex; background: var(--pref-overlay-bg); }
+  .pref-prefs-overlay.is-closing { background: var(--pref-overlay-bg-transparent); }
+  .pref-prefs-overlay .pref-dialog { width: min(460px, calc(100% - 32px)); background: var(--pref-dialog-bg); color: rgb(var(--black)); border: 1px solid var(--border-hairline, rgba(0,0,0,0.1)); border-radius: var(--radius-lg, 14px); box-shadow: var(--pref-dialog-shadow); overflow: hidden; font-family: var(--font-body, "Inter", "Noto Sans SC", sans-serif); opacity: 0; transform: translateY(30px) scale(0.95); transition: opacity 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); will-change: transform, opacity; }
   .pref-prefs-overlay.is-open .pref-dialog { animation: dialogSlideUp 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
   .pref-prefs-overlay.is-closing .pref-dialog { animation: dialogSlideDown 0.25s ease forwards; }
   html[data-theme="dark"] .pref-prefs-overlay .pref-dialog { background: var(--surface); color: rgb(var(--black)); }
-      .pref-prefs-overlay .pref-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:18px 20px; border-bottom: 1px solid rgba(0,0,0,0.06); }
-  html[data-theme="dark"] .pref-prefs-overlay .pref-header { border-bottom-color: rgba(255,255,255,0.04); }
-  /* 仅针对 h2 偏好设置标题，以便 h4 回退到全局 h4 样式 */
-  .pref-prefs-overlay h2.pref-title { margin:0; font-size:1.05rem; font-weight:700; color: rgb(var(--black)); }
-      .pref-prefs-overlay .pref-close { background:transparent;border:0;font-size:1.35rem;line-height:1;cursor:pointer;padding:6px;border-radius:6px; color: rgb(var(--black)); }
-  .pref-prefs-overlay .pref-close:hover { background: rgba(0,0,0,0.04); }
+  .pref-prefs-overlay .pref-header { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:16px 20px; border-bottom: 1px solid var(--border-hairline, rgba(0,0,0,0.08)); }
+  .pref-prefs-overlay .pref-title { margin:0; font-family: var(--font-body, "Inter", "Noto Sans SC", sans-serif); font-size:1.05rem; font-weight:600; letter-spacing:0; line-height:1.3; color: rgb(var(--black)); }
+  .pref-prefs-overlay .pref-close { background:transparent;border:0;font-size:1.25rem;line-height:1;cursor:pointer;padding:6px;border-radius:var(--radius-sm, 6px); color: rgb(var(--black)); display:inline-flex; align-items:center; justify-content:center; }
+  .pref-prefs-overlay .pref-close:hover { background: rgba(0,0,0,0.05); }
   html[data-theme="dark"] .pref-prefs-overlay .pref-close { color: rgb(var(--gray-dark)); }
-  html[data-theme="dark"] .pref-prefs-overlay .pref-close:hover { background: rgba(255,255,255,0.04); }
-      .pref-prefs-overlay .pref-body { padding:18px 20px 22px; }
-      .pref-prefs-overlay .pref-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:14px; }
-      @media (max-width: 560px) { .pref-prefs-overlay .pref-grid { grid-template-columns: 1fr; } }
-  .pref-prefs-overlay .pref-card { background: var(--card-section, rgba(0,0,0,0.02)); padding:14px; border-radius:10px; display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
-  html[data-theme="dark"] .pref-prefs-overlay .pref-card { background: rgba(255,255,255,0.02); }
-      .pref-prefs-overlay .pref-card .card-top { display:flex; gap:12px; align-items:center; width:100%; }
-      @media (max-width: 680px) { .pref-prefs-overlay .pref-card .card-top { flex-direction:column; align-items:flex-start; } }
-    .pref-prefs-overlay .pref-card .card-title { font-weight:700; font-size:0.98rem; color: rgb(var(--black)); }
-  .pref-prefs-overlay .pref-card .card-desc { font-size:0.86rem; color: rgba(var(--gray-dark), 0.85); }
-  html[data-theme="dark"] .pref-prefs-overlay .pref-card .card-desc { color: rgba(var(--gray-dark), 0.85); }
-      .pref-prefs-overlay .pref-actions { margin-left:auto; display:flex; gap:8px; align-items:center; }
-      @media (max-width: 680px) { .pref-prefs-overlay .pref-actions { margin-left:0; } }
-  .pref-prefs-overlay .pref-btn { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; border:1px solid rgba(0,0,0,0.06); background:transparent; cursor:pointer; font-weight:600; }
+  html[data-theme="dark"] .pref-prefs-overlay .pref-close:hover { background: rgba(255,255,255,0.06); }
+  .pref-prefs-overlay .pref-body { padding:16px 20px 20px; }
+  .pref-prefs-overlay .pref-grid { display:grid; grid-template-columns: 1fr; gap:10px; }
+  .pref-prefs-overlay .pref-card { background: var(--surface-soft); border: 1px solid var(--border-hairline); padding:12px 14px; border-radius:var(--radius-md, 10px); display:flex; flex-direction:column; gap:8px; }
+  .pref-prefs-overlay .pref-card .card-top { display:flex; justify-content:space-between; gap:16px; align-items:center; width:100%; }
+  @media (max-width: 400px) { .pref-prefs-overlay .pref-card .card-top { flex-direction:column; align-items:flex-start; gap:10px; } }
+  .pref-prefs-overlay .pref-card .card-title { font-family: var(--font-body, "Inter", "Noto Sans SC", sans-serif); font-weight:600; font-size:0.95rem; line-height:1.3; white-space:nowrap; flex-shrink:0; color: rgb(var(--black)); }
+  .pref-prefs-overlay .pref-card .card-desc { font-size:0.84rem; color: rgba(var(--gray-dark), 0.85); }
+  .pref-prefs-overlay .pref-actions { margin-left:auto; display:flex; gap:8px; align-items:center; flex-shrink:0; }
+  @media (max-width: 400px) { .pref-prefs-overlay .pref-actions { margin-left:0; } }
+  .pref-prefs-overlay .pref-btn { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:var(--radius-sm, 6px); border:1px solid var(--border-hairline, rgba(0,0,0,0.08)); background:transparent; cursor:pointer; font-weight:600; }
   .pref-prefs-overlay .pref-btn:hover { background: rgba(0,0,0,0.04); }
-  html[data-theme="dark"] .pref-prefs-overlay .pref-btn:hover { background: rgba(255,255,255,0.03); }
-  /* 主题分段控制 */
-  .pref-prefs-overlay .segmented { position: relative; display:inline-flex; background: var(--surface); border:1px solid rgba(var(--gray),0.08); border-radius:999px; padding:4px; gap:4px; }
-  .pref-prefs-overlay .segmented::before { content: ''; position: absolute; top: 4px; left: 4px; width: var(--indicator-width, 0); height: calc(100% - 8px); background: var(--accent); border-radius: 999px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); transform: translateX(var(--indicator-offset, 0)); transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); will-change: transform, width; z-index: 0; pointer-events: none; }
-  .pref-prefs-overlay .segmented .seg-btn { position: relative; z-index: 1; appearance:none; border:0; background:transparent; padding:8px 12px; border-radius:999px; cursor:pointer; font-weight:600; color: rgb(var(--gray-dark)); display:inline-flex; align-items:center; gap:8px; transition: color 0.3s ease; }
+  html[data-theme="dark"] .pref-prefs-overlay .pref-btn:hover { background: rgba(255,255,255,0.04); }
+  /* 主题与语言分段控制：严格等宽 2 列网格，纯 GPU translate3d 平滑滑动 */
+  .pref-prefs-overlay .segmented { position: relative; display:grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 204px; background: var(--surface); border:1px solid var(--border-hairline, rgba(var(--gray),0.14)); border-radius:999px; padding:4px; gap:0; box-sizing:border-box; }
+  .pref-prefs-overlay .segmented::before { content: ''; position: absolute; top: 4px; left: 4px; width: calc(50% - 4px); height: calc(100% - 8px); background: var(--accent); border-radius: 999px; box-shadow: 0 3px 10px rgba(0,0,0,0.14); transform: translate3d(0, 0, 0); transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1); will-change: transform; z-index: 0; pointer-events: none; }
+  .pref-prefs-overlay .segmented[data-active-index="1"]::before { transform: translate3d(100%, 0, 0); }
+  .pref-prefs-overlay .segmented.is-instant::before { transition: none; }
+  .pref-prefs-overlay .segmented .seg-btn { position: relative; z-index: 1; appearance:none; border:0; background:transparent; width:100%; padding:7px 8px; border-radius:999px; cursor:pointer; font-family: var(--font-body, "Inter", "Noto Sans SC", sans-serif); font-size:0.88rem; font-weight:600; white-space:nowrap; color: rgb(var(--gray-dark)); display:inline-flex; align-items:center; justify-content:center; gap:6px; transition: color 200ms ease; }
   .pref-prefs-overlay .segmented .seg-btn.is-active { background: transparent; color: #fff; box-shadow: none; }
-  .pref-prefs-overlay .segmented .seg-btn:focus { outline:2px solid rgba(var(--accent),0.12); outline-offset:2px; }
+  .pref-prefs-overlay .segmented .seg-btn:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
   
       .pref-prefs-overlay .pref-card small { opacity:0.9; }
     </style>
@@ -684,7 +656,7 @@ function ensurePrefsOverlay() {
       </div>
       <div class="pref-body">
         <div class="pref-grid">
-          <div class="pref-card" role="group" aria-label="${i18n.preferences.theme.ariaGroupLabel}">
+          <div class="pref-card" data-pref-card="theme" role="group" aria-label="${i18n.preferences.theme.ariaGroupLabel}">
             <div class="card-top">
               <div style="flex:1">
                 <div class="card-title">${i18n.preferences.theme.title}</div>
@@ -692,15 +664,15 @@ function ensurePrefsOverlay() {
               </div>
               <div class="pref-actions">
                 <div class="segmented pref-seg-theme" role="tablist" aria-label="${i18n.preferences.theme.ariaLabel}">
-                  <button type="button" class="seg-btn" data-theme-option="light" aria-pressed="false" title="${i18n.preferences.theme.light}">${uiIcon('sun')} <span style="margin-left:6px">${i18n.preferences.theme.light}</span></button>
-                  <button type="button" class="seg-btn" data-theme-option="dark" aria-pressed="false" title="${i18n.preferences.theme.dark}">${uiIcon('moon')} <span style="margin-left:6px">${i18n.preferences.theme.dark}</span></button>
+                  <button type="button" class="seg-btn" data-theme-option="light" aria-pressed="false" title="${i18n.preferences.theme.light}">${uiIcon('sun')} <span class="seg-label" style="margin-left:6px">${i18n.preferences.theme.light}</span></button>
+                  <button type="button" class="seg-btn" data-theme-option="dark" aria-pressed="false" title="${i18n.preferences.theme.dark}">${uiIcon('moon')} <span class="seg-label" style="margin-left:6px">${i18n.preferences.theme.dark}</span></button>
                 </div>
               </div>
             </div>
             
           </div>
 
-          <div class="pref-card" role="group" aria-label="${i18n.preferences.language.ariaGroupLabel}">
+          <div class="pref-card" data-pref-card="language" role="group" aria-label="${i18n.preferences.language.ariaGroupLabel}">
             <div class="card-top">
               <div style="flex:1">
                 <div class="card-title">${i18n.preferences.language.title}</div>
@@ -735,123 +707,51 @@ function ensurePrefsOverlay() {
   };
   document.addEventListener('keydown', prefsKeydownHandler);
 
-  // 分段控件：主题与语言
+  // 分段控件：主题与语言（均从点击坐标触发圆形波纹扩散）
   const themeSegBtns = prefsOverlay.querySelectorAll('.pref-seg-theme [data-theme-option]');
   themeSegBtns.forEach((btn) => {
     btn.addEventListener('click', (ev) => {
       const v = ev.currentTarget && ev.currentTarget.getAttribute('data-theme-option');
       if (!v) return;
-      applyTheme(v);
-      syncThemeButtons(v);
-      try { setThemeSwitchState(); } catch (e) {}
+      const rect = ev.currentTarget.getBoundingClientRect();
+      const cx = (ev.clientX || (rect.left + rect.width / 2));
+      const cy = (ev.clientY || (rect.top + rect.height / 2));
+      applyTheme(v, {
+        x: cx,
+        y: cy,
+        onApplied: () => {
+          syncThemeButtons(v);
+          try { setThemeSwitchState(); } catch (e) {}
+        },
+      });
     });
   });
 
   const langSegBtns = prefsOverlay.querySelectorAll('.pref-seg-lang [data-lang]');
   langSegBtns.forEach((btn) => {
-    btn.addEventListener('click', async (ev) => {
+    btn.addEventListener('click', (ev) => {
       const v = ev.currentTarget && ev.currentTarget.getAttribute('data-lang');
-      if (!v) return;
-  // 若存在则立即更新头部角标（非阻塞）
-      try {
-        const badge = document.querySelector('.lang-badge');
-        if (badge) badge.textContent = v === 'zh' ? 'ZH' : 'EN';
-      } catch (e) {}
-
-      const curPath = window.location.pathname || '/';
-      // 使用文件顶部的全局 basePath（可能是绝对 URL 或仅路径），避免在多个地方硬编码 '/Creation_notes/'
-      const globalBase = (typeof basePath !== 'undefined' && basePath) ? basePath : '/';
-      // 为了正确剥离当前路径的站点前缀（不论 base 是绝对 URL 还是路径形式），
-      // 我们只取 base 的 pathname 部分用于比较和切割。
-      let basePathname = '/';
-      try {
-        if (globalBase && /^https?:\/\//i.test(String(globalBase))) {
-          basePathname = (new URL(String(globalBase))).pathname || '/';
-        } else {
-          basePathname = String(globalBase) || '/';
-        }
-      } catch (e) {
-        basePathname = String(globalBase) || '/';
-      }
-      const normBaseForStrip = (basePathname.endsWith('/') ? basePathname : (basePathname + '/'));
-      const normCur = (curPath.endsWith('/') ? curPath : (curPath + '/'));
-      // 去掉 base pathname 前缀，得到相对站点根的路径（例如 'blog/post/' 或 'zh/blog/post/'）
-      let pathAfterBase = '';
-      if (normBaseForStrip !== '/' && normCur.startsWith(normBaseForStrip)) {
-        pathAfterBase = normCur.slice(normBaseForStrip.length);
+      if (v !== 'en' && v !== 'zh') return;
+      const rect = ev.currentTarget.getBoundingClientRect();
+      const cx = (ev.clientX || (rect.left + rect.width / 2));
+      const cy = (ev.clientY || (rect.top + rect.height / 2));
+      if (typeof window.__applySiteLang === 'function') {
+        window.__applySiteLang(v, { persist: true, x: cx, y: cy });
       } else {
-        // 若未以 base 前缀开头，则按普通方式去除首尾斜杠以取得相对路径
-        pathAfterBase = curPath.replace(/^\/+|\/+$/g, '');
-      }
-      // 防护：若计算结果仍然包含站点 base 名称（例如 'Creation_notes/...'），将其剥离
-      try {
-        const baseName = String(basePathname || '/').replace(/^\/+|\/+$/g, '');
-        if (baseName) {
-          if (pathAfterBase === baseName) {
-            pathAfterBase = '';
-          } else if (pathAfterBase.startsWith(baseName + '/')) {
-            pathAfterBase = pathAfterBase.slice((baseName + '/').length);
-          }
-        }
-      } catch (e) { /* 容错：不改变 pathAfterBase */ }
-
-      if (v === 'zh') {
-        // 切换到中文：若相对路径未以 zh/ 开头，则在其前加入 zh/
-        if (!/^zh(\/|$)/.test(pathAfterBase)) {
-          const newRel = '/zh/' + pathAfterBase;
-          const resolved = resolveWithBase(newRel.replace(/\/+/g, '/'));
-          let target = resolved || (globalBase + 'zh/' + pathAfterBase);
-          try { target = normalizeTarget(target, globalBase); } catch(e){}
-          astroNavigate(target);
-        } else {
-          // 已经是中文路径，直接跳转到同一路径以保证刷新
-          const newRel = '/' + pathAfterBase.replace(/\/+/g, '/');
-          const resolved = resolveWithBase(newRel) || null;
-          let target = resolved || ('/' + pathAfterBase);
-          try { target = normalizeTarget(target, globalBase); } catch(e){}
-          astroNavigate(target);
-        }
-      } else {
-        // 切换到英文：若相对路径以 zh/ 开头，则去掉该前缀
-        if (/^zh(\/|$)/.test(pathAfterBase)) {
-          const withoutZh = pathAfterBase.replace(/^zh(\/)?/, '');
-          const newRel = '/' + withoutZh;
-          const resolved = (withoutZh && withoutZh.length) ? resolveWithBase(newRel.replace(/\/+/g, '/')) : null;
-          let target = (withoutZh && withoutZh.length) ? (resolved || (globalBase + withoutZh)) : (globalBase);
-          try { target = normalizeTarget(target, globalBase); } catch(e){}
-          astroNavigate(target);
-        } else {
-          // 已经是英文路径，跳转到当前路径以保证刷新
-          const newRel = '/' + pathAfterBase.replace(/\/+/g, '/');
-          const resolved = resolveWithBase(newRel) || null;
-          let target = resolved || ('/' + pathAfterBase);
-          try { target = normalizeTarget(target, globalBase); } catch(e){}
-          astroNavigate(target);
-        }
+        root.dataset.lang = v;
+        root.lang = v;
+        try { localStorage.setItem('lang-preference', v); } catch (_) {}
+        try { window.dispatchEvent(new CustomEvent('langchange', { detail: { lang: v } })); } catch (_) {}
       }
     });
   });
 
-  // 确保分段控件反映当前状态
-  try { setThemeSwitchState(); } catch (e) {}
-  try { setLangSwitchState(); } catch (e) {}
-  
-  // 窗口大小变化时更新指示器
-  let resizeHandler = null;
-  resizeHandler = function() {
-    try {
-      const themeSeg = prefsOverlay.querySelector('.pref-seg-theme');
-      const langSeg = prefsOverlay.querySelector('.pref-seg-lang');
-      if (themeSeg) updateSegIndicator(themeSeg);
-      if (langSeg) updateSegIndicator(langSeg);
-    } catch (e) {}
-  };
-  window.addEventListener('resize', resizeHandler);
-  
-  // 存储处理器以便清理
-  if (!prefsOverlay._resizeHandler) {
-    prefsOverlay._resizeHandler = resizeHandler;
-  }
+  // 打开前即刻落位（无初次滑入抖动），之后恢复平滑过渡
+  const segs = prefsOverlay.querySelectorAll('.segmented');
+  segs.forEach((s) => s.classList.add('is-instant'));
+  setThemeSwitchState();
+  setLangSwitchState();
+  requestAnimationFrame(() => segs.forEach((s) => s.classList.remove('is-instant')));
 }
 
 function openPrefsOverlay() {
@@ -861,40 +761,17 @@ function openPrefsOverlay() {
   }
   prevActiveElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
 
-  // 计算滚动条宽度并补偿 body，避免内容跳动（只在第一次打开时设置）
   lockBodyScroll();
 
-  // 移除可能残留的关闭类
+  const segs = prefsOverlay.querySelectorAll('.segmented');
+  segs.forEach((s) => s.classList.add('is-instant'));
+  setThemeSwitchState();
+  setLangSwitchState();
+
   prefsOverlay.classList.remove('is-closing');
   prefsOverlay.classList.add('is-open');
-  // 在对话框动画结束后再做一次指示器更新，避免初次测量因 scale(0.95) 导致尺寸偏小
-  try {
-    const dialogEl = prefsOverlay.querySelector('.pref-dialog');
-    if (dialogEl) {
-      const onAnimEnd = () => {
-        try {
-          const themeSeg = prefsOverlay.querySelector('.pref-seg-theme');
-          const langSeg = prefsOverlay.querySelector('.pref-seg-lang');
-          if (themeSeg) updateSegIndicator(themeSeg);
-          if (langSeg) updateSegIndicator(langSeg);
-        } catch (e) { /* 无操作（容错） */ }
-        dialogEl.removeEventListener('animationend', onAnimEnd);
-      };
-      dialogEl.addEventListener('animationend', onAnimEnd, { once: true });
-    }
-  } catch (e) { /* 无操作（容错） */ }
+  requestAnimationFrame(() => segs.forEach((s) => s.classList.remove('is-instant')));
 
-  // 打开时确保覆盖层的主题/语言按钮反映当前状态，并更新指示器位置
-  // 使用 requestAnimationFrame 与 setTimeout 确保 DOM 完全渲染后再更新
-  setTimeout(() => {
-    requestAnimationFrame(() => {
-      try {
-        setThemeSwitchState();
-        setLangSwitchState();
-      } catch (e) {}
-    });
-  }, 50); // 增加延迟以确保动画开始后 DOM 稳定
-  
   document.body.dataset.prefSearchLock = 'true';
 }
 
@@ -993,9 +870,8 @@ async function onSearchSubmit(event) {
   try {
     // base path 的计算逻辑与文件顶部的 basePath 完全一致（已统一到 computeBasePath），直接复用即可。
     const base = basePath.endsWith('/') ? basePath : basePath + '/';
-    const curPath = (location.pathname || '/');
-    const curLang = (document.documentElement.lang.startsWith('zh') || curPath.includes('/zh/')) ? 'zh' : 'en';
-    const rel = curLang === 'zh' ? 'zh/search' : 'search';
+    const curLang = isCurrentPathZh() ? 'zh' : 'en';
+    const rel = 'search';
   // 使用 runtime base 构建目标，以兼容 GH Pages 子路径和本地开发
     let target;
     try {
@@ -1042,25 +918,27 @@ async function onSearchSubmit(event) {
       resultsContainer.innerHTML = '<div class="pref-search-loading">Searching…</div>';
       // 尝试按原有方式做本地索引搜索
       if (!searchIndex) {
-        // 在回退路径中也使用 resolveWithBase() 以确保在 GH Pages 等子路径托管下能正确访问索引
         const res = await fetch(resolveWithBase('/search-index.json'));
         if (!res.ok) throw new Error('Failed to load index');
-        searchIndex = await res.json();
+        const raw = await res.json();
+        searchIndex = Array.isArray(raw) ? raw : (Array.isArray(raw?.items) ? raw.items : []);
       }
       const q = query.toLowerCase();
-      const matched = searchIndex
-        .filter(item => (item.lang || 'en').toLowerCase() === curLang)
-        .filter(item => {
-          return (item.title && String(item.title).toLowerCase().includes(q)) ||
-                 (item.description && String(item.description).toLowerCase().includes(q)) ||
-                 (item.excerpt && String(item.excerpt).toLowerCase().includes(q));
-        }).slice(0, 20);
+      const matched = searchIndex.filter(item => {
+        const fields = item.en || item.zh ? [item.en, item.zh] : [item];
+        return fields.some(loc => loc && (
+          (loc.title && String(loc.title).toLowerCase().includes(q)) ||
+          (loc.description && String(loc.description).toLowerCase().includes(q)) ||
+          (loc.excerpt && String(loc.excerpt).toLowerCase().includes(q))
+        ));
+      }).slice(0, 20);
       if (!matched.length) {
         resultsContainer.innerHTML = `<div class="pref-search-noresults">No results found for "${escapeHtml(query)}".</div>`;
       } else {
         resultsContainer.innerHTML = matched.map(it => {
-          const title = escapeHtml(it.title || 'Untitled');
-          const desc = escapeHtml(it.description || it.excerpt || '');
+          const loc = (curLang === 'zh' ? it.zh : it.en) || it;
+          const title = escapeHtml(loc.title || 'Untitled');
+          const desc = escapeHtml(loc.description || loc.excerpt || '');
           const url = it.url || '#';
           return `\n          <a class="pref-search-item" href="${url}">\n            <div class=\"pref-search-item-title\">${title}</div>\n            <div class=\"pref-search-item-desc\">${desc}</div>\n          </a>`;
         }).join('\n');
@@ -1357,17 +1235,105 @@ function rebindHeaderToggles() {
   }, 200);
 }
 
-if (typeof window !== 'undefined' && typeof document !== 'undefined') {
-// 将 overlay 函数暴露到 window，供 header 内联调用使用
-if (typeof window !== 'undefined') {
-  window.openSearchOverlay    = openSearchOverlay;
-  window.closeSearchOverlay   = closeSearchOverlay;
-  window.openPrefsOverlay     = openPrefsOverlay;
-  window.closePrefsOverlay    = closePrefsOverlay;
-  window.openSubscribeOverlay = openSubscribeOverlay;
-  window.closeSubscribeOverlay = closeSubscribeOverlay;
+// 语言原地切换后实时更新已挂载的弹窗文案与分段指示器（不关闭弹窗、不刷新页面）
+function refreshOverlaysForLang() {
+  isZhPage = isCurrentPathZh();
+  i18n = createI18n(isZhPage);
+  try { syncLangBadge(); } catch (e) {}
+
+  if (prefsOverlay) {
+    try {
+      const titleEl = prefsOverlay.querySelector('#pref-prefs-title');
+      if (titleEl) titleEl.textContent = i18n.preferences.title;
+      const closeBtn = prefsOverlay.querySelector('.pref-close');
+      if (closeBtn) closeBtn.setAttribute('aria-label', i18n.preferences.closeLabel);
+
+      const themeCard = prefsOverlay.querySelector('[data-pref-card="theme"]');
+      if (themeCard) {
+        themeCard.setAttribute('aria-label', i18n.preferences.theme.ariaGroupLabel);
+        const ct = themeCard.querySelector('.card-title');
+        if (ct) ct.textContent = i18n.preferences.theme.title;
+        const seg = themeCard.querySelector('.pref-seg-theme');
+        if (seg) seg.setAttribute('aria-label', i18n.preferences.theme.ariaLabel);
+        const lightBtn = themeCard.querySelector('[data-theme-option="light"]');
+        if (lightBtn) {
+          lightBtn.setAttribute('title', i18n.preferences.theme.light);
+          const lbl = lightBtn.querySelector('.seg-label');
+          if (lbl) lbl.textContent = i18n.preferences.theme.light;
+        }
+        const darkBtn = themeCard.querySelector('[data-theme-option="dark"]');
+        if (darkBtn) {
+          darkBtn.setAttribute('title', i18n.preferences.theme.dark);
+          const lbl = darkBtn.querySelector('.seg-label');
+          if (lbl) lbl.textContent = i18n.preferences.theme.dark;
+        }
+      }
+
+      const langCard = prefsOverlay.querySelector('[data-pref-card="language"]');
+      if (langCard) {
+        langCard.setAttribute('aria-label', i18n.preferences.language.ariaGroupLabel);
+        const ct = langCard.querySelector('.card-title');
+        if (ct) ct.textContent = i18n.preferences.language.title;
+        const seg = langCard.querySelector('.pref-seg-lang');
+        if (seg) seg.setAttribute('aria-label', i18n.preferences.language.ariaLabel);
+      }
+
+      setThemeSwitchState();
+      setLangSwitchState();
+    } catch (e) {}
+  }
+
+  if (searchOverlay) {
+    try {
+      const t = searchOverlay.querySelector('#pref-search-title');
+      if (t) t.textContent = i18n.search.title;
+      const c = searchOverlay.querySelector('.pref-search-close');
+      if (c) c.setAttribute('aria-label', i18n.search.closeLabel);
+      const inp = searchOverlay.querySelector('.pref-search-input');
+      if (inp) inp.setAttribute('placeholder', i18n.search.placeholder);
+      const hint = searchOverlay.querySelector('.pref-search-hint');
+      if (hint) hint.textContent = i18n.search.hint;
+      const browse = searchOverlay.querySelector('.pref-browse-tags');
+      if (browse) {
+        browse.setAttribute('aria-label', i18n.search.browseTags);
+        const sr = browse.querySelector('.sr-only');
+        if (sr) sr.textContent = i18n.search.browseTags;
+        const spans = browse.querySelectorAll('span');
+        if (spans.length > 1) spans[spans.length - 1].textContent = i18n.search.browseTags;
+      }
+      const clr = searchOverlay.querySelector('.pref-search-input-clear');
+      if (clr) clr.setAttribute('aria-label', isZhPage ? '清除搜索' : 'Clear search');
+    } catch (e) {}
+  }
+
+  if (subscribeOverlay) {
+    try {
+      const t = subscribeOverlay.querySelector('#pref-subscribe-title');
+      if (t) t.textContent = i18n.subscribe.title;
+      const c = subscribeOverlay.querySelector('.pref-subscribe-close');
+      if (c) c.setAttribute('aria-label', i18n.subscribe.closeLabel);
+      const descs = subscribeOverlay.querySelectorAll('.pref-subscribe-desc');
+      if (descs[0]) descs[0].textContent = i18n.subscribe.desc;
+      if (descs[1]) descs[1].innerHTML = i18n.subscribe.note;
+      const priv = subscribeOverlay.querySelector('.pref-subscribe-note');
+      if (priv) priv.textContent = i18n.subscribe.privacy;
+      const cta = subscribeOverlay.querySelector('[data-subscribe-open]');
+      if (cta) cta.textContent = i18n.subscribe.button;
+      const unsub = subscribeOverlay.querySelector('[data-subscribe-unsub]');
+      if (unsub) unsub.textContent = i18n.subscribe.manageUnsub;
+    } catch (e) {}
+  }
 }
+
+if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+  window.openSearchOverlay     = openSearchOverlay;
+  window.closeSearchOverlay    = closeSearchOverlay;
+  window.openPrefsOverlay      = openPrefsOverlay;
+  window.closePrefsOverlay     = closePrefsOverlay;
+  window.openSubscribeOverlay  = openSubscribeOverlay;
+  window.closeSubscribeOverlay = closeSubscribeOverlay;
   document.addEventListener('astro:page-load', rebindHeaderToggles);
+  window.addEventListener('langchange', refreshOverlaysForLang);
 }
 
 

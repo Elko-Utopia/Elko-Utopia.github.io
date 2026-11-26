@@ -11,7 +11,7 @@
   },
   {
     "title": "关于我",
-    "url": "/zh/about/",
+    "url": "/about/",
     "heroImage": "/assets/ui/placeholder/BusinessCard-A.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
@@ -41,7 +41,7 @@
   },
   {
     "title": "为什么你应该尝试Obsidian来做笔记",
-    "url": "/zh/blog/obsidian/",
+    "url": "/blog/obsidian/",
     "heroImage": "/assets/blog/obsidian/obsidian1.webp",
     "heroImagePosition": "50% 50%",
     "heroImageWidth": "101%",
@@ -51,7 +51,7 @@
   },
   {
     "title": "欢迎来到我的博客",
-    "url": "/zh/blog/welcome/",
+    "url": "/blog/welcome/",
     "heroImage": "/assets/ui/placeholder/blog-placeholder-1.webp",
     "heroImagePosition": "50% 50%",
     "heroImageWidth": "101%",
@@ -71,7 +71,7 @@
   },
   {
     "title": "联系",
-    "url": "/zh/contact/",
+    "url": "/contact/",
     "heroImage": null,
     "heroImagePosition": null,
     "heroImageWidth": null,
@@ -100,16 +100,6 @@
     "pubDate": "2026-09-14T00:00:00.000Z"
   },
   {
-    "title": "The Mimetic Braincase",
-    "url": "/portfolio/embarkation/hive-queen-life-case/",
-    "heroImage": "/assets/portfolio/scad/anim275/p2-04-final-render.webp",
-    "heroImagePosition": null,
-    "heroImageWidth": null,
-    "source": "portfolio/embarkation/hive-queen-life-case.md",
-    "lang": "en",
-    "pubDate": "2026-10-08T00:00:00.000Z"
-  },
-  {
     "title": "Seth The Untamed Scientist",
     "url": "/portfolio/embarkation/seth-the-untamed-scientist/",
     "heroImage": "/assets/portfolio/embarkation/SethTheUntamedScientist/Seth.webp",
@@ -118,6 +108,16 @@
     "source": "portfolio/embarkation/seth-the-untamed-scientist.md",
     "lang": "en",
     "pubDate": "2024-11-15T00:00:00.000Z"
+  },
+  {
+    "title": "The Mimetic Braincase",
+    "url": "/portfolio/embarkation/the-mimetic-braincase/",
+    "heroImage": "/assets/portfolio/scad/anim275/p2-04-final-render.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "portfolio/embarkation/the-mimetic-braincase.md",
+    "lang": "en",
+    "pubDate": "2026-10-08T00:00:00.000Z"
   },
   {
     "title": "The Star of Embarkation: Planet and Art",
@@ -207,7 +207,7 @@
     "heroImageWidth": null,
     "source": "portfolio/scad/anim275.md",
     "lang": "en",
-    "pubDate": "2026-11-09T00:00:00.000Z"
+    "pubDate": "2026-11-19T00:00:00.000Z"
   },
   {
     "title": "DIGI 130: Digital Communication",
@@ -267,11 +267,11 @@
     "heroImageWidth": null,
     "source": "portfolio/scad/game130.md",
     "lang": "en",
-    "pubDate": "2026-11-09T00:00:00.000Z"
+    "pubDate": "2026-11-19T00:00:00.000Z"
   },
   {
     "title": "启航计划的决裂",
-    "url": "/zh/portfolio/embarkation/embarkation-conflict/",
+    "url": "/portfolio/embarkation/embarkation-conflict/",
     "heroImage": "/assets/portfolio/scad/anim275/p4-03-six-panel-storyboard.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
@@ -281,7 +281,7 @@
   },
   {
     "title": "先行者",
-    "url": "/zh/portfolio/embarkation/forerunners/",
+    "url": "/portfolio/embarkation/forerunners/",
     "heroImage": "/assets/portfolio/embarkation/Forerunners/Forerunners.webp",
     "heroImagePosition": "center center",
     "heroImageWidth": "120%",
@@ -290,18 +290,8 @@
     "pubDate": "2026-09-14T00:00:00.000Z"
   },
   {
-    "title": "虫后生命之箱",
-    "url": "/zh/portfolio/embarkation/hive-queen-life-case/",
-    "heroImage": "/assets/portfolio/scad/anim275/p2-04-final-render.webp",
-    "heroImagePosition": null,
-    "heroImageWidth": null,
-    "source": "zh/portfolio/embarkation/hive-queen-life-case.md",
-    "lang": "zh",
-    "pubDate": "2026-10-08T00:00:00.000Z"
-  },
-  {
     "title": "塞斯——不羁的科学家",
-    "url": "/zh/portfolio/embarkation/seth-the-untamed-scientist/",
+    "url": "/portfolio/embarkation/seth-the-untamed-scientist/",
     "heroImage": "/assets/portfolio/embarkation/SethTheUntamedScientist/Seth.webp",
     "heroImagePosition": "center 10%",
     "heroImageWidth": null,
@@ -310,8 +300,18 @@
     "pubDate": "2024-11-15T00:00:00.000Z"
   },
   {
+    "title": "虫后生命之箱",
+    "url": "/portfolio/embarkation/the-mimetic-braincase/",
+    "heroImage": "/assets/portfolio/scad/anim275/p2-04-final-render.webp",
+    "heroImagePosition": null,
+    "heroImageWidth": null,
+    "source": "zh/portfolio/embarkation/the-mimetic-braincase.md",
+    "lang": "zh",
+    "pubDate": "2026-10-08T00:00:00.000Z"
+  },
+  {
     "title": "启航星：行星与美术",
-    "url": "/zh/portfolio/embarkation/the-star-of-embarkation/",
+    "url": "/portfolio/embarkation/the-star-of-embarkation/",
     "heroImage": "/assets/portfolio/embarkation/TheStarOfEmbarkation/planet.webp",
     "heroImagePosition": "center center",
     "heroImageWidth": null,
@@ -321,7 +321,7 @@
   },
   {
     "title": "Boss Rush",
-    "url": "/zh/portfolio/personal/boss-rush/",
+    "url": "/portfolio/personal/boss-rush/",
     "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
@@ -331,7 +331,7 @@
   },
   {
     "title": "古典素描练习",
-    "url": "/zh/portfolio/personal/classical-sketching/",
+    "url": "/portfolio/personal/classical-sketching/",
     "heroImage": "/assets/portfolio/personal/ClassicalSketching/Agrippa.webp",
     "heroImagePosition": "center 20%",
     "heroImageWidth": null,
@@ -341,7 +341,7 @@
   },
   {
     "title": "羊 写生",
-    "url": "/zh/portfolio/personal/goat/",
+    "url": "/portfolio/personal/goat/",
     "heroImage": "/assets/portfolio/personal/Goat/Goat.webp",
     "heroImagePosition": "center 60%",
     "heroImageWidth": null,
@@ -351,7 +351,7 @@
   },
   {
     "title": "光影水粉",
-    "url": "/zh/portfolio/personal/illuminated-surfaces/",
+    "url": "/portfolio/personal/illuminated-surfaces/",
     "heroImage": "/assets/portfolio/personal/IlluminatedSurfaces/IlluminatedSurfaces.webp",
     "heroImagePosition": "center 80%",
     "heroImageWidth": null,
@@ -361,7 +361,7 @@
   },
   {
     "title": "全景写生",
-    "url": "/zh/portfolio/personal/line-field-360/",
+    "url": "/portfolio/personal/line-field-360/",
     "heroImage": "/assets/portfolio/personal/LineField360/LineField.webp",
     "heroImagePosition": "center 70%",
     "heroImageWidth": null,
@@ -371,7 +371,7 @@
   },
   {
     "title": "临界步",
-    "url": "/zh/portfolio/personal/threshold-step/",
+    "url": "/portfolio/personal/threshold-step/",
     "heroImage": "/assets/portfolio/personal/ThresholdStep/ThresholdStep.webp",
     "heroImagePosition": "center 18%",
     "heroImageWidth": null,
@@ -381,7 +381,7 @@
   },
   {
     "title": "ANIM190: 动画概览：专业之路",
-    "url": "/zh/portfolio/scad/anim190/",
+    "url": "/portfolio/scad/anim190/",
     "heroImage": "/assets/portfolio/scad/anim190/cover.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
@@ -391,17 +391,17 @@
   },
   {
     "title": "ANIM 275：动画叙事与概念开发",
-    "url": "/zh/portfolio/scad/anim275/",
+    "url": "/portfolio/scad/anim275/",
     "heroImage": "/assets/portfolio/scad/anim275/p1-03-final-keyframe.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "zh/portfolio/scad/anim275.md",
     "lang": "zh",
-    "pubDate": "2026-11-09T00:00:00.000Z"
+    "pubDate": "2026-11-19T00:00:00.000Z"
   },
   {
     "title": "DIGI 130：数字传播",
-    "url": "/zh/portfolio/scad/digi130/",
+    "url": "/portfolio/scad/digi130/",
     "heroImage": "/assets/portfolio/scad/digi130/business-card.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
@@ -411,7 +411,7 @@
   },
   {
     "title": "FOUN 110&111: 基础素描、设计课",
-    "url": "/zh/portfolio/scad/foun110/",
+    "url": "/portfolio/scad/foun110/",
     "heroImage": "/assets/portfolio/scad/foun110/P1Step5Printing4.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
@@ -421,7 +421,7 @@
   },
   {
     "title": "FOUN 220: 绘画：光与影",
-    "url": "/zh/portfolio/scad/foun220/",
+    "url": "/portfolio/scad/foun220/",
     "heroImage": "/assets/portfolio/scad/foun220/Flavor.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
@@ -431,7 +431,7 @@
   },
   {
     "title": "FOUN 230：人体绘画：姿态与运动",
-    "url": "/zh/portfolio/scad/foun230/",
+    "url": "/portfolio/scad/foun230/",
     "heroImage": "/assets/portfolio/scad/foun230/Project2.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
@@ -441,7 +441,7 @@
   },
   {
     "title": "GAME 121：游戏开发导论",
-    "url": "/zh/portfolio/scad/game121/",
+    "url": "/portfolio/scad/game121/",
     "heroImage": "/assets/portfolio/scad/game121/boss-rush-06-title-screen-cover.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
@@ -451,33 +451,13 @@
   },
   {
     "title": "GAME 130：数字设计美学",
-    "url": "/zh/portfolio/scad/game130/",
+    "url": "/portfolio/scad/game130/",
     "heroImage": "/assets/portfolio/scad/game130/3dsmax-02-fire-extinguisher-view-b.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "zh/portfolio/scad/game130.md",
     "lang": "zh",
-    "pubDate": "2026-11-09T00:00:00.000Z"
-  },
-  {
-    "title": "text",
-    "url": "/text/",
-    "heroImage": null,
-    "heroImagePosition": null,
-    "heroImageWidth": null,
-    "source": "text.md",
-    "lang": "en",
-    "pubDate": null
-  },
-  {
-    "title": "text",
-    "url": "/zh/text/",
-    "heroImage": null,
-    "heroImagePosition": null,
-    "heroImageWidth": null,
-    "source": "zh/text.md",
-    "lang": "zh",
-    "pubDate": null
+    "pubDate": "2026-11-19T00:00:00.000Z"
   },
   {
     "title": "Website Development Log",
@@ -487,16 +467,16 @@
     "heroImageWidth": "101%",
     "source": "website-log.md",
     "lang": "en",
-    "pubDate": "2025-11-08T16:00:00.000Z"
+    "pubDate": "2026-11-26T00:00:00.000Z"
   },
   {
     "title": "网页制作日志",
-    "url": "/zh/website-log/",
+    "url": "/website-log/",
     "heroImage": "/assets/ui/placeholder/blog-placeholder-about.webp",
     "heroImagePosition": "50% 50%",
     "heroImageWidth": "101%",
     "source": "zh/website-log.md",
     "lang": "zh",
-    "pubDate": "2025-11-09T00:00:00.000Z"
+    "pubDate": "2026-11-26T00:00:00.000Z"
   }
 ]

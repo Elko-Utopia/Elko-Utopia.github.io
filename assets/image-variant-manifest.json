@@ -957,6 +957,33 @@
     ],
     "format": "webp"
   },
+  "/assets/portfolio/scad/anim275/p5-01-gate-low-angle.webp": {
+    "bytes": 159490,
+    "widths": [
+      320,
+      640,
+      1024
+    ],
+    "format": "webp"
+  },
+  "/assets/portfolio/scad/anim275/p5-02-forest-ambush.webp": {
+    "bytes": 62410,
+    "widths": [
+      320,
+      640,
+      1024
+    ],
+    "format": "webp"
+  },
+  "/assets/portfolio/scad/anim275/p5-03-camp-overlook.webp": {
+    "bytes": 93282,
+    "widths": [
+      320,
+      640,
+      1024
+    ],
+    "format": "webp"
+  },
   "/assets/portfolio/scad/anim275/pre-quarter-cemetery-composition.jpg": {
     "bytes": 353023,
     "widths": [
@@ -1496,6 +1523,33 @@
   },
   "/assets/portfolio/scad/game130/3dsmax-02-fire-extinguisher-view-b.webp": {
     "bytes": 89846,
+    "widths": [
+      320,
+      640,
+      1024
+    ],
+    "format": "webp"
+  },
+  "/assets/portfolio/scad/game130/environment-01.webp": {
+    "bytes": 836088,
+    "widths": [
+      320,
+      640,
+      1024
+    ],
+    "format": "webp"
+  },
+  "/assets/portfolio/scad/game130/environment-02.webp": {
+    "bytes": 826340,
+    "widths": [
+      320,
+      640,
+      1024
+    ],
+    "format": "webp"
+  },
+  "/assets/portfolio/scad/game130/environment-03.webp": {
+    "bytes": 809560,
     "widths": [
       320,
       640,

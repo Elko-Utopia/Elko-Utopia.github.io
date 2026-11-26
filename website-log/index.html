@@ -1,394 +1,250 @@
-<!DOCTYPE html><html lang="en" data-astro-cid-bu6ondtq> <head><!-- 全局元数据 --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.Dz5-Q1WM.js"></script><!-- 将 Astro ClientRouter 的 navigate 函数挂载到 window，供 public/scripts 下的纯 JS 文件调用 --><script type="module">(function(){if(typeof document>"u")return;function i(t){try{if(!(t instanceof HTMLElement))return;const e=t.getAttribute&&t.getAttribute("style");if(e&&e.indexOf("position: static")!==-1){try{t.style.removeProperty("position")}catch{}const o=window.getComputedStyle?window.getComputedStyle(t):null;o&&o.position==="static"&&(t.style.position="absolute",t.style.left||(t.style.left="50%"),t.style.top||(t.style.top="50%"),t.style.transform||(t.style.transform="translate(-50%, -50%)"))}}catch{}}function n(){try{document.querySelectorAll(".inline-portfolio-card .hero-img").forEach(i)}catch{}}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",function(){n()}):n()})();</script><!-- 导航中光标样式：给慢网络下的页面切换加 progress 光标反馈 --><!-- 行内同步主题初始化器：从 localStorage 或系统偏好中设置 html[data-theme]
-	该脚本在 CSS 加载前运行，以避免样式闪烁（FOUC）。 --><script type="module">(function(){if(typeof document>"u")return;function o(t){try{const e=t&&t.closest&&t.closest(".hero-frame");if(e){e.classList.add("img-loaded");try{(!(t instanceof HTMLElement)||!t.classList||!t.classList.contains("hero-img--invisible"))&&e.style.removeProperty("background-image")}catch{}}}catch{}}function r(){try{document.querySelectorAll(".inline-portfolio-card .hero-img").forEach(e=>{e instanceof HTMLImageElement&&(e.complete&&e.naturalWidth&&e.naturalWidth>0?o(e):(e.addEventListener("load",function n(){o(e),e.removeEventListener("load",n)}),e.addEventListener("error",function n(){o(e),e.removeEventListener("error",n)})))})}catch(t){console.warn("[wiki-cards] image load init failed",t)}}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r()})();</script><!-- 在 ClientRouter 页面切换前，把当前主题同步到即将替换的新文档，
-     避免每次切换页面时丢失用户的明暗主题设置 --><script type="module">(function(){var e=null,n=null;function i(){return e&&e.isConnected||(e=document.createElement("div"),e.id="astro-nav-progress",e.style.cssText=["position:fixed","top:0","left:0","z-index:2147483647","height:2px","width:0%","pointer-events:none","background:var(--accent,#6366f1)","transition:width 2.5s cubic-bezier(0.1,0.05,0.2,1),opacity 1s ease","will-change:width,opacity"].join(";"),document.body.appendChild(e)),e}document.addEventListener("astro:before-preparation",function(){document.documentElement.setAttribute("data-navigating","");var t=i();t.style.opacity="1",t.style.transition="width 2.5s cubic-bezier(0.1,0.05,0.2,1),opacity 0.3s ease",t.style.width="0%",n&&cancelAnimationFrame(n),n=requestAnimationFrame(function(){requestAnimationFrame(function(){t.style.width="75%"})})}),document.addEventListener("astro:page-load",function(){if(document.documentElement.removeAttribute("data-navigating"),!(!e||!e.isConnected)){e.style.transition="width 0.15s ease,opacity 0.35s ease 0.15s",e.style.width="100%",e.style.opacity="0";var t=e;setTimeout(function(){t&&t.parentNode&&t.parentNode.removeChild(t),e===t&&(e=null)},600)}})})();</script><!-- 页面切换加载进度条：网络慢时给用户视觉反馈，避免点击后无响应的感觉 --><script type="module">document.addEventListener("astro:before-swap",t=>{const e=document.documentElement.dataset.theme;e&&(t.newDocument.documentElement.dataset.theme=e)});</script><link rel="icon" type="image/svg+xml" href="/logo.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Elko's Creation Notes" href="https://elko-utopia.github.io/rss.xml"><meta name="generator" content="Astro v5.13.10"><!-- 字体预加载 --><link rel="preload" href="/fonts/SmileySans-Oblique.ttf.woff2" as="font" type="font/woff2" crossorigin><!-- 规范 URL --><link rel="canonical" href="https://elko-utopia.github.io/website-log/"><script>window.__ASTRO_BASE_URL__ = "https://elko-utopia.github.io/";window.__ASTRO_BASE_PATH__ = "/";</script><!-- 主要 Meta 标签 --><title>Website Development Log</title><meta name="title" content="Website Development Log"><meta name="description" content="Version history and changelog of this website"><!-- Open Graph / Facebook 元数据 --><meta property="og:type" content="website"><meta property="og:url" content="https://elko-utopia.github.io/website-log/"><meta property="og:title" content="Website Development Log"><meta property="og:description" content="Version history and changelog of this website"><meta property="og:image" content="https://elko-utopia.github.io/assets/ui/covers/site-preview-embarkation.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="The Star of Embarkation: Planet and Art"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://elko-utopia.github.io/website-log/"><meta property="twitter:title" content="Website Development Log"><meta property="twitter:description" content="Version history and changelog of this website"><meta property="twitter:image" content="https://elko-utopia.github.io/assets/ui/covers/site-preview-embarkation.jpg"><meta property="twitter:image:alt" content="The Star of Embarkation: Planet and Art"><!-- Diagnostic logging removed in cleanup: sanitizer kept below. --><!-- Ensure inline-portfolio-card foreground images hide the background once loaded
-			 to avoid visible double-layered images caused by background-image + <img>. --><script type="module">(function(){try{var t="theme-preference",e=localStorage.getItem(t);if(e==="dark"||e==="light"){document.documentElement.dataset.theme=e;return}}catch{}try{var a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches;document.documentElement.dataset.theme=a?"dark":"light"}catch{}})();</script><!-- Defensive runtime sanitizer: fix images that accidentally receive `position: static` as an inline style
-	     Some other runtime may copy or normalize styles and introduce `position: static` into
-	     an <img>'s inline style which prevents the CSS rule (.hero-frame .hero-img { position:absolute })
-	     from taking effect. This script attempts to remove that inline `position` property so the
-	     stylesheet can control positioning. If removal doesn't take effect (rare), it falls back to
-	     setting position:absolute as a last-resort fix. It also observes future mutations for a short
-	     time to catch late-arriving scripts.
-	--><script type="module" src="/_astro/BaseHead.astro_astro_type_script_index_5_lang.CiAXpRyC.js"></script><!-- Wiki-style link -> inline card replacer
-			 Replaces <div class="inline-portfolio-card-placeholder" data-wiki="..."> placeholders
-			 (injected at build-time by remark-wiki-links.mjs) with the actual card HTML by
-			 looking up `search-index.json` generated at build-time.
-	--><script type="module">
-	(
-	function(){
-		if (typeof document === 'undefined') return;
-		// Determine site base URL safely at runtime. import.meta.env is not available
-		// in the browser, so prefer a global injected value, then document.baseURI,
-		// finally fallback to '/'. Ensure it ends with a slash.
-		const SITE_BASE = (function(){
-			try {
-				if (typeof window !== 'undefined' && window.__ASTRO_BASE_URL__) {
-					return String(window.__ASTRO_BASE_URL__).endsWith('/') ? String(window.__ASTRO_BASE_URL__) : String(window.__ASTRO_BASE_URL__) + '/';
-				}
-			} catch (e) {}
-			try {
-				if (typeof document !== 'undefined' && document.baseURI) {
-					const u = new URL(document.baseURI);
-					const p = u.pathname || '/';
-					return p.endsWith('/') ? p : p + '/';
-				}
-			} catch (e) {}
-			return '/';
-		})();
-
-		async function init(){
-			const placeholders = document.querySelectorAll('.inline-portfolio-card-placeholder');
-			if (!placeholders || placeholders.length === 0) return;
-			try {
-				// Prefer a small hydrate index that includes system-tagged pages.
-				// Fallback to the main search-index.json if hydrate file is missing.
-				let idx = [];
-				try {
-					const hRes = await fetch(SITE_BASE + 'wiki-hydrate-index.json');
-					if (hRes && hRes.ok) {
-						idx = await hRes.json();
-					} else {
-						const idxRes = await fetch(SITE_BASE + 'search-index.json');
-						idx = await idxRes.json();
-					}
-				} catch (e) {
-					// if both fetches fail, bail out
-					console.error('[wiki-cards] failed to fetch hydrate/search index', e);
-					return;
-				}
-				// Build a minimal runtime mapping that mirrors the build-time
-				// policy: exact-key lookup only, plus explicit `basename_zh`
-				// aliases for entries under `zh/`. No heuristic inference.
-				const mapBySource = new Map();
-				const mapByRel = new Map();
-				for (const item of (idx || [])){
-					const src = item.source ? String(item.source).replace(/\.mdx?$/i, '').replace(/^\/+/, '') : null;
-					if (src) {
-						// normalize source keys to lowercase so runtime lookup matches build-time keys
-						const key = String(src).toLowerCase();
-						if (!mapBySource.has(key)) mapBySource.set(key, item);
-					}
-					if (item.url) {
-						// also normalize relative/url keys to lowercase for robust lookup
-						mapByRel.set(String(item.url).replace(/^\/+|\/+$/g,'').toLowerCase(), item);
-					}
-				}
-
-				placeholders.forEach(ph => {
-					const target = (ph.dataset && ph.dataset.wiki) ? ph.dataset.wiki : '';
-					const label = (ph.dataset && ph.dataset.label) ? ph.dataset.label : '';
-					let item = null;
-					if (target) {
-						const rawKey = target.replace(/^\/+|\/+$/g,'').toLowerCase();
-						item = mapBySource.get(rawKey) || mapByRel.get(rawKey);
-					}
-
-					let siteBaseNoSlash = SITE_BASE === '/' ? '' : SITE_BASE.replace(/\/$/, '');
-					// If running on a non-localhost host and SITE_BASE is '/', prefer the
-					// GitHub Pages absolute host so runtime-hydrated links point to your
-					// published site rather than relative local paths.
-					if (siteBaseNoSlash === '') {
-						try {
-							if (typeof window !== 'undefined' && window.location && !/localhost|127\.0\.0\.1/.test(window.location.hostname)) {
-								siteBaseNoSlash = 'https://elko-utopia.github.io';
-							}
-						} catch (e) {}
-					}
-					let href = '#';
-					let img = siteBaseNoSlash + '/assets/blog-placeholder-2.webp';
-					let title = label || target;
-					let dateStr = '';
-					if (item) {
-						href = item.url || href;
-						if (item.heroImage) {
-							const hiRaw = String(item.heroImage || '').trim();
-							const hi = hiRaw;
-							const m = hi.match(/(?:\.\.\/)+assets\/(.*)/);
-							if (m) {
-								img = (siteBaseNoSlash || '') + '/assets/' + m[1];
-							} else if (/^https?:\/\//i.test(hi) || hi.startsWith('//')) {
-								img = hi;
-							} else if (hi.startsWith('/')) {
-								img = (siteBaseNoSlash || '') + hi;
-							} else {
-								img = (siteBaseNoSlash || '') + '/' + hi.replace(/^\/+/, '');
-							}
-						}
-						if (item.title) title = item.title;
-						if (item.pubDate) {
-							// Robust parse of YYYY-M-D or YYYY-MM-DD into UTC date
-							const m = String(item.pubDate).match(/(\d{4})-(\d{1,2})-(\d{1,2})/);
-							if (m) {
-								const y = Number(m[1]), mo = Number(m[2]) - 1, day = Number(m[3]);
-								const d = new Date(Date.UTC(y, mo, day));
-								if (!isNaN(d.valueOf())) dateStr = new Intl.DateTimeFormat(document.documentElement.lang?.startsWith('zh') ? 'zh-CN' : 'en-US', { year: 'numeric', month: document.documentElement.lang?.startsWith('zh') ? 'long' : 'short', day: 'numeric', timeZone: 'UTC' }).format(d);
-							}
-						}
-					} else {
-						// fallback: link to guessed path
-						href = (siteBaseNoSlash || '') + '/' + target.replace(/^\/+|\/+$/g,'') + '/';
-					}
-
-					// Create a block-level wrapper so runtime hydration matches build-time output
-					const wrap = document.createElement('div');
-					wrap.className = 'inline-portfolio-card-wrap';
-					const a = document.createElement('a');
-					// mark runtime-hydrated wiki/obsidian cards so global.css can target them
-					a.className = 'inline-portfolio-card obsidian-card';
-					a.href = href;
-					// Use background-image on hero-frame as a resilient fallback (matches server output)
-					// Ensure runtime-hydrated cards include the same conservative inline
-					// styles the server-template emits so they keep layout parity even
-					// when other scripts inject CSS later (e.g. the lightbox styles).
-					const position = item?.heroImagePosition || 'center';
-										a.innerHTML = `<span class="hero-frame" style="background-image:url('${img}');--hero-position:${position}">` +
-																 ` <img class="hero-img" src="${img}" alt="" loading="lazy" decoding="async" />` +
-																 `</span><div class="meta"><h4 class="title site-heading">${title}</h4>` + (dateStr?`<h6 class="date">${dateStr}</h6>`:'') + `</div>`;
-										// Attach the resolved image path to the anchor for robustness and
-										// ensure the hero-frame explicitly has a background-image set on
-										// the element (some later runtime code was observed to clear the
-										// inline style in rare cases; setting it directly ensures the
-										// visible fallback is present immediately after hydration).
-										a.dataset.hi = img;
-										// Ensure the inline element reflects the background we intend to show.
-										try {
-											const hfEl = (function(){
-												const tmp = document.createElement('div'); tmp.innerHTML = a.innerHTML; return tmp.querySelector('.hero-frame');
-											})();
-											if (hfEl) {
-												hfEl.style.backgroundImage = `url('${img}')`;
-											}
-										} catch(e) { /* 忽略 */ }
-										wrap.appendChild(a);
-					// hydrate: no debug logging in production
-					ph.replaceWith(wrap);
-				});
-			} catch (e) { console.error('[wiki-cards] failed to hydrate placeholders', e); }
+<!DOCTYPE html><html lang="en"> <head><!-- 全局元数据 --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.Dz5-Q1WM.js"></script><!-- 全局微星尘点阵背景：独立静态脚本直接加载，彻底规避 Astro 模块脚本索引漂移或 HMR 缓存丢失 --><script src="/scripts/ambient-field.js" defer></script><!-- 统一单一模块脚本：挂载 ClientRouter navigate、切页状态同步、顶部加载进度条与卡片首图去底 --><script type="module" src="/_astro/BaseHead.astro_astro_type_script_index_0_lang.D37Oz2s7.js"></script><!-- 导航中光标样式：给慢网络下的页面切换加 progress 光标反馈 --><!-- 行内同步主题、语言与 URL 状态初始化器：
+	使用 is:inline 确保在 CSS 加载前同步解析 URL 参数（?lang=&theme=）与本地偏好，
+	彻底避免首屏闪白、语言闪烁或中英文同时显示，并支持通过网址分享明暗模式/语言/位置。 --><script>
+(function(){
+	function readParam(name) {
+		try {
+			return new URLSearchParams(location.search).get(name);
+		} catch (e) {
+			return null;
 		}
+	}
 
-		if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
-	})();
-	</script><link rel="stylesheet" href="/_astro/contact.CAMWb70w.css">
-<link rel="stylesheet" href="/_astro/about.CsYPxYT-.css">
-<style>.log-only[data-astro-cid-bu6ondtq]{padding-top:2.5rem}.log-only[data-astro-cid-bu6ondtq] hr[data-astro-cid-bu6ondtq]{display:none}.log-only[data-astro-cid-bu6ondtq] h1[data-astro-cid-bu6ondtq],.log-only[data-astro-cid-bu6ondtq] h2[data-astro-cid-bu6ondtq],.log-only[data-astro-cid-bu6ondtq] h3[data-astro-cid-bu6ondtq],.log-only[data-astro-cid-bu6ondtq] h4[data-astro-cid-bu6ondtq],.log-only[data-astro-cid-bu6ondtq] h5[data-astro-cid-bu6ondtq]{margin:.6rem 0 .4rem}.log-only[data-astro-cid-bu6ondtq] h1[data-astro-cid-bu6ondtq]:first-of-type{margin-top:0}body.website-log-page main[data-astro-cid-bu6ondtq]{padding-top:1.5rem}.zh-banner{display:none}header{margin-bottom:0;box-shadow:none}main hr,.log-only hr{display:none}body:before,body:after{display:none}
-</style></head> <body class="website-log-page layout-prose" data-astro-cid-bu6ondtq> <header> <nav> <h5 class="site-heading"> <a href="/" class="site-logo-link"> <span class="site-brand-mark site-logo" data-site-logo aria-hidden="true" data-astro-cid-jwiz4kkf><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1024 1024"><defs><clipPath id="header-clippath"><rect x="1084" width="1024" height="1024" fill="none"/></clipPath><clipPath id="header-clippath-1"><rect width="1024" height="1024" fill="none"/></clipPath></defs><g><g clip-path="url(#header-clippath)"><line x1="1564.9" y1="140.68" x2="834.66" y2="396.36" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="41"/></g></g><g><g clip-path="url(#header-clippath-1)"><line x1="487.53" y1="72.75" x2="-774.91" y2="514.78" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="84"/><line x1="552.85" y1="951.12" x2="1667" y2="561.45" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="84"/><path d="M698.52,674.81c178.94-62.65,276.77-248.22,218.51-414.47-58.26-166.25-250.56-250.23-429.5-187.58" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="84"/><path d="M341.86,349.07c-178.94,62.65-276.77,248.22-218.51,414.47,58.26,166.25,250.56,250.23,429.5,187.58" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="84"/><path d="M411.79,552.24c-59.03,20.67-91.3,81.88-72.08,136.72,19.22,54.84,82.65,82.54,141.67,61.87" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="84"/><path d="M627.82,473.08c59.03-20.67,91.3-81.88,72.08-136.72-19.22-54.84-82.65-82.54-141.67-61.87" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="84"/><line x1="561.89" y1="273.22" x2="340.73" y2="349.46" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="84"/><line x1="408.52" y1="553.44" x2="628.71" y2="472.76" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="84"/><line x1="481.39" y1="750.83" x2="698.52" y2="674.81" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="84"/></g></g></svg></span>  <span>Elko&#39;s Creation Notes</span> </a> </h5> <div class="internal-links"> <a href="/" data-astro-cid-eimmu3lg> Home </a>  <a href="/blog/" data-astro-cid-eimmu3lg> Blog </a>  <a href="/portfolio/" data-astro-cid-eimmu3lg> Portfolio </a>  <a href="/about/" data-astro-cid-eimmu3lg> About </a>  <a href="/contact/" data-astro-cid-eimmu3lg> Contact </a>  </div> <div class="right-side"> <!-- 移动端汉堡包菜单按钮 --> <button type="button" class="mobile-menu-btn" data-mobile-menu-toggle aria-label="Toggle mobile menu"> <span class="sr-only">Toggle mobile menu</span> <span class="hamburger-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu menu-open-icon" aria-hidden="true"> <path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path>  </svg><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x menu-close-icon" aria-hidden="true"> <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>  </svg></span> </button> <div class="pref-controls"> <button type="button" class="pref-btn search-btn" data-search-toggle aria-label="Open search"> <span class="sr-only">Open search</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search icon" aria-hidden="true"> <path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle>  </svg> </button> <!-- 偏好设置按钮：打开主题 + 语言对话框 --> <button type="button" class="pref-btn prefs-toggle" data-prefs-toggle aria-label="Preferences"> <span class="sr-only">Preferences</span> <span class="prefs-icon" aria-hidden="true"> <!-- 太阳图标（浅色模式可见） --> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun icon icon-sun" aria-hidden="true"> <circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>  </svg> <!-- 月亮图标（深色模式可见） --> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon icon icon-moon" aria-hidden="true"> <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path>  </svg> <span class="lang-badge" aria-hidden="true">EN</span> </span> </button> </div> </div> </nav> <!-- 移动端下拉菜单 --> <div class="mobile-nav-dropdown" data-mobile-nav> <div class="mobile-nav-content"> <div class="mobile-nav-links"> <a href="/" data-astro-cid-eimmu3lg> Home </a>  <a href="/blog/" data-astro-cid-eimmu3lg> Blog </a>  <a href="/portfolio/" data-astro-cid-eimmu3lg> Portfolio </a>  <a href="/about/" data-astro-cid-eimmu3lg> About </a>  <a href="/contact/" data-astro-cid-eimmu3lg> Contact </a>  </div> </div> </div> </header> <template data-ui-icon="close"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x" aria-hidden="true"> <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>  </svg></template> <template data-ui-icon="sun"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun" aria-hidden="true"> <circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>  </svg></template> <template data-ui-icon="moon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon" aria-hidden="true"> <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path>  </svg></template> <template data-ui-icon="tag"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag" aria-hidden="true"> <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle>  </svg></template>  <script>window.__SITE_PREFS = Object.assign({}, window.__SITE_PREFS || {}, {
+	function resolveInitialTheme() {
+		var q = readParam('theme');
+		if (q === 'dark' || q === 'light') return q;
+		try {
+			var tv = localStorage.getItem('theme-preference');
+			if (tv === 'dark' || tv === 'light') return tv;
+		} catch (e) {}
+		return 'dark';
+	}
+
+	function resolveInitialLang() {
+		var q = readParam('lang');
+		if (q === 'zh' || q === 'en') return q;
+		try {
+			var saved = localStorage.getItem('lang-preference');
+			if (saved === 'zh' || saved === 'en') return saved;
+		} catch (e) {}
+		try {
+			var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toLowerCase();
+			if (nav.indexOf('zh') === 0) return 'zh';
+		} catch (e) {}
+		return 'en';
+	}
+
+	var initTheme = resolveInitialTheme();
+	document.documentElement.dataset.theme = initTheme;
+	if (readParam('theme') === initTheme) {
+		try { localStorage.setItem('theme-preference', initTheme); } catch (e) {}
+	}
+
+	var initLang = resolveInitialLang();
+	document.documentElement.dataset.lang = initLang;
+	document.documentElement.lang = initLang;
+	if (readParam('lang') === initLang) {
+		try { localStorage.setItem('lang-preference', initLang); } catch (e) {}
+	}
+
+	function syncUrlState(opts) {
+		try {
+			var url = new URL(location.href);
+			var curLang = document.documentElement.dataset.lang === 'zh' ? 'zh' : 'en';
+			var curTheme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+			url.searchParams.set('lang', curLang);
+			url.searchParams.set('theme', curTheme);
+			if (opts && Object.prototype.hasOwnProperty.call(opts, 'hash')) {
+				var rawHash = opts.hash ? String(opts.hash).replace(/^#/, '') : '';
+				url.hash = rawHash ? ('#' + rawHash) : '';
+			}
+			var next = url.pathname + url.search + url.hash;
+			var current = location.pathname + location.search + location.hash;
+			if (next !== current) {
+				history.replaceState(history.state, '', next);
+			}
+		} catch (e) {}
+	}
+	window.__syncUrlState = syncUrlState;
+
+	function syncLangAttrs(lang) {
+		var isZh = lang === 'zh';
+		var attr = isZh ? 'zh' : 'en';
+		try {
+			var metaTitle = document.querySelector('meta[name="site-title-' + attr + '"]');
+			if (metaTitle && metaTitle.content) document.title = metaTitle.content;
+		} catch (e) {}
+		try {
+			document.querySelectorAll('[data-i18n-aria-en]').forEach(function (el) {
+				var v = el.getAttribute('data-i18n-aria-' + attr);
+				if (v !== null) el.setAttribute('aria-label', v);
+			});
+			document.querySelectorAll('[data-i18n-placeholder-en]').forEach(function (el) {
+				var v = el.getAttribute('data-i18n-placeholder-' + attr);
+				if (v !== null) el.setAttribute('placeholder', v);
+			});
+			document.querySelectorAll('[data-i18n-title-en]').forEach(function (el) {
+				var v = el.getAttribute('data-i18n-title-' + attr);
+				if (v !== null) el.setAttribute('title', v);
+			});
+			document.querySelectorAll('option[data-label-en]').forEach(function (opt) {
+				var v = opt.getAttribute('data-label-' + attr);
+				if (v !== null) opt.textContent = v;
+			});
+			document.querySelectorAll('[data-mouse-text-en]').forEach(function (el) {
+				var isTouch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+				var v = el.getAttribute((isTouch ? 'data-touch-text-' : 'data-mouse-text-') + attr);
+				if (v !== null) el.textContent = v;
+			});
+			document.querySelectorAll('.lang-badge').forEach(function (b) {
+				b.textContent = isZh ? '中' : 'EN';
+			});
+			document.querySelectorAll('[data-prefs-toggle]').forEach(function (btn) {
+				btn.classList.toggle('lang-zh', isZh);
+				btn.classList.toggle('lang-en', !isZh);
+			});
+		} catch (e) {}
+	}
+
+	window.__syncSiteLangAttrs = function () {
+		// 若通过 URL 携带 ?lang= 或 ?theme= 进入，优先同步到根属性
+		var qLang = readParam('lang');
+		if (qLang === 'zh' || qLang === 'en') {
+			document.documentElement.dataset.lang = qLang;
+			document.documentElement.lang = qLang;
+			try { localStorage.setItem('lang-preference', qLang); } catch (e) {}
+		}
+		var qTheme = readParam('theme');
+		if (qTheme === 'dark' || qTheme === 'light') {
+			document.documentElement.dataset.theme = qTheme;
+			try { localStorage.setItem('theme-preference', qTheme); } catch (e) {}
+		}
+		syncLangAttrs(document.documentElement.dataset.lang === 'zh' ? 'zh' : 'en');
+		syncUrlState();
+	};
+
+	function commitLangChange(lang, persist) {
+		document.documentElement.dataset.lang = lang;
+		document.documentElement.lang = lang;
+		if (persist) {
+			try { localStorage.setItem('lang-preference', lang); } catch (e) {}
+		}
+		syncLangAttrs(lang);
+		syncUrlState();
+		window.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
+	}
+
+	// 统一圆形波纹 View-Transition：
+	// - 明暗模式切换：更从容柔和的扩散速度（920ms），无需额外边缘提示
+	// - 语言切换（opts.ring === true）：在 View-Transition 顶层同步绘制矢量发光扩散环，清晰呈现语言波纹边界
+	window.__runCircularRipple = function (updateFn, opts) {
+		var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (reduceMotion || typeof document.startViewTransition !== 'function') {
+			updateFn();
+			return false;
+		}
+		var x = (opts && typeof opts.x === 'number' && isFinite(opts.x)) ? opts.x : (window.innerWidth / 2);
+		var y = (opts && typeof opts.y === 'number' && isFinite(opts.y)) ? opts.y : (window.innerHeight / 2);
+		var vw = window.innerWidth || 1;
+		var vh = window.innerHeight || 1;
+		var endRadius = Math.hypot(Math.max(x, vw - x), Math.max(y, vh - y));
+		// 使用百分比表达 clip-path 圆心与半径，规避 Chromium Windows HiDPI 下 ::view-transition-new(root) 的 px 缩放偏移，
+		// 保证明暗切换圆心与语言切换矢量光环在任意 DPI 下像素级重合
+		var xPct = ((x / vw) * 100).toFixed(3) + '%';
+		var yPct = ((y / vh) * 100).toFixed(3) + '%';
+		var refLen = Math.hypot(vw, vh) / Math.SQRT2;
+		var endRadiusPct = ((endRadius / refLen) * 100).toFixed(3) + '%';
+		var showRing = !!(opts && opts.ring);
+		var duration = (opts && typeof opts.duration === 'number') ? opts.duration : (showRing ? 860 : 920);
+		var easing = 'cubic-bezier(0.32, 0.72, 0, 1)';
+		var rootEl = document.documentElement;
+		var waveEl = null;
+
+		rootEl.style.setProperty('--vt-x', xPct);
+		rootEl.style.setProperty('--vt-y', yPct);
+		rootEl.classList.add('vt-ripple');
+		if (showRing) rootEl.classList.add('vt-ripple-ring');
+
+		var vt = document.startViewTransition(function () {
+			updateFn();
+			if (showRing) {
+				waveEl = document.createElement('div');
+				waveEl.className = 'vt-lang-wave';
+				waveEl.setAttribute('aria-hidden', 'true');
+				document.body.appendChild(waveEl);
+			}
+		});
+		vt.ready.then(function () {
+			rootEl.animate(
+				{ clipPath: ['circle(0% at ' + xPct + ' ' + yPct + ')', 'circle(' + endRadiusPct + ' at ' + xPct + ' ' + yPct + ')'] },
+				{ duration: duration, easing: easing, fill: 'forwards', pseudoElement: '::view-transition-new(root)' }
+			);
+			if (showRing) {
+				var endSize = (endRadius * 2).toFixed(2) + 'px';
+				var startTx = 'translate(' + x.toFixed(2) + 'px, ' + y.toFixed(2) + 'px)';
+				var endTx = 'translate(' + (x - endRadius).toFixed(2) + 'px, ' + (y - endRadius).toFixed(2) + 'px)';
+				rootEl.animate(
+					{
+						width: ['0px', endSize],
+						height: ['0px', endSize],
+						transform: [startTx, endTx],
+					},
+					{ duration: duration, easing: easing, fill: 'forwards', pseudoElement: '::view-transition-group(vt-lang-wave)' }
+				);
+				rootEl.animate(
+					{ opacity: [0.95, 0.92, 0.65, 0] },
+					{ duration: duration, easing: 'ease-out', fill: 'forwards', pseudoElement: '::view-transition-group(vt-lang-wave)' }
+				);
+			}
+		});
+		vt.finished.finally(function () {
+			if (waveEl && waveEl.parentNode) waveEl.parentNode.removeChild(waveEl);
+			rootEl.classList.remove('vt-ripple', 'vt-ripple-ring');
+			rootEl.style.removeProperty('--vt-x');
+			rootEl.style.removeProperty('--vt-y');
+		});
+		return true;
+	};
+
+	window.__applySiteLang = function (nextLang, opts) {
+		var lang = nextLang === 'zh' ? 'zh' : 'en';
+		var persist = !opts || opts.persist !== false;
+		var animate = !opts || opts.animate !== false;
+		var prev = document.documentElement.dataset.lang;
+
+		if (!animate || !prev || prev === lang) {
+			commitLangChange(lang, persist);
+			return;
+		}
+		window.__runCircularRipple(function () {
+			commitLangChange(lang, persist);
+		}, Object.assign({}, opts, { ring: true }));
+	};
+
+	syncUrlState();
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', window.__syncSiteLangAttrs, { once: true });
+	} else {
+		window.__syncSiteLangAttrs();
+	}
+	document.addEventListener('astro:page-load', window.__syncSiteLangAttrs);
+	window.addEventListener('themechange', function () { syncUrlState(); });
+})();
+</script><style>
+	html[data-theme='dark'], html[data-theme='dark'] body { background-color: #181a1d; color: rgb(203, 213, 225); }
+	html[data-theme='light'], html[data-theme='light'] body { background-color: #f3f4f6; color: rgb(39, 48, 66); }
+	html:not([data-lang='zh']) [data-lang-only='zh'],
+	html[data-lang='zh'] [data-lang-only='en'] { display: none !important; }
+	@media (max-width: 820px) {
+		header:not(.is-header-measured) .internal-links { display: none !important; }
+		header:not(.is-header-measured) .mobile-menu-btn { display: inline-flex !important; }
+	}
+</style><link rel="icon" type="image/svg+xml" href="/logo.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Elko's Creation Notes" href="https://elko-utopia.github.io/rss.xml"><meta name="generator" content="Astro v5.13.10"><!-- 方案 3 · 策展画册手记：Instrument Serif + 思源宋/黑 + JetBrains Mono（fallback 策略避免慢网回退字体二次大跳动） --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700;900&family=Noto+Serif+SC:wght@500;700;900&display=fallback"><!-- 规范 URL --><link rel="canonical" href="https://elko-utopia.github.io/website-log/"><script>window.__ASTRO_BASE_URL__ = "https://elko-utopia.github.io/";window.__ASTRO_BASE_PATH__ = "/";</script><!-- 主要 Meta 标签 --><title>Website Development Log</title><meta name="site-title-en" content="Website Development Log"><meta name="site-title-zh" content="网站开发日志"><meta name="title" content="Website Development Log"><meta name="description" content="Version history and changelog of this website"><!-- Open Graph / Facebook 元数据 --><meta property="og:type" content="website"><meta property="og:url" content="https://elko-utopia.github.io/website-log/"><meta property="og:title" content="Website Development Log"><meta property="og:description" content="Version history and changelog of this website"><meta property="og:image" content="https://elko-utopia.github.io/assets/ui/covers/site-preview-embarkation.jpg"><meta property="og:image:type" content="image/jpeg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="The Star of Embarkation: Planet and Art"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://elko-utopia.github.io/website-log/"><meta property="twitter:title" content="Website Development Log"><meta property="twitter:description" content="Version history and changelog of this website"><meta property="twitter:image" content="https://elko-utopia.github.io/assets/ui/covers/site-preview-embarkation.jpg"><meta property="twitter:image:alt" content="The Star of Embarkation: Planet and Art"><link rel="stylesheet" href="/_astro/contact.jzBG-Ebh.css">
+<link rel="stylesheet" href="/_astro/about.BSrjFkZw.css">
+<link rel="stylesheet" href="/_astro/website-log.NwaIyEa5.css"></head> <body class="website-log-page layout-prose"> <header> <nav> <h5 class="site-heading"> <a href="/" class="site-logo-link"> <span class="site-brand-mark site-brand-mark--header site-logo" data-site-logo data-logo-variant="header" aria-hidden="true"> <svg class="site-logo-fallback" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 1120 1104" fill="none"><g class="vortex-arms" stroke="currentColor" stroke-width="82" stroke-linecap="round" stroke-linejoin="round"><path class="vortex-branch vortex-branch-a" pathLength="100" d="M110,204.94L487.53,72.75C666.47,10.11,858.77,94.09,917.03,260.34C975.29,426.59,877.46,612.16,698.52,674.81L481.38,750.83C422.36,771.50,358.93,743.80,339.71,688.96C320.49,634.12,352.76,572.91,411.79,552.24L519.81,512.66"/><path class="vortex-branch vortex-branch-b" pathLength="100" d="M930.42,819.06L552.85,951.12C373.91,1013.77,181.61,929.79,123.35,763.54C65.09,597.29,162.92,411.72,341.86,349.07L561.89,274.49C617.25,253.82,680.68,281.52,699.90,336.36C719.12,391.20,686.85,452.41,627.82,473.08L519.81,512.66"/></g></svg>
+ <canvas class="site-logo-canvas" data-site-logo-canvas aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;display:block;max-width:none;"></canvas> </span> <span class="site-title-component site-title-component--header" data-site-title data-title-variant="header" data-title-procedural="false" data-title-label="Elko's Creation Notes" data-title-label-en="Elko's Creation Notes" data-title-label-zh="托邦的创作笔记"> <span class="site-title-text" data-site-title-text> <span data-lang-only="en">Elko&#39;s Creation Notes</span> <span data-lang-only="zh">托邦的创作笔记</span> </span> </span> </a> </h5> <div class="internal-links"> <span class="nav-glide-pill" data-nav-pill aria-hidden="true"></span> <span class="nav-glide-bar" data-nav-bar aria-hidden="true"></span> <a href="/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Home</span><span data-lang-only="zh">主页</span> </a>  <a href="/blog/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Blog</span><span data-lang-only="zh">博客</span> </a>  <a href="/portfolio/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Portfolio</span><span data-lang-only="zh">作品集</span> </a>  <a href="/about/" data-astro-cid-eimmu3lg> <span data-lang-only="en">About</span><span data-lang-only="zh">关于</span> </a>  <a href="/contact/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Contact</span><span data-lang-only="zh">联系</span> </a>  </div> <div class="right-side"> <!-- 移动端汉堡包菜单按钮 --> <button type="button" class="mobile-menu-btn" data-mobile-menu-toggle aria-label="Toggle mobile menu" data-i18n-aria-en="Toggle mobile menu" data-i18n-aria-zh="切换移动菜单"> <span class="sr-only"><span data-lang-only="en">Toggle mobile menu</span><span data-lang-only="zh">切换移动菜单</span></span> <span class="hamburger-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu menu-open-icon" aria-hidden="true"> <path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path>  </svg><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x menu-close-icon" aria-hidden="true"> <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>  </svg></span> </button> <div class="pref-controls"> <button type="button" class="pref-btn search-btn" data-search-toggle aria-label="Open search" data-i18n-aria-en="Open search" data-i18n-aria-zh="打开搜索"> <span class="sr-only"><span data-lang-only="en">Open search</span><span data-lang-only="zh">打开搜索</span></span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search icon" aria-hidden="true"> <path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle>  </svg> </button> <!-- 偏好设置按钮：打开主题 + 语言对话框 --> <button type="button" class="pref-btn prefs-toggle" data-prefs-toggle aria-label="Preferences" data-i18n-aria-en="Preferences" data-i18n-aria-zh="偏好设置"> <span class="sr-only"><span data-lang-only="en">Preferences</span><span data-lang-only="zh">偏好设置</span></span> <span class="prefs-icon" aria-hidden="true"> <!-- 太阳图标（浅色模式可见） --> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun icon icon-sun" aria-hidden="true"> <circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>  </svg> <!-- 月亮图标（深色模式可见） --> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon icon icon-moon" aria-hidden="true"> <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path>  </svg> <span class="lang-badge" aria-hidden="true"><span data-lang-only="en">EN</span><span data-lang-only="zh">中</span></span> </span> </button> </div> </div> </nav> <!-- 移动端下拉菜单 --> <div class="mobile-nav-dropdown" data-mobile-nav> <div class="mobile-nav-content"> <div class="mobile-nav-links"> <a href="/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Home</span><span data-lang-only="zh">主页</span> </a>  <a href="/blog/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Blog</span><span data-lang-only="zh">博客</span> </a>  <a href="/portfolio/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Portfolio</span><span data-lang-only="zh">作品集</span> </a>  <a href="/about/" data-astro-cid-eimmu3lg> <span data-lang-only="en">About</span><span data-lang-only="zh">关于</span> </a>  <a href="/contact/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Contact</span><span data-lang-only="zh">联系</span> </a>  </div> </div> </div> </header> <template data-ui-icon="close"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x" aria-hidden="true"> <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>  </svg></template> <template data-ui-icon="sun"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun" aria-hidden="true"> <circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>  </svg></template> <template data-ui-icon="moon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon" aria-hidden="true"> <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path>  </svg></template> <template data-ui-icon="tag"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag" aria-hidden="true"> <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle>  </svg></template>  <script>window.__SITE_PREFS = Object.assign({}, window.__SITE_PREFS || {}, {
   subscribeEndpoint: "https://buttondown.email/api/emails/embed-subscribe/elkoutopia",
   subscribeUser: "elkoutopia"
 });
 document.documentElement.dataset.subscribeEndpoint = "https://buttondown.email/api/emails/embed-subscribe/elkoutopia";
-document.documentElement.dataset.subscribeUser = "elkoutopia";</script> <script src="/scripts/subscribe-form.js" defer></script> <script type="module" src="/scripts/preferences.js"></script> <script type="module" src="/scripts/windows-emoji.js"></script> <script type="module" src="/scripts/lightbox.js"></script> <script type="module" src="/scripts/zoom-images.js"></script> <script type="module" src="/scripts/thumbnail-fallback.js"></script> <script type="module" src="/_astro/Header.astro_astro_type_script_index_0_lang.DGL8qVCd.js"></script> <main data-astro-cid-bu6ondtq> <article class="md-content log-only pswp-featured" data-astro-cid-bu6ondtq> <h1 id="️-website-development-log">🛠️ Website Development Log</h1>
-<p>The entries below are grouped by major versions, with each update shown in order.</p>
-<h3 id="v203-full-rebuild">V2.0.3 Full Rebuild</h3>
-<p class="p-followed-by-list"><strong>Mar 18, 2026 – Nov 10, 2026</strong></p>
-<ol>
-<li>Moved the site to a new domain: elko-utopia.github.io</li>
-<li>Rebuilt the entire portfolio system from scratch with a cleaner structure</li>
-<li>Redesigned the homepage</li>
-<li>Added a multi-image gallery layout for portfolio posts</li>
-<li>Rewrote the image lightbox</li>
-<li>Cleaned up leftover duplicate code, unused files, and redundant routes</li>
-</ol>
-<h5 id="v203">V2.0.3</h5>
-<ol>
-<li>Added <strong>Three.js</strong> for interactive 3D content</li>
-<li>Added rotation and zoom controls for 3D models</li>
-<li>Added an article sidebar that builds a contents list from headings</li>
-<li>Added expand, collapse, and section navigation to the sidebar</li>
-<li>Redesigned the collapsed sidebar button</li>
-<li>Fixed the sidebar pushing article content aside on wide screens</li>
-<li>Improved the sidebar layout on small screens</li>
-<li>Added GIF playback to homepage masonry cards</li>
-<li>Kept GIF playback using original files instead of static thumbnails</li>
-<li>Improved original-image loading for small images</li>
-<li>Extended Markdown galleries with configurable column counts</li>
-<li>Added captions below gallery images</li>
-<li>Made gallery columns adapt to small screens</li>
-</ol>
-<h5 id="v202">V2.0.2</h5>
-<ol>
-<li>Fixed the positioning issue for portfolio items.</li>
-<li>Added detailed introductions, creative backgrounds, and project descriptions for all existing works.</li>
-<li>Implemented smooth transition effects across the entire site.</li>
-<li>Added support for displaying GIFs and videos.</li>
-<li>Supported embedding external resources, such as YouTube videos and video files from source repositories.</li>
-<li>The website has entered a regular maintenance phase, with continuous updates and content additions moving forward.</li>
-</ol>
-<h5 id="v201">V2.0.1</h5>
-<ol>
-<li>Added a red warning banner at the top of all portfolio pages</li>
-<li>Fixed portfolio category cover images pointing to wrong paths</li>
-<li>Redesigned post badges from a triangle shape to a minimal outlined label style</li>
-<li>Fixed scroll-to-zoom accidentally closing the lightbox</li>
-<li>Fixed lazy-loaded images being skipped when opening the lightbox</li>
-</ol>
-<h5 id="v200">V2.0.0</h5>
-<ol>
-<li>Rebuilt portfolio into three categories: Embarkation, SCAD, and Personal</li>
-<li>Portfolio detail pages support three display modes: single image, gallery, and redirect</li>
-<li>Added a multi-image gallery layout for portfolio posts</li>
-<li>Replaced the lightbox with PhotoSwipe</li>
-<li>Images now load a smaller version first for faster loading</li>
-<li>Panoramic images have a scroll animation and always load at full resolution</li>
-<li>Fixed search links pointing to wrong paths</li>
-<li>Moved the site to a new domain: elko-utopia.github.io</li>
-</ol>
-<h3 id="v111-improved-portfolio-display-masonry-layout">V1.1.1 Improved Portfolio Display: Masonry Layout</h3>
-<p class="p-followed-by-list"><strong>Mar 15. 2026 – Mar 17. 2026</strong></p>
-<ol>
-<li>Enhanced portfolio image display</li>
-<li>Improved search integration for portfolio items</li>
-<li>Added a masonry gallery layout</li>
-</ol>
-<h5 id="v111">V1.1.1</h5>
-<ol>
-<li>Adjusted page style structure so each page's styles no longer affect each other</li>
-<li>Separated image popup behavior from image display size control</li>
-<li>Images now adjust their display size based on their aspect ratio</li>
-<li>Fixed the issue where work card titles appeared vertically</li>
-<li>Fixed style conflicts caused by the image processing program</li>
-<li>Added support for content that can extend beyond the default page width</li>
-<li>Fixed occasional scaling issues in the masonry layout when resizing the window quickly</li>
-<li>Fixed the floating info box showing a black background in light mode</li>
-</ol>
-<h5 id="v110">V1.1.0</h5>
-<ol>
-<li>Images now display on masonry gallery detail pages</li>
-<li>Search results now show portfolio images</li>
-<li>Removed duplicate titles from portfolio markdown files</li>
-<li>Consolidated portfolio route handlers to prevent conflicts</li>
-<li>Updated search index to include portfolio images</li>
-<li>Modified page layout for featured works</li>
-<li>Replaced custom lightbox with open source solution</li>
-</ol>
-<h3 id="v102-official-release">V1.0.2 Official Release</h3>
-<p class="p-followed-by-list"><strong>Nov 9. 2025 – Dec 22. 2025</strong></p>
-<ol>
-<li>Added 404 page</li>
-<li>Created site map</li>
-<li>Fixed numerous compatibility issues</li>
-</ol>
-<h5 id="v102">V1.0.2</h5>
-<ol>
-<li>Fixed jump link bugs</li>
-</ol>
-<h5 id="v101">V1.0.1</h5>
-<ol>
-<li>Fixed numerous compatibility issues</li>
-<li>Converted portfolio assets to WebP format for faster loading.</li>
-</ol>
-<h5 id="v100">V1.0.0</h5>
-<ol>
-<li>Added 404 page</li>
-<li>Created site map</li>
-</ol>
-<h3 id="v042-multilingual-support--enhanced-search">V0.4.2 Multilingual Support &#x26; Enhanced Search</h3>
-<p class="p-followed-by-list"><strong>Nov 4. 2025 – Nov 9. 2025</strong></p>
-<ol>
-<li>Built the Chinese interface framework.</li>
-<li>Added tag and search features.</li>
-<li>Fixed layout issues and rebuilt several reusable components.</li>
-<li>Moved the development log to its own dedicated page.</li>
-</ol>
-<h5 id="v042">V0.4.2</h5>
-<ol>
-<li>Implemented tag functionality.</li>
-<li>Moved the development log to a new dedicated page.</li>
-<li>Fixed the bug where post positions shifted after refresh.</li>
-<li>Resolved excessive line spacing in list styles.</li>
-<li>Added collapsible list functionality.</li>
-<li>Added support for inserting internal post links.</li>
-<li>Implemented tag-based search.</li>
-<li>Rebuilt the font system for unified typography.</li>
-<li>Rebuilt the centering component for repeated in-article use.</li>
-<li>Rebuilt the highlight component for repeated in-article use.</li>
-<li>Added keyword- and tag-based search.</li>
-<li>Implemented search indexing.</li>
-<li>Created a new version of the development log.</li>
-</ol>
-<h5 id="v041">V0.4.1</h5>
-<ol>
-<li>Adjusted body text font for better readability.</li>
-<li>Completed the initial translation for the Chinese interface.</li>
-<li>Optimized mobile layout and display.</li>
-</ol>
-<h5 id="v040">V0.4.0</h5>
-<ol>
-<li>Built the framework for the Chinese-language mode.</li>
-<li>Fixed issues from V0.3.</li>
-</ol>
-<hr>
-<h3 id="v032-subscription--comment-system">V0.3.2 Subscription &#x26; Comment System</h3>
-<p class="p-followed-by-list"><strong>Oct 27. 2025 – Nov 3. 2025</strong></p>
-<ol>
-<li>Added subscription functionality using <strong>buttondown</strong>.</li>
-<li>Added a comment system using <strong>utteranc.es</strong>.</li>
-</ol>
-<h5 id="v032">V0.3.2</h5>
-<ol>
-<li>Improved the subscription button's mobile display and completed testing.</li>
-<li>Added comment functionality using <strong>utteranc.es</strong>.</li>
-</ol>
-<h5 id="v031">V0.3.1</h5>
-<p>Used smaller thumbnails on article pages to reduce loading time.</p>
-<h5 id="v030">V0.3.0</h5>
-<p>Created a subscription feature based on <strong>buttondown</strong>.</p>
-<hr>
-<h3 id="v024-personalized-feature-updates">V0.2.4 Personalized Feature Updates</h3>
-<p class="p-followed-by-list"><strong>Oct 22. 2025 – Oct 26. 2025</strong></p>
-<ol>
-<li>Developed modular lightbox and corner badge features</li>
-<li>Added a contact interface</li>
-<li>Implemented dark mode and a simple search</li>
-<li>Created a separate contact page</li>
-</ol>
-<h5 id="v024">V0.2.4</h5>
-<ol>
-<li>Added support for adjusting image placement in lists.</li>
-<li>Streamlined static resources.</li>
-</ol>
-<h5 id="v023">V0.2.3</h5>
-<ol>
-<li>Added post-pinning and corner badge features.</li>
-<li>Created a simplified process for adding new blog and portfolio posts.</li>
-<li>Added text-centering and dark-mode-compatible Markdown highlighting.</li>
-</ol>
-<h5 id="v022">V0.2.2</h5>
-<ol>
-<li>Added dark mode and search capabilities.</li>
-<li>Moved featured portfolio items to the homepage.</li>
-<li>Moved original homepage content to the About page.</li>
-<li>Initialized blog and portfolio systems for automatic Markdown detection.</li>
-<li>Added a Contact page.</li>
-</ol>
-<h5 id="v021">V0.2.1</h5>
-<ol>
-<li>Optimized the lightbox and refactored it for reuse.</li>
-<li>Improved mobile layout and added a hamburger menu.</li>
-</ol>
-<h5 id="v020">V0.2.0</h5>
-<ol>
-<li>Implemented the image-zoom lightbox feature.</li>
-<li>Fixed GitHub display issues with directly referenced images.</li>
-</ol>
-<hr>
-<h3 id="v012-basic-page-setup">V0.1.2 Basic Page Setup</h3>
-<p class="p-followed-by-list"><strong>Oct 19. 2025 – Oct 21. 2025</strong></p>
-<ol>
-<li>Beginning of the project.</li>
-</ol>
-<h5 id="v012">V0.1.2</h5>
-<ol>
-<li>Created the featured portfolio page.</li>
-<li>Added contact information to the footer.</li>
-<li>Improved overall page layout and visual hierarchy.</li>
-</ol>
-<h5 id="v011">V0.1.1</h5>
-<ol>
-<li>Created the initial layouts for the Home. Blog. Portfolio. and About pages.</li>
-<li>add personal link</li>
-</ol>
-<h5 id="v010">V0.1.0</h5>
-<ol>
-<li>Created the project.</li>
-<li>Completed the initial homepage.</li>
-<li>Built the Header and Footer.</li>
-</ol> </article> </main> <footer data-astro-cid-sz7xmlte> <span class="copyright site-heading" data-astro-cid-sz7xmlte>&copy; 2026 Elko-Utopia. All rights reserved.</span> <!-- 订阅表单已移到博客与作品页面右上角的浮动组件 --> <div class="social-links" data-astro-cid-sz7xmlte> <!-- Email --> <a href="mailto:elkoutopia@gmail.com" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Email</span> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true" data-astro-cid-sz7xmlte="true"> <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect>  </svg> </a> <!-- Instagram --> <a href="https://www.instagram.com/elkoutopia/" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Instagram</span> <svg viewBox="0 0 1024 1024" aria-hidden="true" width="32" height="32" data-astro-cid-sz7xmlte> <path fill="currentColor" d="M959.8 511.9v189.4c-1.2 72.3-32.3 140.9-86 189.4-30 31.4-69.2 52.5-112 60.3-19.3 7.1-39.8 10-60.3 8.6h-379c-57.8 2.4-114-19.5-155-60.3-54.4-39-91.4-97.7-103.4-163.6V322.4c0-103.8 60.6-198 155-241.1 33.6-9.9 68.3-15.7 103.4-17.2h378.9c56.1-1.4 111 16.9 155 51.7 50 37.9 83.8 93.3 94.8 155 0 17.2 8.6 34.5 8.6 51.7v189.4z m-826.7 0v189.4c-1.4 17.7 1.6 35.4 8.6 51.7 21.2 82.2 96 139.2 180.8 137.8h387.6c32.3 1.7 63.7-10.9 86-34.5 57.1-34.1 90.3-97.3 86-163.6V322.4c2.2-14.9-0.8-30.1-8.6-43C855.5 194 780 132.8 692.6 133H313.9c-14.9-1.3-29.8 1.7-43 8.6-39.9 13.5-75.5 37.3-103.4 68.9-24.2 32.2-36.3 71.8-34.5 112l0.1 189.4z" data-astro-cid-sz7xmlte></path> <path fill="currentColor" d="M753.1 511.9C750.3 643.9 644 750.2 512 753c-132-2.8-238.3-109.1-241.1-241.1 2.8-132 109.1-238.3 241.1-241.1 132.9-0.2 240.9 107.3 241.1 240.3v0.8z m-413.3 0c0 95.1 77.1 172.2 172.2 172.2S684.3 607 684.3 511.9 607.2 339.6 512 339.6c-95 0.3-172 77.3-172.2 172.3zM822 236.3c-1.2 18.5-16 33.2-34.5 34.5-18.5-1.3-33.2-16-34.4-34.5 1.2-18.5 16-33.2 34.5-34.5 18.5 1.3 33.2 16 34.4 34.5z" data-astro-cid-sz7xmlte></path> </svg> </a> <!-- Twitter / X --> <a href="https://x.com/ElkoUtopia" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Twitter · X</span> <svg viewBox="0 0 512 512" aria-hidden="true" width="32" height="32" data-astro-cid-sz7xmlte> <path fill="currentColor" d="M496 109.5a201.8 201.8 0 0 1-56.55 15.3 97.5 97.5 0 0 0 43.33-53.6 197.7 197.7 0 0 1-62.56 23.5A99.14 99.14 0 0 0 348.31 64c-54.42 0-98.46 43.4-98.46 96.9a93.2 93.2 0 0 0 2.54 22.1 280.7 280.7 0 0 1-203-101.3A95.7 95.7 0 0 0 36 130.4c0 33.6 17.53 63.3 44 80.7A97.5 97.5 0 0 1 35.22 199v1.2c0 47 34 86.1 79 95a100.8 100.8 0 0 1-25.94 3.4 94.4 94.4 0 0 1-18.51-1.8c12.51 38.5 48.92 66.5 92.05 67.3A199.6 199.6 0 0 1 39.5 405.6a203 203 0 0 1-23.5-1.4A278.7 278.7 0 0 0 166.74 448c181.36 0 280.44-147.7 280.44-275.8 0-4.2-.11-8.4-.31-12.5A198.5 198.5 0 0 0 496 109.5" data-astro-cid-sz7xmlte></path> </svg> </a> <!-- Bluesky --> <a href="https://bsky.app/profile/elkoutopia.bsky.social" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>Bluesky</span> <svg viewBox="0 0 24 24" aria-hidden="true" width="32" height="32" data-astro-cid-sz7xmlte> <path fill="currentColor" d="M5.202 2.857C7.954 4.922 10.913 9.11 12 11.358c1.087-2.247 4.046-6.436 6.798-8.501C20.783 1.366 24 .213 24 3.883c0 .732-.42 6.156-.667 7.037-.856 3.061-3.978 3.842-6.755 3.37 4.854.826 6.089 3.562 3.422 6.299-5.065 5.196-7.28-1.304-7.847-2.97-.104-.305-.152-.448-.153-.327 0-.121-.05.022-.153.327-.568 1.666-2.782 8.166-7.847 2.97-2.667-2.737-1.432-5.473 3.422-6.3-2.777.473-5.899-.308-6.755-3.369C.42 10.04 0 4.615 0 3.883c0-3.67 3.217-2.517 5.202-1.026" data-astro-cid-sz7xmlte></path> </svg> </a> <!-- GitHub --> <a href="https://github.com/Elko-Utopia" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>GitHub</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" data-astro-cid-sz7xmlte> <path fill="currentColor" d="M8 .5A7.5 7.5 0 0 0 5.4 15.1c.4.07.55-.18.55-.4 0-.2-.01-.73-.01-1.43-2.25.49-2.73-1.09-2.73-1.09-.36-.93-.89-1.18-.89-1.18-.73-.5.06-.49.06-.49.81.06 1.24.83 1.24.83.72 1.22 1.89.87 2.36.66.07-.52.28-.87.51-1.07-1.79-.21-3.66-.9-3.66-4.01 0-.89.32-1.62.84-2.19-.08-.21-.36-1.07.08-2.24 0 0 .67-.22 2.2.86a7.7 7.7 0 0 1 4 0c1.53-1.08 2.2-.86 2.2-.86.44 1.17.16 2.03.08 2.24.52.57.84 1.3.84 2.19 0 3.12-1.88 3.8-3.67 4.01.29.25.55.74.55 1.5 0 1.08-.01 1.95-.01 2.22 0 .22.15.48.55.4A7.5 7.5 0 0 0 8 .5Z" data-astro-cid-sz7xmlte></path> </svg> </a> <!-- LinkedIn --> <a href="https://www.linkedin.com/in/elko-zhu-1944123a6/" target="_blank" data-astro-cid-sz7xmlte> <span class="sr-only" data-astro-cid-sz7xmlte>LinkedIn</span> <svg viewBox="0 0 1024 1024" aria-hidden="true" width="32" height="32" data-astro-cid-sz7xmlte> <path fill="currentColor" d="M932.571429 54.857143H91.428571c-20.228571 0-36.571429 16.342857-36.571428 36.571428v841.142858c0 20.228571 16.342857 36.571429 36.571428 36.571428h841.142858c20.228571 0 36.571429-16.342857 36.571428-36.571428V91.428571c0-20.228571-16.342857-36.571429-36.571428-36.571428zM326.057143 833.942857H190.4V397.6h135.657143v436.342857z m-67.771429-496a78.628571 78.628571 0 1 1 78.628572-78.628571c-0.114286 43.428571-35.314286 78.628571-78.628572 78.628571z m575.657143 496H698.4V621.714286c0-50.628571-0.914286-115.657143-70.514286-115.657143-70.514286 0-81.371429 55.085714-81.371428 112v215.885714H411.085714V397.6h130.057143v59.657143h1.828572c18.057143-34.285714 62.285714-70.514286 128.342857-70.514286 137.371429 0 162.628571 90.4 162.628571 207.885714v239.314286z" data-astro-cid-sz7xmlte></path> </svg> </a> </div> </footer>   </body> </html>
+document.documentElement.dataset.subscribeUser = "elkoutopia";</script> <script src="/scripts/subscribe-form.js" defer></script> <script type="module" src="/scripts/site-brand-procedural.js"></script> <script type="module" src="/scripts/preferences.js"></script> <script type="module" src="/scripts/windows-emoji.js"></script> <script type="module" src="/scripts/lightbox.js"></script> <script type="module" src="/scripts/zoom-images.js"></script> <script type="module" src="/scripts/thumbnail-fallback.js"></script> <script type="module" src="/_astro/Header.astro_astro_type_script_index_0_lang.B3oGr3U6.js"></script> <main> <section class="changelog-shell"> <div class="changelog-hero"> <div class="changelog-hero__eyebrow"> <span class="changelog-pill changelog-pill--accent">V2.0.4</span> <span class="changelog-stat"> <span data-lang-only="en">8 Milestones · 24 Releases</span> <span data-lang-only="zh">8 个阶段 · 24 次版本迭代</span> </span> </div> <h1 class="site-heading changelog-hero__title"> <span data-lang-only="en">Website Development Log</span> <span data-lang-only="zh">网站开发日志</span> </h1> <p class="changelog-hero__desc"> <span data-lang-only="en">Every major milestone and detailed iteration of this site in reverse chronological order. Expand any release to inspect the full change list.</span> <span data-lang-only="zh">按时间倒序记录本站的每一次阶段演进与详细改动，点击任意版本卡片即可展开或收起具体更新内容。</span> </p> <div class="changelog-toolbar"> <button type="button" class="changelog-toggle-all" data-log-toggle-all data-state="collapsed"> <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevrons-up-down" aria-hidden="true"> <path d="m7 15 5 5 5-5"></path><path d="m7 9 5-5 5 5"></path>  </svg> <span data-label-expand> <span data-lang-only="en">Expand all versions</span> <span data-lang-only="zh">展开全部版本</span> </span> <span data-label-collapse hidden> <span data-lang-only="en">Collapse all versions</span> <span data-lang-only="zh">收起全部版本</span> </span> </button> </div> </div> <ol class="changelog-timeline" data-changelog-list> <li class="changelog-entry"> <span class="changelog-dot is-latest" aria-hidden="true"></span> <article class="changelog-card is-open" data-log-card> <button type="button" class="changelog-card__trigger" data-log-trigger aria-expanded="true" aria-controls="release-panel-0"> <div class="changelog-card__meta"> <span class="changelog-version is-latest">V2.0.4</span> <span class="changelog-badge"> <span data-lang-only="en">UI &amp; Features</span> <span data-lang-only="zh">界面与功能优化</span> </span> <time class="changelog-date">2026-11-11 – 2026-11-26</time> </div> <div class="changelog-card__head-row"> <h2 class="changelog-card__title"> <span data-lang-only="en">UI &amp; Feature Optimization</span> <span data-lang-only="zh">界面与功能优化</span> </h2> <span class="changelog-chevron" aria-hidden="true"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"> <path d="m6 9 6 6 6-6"></path>  </svg> </span> </div> <ul class="changelog-highlights"> <li> <span data-lang-only="en">Added interactive Three.js 3D planet viewer, playable MakeCode Arcade games, and CompareSlider</span> <span data-lang-only="zh">新增 Three.js 交互式 3D 星球展示、MakeCode Arcade 可玩网页小游戏与前后对比滑块（CompareSlider）</span> </li><li> <span data-lang-only="en">Migrated to single-URL instant bilingual switching, unified tag registry, and cross-language search v2</span> <span data-lang-only="zh">升级单 URL 即时双语切换与地址栏状态同步、统一双语标签体系以及跨语言搜索 v2</span> </li><li> <span data-lang-only="en">Redesigned site-wide editorial typography, 3-level surface hierarchy, merged breadcrumb/TOC, and single-radius framing</span> <span data-lang-only="zh">重构全站策展画册排版、三层表面色阶、面包屑与目录合一栏，并统一全站画框、表格与卡片的单一圆角规范</span> </li><li> <span data-lang-only="en">Upgraded Header/Footer/Masonry interactions, View-Transition ripples, collapsible changelog, and cleaned legacy scripts</span> <span data-lang-only="zh">升级顶栏/页脚/瀑布流微交互与明暗语言波纹过渡，重做可折叠日志界面并清理历史冗余代码</span> </li> </ul> </button> <div class="changelog-card__collapse" id="release-panel-0" data-log-panel> <div class="changelog-card__body"> <div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V2.0.4</span> <span class="changelog-sub__count"> <span data-lang-only="en">13 changes</span> <span data-lang-only="zh">13 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Adopted the unified editorial typography system (Instrument Serif + Noto Serif SC + Inter + Noto Sans SC + JetBrains Mono) with proportional fluid body-to-heading scaling</span> <span data-lang-only="zh">全站落地策展画册字体体系（Instrument Serif + 思源宋体 + Inter + 思源黑体 + JetBrains Mono），保留随屏幕平滑缩放的等比字号层级</span> </li><li> <span data-lang-only="en">Introduced a 3-level tonal surface token system (--bg, --surface, --surface-soft) for crisp contrast in both light and dark modes</span> <span data-lang-only="zh">建立三层表面色阶变量（--bg / --surface / --surface-soft），统一亮暗主题的层次对比</span> </li><li> <span data-lang-only="en">Merged the article Table of Contents toggle into a comfortable sticky breadcrumb bar, eliminating redundant floating pills and duplicate headers</span> <span data-lang-only="zh">将文章目录开关合并至舒适高度的吸顶面包屑栏右侧，取消重复的悬浮胶囊与抽屉顶栏</span> </li><li> <span data-lang-only="en">Unified outer hairline frames and single-radius clipping across the 3D planet viewer, 2D climate map, CompareSlider, galleries, tables, and portfolio cards (eliminating double rounding)</span> <span data-lang-only="zh">统一 3D 星球视图、2D 气候图、对比滑块、图库、各类数据表与独立配图的外包边与单次圆角裁剪，杜绝二次圆角</span> </li><li> <span data-lang-only="en">Fixed English tectonic plate table text overlap and horizontal scrollbars, and aligned climate distribution table typography with plate tables</span> <span data-lang-only="zh">修复英文板块表文字重叠与横向滚动条问题，并使气候占比表与板块表采用同一套紧凑等宽数据排版</span> </li><li> <span data-lang-only="en">Unified portfolio secondary category pages into cohesive cards wrapping both cover image (top-only radius) and title/date text, matching the top-level portfolio layout</span> <span data-lang-only="zh">将作品集二级分类页改造为与第一层一致的图文一体卡片，圆角延展包裹标题与日期，图片底端直角衔接文字</span> </li><li> <span data-lang-only="en">Removed unwanted white border outlines around blog list thumbnails</span> <span data-lang-only="zh">移除博客列表封面图外侧的多余白色描边</span> </li><li> <span data-lang-only="en">Fixed the search page tag dropdown clipping bug, turned the expand control into a dedicated dropdown button, removed heavy input shadows, and fixed search result card typography</span> <span data-lang-only="zh">修复搜索页「展开全部标签」按钮被裁切的问题，改用独立直角下拉控件替代伪装 Tag 胶囊，移除搜索框重阴影并修复结果卡片字体畸形</span> </li><li> <span data-lang-only="en">Refined tag colors to a clear, balanced editorial palette while keeping neutral readable text, and unified all prose hyperlinks to body-colored text with blue underlines</span> <span data-lang-only="zh">优化标签色板为适度鲜明的编辑色阶（保持中性清晰文字），全站正文超链接统一为正文色 + 蓝色下划线，禁用蓝色字体模式</span> </li><li> <span data-lang-only="en">Upgraded Header (sliding navigation pill/bar, cursor-lit hairline, magnetic icon buttons), Footer (clean borderless magnetic icons with floating labels), and Homepage Masonry (micro-parallax, cursor sheen, staggered overlay reveal without outer-box scaling overlap bugs)</span> <span data-lang-only="zh">重做顶栏（灵动滑动指示器、底边指针微光、轻磁吸图标）、页脚（无框纯净微磁吸图标与浮现标签）及主页瀑布流交互（内部微视差、指针微光与错峰说明浮现，根治外框放大叠压 bug）</span> </li><li> <span data-lang-only="en">Refined circular View-Transition ripples: slower unhurried theme transition with zero frame-0 flash, plus a synchronized top-layer vector wavefront ring exclusively for language switching</span> <span data-lang-only="zh">优化明暗与语言切换的圆形波纹过渡：放慢明暗切换节奏并消除首帧闪现，为语言切换新增与扩散边界像素同步的顶层矢量光环</span> </li><li> <span data-lang-only="en">Restyled in-game MakeCode Arcade virtual joystick and Z/X buttons to match the site theme, fixed swap interaction bugs, and added automatic layout reset on portrait-to-landscape orientation flip</span> <span data-lang-only="zh">重绘 MakeCode 小游戏虚拟摇杆与 Z/X 按键以贴合站点风格，修复左右交换后的操控 bug，并增加横竖屏切换自动复位</span> </li><li> <span data-lang-only="en">Rebuilt the Website Development Log into this interactive collapsible timeline and removed legacy defensive inline scripts from BaseHead and AutoContentList</span> <span data-lang-only="zh">清理 BaseHead 与 AutoContentList 中的历史防御性冗余代码、减少页面加载闪烁，并将本页升级为可展开/收起的交互式版本日志</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V2.0.3</span> <span class="changelog-sub__count"> <span data-lang-only="en">9 changes</span> <span data-lang-only="zh">9 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Built a Three.js interactive 3D planet viewer supporting 3D globe and three 2D world map projections (Robinson, Equirectangular, Mollweide)</span> <span data-lang-only="zh">引入 Three.js 构建交互式三维星球视图，支持 3D 球体与罗宾森、平面、摩尔威德三种世界地图投影自由切换</span> </li><li> <span data-lang-only="en">Added multi-layer scientific visualization: surface, land/sea, 12-month temperature &amp; precipitation playback, tectonic plates, live elevation contours, climate classification, and T85 hydrology rivers &amp; lakes</span> <span data-lang-only="zh">支持多图层科学可视化：地表、海陆、12 个月气温与降水动态播放、构造板块、实时等高线、气候分类与 T85 水文河湖</span> </li><li> <span data-lang-only="en">Embedded playable MakeCode Arcade games with unmuted audio, responsive volume slider, fullscreen toggle, and draggable virtual controls</span> <span data-lang-only="zh">集成 MakeCode Arcade 网页试玩页面，支持游戏声音与响应式音量滑条、全屏以及可拖拽虚拟手柄按键</span> </li><li> <span data-lang-only="en">Added interactive image CompareSlider with adaptive divider contrast</span> <span data-lang-only="zh">新增前后对比滑块组件（CompareSlider），支持按画面明暗自适应分割线色调</span> </li><li> <span data-lang-only="en">Migrated to single-URL instant EN/ZH switching synced with URL parameters (?lang=&amp;theme=#hash), unified bilingual tag registry, and cross-language search v2</span> <span data-lang-only="zh">升级单 URL 即时中英双语切换与地址栏状态同步（?lang=&amp;theme=#hash），统一双语标签注册表与跨语言搜索 v2</span> </li><li> <span data-lang-only="en">Added procedural HiDPI Canvas rendering for the animated vortex SiteLogo, cursor-reactive SiteTitle, and ambient dot-matrix background</span> <span data-lang-only="zh">新增程序化 HiDPI Canvas 漩涡徽标、指针光斑标题动效与全局微星尘点阵背景</span> </li><li> <span data-lang-only="en">Added an article Table of Contents sidebar generated automatically from headings with expand/collapse, scroll-spy, and responsive layout adaptation</span> <span data-lang-only="zh">新增自动解析正文标题的文章侧边目录，支持展开收起、滚动定位与宽窄屏自适应避让</span> </li><li> <span data-lang-only="en">Added direct original-file GIF playback in homepage masonry cards and configurable multi-column Markdown galleries with below-image captions</span> <span data-lang-only="zh">首页瀑布流支持原文件播放 GIF 动图，扩展 Markdown 画廊支持自定义列数与图下常驻说明</span> </li><li> <span data-lang-only="en">Resolved 3D close-zoom scroll twitching and double scrollbars by removing Lenis scroll hijacking and clamping globe touch/wheel hit testing</span> <span data-lang-only="zh">移除 Lenis 滚动劫持并收紧球面滚轮命中判定，彻底消除 3D 近距缩放与双滚动条抽搐问题</span> </li> </ol> </div> </div> </div> </article> </li><li class="changelog-entry"> <span class="changelog-dot" aria-hidden="true"></span> <article class="changelog-card" data-log-card> <button type="button" class="changelog-card__trigger" data-log-trigger aria-expanded="false" aria-controls="release-panel-1"> <div class="changelog-card__meta"> <span class="changelog-version">V2.0.2</span> <span class="changelog-badge"> <span data-lang-only="en">Full Rebuild</span> <span data-lang-only="zh">全面重建</span> </span> <time class="changelog-date">2026-03-18 – 2026-11-10</time> </div> <div class="changelog-card__head-row"> <h2 class="changelog-card__title"> <span data-lang-only="en">Full Rebuild &amp; Domain Migration</span> <span data-lang-only="zh">全面重建与新域名迁移</span> </h2> <span class="changelog-chevron" aria-hidden="true"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"> <path d="m6 9 6 6 6-6"></path>  </svg> </span> </div> <ul class="changelog-highlights"> <li> <span data-lang-only="en">Moved the site to a new domain: elko-utopia.github.io</span> <span data-lang-only="zh">网站迁移至新域名：elko-utopia.github.io</span> </li><li> <span data-lang-only="en">Rebuilt the entire portfolio system from scratch with three structured categories</span> <span data-lang-only="zh">从零重建整套作品集系统，划分为三大清晰分类</span> </li><li> <span data-lang-only="en">Replaced the image lightbox with PhotoSwipe and added GIF, video, and multi-image gallery support</span> <span data-lang-only="zh">图片灯箱升级为 PhotoSwipe，新增多图画廊、动图与视频展示支持</span> </li><li> <span data-lang-only="en">Completed project descriptions across all works and entered regular maintenance</span> <span data-lang-only="zh">为所有现有作品补全创作背景与说明，网站进入稳定维护阶段</span> </li> </ul> </button> <div class="changelog-card__collapse" id="release-panel-1" data-log-panel> <div class="changelog-card__body"> <div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V2.0.2</span> <span class="changelog-sub__count"> <span data-lang-only="en">6 changes</span> <span data-lang-only="zh">6 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Fixed positioning issues for portfolio items</span> <span data-lang-only="zh">修复作品显示位置错误的问题</span> </li><li> <span data-lang-only="en">Added detailed introductions, creative backgrounds, and project descriptions for all existing works</span> <span data-lang-only="zh">为所有现有作品补充更详细的作品介绍、创作背景与项目说明</span> </li><li> <span data-lang-only="en">Implemented smooth transition effects across the entire site</span> <span data-lang-only="zh">全站加入流畅的过渡效果</span> </li><li> <span data-lang-only="en">Added support for displaying GIFs and videos</span> <span data-lang-only="zh">支持显示动图和视频</span> </li><li> <span data-lang-only="en">Supported embedding external resources such as YouTube videos and repository video files</span> <span data-lang-only="zh">支持引入外部资源，例如 YouTube 视频与资源仓库视频文件</span> </li><li> <span data-lang-only="en">Concluded the full rebuild phase and transitioned into regular maintenance</span> <span data-lang-only="zh">全面重建阶段收官，网站进入正常维护与持续更新期</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V2.0.1</span> <span class="changelog-sub__count"> <span data-lang-only="en">5 changes</span> <span data-lang-only="zh">5 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Added a notice banner at the top of portfolio pages</span> <span data-lang-only="zh">在作品集页面顶部新增提示横幅</span> </li><li> <span data-lang-only="en">Fixed portfolio category cover images pointing to wrong paths</span> <span data-lang-only="zh">修复作品集分类封面图路径错误的问题</span> </li><li> <span data-lang-only="en">Redesigned post badges from a triangle shape to a minimal outlined label style</span> <span data-lang-only="zh">将文章角标从三角形样式重新设计为极简线框标签风格</span> </li><li> <span data-lang-only="en">Fixed scroll-to-zoom accidentally closing the lightbox</span> <span data-lang-only="zh">修复滚轮缩放时误触关闭灯箱的问题</span> </li><li> <span data-lang-only="en">Fixed lazy-loaded images being skipped when opening the lightbox</span> <span data-lang-only="zh">修复懒加载图片在灯箱中被跳过的问题</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V2.0.0</span> <span class="changelog-sub__count"> <span data-lang-only="en">7 changes</span> <span data-lang-only="zh">7 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Rebuilt portfolio into three categories: Embarkation, SCAD, and Personal</span> <span data-lang-only="zh">作品集重建为三个分类：Embarkation、SCAD、Personal</span> </li><li> <span data-lang-only="en">Portfolio detail pages support three display modes: single image, gallery, and redirect</span> <span data-lang-only="zh">作品详情页支持三种展示模式：单图、画廊、跳转链接</span> </li><li> <span data-lang-only="en">Added a multi-image gallery layout for portfolio posts</span> <span data-lang-only="zh">新增作品页面多图并排展示的画廊布局</span> </li><li> <span data-lang-only="en">Replaced the custom lightbox with PhotoSwipe</span> <span data-lang-only="zh">灯箱改用 PhotoSwipe</span> </li><li> <span data-lang-only="en">Images now load smaller responsive variants first for faster loading</span> <span data-lang-only="zh">图片支持先加载轻量缩略图以加快加载速度</span> </li><li> <span data-lang-only="en">Panoramic images feature a smooth scroll animation and always load at full resolution</span> <span data-lang-only="zh">全景图加入平滑滚动动画并始终以原图加载</span> </li><li> <span data-lang-only="en">Fixed search links pointing to wrong paths and migrated the site to elko-utopia.github.io</span> <span data-lang-only="zh">修复搜索链接路径错误，并将站点迁移至新域名 elko-utopia.github.io</span> </li> </ol> </div> </div> </div> </article> </li><li class="changelog-entry"> <span class="changelog-dot" aria-hidden="true"></span> <article class="changelog-card" data-log-card> <button type="button" class="changelog-card__trigger" data-log-trigger aria-expanded="false" aria-controls="release-panel-2"> <div class="changelog-card__meta"> <span class="changelog-version">V1.1.1</span> <span class="changelog-badge"> <span data-lang-only="en">Masonry Layout</span> <span data-lang-only="zh">瀑布流画廊</span> </span> <time class="changelog-date">2026-03-15 – 2026-03-17</time> </div> <div class="changelog-card__head-row"> <h2 class="changelog-card__title"> <span data-lang-only="en">Improved Portfolio Display: Masonry Layout</span> <span data-lang-only="zh">更好的作品集展示：瀑布流</span> </h2> <span class="changelog-chevron" aria-hidden="true"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"> <path d="m6 9 6 6 6-6"></path>  </svg> </span> </div> <ul class="changelog-highlights"> <li> <span data-lang-only="en">Added a masonry gallery layout for featured works</span> <span data-lang-only="zh">新增瀑布流画廊布局展示精选作品</span> </li><li> <span data-lang-only="en">Enhanced aspect-ratio-aware image sizing and page-isolated stylesheets</span> <span data-lang-only="zh">重构页面级独立样式并按图片比例自动控制尺寸</span> </li><li> <span data-lang-only="en">Improved search integration with portfolio thumbnails</span> <span data-lang-only="zh">改进搜索结果中的作品集图片集成</span> </li> </ul> </button> <div class="changelog-card__collapse" id="release-panel-2" data-log-panel> <div class="changelog-card__body"> <div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V1.1.1</span> <span class="changelog-sub__count"> <span data-lang-only="en">6 changes</span> <span data-lang-only="zh">6 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Separated page styles so different layouts no longer interfere with one another</span> <span data-lang-only="zh">调整页面样式结构，让各页面样式互不影响</span> </li><li> <span data-lang-only="en">Decoupled lightbox popup behavior from inline image sizing control</span> <span data-lang-only="zh">分离图片弹窗与页面显示尺寸的控制逻辑</span> </li><li> <span data-lang-only="en">Images now automatically adapt display dimensions based on aspect ratio</span> <span data-lang-only="zh">图片根据宽高比自动调整展示尺寸</span> </li><li> <span data-lang-only="en">Fixed work card titles wrapping vertically and image processor style conflicts</span> <span data-lang-only="zh">修复作品卡片标题竖排与图片处理脚本样式冲突问题</span> </li><li> <span data-lang-only="en">Added support for breakout-wide content exceeding default article width</span> <span data-lang-only="zh">新增内容突破默认正文宽度的展示能力</span> </li><li> <span data-lang-only="en">Fixed occasional masonry scaling glitches during rapid window resizing and light-mode overlay contrast</span> <span data-lang-only="zh">修复快速缩放窗口时瀑布流异常以及亮色主题悬浮框背景错误</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V1.1.0</span> <span class="changelog-sub__count"> <span data-lang-only="en">4 changes</span> <span data-lang-only="zh">4 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Enabled full portfolio images on masonry detail pages and inside search results</span> <span data-lang-only="zh">瀑布流详情页与搜索结果支持展示作品图片</span> </li><li> <span data-lang-only="en">Removed duplicate titles from portfolio markdown files and consolidated portfolio routes</span> <span data-lang-only="zh">移除作品 Markdown 中的重复标题并整合作品集路由</span> </li><li> <span data-lang-only="en">Updated search index to include portfolio cover images</span> <span data-lang-only="zh">更新搜索索引以纳入作品集封面图</span> </li><li> <span data-lang-only="en">Replaced the custom lightbox with an open-source solution</span> <span data-lang-only="zh">将自制灯箱替换为开源图片灯箱方案</span> </li> </ol> </div> </div> </div> </article> </li><li class="changelog-entry"> <span class="changelog-dot" aria-hidden="true"></span> <article class="changelog-card" data-log-card> <button type="button" class="changelog-card__trigger" data-log-trigger aria-expanded="false" aria-controls="release-panel-3"> <div class="changelog-card__meta"> <span class="changelog-version">V1.0.2</span> <span class="changelog-badge"> <span data-lang-only="en">Release</span> <span data-lang-only="zh">正式版</span> </span> <time class="changelog-date">2025-11-09 – 2025-12-22</time> </div> <div class="changelog-card__head-row"> <h2 class="changelog-card__title"> <span data-lang-only="en">Official Release</span> <span data-lang-only="zh">正式版发布</span> </h2> <span class="changelog-chevron" aria-hidden="true"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"> <path d="m6 9 6 6 6-6"></path>  </svg> </span> </div> <ul class="changelog-highlights"> <li> <span data-lang-only="en">Added 404 page and generated sitemap</span> <span data-lang-only="zh">新增 404 页面并创建站点地图</span> </li><li> <span data-lang-only="en">Converted portfolio assets to WebP for faster loading</span> <span data-lang-only="zh">作品资源批量转换为 WebP 以加快加载速度</span> </li><li> <span data-lang-only="en">Resolved cross-browser compatibility and jump-link issues</span> <span data-lang-only="zh">修复大量兼容性与跳转链接问题</span> </li> </ul> </button> <div class="changelog-card__collapse" id="release-panel-3" data-log-panel> <div class="changelog-card__body"> <div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V1.0.2</span> <span class="changelog-sub__count"> <span data-lang-only="en">1 change</span> <span data-lang-only="zh">1 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Fixed jump-link navigation bugs</span> <span data-lang-only="zh">修复跳转链接 bug</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V1.0.1</span> <span class="changelog-sub__count"> <span data-lang-only="en">2 changes</span> <span data-lang-only="zh">2 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Fixed numerous cross-browser compatibility issues</span> <span data-lang-only="zh">修复大量兼容性问题</span> </li><li> <span data-lang-only="en">Converted portfolio assets to WebP format for faster loading</span> <span data-lang-only="zh">将作品文件转换为 WebP 格式以加快加载速度</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V1.0.0</span> <span class="changelog-sub__count"> <span data-lang-only="en">2 changes</span> <span data-lang-only="zh">2 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Added 404 page</span> <span data-lang-only="zh">新增 404 页面</span> </li><li> <span data-lang-only="en">Created site map</span> <span data-lang-only="zh">创建站点地图</span> </li> </ol> </div> </div> </div> </article> </li><li class="changelog-entry"> <span class="changelog-dot" aria-hidden="true"></span> <article class="changelog-card" data-log-card> <button type="button" class="changelog-card__trigger" data-log-trigger aria-expanded="false" aria-controls="release-panel-4"> <div class="changelog-card__meta"> <span class="changelog-version">V0.4.2</span> <span class="changelog-badge"> <span data-lang-only="en">Bilingual &amp; Search</span> <span data-lang-only="zh">双语与搜索</span> </span> <time class="changelog-date">2025-11-04 – 2025-11-09</time> </div> <div class="changelog-card__head-row"> <h2 class="changelog-card__title"> <span data-lang-only="en">Multilingual Support &amp; Enhanced Search</span> <span data-lang-only="zh">多语言支持与增强搜索</span> </h2> <span class="changelog-chevron" aria-hidden="true"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"> <path d="m6 9 6 6 6-6"></path>  </svg> </span> </div> <ul class="changelog-highlights"> <li> <span data-lang-only="en">Built the initial Chinese interface framework and translations</span> <span data-lang-only="zh">建立中文界面框架与初版翻译</span> </li><li> <span data-lang-only="en">Added tag filtering, keyword search, and search indexing</span> <span data-lang-only="zh">新增标签筛选、关键词搜索与搜索索引</span> </li><li> <span data-lang-only="en">Moved the development log to its own dedicated page</span> <span data-lang-only="zh">将开发日志独立为专门页面</span> </li> </ul> </button> <div class="changelog-card__collapse" id="release-panel-4" data-log-panel> <div class="changelog-card__body"> <div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.4.2</span> <span class="changelog-sub__count"> <span data-lang-only="en">4 changes</span> <span data-lang-only="zh">4 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Implemented tag functionality, tag-based search, keyword search, and search indexing</span> <span data-lang-only="zh">实现标签功能、标签搜索、关键词搜索与站内搜索索引</span> </li><li> <span data-lang-only="en">Moved the development log to a dedicated page</span> <span data-lang-only="zh">将开发日志迁移至独立页面</span> </li><li> <span data-lang-only="en">Fixed post position shifts after refresh and excessive list line spacing</span> <span data-lang-only="zh">修复刷新后文章位置错乱与列表行距过大问题</span> </li><li> <span data-lang-only="en">Added collapsible lists, internal post links, and rebuilt centering, highlight, and font components</span> <span data-lang-only="zh">新增可折叠列表与站内文章链接，并重构居中、高亮与统一字体组件</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.4.1</span> <span class="changelog-sub__count"> <span data-lang-only="en">2 changes</span> <span data-lang-only="zh">2 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Adjusted body typography for better readability</span> <span data-lang-only="zh">调整正文字体以提升可读性</span> </li><li> <span data-lang-only="en">Completed initial Chinese interface translation and optimized mobile display</span> <span data-lang-only="zh">完成中文界面初版翻译并优化移动端显示</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.4.0</span> <span class="changelog-sub__count"> <span data-lang-only="en">2 changes</span> <span data-lang-only="zh">2 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Built the Chinese-language framework foundation</span> <span data-lang-only="zh">建立中文界面框架基础</span> </li><li> <span data-lang-only="en">Fixed issues carried over from V0.3</span> <span data-lang-only="zh">修复 V0.3 遗留问题</span> </li> </ol> </div> </div> </div> </article> </li><li class="changelog-entry"> <span class="changelog-dot" aria-hidden="true"></span> <article class="changelog-card" data-log-card> <button type="button" class="changelog-card__trigger" data-log-trigger aria-expanded="false" aria-controls="release-panel-5"> <div class="changelog-card__meta"> <span class="changelog-version">V0.3.2</span> <span class="changelog-badge"> <span data-lang-only="en">Community</span> <span data-lang-only="zh">订阅与评论</span> </span> <time class="changelog-date">2025-10-27 – 2025-11-03</time> </div> <div class="changelog-card__head-row"> <h2 class="changelog-card__title"> <span data-lang-only="en">Subscription &amp; Comment System</span> <span data-lang-only="zh">订阅与评论系统</span> </h2> <span class="changelog-chevron" aria-hidden="true"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"> <path d="m6 9 6 6 6-6"></path>  </svg> </span> </div> <ul class="changelog-highlights"> <li> <span data-lang-only="en">Added email subscription using Buttondown</span> <span data-lang-only="zh">引入 Buttondown 邮件订阅功能</span> </li><li> <span data-lang-only="en">Added comment system powered by utteranc.es</span> <span data-lang-only="zh">添加基于 utteranc.es 的评论系统</span> </li> </ul> </button> <div class="changelog-card__collapse" id="release-panel-5" data-log-panel> <div class="changelog-card__body"> <div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.3.2</span> <span class="changelog-sub__count"> <span data-lang-only="en">2 changes</span> <span data-lang-only="zh">2 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Improved mobile subscription button display</span> <span data-lang-only="zh">改进订阅按钮在移动端的显示并完成测试</span> </li><li> <span data-lang-only="en">Added utteranc.es comments</span> <span data-lang-only="zh">添加基于 utteranc.es 的评论功能</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.3.1</span> <span class="changelog-sub__count"> <span data-lang-only="en">1 change</span> <span data-lang-only="zh">1 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Used smaller thumbnails on article pages to reduce load time</span> <span data-lang-only="zh">文章页面采用更小缩略图以加快加载</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.3.0</span> <span class="changelog-sub__count"> <span data-lang-only="en">1 change</span> <span data-lang-only="zh">1 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Created subscription functionality based on Buttondown</span> <span data-lang-only="zh">基于 Buttondown 创建订阅功能</span> </li> </ol> </div> </div> </div> </article> </li><li class="changelog-entry"> <span class="changelog-dot" aria-hidden="true"></span> <article class="changelog-card" data-log-card> <button type="button" class="changelog-card__trigger" data-log-trigger aria-expanded="false" aria-controls="release-panel-6"> <div class="changelog-card__meta"> <span class="changelog-version">V0.2.4</span> <span class="changelog-badge"> <span data-lang-only="en">Features</span> <span data-lang-only="zh">功能扩展</span> </span> <time class="changelog-date">2025-10-22 – 2025-10-26</time> </div> <div class="changelog-card__head-row"> <h2 class="changelog-card__title"> <span data-lang-only="en">Personalized Feature Updates</span> <span data-lang-only="zh">个性化功能更新</span> </h2> <span class="changelog-chevron" aria-hidden="true"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"> <path d="m6 9 6 6 6-6"></path>  </svg> </span> </div> <ul class="changelog-highlights"> <li> <span data-lang-only="en">Developed modular lightbox and corner badge features</span> <span data-lang-only="zh">开发模块化图片灯箱与文章角标功能</span> </li><li> <span data-lang-only="en">Implemented dark mode, simple search, and a standalone Contact page</span> <span data-lang-only="zh">实现深色模式、基础搜索与独立 Contact 联系页</span> </li> </ul> </button> <div class="changelog-card__collapse" id="release-panel-6" data-log-panel> <div class="changelog-card__body"> <div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.2.4</span> <span class="changelog-sub__count"> <span data-lang-only="en">1 change</span> <span data-lang-only="zh">1 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Added image placement adjustments in lists and streamlined static assets</span> <span data-lang-only="zh">支持在列表中调整图片摆放位置并精简静态资源</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.2.3</span> <span class="changelog-sub__count"> <span data-lang-only="en">1 change</span> <span data-lang-only="zh">1 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Added post pinning, corner badges, simplified content authoring, text centering, and dark-mode Markdown highlights</span> <span data-lang-only="zh">新增文章置顶与角标、简化发布流程，加入文本居中与暗色模式兼容高亮</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.2.2</span> <span class="changelog-sub__count"> <span data-lang-only="en">1 change</span> <span data-lang-only="zh">1 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Added dark mode, search, featured homepage works, About &amp; Contact pages, and automatic Markdown discovery</span> <span data-lang-only="zh">加入深色模式与搜索，将精选作品迁至主页，新增 About / Contact 页面与自动 Markdown 识别</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.2.1</span> <span class="changelog-sub__count"> <span data-lang-only="en">1 change</span> <span data-lang-only="zh">1 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Refactored lightbox for reuse and improved mobile layout with a hamburger menu</span> <span data-lang-only="zh">重构灯箱便于复用，改进移动端布局并新增汉堡菜单</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.2.0</span> <span class="changelog-sub__count"> <span data-lang-only="en">1 change</span> <span data-lang-only="zh">1 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Implemented image-zoom lightbox and fixed GitHub direct image path issues</span> <span data-lang-only="zh">实现图片放大灯箱功能并修复 GitHub 图片引用路径问题</span> </li> </ol> </div> </div> </div> </article> </li><li class="changelog-entry"> <span class="changelog-dot" aria-hidden="true"></span> <article class="changelog-card" data-log-card> <button type="button" class="changelog-card__trigger" data-log-trigger aria-expanded="false" aria-controls="release-panel-7"> <div class="changelog-card__meta"> <span class="changelog-version">V0.1.2</span> <span class="changelog-badge"> <span data-lang-only="en">Genesis</span> <span data-lang-only="zh">项目起步</span> </span> <time class="changelog-date">2025-10-19 – 2025-10-21</time> </div> <div class="changelog-card__head-row"> <h2 class="changelog-card__title"> <span data-lang-only="en">Basic Page Setup</span> <span data-lang-only="zh">基础页面搭建</span> </h2> <span class="changelog-chevron" aria-hidden="true"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-down" aria-hidden="true"> <path d="m6 9 6 6 6-6"></path>  </svg> </span> </div> <ul class="changelog-highlights"> <li> <span data-lang-only="en">Project kickoff and foundational site pages</span> <span data-lang-only="zh">项目正式启动，搭建网站基础骨架</span> </li> </ul> </button> <div class="changelog-card__collapse" id="release-panel-7" data-log-panel> <div class="changelog-card__body"> <div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.1.2</span> <span class="changelog-sub__count"> <span data-lang-only="en">1 change</span> <span data-lang-only="zh">1 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Created featured portfolio page, added footer contact info, and improved layout hierarchy</span> <span data-lang-only="zh">创建精选作品页面、在页脚添加联系方式并优化版面层次</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.1.1</span> <span class="changelog-sub__count"> <span data-lang-only="en">1 change</span> <span data-lang-only="zh">1 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Created initial layouts for Home, Blog, Portfolio, and About pages with personal links</span> <span data-lang-only="zh">建立 Home、Blog、Portfolio、About 初版布局并添加个人链接</span> </li> </ol> </div><div class="changelog-sub"> <div class="changelog-sub__header"> <span class="changelog-sub__ver">V0.1.0</span> <span class="changelog-sub__count"> <span data-lang-only="en">1 change</span> <span data-lang-only="zh">1 项改动</span> </span> </div> <ol class="changelog-sub__list"> <li> <span data-lang-only="en">Created the project, completed the initial homepage, and built Header and Footer</span> <span data-lang-only="zh">创建项目，完成初版主页并构建 Header 与 Footer</span> </li> </ol> </div> </div> </div> </article> </li> </ol> </section> </main> <footer class="site-footer" data-site-footer> <span class="copyright site-heading">&copy; 2026 Elko-Utopia. <span data-lang-only="en">All rights reserved.</span><span data-lang-only="zh">版权所有。</span></span> <div class="social-links" data-social-dock> <!-- Email --> <a href="mailto:elkoutopia@gmail.com" data-dock-item data-label="Email"> <span class="sr-only">Email</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true"> <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect>  </svg> </a> <!-- Instagram --> <a href="https://www.instagram.com/elkoutopia/" target="_blank" rel="noopener noreferrer" data-dock-item data-label="Instagram"> <span class="sr-only">Instagram</span> <svg viewBox="0 0 1024 1024" aria-hidden="true" width="24" height="24"> <path fill="currentColor" d="M959.8 511.9v189.4c-1.2 72.3-32.3 140.9-86 189.4-30 31.4-69.2 52.5-112 60.3-19.3 7.1-39.8 10-60.3 8.6h-379c-57.8 2.4-114-19.5-155-60.3-54.4-39-91.4-97.7-103.4-163.6V322.4c0-103.8 60.6-198 155-241.1 33.6-9.9 68.3-15.7 103.4-17.2h378.9c56.1-1.4 111 16.9 155 51.7 50 37.9 83.8 93.3 94.8 155 0 17.2 8.6 34.5 8.6 51.7v189.4z m-826.7 0v189.4c-1.4 17.7 1.6 35.4 8.6 51.7 21.2 82.2 96 139.2 180.8 137.8h387.6c32.3 1.7 63.7-10.9 86-34.5 57.1-34.1 90.3-97.3 86-163.6V322.4c2.2-14.9-0.8-30.1-8.6-43C855.5 194 780 132.8 692.6 133H313.9c-14.9-1.3-29.8 1.7-43 8.6-39.9 13.5-75.5 37.3-103.4 68.9-24.2 32.2-36.3 71.8-34.5 112l0.1 189.4z"></path> <path fill="currentColor" d="M753.1 511.9C750.3 643.9 644 750.2 512 753c-132-2.8-238.3-109.1-241.1-241.1 2.8-132 109.1-238.3 241.1-241.1 132.9-0.2 240.9 107.3 241.1 240.3v0.8z m-413.3 0c0 95.1 77.1 172.2 172.2 172.2S684.3 607 684.3 511.9 607.2 339.6 512 339.6c-95 0.3-172 77.3-172.2 172.3zM822 236.3c-1.2 18.5-16 33.2-34.5 34.5-18.5-1.3-33.2-16-34.4-34.5 1.2-18.5 16-33.2 34.5-34.5 18.5 1.3 33.2 16 34.4 34.5z"></path> </svg> </a> <!-- Twitter / X --> <a href="https://x.com/ElkoUtopia" target="_blank" rel="noopener noreferrer" data-dock-item data-label="Twitter · X"> <span class="sr-only">Twitter · X</span> <svg viewBox="0 0 512 512" aria-hidden="true" width="24" height="24"> <path fill="currentColor" d="M496 109.5a201.8 201.8 0 0 1-56.55 15.3 97.5 97.5 0 0 0 43.33-53.6 197.7 197.7 0 0 1-62.56 23.5A99.14 99.14 0 0 0 348.31 64c-54.42 0-98.46 43.4-98.46 96.9a93.2 93.2 0 0 0 2.54 22.1 280.7 280.7 0 0 1-203-101.3A95.7 95.7 0 0 0 36 130.4c0 33.6 17.53 63.3 44 80.7A97.5 97.5 0 0 1 35.22 199v1.2c0 47 34 86.1 79 95a100.8 100.8 0 0 1-25.94 3.4 94.4 94.4 0 0 1-18.51-1.8c12.51 38.5 48.92 66.5 92.05 67.3A199.6 199.6 0 0 1 39.5 405.6a203 203 0 0 1-23.5-1.4A278.7 278.7 0 0 0 166.74 448c181.36 0 280.44-147.7 280.44-275.8 0-4.2-.11-8.4-.31-12.5A198.5 198.5 0 0 0 496 109.5"></path> </svg> </a> <!-- Bluesky --> <a href="https://bsky.app/profile/elkoutopia.bsky.social" target="_blank" rel="noopener noreferrer" data-dock-item data-label="Bluesky"> <span class="sr-only">Bluesky</span> <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24"> <path fill="currentColor" d="M5.202 2.857C7.954 4.922 10.913 9.11 12 11.358c1.087-2.247 4.046-6.436 6.798-8.501C20.783 1.366 24 .213 24 3.883c0 .732-.42 6.156-.667 7.037-.856 3.061-3.978 3.842-6.755 3.37 4.854.826 6.089 3.562 3.422 6.299-5.065 5.196-7.28-1.304-7.847-2.97-.104-.305-.152-.448-.153-.327 0-.121-.05.022-.153.327-.568 1.666-2.782 8.166-7.847 2.97-2.667-2.737-1.432-5.473 3.422-6.3-2.777.473-5.899-.308-6.755-3.369C.42 10.04 0 4.615 0 3.883c0-3.67 3.217-2.517 5.202-1.026"></path> </svg> </a> <!-- GitHub --> <a href="https://github.com/Elko-Utopia" target="_blank" rel="noopener noreferrer" data-dock-item data-label="GitHub"> <span class="sr-only">GitHub</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24"> <path fill="currentColor" d="M8 .5A7.5 7.5 0 0 0 5.4 15.1c.4.07.55-.18.55-.4 0-.2-.01-.73-.01-1.43-2.25.49-2.73-1.09-2.73-1.09-.36-.93-.89-1.18-.89-1.18-.73-.5.06-.49.06-.49.81.06 1.24.83 1.24.83.72 1.22 1.89.87 2.36.66.07-.52.28-.87.51-1.07-1.79-.21-3.66-.9-3.66-4.01 0-.89.32-1.62.84-2.19-.08-.21-.36-1.07.08-2.24 0 0 .67-.22 2.2.86a7.7 7.7 0 0 1 4 0c1.53-1.08 2.2-.86 2.2-.86.44 1.17.16 2.03.08 2.24.52.57.84 1.3.84 2.19 0 3.12-1.88 3.8-3.67 4.01.29.25.55.74.55 1.5 0 1.08-.01 1.95-.01 2.22 0 .22.15.48.55.4A7.5 7.5 0 0 0 8 .5Z"></path> </svg> </a> <!-- LinkedIn --> <a href="https://www.linkedin.com/in/elko-zhu-1944123a6/" target="_blank" rel="noopener noreferrer" data-dock-item data-label="LinkedIn"> <span class="sr-only">LinkedIn</span> <svg viewBox="0 0 1024 1024" aria-hidden="true" width="24" height="24"> <path fill="currentColor" d="M932.571429 54.857143H91.428571c-20.228571 0-36.571429 16.342857-36.571428 36.571428v841.142858c0 20.228571 16.342857 36.571429 36.571428 36.571428h841.142858c20.228571 0 36.571429-16.342857 36.571428-36.571428V91.428571c0-20.228571-16.342857-36.571429-36.571428-36.571428zM326.057143 833.942857H190.4V397.6h135.657143v436.342857z m-67.771429-496a78.628571 78.628571 0 1 1 78.628572-78.628571c-0.114286 43.428571-35.314286 78.628571-78.628572 78.628571z m575.657143 496H698.4V621.714286c0-50.628571-0.914286-115.657143-70.514286-115.657143-70.514286 0-81.371429 55.085714-81.371428 112v215.885714H411.085714V397.6h130.057143v59.657143h1.828572c18.057143-34.285714 62.285714-70.514286 128.342857-70.514286 137.371429 0 162.628571 90.4 162.628571 207.885714v239.314286z"></path> </svg> </a> </div> </footer> <script type="module">function s(){const n=window.__footerKineticAc;n&&n.abort();const t=document.querySelector("[data-site-footer]");if(!t||window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches||window.matchMedia&&!window.matchMedia("(pointer: fine)").matches)return;const r=new AbortController;window.__footerKineticAc=r,t.addEventListener("pointermove",e=>{const i=t.getBoundingClientRect(),o=Math.max(0,Math.min(i.width,e.clientX-i.left));t.style.setProperty("--ftr-glow-x",`${o.toFixed(1)}px`),t.style.setProperty("--ftr-glow-o","1")},{passive:!0,signal:r.signal}),t.addEventListener("pointerleave",()=>{t.style.setProperty("--ftr-glow-o","0")},{passive:!0,signal:r.signal}),Array.from(t.querySelectorAll("[data-dock-item]")).forEach(e=>{e.addEventListener("pointermove",i=>{const o=e.getBoundingClientRect(),a=(i.clientX-(o.left+o.width/2))/(o.width/2)*4,d=(i.clientY-(o.top+o.height/2))/(o.height/2)*4;e.style.setProperty("--mx",`${a.toFixed(2)}px`),e.style.setProperty("--my",`${d.toFixed(2)}px`)},{passive:!0,signal:r.signal}),e.addEventListener("pointerleave",()=>{e.style.setProperty("--mx","0px"),e.style.setProperty("--my","0px")},{passive:!0,signal:r.signal})})}document.addEventListener("DOMContentLoaded",s);document.addEventListener("astro:page-load",s);document.addEventListener("astro:before-swap",()=>{const n=window.__footerKineticAc;n&&n.abort()});</script>  <script type="module">function c(){const s=document.querySelector("[data-changelog-list]"),a=document.querySelector("[data-log-toggle-all]");if(!s)return;const o=Array.from(s.querySelectorAll("[data-log-card]")),l=()=>{if(!a)return;const e=o.length>0&&o.every(r=>r.classList.contains("is-open"));a.dataset.state=e?"expanded":"collapsed";const t=a.querySelector("[data-label-expand]"),n=a.querySelector("[data-label-collapse]");t&&(t.hidden=e),n&&(n.hidden=!e)},d=(e,t)=>{e.classList.toggle("is-open",t);const n=e.querySelector("[data-log-trigger]");n&&n.setAttribute("aria-expanded",String(t))};o.forEach(e=>{const t=e.querySelector("[data-log-trigger]");!t||t.dataset.logBound||(t.dataset.logBound="1",t.addEventListener("click",()=>{d(e,!e.classList.contains("is-open")),l()}))}),a&&!a.dataset.logBound&&(a.dataset.logBound="1",a.addEventListener("click",()=>{const e=a.dataset.state!=="expanded";o.forEach(t=>d(t,e)),l()})),l()}document.addEventListener("DOMContentLoaded",c);document.addEventListener("astro:page-load",c);</script>  </body> </html>

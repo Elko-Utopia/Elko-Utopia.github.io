@@ -39,7 +39,6 @@
   })();
 
   function handleClick(msgEl) {
-    try { console.debug && console.debug('[subscribe] handleClick, buttondownConfig=', buttondownConfig); } catch (_) {}
     if (!buttondownConfig) {
       showMessage(msgEl, 'Subscribe endpoint not configured. Please contact the site owner.');
       try { document.dispatchEvent(new CustomEvent('subscribe:error', { detail: { error: 'endpoint missing' } })); } catch (_) {}
@@ -73,7 +72,6 @@
     // The trigger button may be placed in the actions container outside the .subscribe-form.
     const trigger = dialogRoot.querySelector('[data-subscribe-open]');
     if (!trigger) return;
-    try { console.debug && console.debug('[subscribe] attachToNode: binding trigger for subscribe in', dialogRoot); } catch (_) {}
     if (dialogRoot.dataset) dialogRoot.dataset.sfBound = '1';
     trigger.addEventListener('click', function () {
       if (msg) msg.style.display = 'none';

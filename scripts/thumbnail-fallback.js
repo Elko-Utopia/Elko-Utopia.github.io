@@ -5,7 +5,7 @@
   const inventoryUrl = new URL('assets/image-variant-manifest.json', new URL(base, location.origin));
   let manifestPromise;
   function manifest() {
-    return manifestPromise ||= fetch(inventoryUrl, {cache:'no-cache'})
+    return manifestPromise ||= fetch(inventoryUrl)
       .then(r => r.ok ? r.json() : {}).catch(() => ({}));
   }
   const processed = new WeakMap();
@@ -38,8 +38,30 @@
     img.setAttribute('sizes','(max-width: 480px) 100vw, (max-width: 1024px) 90vw, 1024px');
     // Original URL remains the src fallback and the lightbox full image.
   }
-  function scan() { document.querySelectorAll('.md-content img').forEach(img => { void apply(img); }); }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded',scan);
-  else scan();
-  new MutationObserver(scan).observe(document.documentElement,{subtree:true,childList:true});
+  function scan(root = document) {
+    if (!root || typeof root.querySelectorAll !== 'function') return;
+    root.querySelectorAll('.md-content img').forEach(img => { void apply(img); });
+  }
+  if (document.readyState === 'loading') {
+    if (typeof document.addEventListener === 'function') document.addEventListener('DOMContentLoaded', () => scan());
+  } else {
+    scan();
+  }
+  if (typeof document.addEventListener === 'function') {
+    document.addEventListener('astro:page-load', () => scan());
+  }
+  if (typeof MutationObserver !== 'undefined' && document.documentElement) {
+    new MutationObserver((records) => {
+      for (const record of records) {
+        for (const node of record.addedNodes || []) {
+          if (!node || node.nodeType !== 1) continue;
+          if (node.tagName === 'IMG' && node.closest && node.closest('.md-content')) {
+            void apply(node);
+          } else if (typeof node.querySelectorAll === 'function') {
+            node.querySelectorAll('.md-content img').forEach(img => { void apply(img); });
+          }
+        }
+      }
+    }).observe(document.documentElement, { subtree: true, childList: true });
+  }
 })();

@@ -17,6 +17,8 @@
   const registeredSelectors = new Set();
   let mutationObserver;
   let pswpLoaded = false;
+  let pswpPromise = null;
+  let pswpIdleScheduled = false;
   let PhotoSwipe;
 
   // 滚轮操作后短暂屏蔽 click（防止滚轮缩放时误触关闭）
@@ -37,11 +39,42 @@
   function loadPhotoSwipe() {
     ensurePswpCss();
 
-    if (pswpLoaded) return Promise.resolve();
-    pswpLoaded = true;
+    if (pswpLoaded && PhotoSwipe) return Promise.resolve();
+    if (pswpPromise) return pswpPromise;
 
-    return import('https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js')
-      .then(function (mod) { PhotoSwipe = mod.default; });
+    pswpPromise = import('https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.esm.min.js')
+      .then(function (mod) {
+        PhotoSwipe = mod.default;
+        pswpLoaded = true;
+      })
+      .catch(function (err) {
+        pswpPromise = null;
+        throw err;
+      });
+    return pswpPromise;
+  }
+
+  // 仅在当前页确实存在灯箱图片时，利用浏览器空闲时间提前预加载 PhotoSwipe，
+  // 既不拖慢无灯箱页的首屏，又保证点击图片时瞬间丝滑打开。
+  function schedulePhotoSwipePreload(selector) {
+    if (pswpLoaded || pswpPromise || pswpIdleScheduled) return;
+    let hasEligible = false;
+    document.querySelectorAll(selector).forEach(function (el) {
+      if (!hasEligible && el instanceof HTMLImageElement && !isExcluded(el)) {
+        hasEligible = true;
+      }
+    });
+    if (!hasEligible) return;
+    pswpIdleScheduled = true;
+    const warm = function () {
+      pswpIdleScheduled = false;
+      loadPhotoSwipe().catch(function () {});
+    };
+    if (typeof window.requestIdleCallback === 'function') {
+      window.requestIdleCallback(warm, { timeout: 600 });
+    } else {
+      setTimeout(warm, 200);
+    }
   }
   /* ─── 工具 ───────────────────────────────── */
 
@@ -71,6 +104,10 @@
     const selectors = Array.from(registeredSelectors).join(', ') || DEFAULT_SELECTOR;
     scope.querySelectorAll(selectors).forEach(function (img) {
       if (isExcluded(img)) return;
+      // 跳过隐藏的另一语言分支中的图片，避免灯箱出现重复幻灯片
+      const activeLang = document.documentElement.dataset.lang === 'zh' ? 'zh' : 'en';
+      const langPane = img.closest && img.closest('[data-lang-only]');
+      if (langPane && langPane.dataset && langPane.dataset.langOnly !== activeLang) return;
       const src = resolveSource(img);
       if (!src) return;
       if (img === clickedImg) startIndex = items.length;
@@ -209,6 +246,9 @@
     }
 
     boundImages.add(node);
+    node.addEventListener('pointerenter', function () {
+      if (!pswpLoaded && !pswpPromise) loadPhotoSwipe().catch(function () {});
+    }, { once: true, passive: true });
     node.addEventListener('click', function (e) {
       // Bug 2 修复：滚轮操作后屏蔽 click
       if (wheelActive) {
@@ -262,7 +302,7 @@
     bindImages(selector);
     registeredSelectors.add(selector);
     ensureObserver();
-    loadPhotoSwipe().catch(function () {});
+    schedulePhotoSwipePreload(selector);
   }
 
   function initLightboxAuto() {
@@ -273,7 +313,7 @@
     bindImages(DEFAULT_SELECTOR);
     registeredSelectors.add(DEFAULT_SELECTOR);
     ensureObserver();
-    loadPhotoSwipe().catch(function () {});
+    schedulePhotoSwipePreload(DEFAULT_SELECTOR);
   }
 
   if (document.readyState === 'loading') {

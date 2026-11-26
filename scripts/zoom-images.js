@@ -26,8 +26,26 @@
     }
   }
 
+  let observer = null;
+
   function init() {
-    document.querySelectorAll(SELECTOR).forEach(updateImageState);
+    if (observer) { observer.disconnect(); observer = null; }
+    const imgs = document.querySelectorAll(SELECTOR);
+    imgs.forEach(updateImageState);
+    const root = document.querySelector('.md-content.pswp-featured');
+    if (root && typeof MutationObserver !== 'undefined') {
+      observer = new MutationObserver((mutations) => {
+        mutations.forEach(mutation => {
+          mutation.addedNodes.forEach(node => {
+            if (node instanceof Element) {
+              if (node.matches && node.matches(SELECTOR)) updateImageState(node);
+              if (node.querySelectorAll) node.querySelectorAll(SELECTOR).forEach(updateImageState);
+            }
+          });
+        });
+      });
+      observer.observe(root, { childList: true, subtree: true });
+    }
   }
 
   if (document.readyState === 'loading') {
@@ -36,18 +54,8 @@
     init();
   }
 
-  // Watch for dynamic content (Wiki links, hydration, etc.)
-  const observer = new MutationObserver((mutations) => {
-    mutations.forEach(mutation => {
-      mutation.addedNodes.forEach(node => {
-        if (node instanceof Element) {
-          if (node.matches && node.matches(SELECTOR)) updateImageState(node);
-          if (node.querySelectorAll) node.querySelectorAll(SELECTOR).forEach(updateImageState);
-        }
-      });
-    });
-  });
-
-  observer.observe(document.body, { childList: true, subtree: true });
   document.addEventListener('astro:page-load', init);
+  document.addEventListener('astro:before-swap', () => {
+    if (observer) { observer.disconnect(); observer = null; }
+  });
 })();

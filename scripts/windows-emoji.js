@@ -28,14 +28,13 @@ export function replaceEmojiText(root,manifest){
 }
 
 if(typeof document!=='undefined'){
-  fetch(new URL('manifest.json',directory)).then(response=>{if(!response.ok)throw Error('Emoji assets '+response.status);return response.json();}).then(manifest=>{
-    const apply=()=>replaceEmojiText(document.body,manifest);
-    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
-    const observer=new MutationObserver(records=>{
-      for(const record of records)if(record.type==='characterData')replaceEmojiText(record.target,manifest);
-      else for(const node of record.addedNodes)if(node.nodeType===1||node.nodeType===3)replaceEmojiText(node,manifest);
-    });
-    observer.observe(document.documentElement,{subtree:true,childList:true,characterData:true});
-    document.addEventListener('astro:page-load',apply);
-  }).catch(error=>console.warn('Windows emoji:',error));
+  let manifestPromise=null;
+  const loadManifest=()=>manifestPromise||=fetch(new URL('manifest.json',directory)).then(response=>{if(!response.ok)throw Error('Emoji assets '+response.status);return response.json();});
+  const apply=()=>{
+    const body=document.body;
+    if(!body||!/\p{Extended_Pictographic}/u.test(body.textContent||''))return;
+    loadManifest().then(manifest=>replaceEmojiText(body,manifest)).catch(error=>console.warn('Windows emoji:',error));
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',apply,{once:true});else apply();
+  document.addEventListener('astro:page-load',apply);
 }
