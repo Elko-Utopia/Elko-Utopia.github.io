@@ -1,0 +1,259 @@
+<!DOCTYPE html><html lang="en" data-astro-cid-c7xho2ky> <head><!-- 全局元数据 --><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.Dz5-Q1WM.js"></script><!-- 全局微星尘点阵背景：独立静态脚本直接加载，彻底规避 Astro 模块脚本索引漂移或 HMR 缓存丢失 --><script src="/scripts/ambient-field.js" defer></script><!-- 统一单一模块脚本：挂载 ClientRouter navigate、切页状态同步、顶部加载进度条与卡片首图去底 --><script type="module" src="/_astro/BaseHead.astro_astro_type_script_index_0_lang.D2vqxCr3.js"></script><!-- 导航中光标样式：给慢网络下的页面切换加 progress 光标反馈 --><!-- 行内同步主题、语言与 URL 状态初始化器：
+	使用 is:inline 确保在 CSS 加载前同步解析 URL 参数（?lang=&theme=）与本地偏好，
+	彻底避免首屏闪白、语言闪烁或中英文同时显示，并支持通过网址分享明暗模式/语言/位置。 --><script>
+(function(){
+	function readParam(name) {
+		try {
+			return new URLSearchParams(location.search).get(name);
+		} catch (e) {
+			return null;
+		}
+	}
+
+	function resolveInitialTheme() {
+		var q = readParam('theme');
+		if (q === 'dark' || q === 'light') return q;
+		try {
+			var tv = localStorage.getItem('theme-preference');
+			if (tv === 'dark' || tv === 'light') return tv;
+		} catch (e) {}
+		return 'dark';
+	}
+
+	function resolveInitialLang() {
+		var q = readParam('lang');
+		if (q === 'zh' || q === 'en') return q;
+		try {
+			var saved = localStorage.getItem('lang-preference');
+			if (saved === 'zh' || saved === 'en') return saved;
+		} catch (e) {}
+		try {
+			var nav = (navigator.language || (navigator.languages && navigator.languages[0]) || '').toLowerCase();
+			if (nav.indexOf('zh') === 0) return 'zh';
+		} catch (e) {}
+		return 'en';
+	}
+
+	var initTheme = resolveInitialTheme();
+	document.documentElement.dataset.theme = initTheme;
+	if (readParam('theme') === initTheme) {
+		try { localStorage.setItem('theme-preference', initTheme); } catch (e) {}
+	}
+
+	var initLang = resolveInitialLang();
+	document.documentElement.dataset.lang = initLang;
+	document.documentElement.lang = initLang;
+	if (readParam('lang') === initLang) {
+		try { localStorage.setItem('lang-preference', initLang); } catch (e) {}
+	}
+
+	function syncUrlState(opts) {
+		try {
+			var url = new URL(location.href);
+			var curLang = document.documentElement.dataset.lang === 'zh' ? 'zh' : 'en';
+			var curTheme = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark';
+			url.searchParams.set('lang', curLang);
+			url.searchParams.set('theme', curTheme);
+			if (opts && Object.prototype.hasOwnProperty.call(opts, 'hash')) {
+				var rawHash = opts.hash ? String(opts.hash).replace(/^#/, '') : '';
+				url.hash = rawHash ? ('#' + rawHash) : '';
+			}
+			var next = url.pathname + url.search + url.hash;
+			var current = location.pathname + location.search + location.hash;
+			if (next !== current) {
+				history.replaceState(history.state, '', next);
+			}
+		} catch (e) {}
+	}
+	window.__syncUrlState = syncUrlState;
+
+	function syncLangAttrs(lang) {
+		var isZh = lang === 'zh';
+		var attr = isZh ? 'zh' : 'en';
+		try {
+			var metaTitle = document.querySelector('meta[name="site-title-' + attr + '"]');
+			if (metaTitle && metaTitle.content) document.title = metaTitle.content;
+		} catch (e) {}
+		try {
+			document.querySelectorAll('[data-i18n-aria-en]').forEach(function (el) {
+				var v = el.getAttribute('data-i18n-aria-' + attr);
+				if (v !== null) el.setAttribute('aria-label', v);
+			});
+			document.querySelectorAll('[data-i18n-placeholder-en]').forEach(function (el) {
+				var v = el.getAttribute('data-i18n-placeholder-' + attr);
+				if (v !== null) el.setAttribute('placeholder', v);
+			});
+			document.querySelectorAll('[data-i18n-title-en]').forEach(function (el) {
+				var v = el.getAttribute('data-i18n-title-' + attr);
+				if (v !== null) el.setAttribute('title', v);
+			});
+			document.querySelectorAll('[data-i18n-alt-en]').forEach(function (el) {
+				var v = el.getAttribute('data-i18n-alt-' + attr);
+				if (v !== null) el.setAttribute('alt', v);
+			});
+			document.querySelectorAll('option[data-label-en]').forEach(function (opt) {
+				var v = opt.getAttribute('data-label-' + attr);
+				if (v !== null) opt.textContent = v;
+			});
+			document.querySelectorAll('[data-mouse-text-en]').forEach(function (el) {
+				var isTouch = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+				var v = el.getAttribute((isTouch ? 'data-touch-text-' : 'data-mouse-text-') + attr);
+				if (v !== null) el.textContent = v;
+			});
+			document.querySelectorAll('.lang-badge').forEach(function (b) {
+				b.textContent = isZh ? '中' : 'EN';
+			});
+			document.querySelectorAll('[data-prefs-toggle]').forEach(function (btn) {
+				btn.classList.toggle('lang-zh', isZh);
+				btn.classList.toggle('lang-en', !isZh);
+			});
+		} catch (e) {}
+	}
+
+	window.__syncSiteLangAttrs = function () {
+		// 若通过 URL 携带 ?lang= 或 ?theme= 进入，优先同步到根属性
+		var qLang = readParam('lang');
+		if (qLang === 'zh' || qLang === 'en') {
+			document.documentElement.dataset.lang = qLang;
+			document.documentElement.lang = qLang;
+			try { localStorage.setItem('lang-preference', qLang); } catch (e) {}
+		}
+		var qTheme = readParam('theme');
+		if (qTheme === 'dark' || qTheme === 'light') {
+			document.documentElement.dataset.theme = qTheme;
+			try { localStorage.setItem('theme-preference', qTheme); } catch (e) {}
+		}
+		syncLangAttrs(document.documentElement.dataset.lang === 'zh' ? 'zh' : 'en');
+		syncUrlState();
+	};
+
+	function commitLangChange(lang, persist) {
+		document.documentElement.dataset.lang = lang;
+		document.documentElement.lang = lang;
+		if (persist) {
+			try { localStorage.setItem('lang-preference', lang); } catch (e) {}
+		}
+		syncLangAttrs(lang);
+		syncUrlState();
+		window.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
+	}
+
+	// 统一圆形波纹 View-Transition：
+	// - 明暗模式切换：更从容柔和的扩散速度（920ms），无需额外边缘提示
+	// - 语言切换（opts.ring === true）：在 View-Transition 顶层同步绘制矢量发光扩散环，清晰呈现语言波纹边界
+	window.__runCircularRipple = function (updateFn, opts) {
+		var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (reduceMotion || typeof document.startViewTransition !== 'function') {
+			updateFn();
+			return false;
+		}
+		var x = (opts && typeof opts.x === 'number' && isFinite(opts.x)) ? opts.x : (window.innerWidth / 2);
+		var y = (opts && typeof opts.y === 'number' && isFinite(opts.y)) ? opts.y : (window.innerHeight / 2);
+		var vw = window.innerWidth || 1;
+		var vh = window.innerHeight || 1;
+		var endRadius = Math.hypot(Math.max(x, vw - x), Math.max(y, vh - y));
+		// 使用百分比表达 clip-path 圆心与半径，规避 Chromium Windows HiDPI 下 ::view-transition-new(root) 的 px 缩放偏移，
+		// 保证明暗切换圆心与语言切换矢量光环在任意 DPI 下像素级重合
+		var xPct = ((x / vw) * 100).toFixed(3) + '%';
+		var yPct = ((y / vh) * 100).toFixed(3) + '%';
+		var refLen = Math.hypot(vw, vh) / Math.SQRT2;
+		var endRadiusPct = ((endRadius / refLen) * 100).toFixed(3) + '%';
+		var showRing = !!(opts && opts.ring);
+		var duration = (opts && typeof opts.duration === 'number') ? opts.duration : (showRing ? 860 : 920);
+		var easing = 'cubic-bezier(0.32, 0.72, 0, 1)';
+		var rootEl = document.documentElement;
+		var waveEl = null;
+
+		rootEl.style.setProperty('--vt-x', xPct);
+		rootEl.style.setProperty('--vt-y', yPct);
+		rootEl.classList.add('vt-ripple');
+		if (showRing) rootEl.classList.add('vt-ripple-ring');
+
+		var vt = document.startViewTransition(function () {
+			updateFn();
+			if (showRing) {
+				waveEl = document.createElement('div');
+				waveEl.className = 'vt-lang-wave';
+				waveEl.setAttribute('aria-hidden', 'true');
+				document.body.appendChild(waveEl);
+			}
+		});
+		vt.ready.then(function () {
+			rootEl.animate(
+				{ clipPath: ['circle(0% at ' + xPct + ' ' + yPct + ')', 'circle(' + endRadiusPct + ' at ' + xPct + ' ' + yPct + ')'] },
+				{ duration: duration, easing: easing, fill: 'forwards', pseudoElement: '::view-transition-new(root)' }
+			);
+			if (showRing) {
+				var endSize = (endRadius * 2).toFixed(2) + 'px';
+				var startTx = 'translate(' + x.toFixed(2) + 'px, ' + y.toFixed(2) + 'px)';
+				var endTx = 'translate(' + (x - endRadius).toFixed(2) + 'px, ' + (y - endRadius).toFixed(2) + 'px)';
+				rootEl.animate(
+					{
+						width: ['0px', endSize],
+						height: ['0px', endSize],
+						transform: [startTx, endTx],
+					},
+					{ duration: duration, easing: easing, fill: 'forwards', pseudoElement: '::view-transition-group(vt-lang-wave)' }
+				);
+				rootEl.animate(
+					{ opacity: [0.95, 0.92, 0.65, 0] },
+					{ duration: duration, easing: 'ease-out', fill: 'forwards', pseudoElement: '::view-transition-group(vt-lang-wave)' }
+				);
+			}
+		});
+		vt.finished.finally(function () {
+			if (waveEl && waveEl.parentNode) waveEl.parentNode.removeChild(waveEl);
+			rootEl.classList.remove('vt-ripple', 'vt-ripple-ring');
+			rootEl.style.removeProperty('--vt-x');
+			rootEl.style.removeProperty('--vt-y');
+		});
+		return true;
+	};
+
+	window.__applySiteLang = function (nextLang, opts) {
+		var lang = nextLang === 'zh' ? 'zh' : 'en';
+		var persist = !opts || opts.persist !== false;
+		var animate = !opts || opts.animate !== false;
+		var prev = document.documentElement.dataset.lang;
+
+		if (!animate || !prev || prev === lang) {
+			commitLangChange(lang, persist);
+			return;
+		}
+		window.__runCircularRipple(function () {
+			commitLangChange(lang, persist);
+		}, Object.assign({}, opts, { ring: true }));
+	};
+
+	syncUrlState();
+	if (document.readyState === 'loading') {
+		document.addEventListener('DOMContentLoaded', window.__syncSiteLangAttrs, { once: true });
+	} else {
+		window.__syncSiteLangAttrs();
+	}
+	document.addEventListener('astro:page-load', window.__syncSiteLangAttrs);
+	window.addEventListener('themechange', function () { syncUrlState(); });
+})();
+</script><style>
+	html[data-theme='dark'], html[data-theme='dark'] body { background-color: #181a1d; color: rgb(203, 213, 225); }
+	html[data-theme='light'], html[data-theme='light'] body { background-color: #f3f4f6; color: rgb(39, 48, 66); }
+	html:not([data-lang='zh']) [data-lang-only='zh'],
+	html[data-lang='zh'] [data-lang-only='en'] { display: none !important; }
+	@media (max-width: 820px) {
+		header:not(.is-header-measured) .internal-links { display: none !important; }
+		header:not(.is-header-measured) .mobile-menu-btn { display: inline-flex !important; }
+	}
+</style><link rel="icon" type="image/svg+xml" href="/logo.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Elko's Creation Notes" href="https://elko-utopia.github.io/rss.xml"><meta name="generator" content="Astro v5.13.10"><!-- 自托管分片字体（cn-font-split 按 unicode-range 按需加载本地 WOFF2，零线上 Google Fonts 阻塞） --><link rel="stylesheet" href="/fonts/site-fonts.css"><!-- 规范 URL --><link rel="canonical" href="https://elko-utopia.github.io/portfolio/personal/line-field-360/"><script>window.__ASTRO_BASE_URL__ = "https://elko-utopia.github.io/";window.__ASTRO_BASE_PATH__ = "/";</script><!-- 主要 Meta 标签 --><title>Line Field 360°</title><meta name="site-title-en" content="Line Field 360°"><meta name="site-title-zh" content="全景写生"><meta name="title" content="Line Field 360°"><meta name="description" content><!-- Open Graph / Facebook 元数据 --><meta property="og:type" content="website"><meta property="og:url" content="https://elko-utopia.github.io/portfolio/personal/line-field-360/"><meta property="og:title" content="Line Field 360°"><meta property="og:description" content><meta property="og:image" content="https://elko-utopia.github.io/assets/portfolio/personal/LineField360/LineField.webp"><!-- Twitter --><meta property="twitter:card" content="summary_large_image"><meta property="twitter:url" content="https://elko-utopia.github.io/portfolio/personal/line-field-360/"><meta property="twitter:title" content="Line Field 360°"><meta property="twitter:description" content><meta property="twitter:image" content="https://elko-utopia.github.io/assets/portfolio/personal/LineField360/LineField.webp"><link rel="stylesheet" href="/_astro/contact.jHhIN7Pu.css">
+<link rel="stylesheet" href="/_astro/about.BpT1eBEs.css">
+<style>.post-tags[data-astro-cid-txy4pyv6]{margin:0;display:flex;gap:.45rem;justify-content:center;flex-wrap:wrap}.post-tag[data-astro-cid-txy4pyv6]{display:inline-flex;align-items:center;padding:.28rem .74rem;border-radius:999px;font-family:var(--font-body);font-size:.84rem;font-weight:600;letter-spacing:.01em;text-decoration:none;line-height:1.2;color:rgb(var(--black));background:color-mix(in srgb,var(--tc, #555d66) 15%,transparent);border:1.5px solid color-mix(in srgb,var(--tc, #555d66) 86%,#000000 14%);transition:transform .16s cubic-bezier(.22,1,.36,1),background-color .18s ease,border-color .18s ease}html[data-theme=dark] .post-tag[data-astro-cid-txy4pyv6]{color:rgb(var(--black));background:color-mix(in srgb,var(--tc, #555d66) 20%,transparent);border-color:color-mix(in srgb,var(--tc, #555d66) 82%,#ffffff 18%)}.post-tag[data-astro-cid-txy4pyv6]:hover{transform:translateY(-1.5px);background:color-mix(in srgb,var(--tc, #555d66) 26%,transparent);border-color:var(--tc, #555d66)}html[data-theme=dark] .post-tag[data-astro-cid-txy4pyv6]:hover{background:color-mix(in srgb,var(--tc, #555d66) 32%,transparent);border-color:color-mix(in srgb,var(--tc, #555d66) 72%,#ffffff 28%)}@media (max-width: 640px){.post-tag[data-astro-cid-txy4pyv6]{font-size:.8rem;padding:.24rem .64rem}}
+</style>
+<link rel="stylesheet" href="/_astro/_slug_.xZjjDU61.css"></head> <body class="layout-wide" data-astro-cid-c7xho2ky> <header> <nav> <h5 class="site-heading"> <a href="/" class="site-logo-link"> <span class="site-brand-mark site-brand-mark--header site-logo" data-site-logo data-logo-variant="header" aria-hidden="true"> <svg class="site-logo-fallback" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="-40 -40 1120 1104" fill="none"><g class="vortex-arms" stroke="currentColor" stroke-width="82" stroke-linecap="round" stroke-linejoin="round"><path class="vortex-branch vortex-branch-a" pathLength="100" d="M110,204.94L487.53,72.75C666.47,10.11,858.77,94.09,917.03,260.34C975.29,426.59,877.46,612.16,698.52,674.81L481.38,750.83C422.36,771.50,358.93,743.80,339.71,688.96C320.49,634.12,352.76,572.91,411.79,552.24L519.81,512.66"/><path class="vortex-branch vortex-branch-b" pathLength="100" d="M930.42,819.06L552.85,951.12C373.91,1013.77,181.61,929.79,123.35,763.54C65.09,597.29,162.92,411.72,341.86,349.07L561.89,274.49C617.25,253.82,680.68,281.52,699.90,336.36C719.12,391.20,686.85,452.41,627.82,473.08L519.81,512.66"/></g></svg>
+ <canvas class="site-logo-canvas" data-site-logo-canvas aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;display:block;max-width:none;"></canvas> </span> <span class="site-title-component site-title-component--header" data-site-title data-title-variant="header" data-title-procedural="false" data-title-label="Elko's Creation Notes" data-title-label-en="Elko's Creation Notes" data-title-label-zh="托邦的创作笔记"> <span class="site-title-text" data-site-title-text> <span data-lang-only="en">Elko&#39;s Creation Notes</span> <span data-lang-only="zh">托邦的创作笔记</span> </span> </span> </a> </h5> <div class="internal-links"> <span class="nav-glide-pill" data-nav-pill aria-hidden="true"></span> <span class="nav-glide-bar" data-nav-bar aria-hidden="true"></span> <a href="/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Home</span><span data-lang-only="zh">主页</span> </a>  <a href="/blog/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Blog</span><span data-lang-only="zh">博客</span> </a>  <a href="/portfolio/" class="active" data-astro-cid-eimmu3lg> <span data-lang-only="en">Portfolio</span><span data-lang-only="zh">作品集</span> </a>  <a href="/about/" data-astro-cid-eimmu3lg> <span data-lang-only="en">About</span><span data-lang-only="zh">关于</span> </a>  <a href="/contact/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Contact</span><span data-lang-only="zh">联系</span> </a>  </div> <div class="right-side"> <!-- 移动端汉堡包菜单按钮 --> <button type="button" class="mobile-menu-btn" data-mobile-menu-toggle aria-label="Toggle mobile menu" data-i18n-aria-en="Toggle mobile menu" data-i18n-aria-zh="切换移动菜单"> <span class="sr-only"><span data-lang-only="en">Toggle mobile menu</span><span data-lang-only="zh">切换移动菜单</span></span> <span class="hamburger-icon"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu menu-open-icon" aria-hidden="true"> <path d="M4 5h16"></path><path d="M4 12h16"></path><path d="M4 19h16"></path>  </svg><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x menu-close-icon" aria-hidden="true"> <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>  </svg></span> </button> <div class="pref-controls"> <button type="button" class="pref-btn search-btn" data-search-toggle aria-label="Open search" data-i18n-aria-en="Open search" data-i18n-aria-zh="打开搜索"> <span class="sr-only"><span data-lang-only="en">Open search</span><span data-lang-only="zh">打开搜索</span></span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search icon" aria-hidden="true"> <path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle>  </svg> </button> <!-- 偏好设置按钮：打开主题 + 语言对话框 --> <button type="button" class="pref-btn prefs-toggle" data-prefs-toggle aria-label="Preferences" data-i18n-aria-en="Preferences" data-i18n-aria-zh="偏好设置"> <span class="sr-only"><span data-lang-only="en">Preferences</span><span data-lang-only="zh">偏好设置</span></span> <span class="prefs-icon" aria-hidden="true"> <!-- 太阳图标（浅色模式可见） --> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun icon icon-sun" aria-hidden="true"> <circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>  </svg> <!-- 月亮图标（深色模式可见） --> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon icon icon-moon" aria-hidden="true"> <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path>  </svg> <span class="lang-badge" aria-hidden="true"><span data-lang-only="en">EN</span><span data-lang-only="zh">中</span></span> </span> </button> </div> </div> </nav> <!-- 移动端下拉菜单 --> <div class="mobile-nav-dropdown" data-mobile-nav> <div class="mobile-nav-content"> <div class="mobile-nav-links"> <a href="/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Home</span><span data-lang-only="zh">主页</span> </a>  <a href="/blog/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Blog</span><span data-lang-only="zh">博客</span> </a>  <a href="/portfolio/" class="active" data-astro-cid-eimmu3lg> <span data-lang-only="en">Portfolio</span><span data-lang-only="zh">作品集</span> </a>  <a href="/about/" data-astro-cid-eimmu3lg> <span data-lang-only="en">About</span><span data-lang-only="zh">关于</span> </a>  <a href="/contact/" data-astro-cid-eimmu3lg> <span data-lang-only="en">Contact</span><span data-lang-only="zh">联系</span> </a>  </div> </div> </div> </header> <template data-ui-icon="close"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x" aria-hidden="true"> <path d="M18 6 6 18"></path><path d="m6 6 12 12"></path>  </svg></template> <template data-ui-icon="sun"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun" aria-hidden="true"> <circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path>  </svg></template> <template data-ui-icon="moon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon" aria-hidden="true"> <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"></path>  </svg></template> <template data-ui-icon="tag"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tag" aria-hidden="true"> <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"></path><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"></circle>  </svg></template>  <script>window.__SITE_PREFS = Object.assign({}, window.__SITE_PREFS || {}, {
+  subscribeEndpoint: "https://buttondown.email/api/emails/embed-subscribe/elkoutopia",
+  subscribeUser: "elkoutopia"
+});
+document.documentElement.dataset.subscribeEndpoint = "https://buttondown.email/api/emails/embed-subscribe/elkoutopia";
+document.documentElement.dataset.subscribeUser = "elkoutopia";</script> <script src="/scripts/subscribe-form.js" defer></script> <script type="module" src="/scripts/site-brand-procedural.js"></script> <script type="module" src="/scripts/preferences.js"></script> <script type="module" src="/scripts/windows-emoji.js"></script> <script type="module" src="/scripts/lightbox.js"></script> <script type="module" src="/scripts/zoom-images.js"></script> <script type="module" src="/scripts/thumbnail-fallback.js"></script> <script type="module" src="/_astro/Header.astro_astro_type_script_index_0_lang.BC1L6RNB.js"></script> <div id="portfolio-subnav" class="portfolio-subnav" aria-label="Section navigation"> <div class="portfolio-subnav__inner"> <div class="portfolio-subnav__trail"> <a href="/portfolio/personal/" class="portfolio-subnav__back" aria-label="Back to Personal" data-i18n-aria-en="Back to Personal" data-i18n-aria-zh="返回 个人作品">
+← <span data-lang-only="en">Personal</span><span data-lang-only="zh">个人作品</span> </a> <span class="portfolio-subnav__divider" aria-hidden="true"></span> <nav class="portfolio-subnav__breadcrumb" aria-label="Breadcrumb"> <a href="/portfolio/"><span data-lang-only="en">Portfolio</span><span data-lang-only="zh">作品集</span></a> <span class="portfolio-subnav__sep" aria-hidden="true">/</span> <span><span data-lang-only="en">Personal</span><span data-lang-only="zh">个人作品</span></span> </nav> </div> <button type="button" class="portfolio-subnav__toc-btn" data-toc-subnav-toggle aria-expanded="false" aria-controls="article-toc-panel" aria-label="Expand article contents" hidden> <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-tree portfolio-subnav__toc-icon portfolio-subnav__toc-icon--open" aria-hidden="true"> <path d="M8 5h13"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="M3 10a2 2 0 0 0 2 2h3"></path><path d="M3 5v12a2 2 0 0 0 2 2h3"></path>  </svg> <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-close portfolio-subnav__toc-icon portfolio-subnav__toc-icon--close" aria-hidden="true"> <rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M15 3v18"></path><path d="m8 9 3 3-3 3"></path>  </svg> <span class="portfolio-subnav__toc-label"><span data-lang-only="en">Contents</span><span data-lang-only="zh">目录</span></span> </button> </div> </div> <article-toc hidden="true" data-open-label-en="Expand article contents" data-open-label-zh="展开文章目录" data-close-label-en="Collapse article contents" data-close-label-zh="收起文章目录"> <aside class="article-toc-drawer" aria-label="Contents" data-i18n-aria-en="Contents" data-i18n-aria-zh="目录"> <div class="article-toc-header"> <div class="article-toc-heading"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-tree article-toc-icon" aria-hidden="true"> <path d="M8 5h13"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="M3 10a2 2 0 0 0 2 2h3"></path><path d="M3 5v12a2 2 0 0 0 2 2h3"></path>  </svg> <span class="article-toc-title"><span data-lang-only="en">Contents</span><span data-lang-only="zh">目录</span></span> </div> <button class="article-toc-toggle" type="button" aria-expanded="false" aria-controls="article-toc-panel" aria-label="Collapse article contents"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-panel-right-close article-toc-close-icon" aria-hidden="true"> <rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M15 3v18"></path><path d="m8 9 3 3-3 3"></path>  </svg> </button> </div> <nav class="article-toc-panel" id="article-toc-panel" aria-label="Contents" data-i18n-aria-en="Contents" data-i18n-aria-zh="目录" aria-hidden="true" inert> <p class="article-toc-page-title"> <span data-lang-only="en">Line Field 360°</span> <span data-lang-only="zh">全景写生</span> </p> <ol class="article-toc-list"></ol> </nav> </aside> <button class="article-toc-fab" type="button" aria-expanded="false" aria-controls="article-toc-panel" aria-label="Expand article contents"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list-tree article-toc-fab-icon" aria-hidden="true"> <path d="M8 5h13"></path><path d="M13 12h8"></path><path d="M13 19h8"></path><path d="M3 10a2 2 0 0 0 2 2h3"></path><path d="M3 5v12a2 2 0 0 0 2 2h3"></path>  </svg> <span class="article-toc-fab-label"><span data-lang-only="en">Contents</span><span data-lang-only="zh">目录</span></span> </button> </article-toc> <script type="module" src="/_astro/ArticleToc.astro_astro_type_script_index_0_lang.g9gikR9F.js"></script> <main data-article-layout data-astro-cid-c7xho2ky> <article data-astro-cid-c7xho2ky> <div class="prose" data-astro-cid-c7xho2ky> <!-- 标题区 --> <div class="title" data-astro-cid-c7xho2ky> <h1 class="site-heading" data-astro-cid-c7xho2ky> <span data-lang-only="en" data-astro-cid-c7xho2ky>Line Field 360°</span> <span data-lang-only="zh" data-astro-cid-c7xho2ky>全景写生</span> </h1> <div class="date" data-astro-cid-c7xho2ky> <time datetime="2023-08-15T00:00:00.000Z">2023-08-15</time> </div> <div class="post-tags" data-astro-cid-txy4pyv6><a class="post-tag" data-tag-id="personal" href="/search?tag=personal" style="--tc:#388a6e" data-astro-cid-txy4pyv6><span data-lang-only="en" data-astro-cid-txy4pyv6>Personal</span><span data-lang-only="zh" data-astro-cid-txy4pyv6>个人创作</span></a></div> <hr data-astro-cid-c7xho2ky> </div> <!-- single 布局：hero 图 + Markdown 正文 --> <div class="md-content pswp-featured" data-article-content data-astro-cid-c7xho2ky>   <div class="lang-article-pane" data-lang-only="en" data-astro-cid-c7xho2ky><p><picture><source type="image/webp" srcset="/assets/portfolio/personal/LineField360/LineField360.webp"><source type="image/webp" srcset="/assets/portfolio/personal/LineField360/low/LineField360-320.webp 320w, /assets/portfolio/personal/LineField360/low/LineField360-640.webp 640w, /assets/portfolio/personal/LineField360/low/LineField360-1024.webp 1024w"><img src="/assets/portfolio/personal/LineField360/low/LineField360-640.webp" alt="Line Field 360°" width="11551" height="1207" style="aspect-ratio:11551/1207;" decoding="async" loading="lazy" data-full="/assets/portfolio/personal/LineField360/LineField360.webp" data-full-width="11551" data-full-height="1207" srcset="/assets/portfolio/personal/LineField360/low/LineField360-320.webp 320w, /assets/portfolio/personal/LineField360/low/LineField360-640.webp 640w, /assets/portfolio/personal/LineField360/low/LineField360-1024.webp 1024w" sizes="100vw"></picture></p>
+<p><picture><source type="image/webp" srcset="/assets/portfolio/personal/LineField360/LineField.webp"><source type="image/webp" srcset="/assets/portfolio/personal/LineField360/low/LineField-320.webp 320w, /assets/portfolio/personal/LineField360/low/LineField-640.webp 640w, /assets/portfolio/personal/LineField360/low/LineField-1024.webp 1024w"><img src="/assets/portfolio/personal/LineField360/low/LineField-640.webp" alt="Line Field" width="2736" height="3907" style="aspect-ratio:2736/3907;" decoding="async" loading="lazy" data-full="/assets/portfolio/personal/LineField360/LineField.webp" data-full-width="2736" data-full-height="3907" srcset="/assets/portfolio/personal/LineField360/low/LineField-320.webp 320w, /assets/portfolio/personal/LineField360/low/LineField-640.webp 640w, /assets/portfolio/personal/LineField360/low/LineField-1024.webp 1024w" sizes="100vw"></picture></p></div> <div class="lang-article-pane" data-lang-only="zh" data-astro-cid-c7xho2ky><p><picture><source type="image/webp" srcset="/assets/portfolio/personal/LineField360/LineField360.webp"><source type="image/webp" srcset="/assets/portfolio/personal/LineField360/low/LineField360-320.webp 320w, /assets/portfolio/personal/LineField360/low/LineField360-640.webp 640w, /assets/portfolio/personal/LineField360/low/LineField360-1024.webp 1024w"><img src="/assets/portfolio/personal/LineField360/low/LineField360-640.webp" alt="线性场景360°" width="11551" height="1207" style="aspect-ratio:11551/1207;" decoding="async" loading="lazy" data-full="/assets/portfolio/personal/LineField360/LineField360.webp" data-full-width="11551" data-full-height="1207" srcset="/assets/portfolio/personal/LineField360/low/LineField360-320.webp 320w, /assets/portfolio/personal/LineField360/low/LineField360-640.webp 640w, /assets/portfolio/personal/LineField360/low/LineField360-1024.webp 1024w" sizes="100vw"></picture>
+<picture><source type="image/webp" srcset="/assets/portfolio/personal/LineField360/LineField.webp"><source type="image/webp" srcset="/assets/portfolio/personal/LineField360/low/LineField-320.webp 320w, /assets/portfolio/personal/LineField360/low/LineField-640.webp 640w, /assets/portfolio/personal/LineField360/low/LineField-1024.webp 1024w"><img src="/assets/portfolio/personal/LineField360/low/LineField-640.webp" alt="线性场景" width="2736" height="3907" style="aspect-ratio:2736/3907;" decoding="async" loading="lazy" data-full="/assets/portfolio/personal/LineField360/LineField.webp" data-full-width="2736" data-full-height="3907" srcset="/assets/portfolio/personal/LineField360/low/LineField-320.webp 320w, /assets/portfolio/personal/LineField360/low/LineField-640.webp 640w, /assets/portfolio/personal/LineField360/low/LineField-1024.webp 1024w" sizes="100vw"></picture></p></div>  </div> <!-- gallery 布局：图片网格 + Markdown 正文 -->  </div> </article> </main> <section id="comments" style="width:100%;margin:0 auto;padding:1rem;" data-astro-cid-jvxsf75u> <!-- 加载提示（不在盒子内，简洁内联样式） --> <div class="comments-loading" id="comments-loading" aria-live="polite" data-astro-cid-jvxsf75u> <div class="loading-spinner" aria-hidden="true" data-astro-cid-jvxsf75u></div> <span class="loading-text" data-astro-cid-jvxsf75u>Loading comments...</span> </div> <!-- 内层限制宽度，默认更宽以匹配文章内容区 --> <div class="comments-inner" style="max-width:920px;margin:0 auto;padding:0 1rem;" data-astro-cid-jvxsf75u> <!-- 调试界面已移除 --> <script type="module">(function(){var p="Elko-Utopia/Creation_notes",f="https://utteranc.es",o=null;function h(){try{var n=document.documentElement,r=n.getAttribute("data-theme")||n.dataset.theme||"";if(r){if(/dark/i.test(r))return"photon-dark";if(/light/i.test(r))return"github-light"}return window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches?"photon-dark":"github-light"}catch{return"github-light"}}function d(){typeof o=="function"&&(o(),o=null);var n=document.getElementById("comments");if(!n)return;var r=h(),c=null,u=null,a=null,v=!1;function s(){try{var e=n.querySelector("iframe");if(e&&e instanceof HTMLIFrameElement){var i=new URL(e.src);f=i.origin;var t=e.contentWindow;if(t)try{t.postMessage({type:"set-theme",theme:r},f)}catch{}}}catch{}}function g(){if(!v){v=!0;var e=n.querySelector("iframe");if(e){s();return}var i=document.getElementById("comments-loading");i&&(i.style.display="none");var t=document.createElement("script");t.src="https://utteranc.es/client.js",t.setAttribute("repo",p),t.setAttribute("issue-term","og:title"),t.setAttribute("label","comment"),t.setAttribute("theme",r),t.crossOrigin="anonymous",t.async=!0,t.onload=function(){s()},n.appendChild(t);try{n.setAttribute("data-utterances-loader","called")}catch{}var l=0;c=setInterval(function(){l++,(n.querySelector("iframe")||l>=20)&&(clearInterval(c),c=null,s())},500)}}typeof IntersectionObserver<"u"?(a=new IntersectionObserver(function(e){for(var i=0;i<e.length;i++)if(e[i].isIntersecting){a&&(a.disconnect(),a=null),g();break}},{rootMargin:"400px 0px"}),a.observe(n)):g();var m=function(){var e=h();e!==r&&(r=e,s())};try{u=new MutationObserver(m),u.observe(document.documentElement,{attributes:!0,attributeFilter:["class","data-theme"]})}catch{}window.addEventListener("themechange",m),o=function(){c&&(clearInterval(c),c=null),a&&(a.disconnect(),a=null),u&&(u.disconnect(),u=null),window.removeEventListener("themechange",m)}}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",d,{once:!0}):d(),document.addEventListener("astro:page-load",d),document.addEventListener("astro:before-swap",function(){typeof o=="function"&&(o(),o=null)})})();</script> <noscript>Please enable JavaScript to view and post comments.</noscript>  </div></section> <footer class="site-footer" data-site-footer> <span class="copyright site-heading">&copy; 2026 Elko-Utopia. <span data-lang-only="en">All rights reserved.</span><span data-lang-only="zh">版权所有。</span></span> <div class="social-links" data-social-dock> <!-- Email --> <a href="mailto:elkoutopia@gmail.com" data-dock-item data-label="Email"> <span class="sr-only">Email</span> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail" aria-hidden="true"> <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path><rect x="2" y="4" width="20" height="16" rx="2"></rect>  </svg> </a> <!-- Instagram --> <a href="https://www.instagram.com/elkoutopia/" target="_blank" rel="noopener noreferrer" data-dock-item data-label="Instagram"> <span class="sr-only">Instagram</span> <svg viewBox="0 0 1024 1024" aria-hidden="true" width="24" height="24"> <path fill="currentColor" d="M959.8 511.9v189.4c-1.2 72.3-32.3 140.9-86 189.4-30 31.4-69.2 52.5-112 60.3-19.3 7.1-39.8 10-60.3 8.6h-379c-57.8 2.4-114-19.5-155-60.3-54.4-39-91.4-97.7-103.4-163.6V322.4c0-103.8 60.6-198 155-241.1 33.6-9.9 68.3-15.7 103.4-17.2h378.9c56.1-1.4 111 16.9 155 51.7 50 37.9 83.8 93.3 94.8 155 0 17.2 8.6 34.5 8.6 51.7v189.4z m-826.7 0v189.4c-1.4 17.7 1.6 35.4 8.6 51.7 21.2 82.2 96 139.2 180.8 137.8h387.6c32.3 1.7 63.7-10.9 86-34.5 57.1-34.1 90.3-97.3 86-163.6V322.4c2.2-14.9-0.8-30.1-8.6-43C855.5 194 780 132.8 692.6 133H313.9c-14.9-1.3-29.8 1.7-43 8.6-39.9 13.5-75.5 37.3-103.4 68.9-24.2 32.2-36.3 71.8-34.5 112l0.1 189.4z"></path> <path fill="currentColor" d="M753.1 511.9C750.3 643.9 644 750.2 512 753c-132-2.8-238.3-109.1-241.1-241.1 2.8-132 109.1-238.3 241.1-241.1 132.9-0.2 240.9 107.3 241.1 240.3v0.8z m-413.3 0c0 95.1 77.1 172.2 172.2 172.2S684.3 607 684.3 511.9 607.2 339.6 512 339.6c-95 0.3-172 77.3-172.2 172.3zM822 236.3c-1.2 18.5-16 33.2-34.5 34.5-18.5-1.3-33.2-16-34.4-34.5 1.2-18.5 16-33.2 34.5-34.5 18.5 1.3 33.2 16 34.4 34.5z"></path> </svg> </a> <!-- Twitter / X --> <a href="https://x.com/ElkoUtopia" target="_blank" rel="noopener noreferrer" data-dock-item data-label="Twitter · X"> <span class="sr-only">Twitter · X</span> <svg viewBox="0 0 512 512" aria-hidden="true" width="24" height="24"> <path fill="currentColor" d="M496 109.5a201.8 201.8 0 0 1-56.55 15.3 97.5 97.5 0 0 0 43.33-53.6 197.7 197.7 0 0 1-62.56 23.5A99.14 99.14 0 0 0 348.31 64c-54.42 0-98.46 43.4-98.46 96.9a93.2 93.2 0 0 0 2.54 22.1 280.7 280.7 0 0 1-203-101.3A95.7 95.7 0 0 0 36 130.4c0 33.6 17.53 63.3 44 80.7A97.5 97.5 0 0 1 35.22 199v1.2c0 47 34 86.1 79 95a100.8 100.8 0 0 1-25.94 3.4 94.4 94.4 0 0 1-18.51-1.8c12.51 38.5 48.92 66.5 92.05 67.3A199.6 199.6 0 0 1 39.5 405.6a203 203 0 0 1-23.5-1.4A278.7 278.7 0 0 0 166.74 448c181.36 0 280.44-147.7 280.44-275.8 0-4.2-.11-8.4-.31-12.5A198.5 198.5 0 0 0 496 109.5"></path> </svg> </a> <!-- Bluesky --> <a href="https://bsky.app/profile/elkoutopia.bsky.social" target="_blank" rel="noopener noreferrer" data-dock-item data-label="Bluesky"> <span class="sr-only">Bluesky</span> <svg viewBox="0 0 24 24" aria-hidden="true" width="24" height="24"> <path fill="currentColor" d="M5.202 2.857C7.954 4.922 10.913 9.11 12 11.358c1.087-2.247 4.046-6.436 6.798-8.501C20.783 1.366 24 .213 24 3.883c0 .732-.42 6.156-.667 7.037-.856 3.061-3.978 3.842-6.755 3.37 4.854.826 6.089 3.562 3.422 6.299-5.065 5.196-7.28-1.304-7.847-2.97-.104-.305-.152-.448-.153-.327 0-.121-.05.022-.153.327-.568 1.666-2.782 8.166-7.847 2.97-2.667-2.737-1.432-5.473 3.422-6.3-2.777.473-5.899-.308-6.755-3.369C.42 10.04 0 4.615 0 3.883c0-3.67 3.217-2.517 5.202-1.026"></path> </svg> </a> <!-- GitHub --> <a href="https://github.com/Elko-Utopia" target="_blank" rel="noopener noreferrer" data-dock-item data-label="GitHub"> <span class="sr-only">GitHub</span> <svg viewBox="0 0 16 16" aria-hidden="true" width="24" height="24"> <path fill="currentColor" d="M8 .5A7.5 7.5 0 0 0 5.4 15.1c.4.07.55-.18.55-.4 0-.2-.01-.73-.01-1.43-2.25.49-2.73-1.09-2.73-1.09-.36-.93-.89-1.18-.89-1.18-.73-.5.06-.49.06-.49.81.06 1.24.83 1.24.83.72 1.22 1.89.87 2.36.66.07-.52.28-.87.51-1.07-1.79-.21-3.66-.9-3.66-4.01 0-.89.32-1.62.84-2.19-.08-.21-.36-1.07.08-2.24 0 0 .67-.22 2.2.86a7.7 7.7 0 0 1 4 0c1.53-1.08 2.2-.86 2.2-.86.44 1.17.16 2.03.08 2.24.52.57.84 1.3.84 2.19 0 3.12-1.88 3.8-3.67 4.01.29.25.55.74.55 1.5 0 1.08-.01 1.95-.01 2.22 0 .22.15.48.55.4A7.5 7.5 0 0 0 8 .5Z"></path> </svg> </a> <!-- LinkedIn --> <a href="https://www.linkedin.com/in/elko-zhu-1944123a6/" target="_blank" rel="noopener noreferrer" data-dock-item data-label="LinkedIn"> <span class="sr-only">LinkedIn</span> <svg viewBox="0 0 1024 1024" aria-hidden="true" width="24" height="24"> <path fill="currentColor" d="M932.571429 54.857143H91.428571c-20.228571 0-36.571429 16.342857-36.571428 36.571428v841.142858c0 20.228571 16.342857 36.571429 36.571428 36.571428h841.142858c20.228571 0 36.571429-16.342857 36.571428-36.571428V91.428571c0-20.228571-16.342857-36.571429-36.571428-36.571428zM326.057143 833.942857H190.4V397.6h135.657143v436.342857z m-67.771429-496a78.628571 78.628571 0 1 1 78.628572-78.628571c-0.114286 43.428571-35.314286 78.628571-78.628572 78.628571z m575.657143 496H698.4V621.714286c0-50.628571-0.914286-115.657143-70.514286-115.657143-70.514286 0-81.371429 55.085714-81.371428 112v215.885714H411.085714V397.6h130.057143v59.657143h1.828572c18.057143-34.285714 62.285714-70.514286 128.342857-70.514286 137.371429 0 162.628571 90.4 162.628571 207.885714v239.314286z"></path> </svg> </a> </div> </footer> <script type="module">function d(){const o=window.__footerKineticAc;o&&o.abort();const r=document.querySelector("[data-site-footer]");if(!r||window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches||window.matchMedia&&!window.matchMedia("(pointer: fine)").matches)return;const n=new AbortController;window.__footerKineticAc=n,Array.from(r.querySelectorAll("[data-dock-item]")).forEach(e=>{e.addEventListener("pointermove",i=>{const t=e.getBoundingClientRect(),s=(i.clientX-(t.left+t.width/2))/(t.width/2)*4,a=(i.clientY-(t.top+t.height/2))/(t.height/2)*4;e.style.setProperty("--mx",`${s.toFixed(2)}px`),e.style.setProperty("--my",`${a.toFixed(2)}px`)},{passive:!0,signal:n.signal}),e.addEventListener("pointerleave",()=>{e.style.setProperty("--mx","0px"),e.style.setProperty("--my","0px")},{passive:!0,signal:n.signal})})}document.addEventListener("DOMContentLoaded",d);document.addEventListener("astro:page-load",d);document.addEventListener("astro:before-swap",()=>{const o=window.__footerKineticAc;o&&o.abort()});</script>  <script type="module" src="/_astro/PortfolioPost.astro_astro_type_script_index_0_lang.D9YtrfZB.js"></script> </body> </html> 
