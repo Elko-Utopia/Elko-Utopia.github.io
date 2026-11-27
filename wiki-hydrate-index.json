@@ -100,7 +100,7 @@
     "pubDate": "2026-09-14T00:00:00.000Z"
   },
   {
-    "title": "Seth The Untamed Scientist",
+    "title": "Seth: The Untamed Scientist",
     "url": "/portfolio/embarkation/seth-the-untamed-scientist/",
     "heroImage": "/assets/portfolio/embarkation/SethTheUntamedScientist/Seth.webp",
     "heroImagePosition": "center 10%",
@@ -202,7 +202,7 @@
   {
     "title": "ANIM 275: Core Principles of Animated Storytelling and Concept Development",
     "url": "/portfolio/scad/anim275/",
-    "heroImage": "/assets/portfolio/scad/anim275/p1-03-final-keyframe.webp",
+    "heroImage": "/assets/portfolio/scad/anim275/p3-08-final-character-and-environment.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "portfolio/scad/anim275.md",
@@ -290,7 +290,7 @@
     "pubDate": "2026-09-14T00:00:00.000Z"
   },
   {
-    "title": "塞斯——不羁的科学家",
+    "title": "不羁的科学家：塞斯",
     "url": "/portfolio/embarkation/seth-the-untamed-scientist/",
     "heroImage": "/assets/portfolio/embarkation/SethTheUntamedScientist/Seth.webp",
     "heroImagePosition": "center 10%",
@@ -392,7 +392,7 @@
   {
     "title": "ANIM 275：动画叙事与概念开发",
     "url": "/portfolio/scad/anim275/",
-    "heroImage": "/assets/portfolio/scad/anim275/p1-03-final-keyframe.webp",
+    "heroImage": "/assets/portfolio/scad/anim275/p3-08-final-character-and-environment.webp",
     "heroImagePosition": null,
     "heroImageWidth": null,
     "source": "zh/portfolio/scad/anim275.md",

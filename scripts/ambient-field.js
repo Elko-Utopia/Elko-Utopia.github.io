@@ -229,7 +229,34 @@
     }, 120);
   }, { passive: true });
 
+  var lastTouchTs = 0;
+
+  function enterTouchMode() {
+    lastTouchTs = performance.now();
+    if (document.documentElement.dataset.input !== 'touch') {
+      document.documentElement.dataset.input = 'touch';
+    }
+    if (mouse.active) {
+      mouse.active = false;
+      scheduleGlow();
+    }
+  }
+
+  window.addEventListener('touchstart', enterTouchMode, { passive: true, capture: true });
+
+  window.addEventListener('pointerdown', function (e) {
+    if (e.pointerType === 'touch') enterTouchMode();
+  }, { passive: true, capture: true });
+
   window.addEventListener('pointermove', function (e) {
+    if (e.pointerType === 'touch') {
+      enterTouchMode();
+      return;
+    }
+    if (e.pointerType === 'mouse' && performance.now() - lastTouchTs < 600) return;
+    if (document.documentElement.dataset.input === 'touch') {
+      document.documentElement.dataset.input = 'mouse';
+    }
     mouse.x = e.clientX;
     mouse.y = e.clientY;
     mouse.active = true;
